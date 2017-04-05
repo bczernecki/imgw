@@ -22,6 +22,10 @@
 
 
 pobierz <- function(data_start,data_end,user_pass,stacja,kod){
+  
+    if(length(user_pass)<5) print("sprawdz argument: user_pass")
+    stopifnot(length(user_pass)>5)
+  
 
   daty <- seq.Date(from=as.Date(data_start)-7, to=as.Date(data_end)+7, by="7 days")
 
@@ -41,9 +45,10 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod){
                 colClasses = c("POSIXct","numeric","numeric"))
   
     wynik <- rbind.data.frame(wynik, a)
-    i <- i+1
-  
+    
     cat(paste0(daty[i],"\t" ,round((i/length(daty))*100,2),"%\n"))
+    i <- i+1
+
 }
 
 
