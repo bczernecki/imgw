@@ -7,7 +7,7 @@
 pobierz(data_start, data_end, user_pass, stacja, kod)
 }
 \arguments{
-\item{data_start}{data poczatkowa od ktorej beda pobierane dane. Obiekt klasy Date}
+\item{data_start}{data początkowa od której beda pobierane dane. Obiekt klasy Date}
 
 \item{data_end}{data końcowa do ktorej beda pobierane. Obiekt klasy Date. Domyslnie funkcja rozszerzy okres pobierania o tydzien w przod i w tyl}
 
@@ -23,9 +23,9 @@ Pozwala na zautomatyzowanie procesu pobierania danych meteorologicznych i hydrol
 \examples{
 # wymagane ustalenie ponizszych parametrow pobierania:
 
+user_pass <- "" 
 data_start <- "2016-12-26" 
 data_end <- "2017-02-20" 
-user_pass <- "" 
 stacja <- "352160330" # przykladowe id dla Poznania; numer mozna pobrac ze strony https://dane.imgw.pl
 kod <- "B100B008CD" # srednia dobowa temp. powietrza synop; j.w.
 pobierz(data_start,data_end,user_pass,stacja,kod)
