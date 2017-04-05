@@ -1,11 +1,11 @@
-#' Funkcja pobierająca dane z serwisu dane.imgw.pl
+#' Pobieranie danych meteorologicznych z serwisu IMGW-PIB (https://dane.imgw.pl)
 #'
-#' Pozwala na zautomatyzowanie procesu pobierania danych meteorologicznych i hydrologicznych z oficjalnego repozytorium Instytutu Meteorologii i Gospodarki Wodnej - Państwowego Instytutu Badawczego (https://dane.imgw.pl)
-#' @param user_pass  login i token ze strony https://dane.imgw.pl. Zmienna w postaci email:token, np. bczernecki@gmail.com:68a60056
-#' @param data_start data początkowa od której beda pobierane dane. Obiekt klasy Date
-#' @param data_end data końcowa do ktorej beda pobierane. Obiekt klasy Date. Domyslnie funkcja rozszerzy okres pobierania o tydzien w przod i w tyl
-#' @param stacja kod stacji wg strony https://dane.imgw.pl
-#' @param kod kod pobieranego elementu meteorologicznego/hydrologicznego
+#' Funkcja pozwalająca na zautomatyzowanie procesu pobierania danych meteorologicznych i hydrologicznych z oficjalnego repozytorium Instytutu Meteorologii i Gospodarki Wodnej - Państwowego Instytutu Badawczego - https://dane.imgw.pl
+#' @param user_pass  Login i token wygenerowany przez serwis https://dane.imgw.pl. Parametr w postaci email:token, np. bczernecki@gmail.com:68a60055
+#' @param data_start Data początkowa od której będą pobierane dane. Obiekt klasy Date
+#' @param data_end Data końcowa do której będą pobierane. Obiekt klasy Date. Domyślnie funkcja rozszerza zakres pobierania danych o tydzień w przód i w tył
+#' @param stacja Kod stacji wg strony https://dane.imgw.pl
+#' @param kod Kod pobieranego elementu meteorologicznego/hydrologicznego
 
 #' @importFrom RCurl getURL
 #'
@@ -13,7 +13,7 @@
 #' @examples
 #' # wymagane ustalenie ponizszych parametrow pobierania:
 #' 
-#' user_pass <- "" 
+#' user_pass <- "" # pamietaj o wpisaniu swojego loginu:tokena wg schematu zawartego w opisie!
 #' data_start <- "2016-12-26" 
 #' data_end <- "2017-02-20" 
 #' stacja <- "352160330" # przykladowe id dla Poznania; numer mozna pobrac ze strony https://dane.imgw.pl

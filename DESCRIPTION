@@ -4,7 +4,7 @@ Title: Automatize downloading of IMGW-PIB meteorological data
 Version: 0.01
 Date: 2017-04-05
 Authors@R: c(person("Bartosz", "Czernecki", role = c("aut","cre"), email = "bczernecki@gmail.com"))
-Imports: RCurl
+Imports: RCurl, bitops
 License: MIT
 Description: Automatize download of IMGW-PIB meteorological/hydrological dataset. Pre-registration at https://dane.imgw.pl required.
 RoxygenNote: 5.0.1
