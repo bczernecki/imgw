@@ -3,8 +3,9 @@ Type: Package
 Title: Automatize downloading of IMGW-PIB meteorological data
 Version: 0.01
 Date: 2017-04-05
-Author: Bartosz Czernecki
-Maintainer: Bartosz Czernecki <bczernecki@gmail.com>
+Authors@R: c(person("Bartosz", "Czernecki", role = c("aut","cre"), email = "bczernecki@gmail.com"))
+Imports: RCurl
+License: MIT
 Description: Automatize download of IMGW-PIB meteorological/hydrological dataset. Pre-registration at https://dane.imgw.pl required.
-License: CC-BY
 RoxygenNote: 5.0.1
+Encoding: UTF-8
