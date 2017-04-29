@@ -22,6 +22,8 @@
 
 
 pobierz <- function(data_start,data_end,user_pass,stacja,kod){
+  library(RCurl)
+  options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))) 
   
     if(nchar(user_pass)<=0) print("sprawdz argument: user_pass")
     stopifnot(nchar(user_pass)>0)
@@ -33,20 +35,44 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod){
   wynik <- NULL
   
     while(i<=length(daty)){
+      
+      link <- paste0("https://dane.imgw.pl/1.0/pomiary/cbdh/",
+                    stacja,"-",kod,"/tydzien/",daty[i],"?format=csv")
   
       a <-gsub(
-        getURL(
-        paste0("https://dane.imgw.pl/1.0/pomiary/cbdh/",
-           stacja,"-",kod,"/tydzien/",daty[i],"?format=csv"),
-        userpwd = user_pass),
+        getURL(link,userpwd = user_pass, cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")),
         pattern = "\\r",replacement = "")
+      
+      if(any(grepl("Unauthorized", a))) {
+        cat(paste("Wystąpił problem z autoryzacją...\n [1] Jeśli wykonałeś(aś) >10tys. pobrań odczekaj >10 min.\n [2] Jeśli nie - sprawdź czy link:\n", link[1] , " działa poprawnie w przeglądarce"))
+        
+        
+          n <- readline(prompt="\nAby kontynuować pobieranie wpisz w konsoli 1 (lub cokolwiek innego).\nAby odczekać 15 min. wpisz 2\n Aby przerwać wpisz 3\n")
+          
+          
+          if(n=="2") {
+            cat(paste("Wybrane opcję nr 2 - odczekanie 15 min. \t", Sys.time()))
+            Sys.sleep(900)
+          }
+        
+          if(n=="3"){
+            cat(paste("Wybrane opcję nr 3 - przerwanie"))
+            stop()
+          }  
+          
+      } else {
+          
+        
   
       a <- read.csv(textConnection(a), sep=";", 
                 colClasses = c("POSIXct","numeric","numeric"))
   
     wynik <- rbind.data.frame(wynik, a)
     
-    cat(paste0(daty[i],"\t" ,round((i/length(daty))*100,2),"%\n"))
+    cat(paste0(stacja,"\t", daty[i],"\t" ,round((i/length(daty))*100,1),"%\n"))
+      
+    } # koniec if-else
+      
     i <- i+1
 
 }
