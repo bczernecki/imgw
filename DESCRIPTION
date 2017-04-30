@@ -1,7 +1,7 @@
 Package: imgw
 Type: Package
 Title: Automatize downloading of IMGW-PIB meteorological data
-Version: 0.02
+Version: 0.03
 Date: 2017-04-05
 Authors@R: c(person("Bartosz", "Czernecki", role = c("aut","cre"), email = "bczernecki@gmail.com"))
 Imports: RCurl, bitops
