@@ -24,6 +24,19 @@
 #' kod <- "B100B008CD" # srednia dobowa temp. powietrza synop; j.w.
 #' cores <- 4 # liczba watkow do mclapply
 #' pobierz_lapply(data_start,data_end,user_pass,stacja,kod,cores)
+#' 
+#' 
+#' # mozna takze uruchomic w petli dla kilku stacji...
+#' 
+#' stacja <- c("350150500", "350190560", "350160520","351160415", "350170530")
+#' kod <- "B609B00400"
+#' for(stacja2 in stacja){
+#'   data_start <- "1966-01-01"
+#'   data_end <- "2017-01-01"
+#'   tmp <- pobierz_lapply(data_start,data_end,user_pass,stacja2,kod, cores=4) # pobieranie danych
+#'    write.table(x = tmp, file=paste0(stacja2, ".csv" ), row.names = F) # zapisywanie danego roku do pliku
+#' } # koniec petli dla stacji
+
 
 
 pobierz_lapply <- function(data_start,data_end,user_pass,stacja,kod,cores){
@@ -42,14 +55,6 @@ pobierz_lapply <- function(data_start,data_end,user_pass,stacja,kod,cores){
     #a <- read.csv(textConnection(a), sep=";", colClasses = c("POSIXct","numeric","numeric"))
     a <- read.csv(textConnection(a), sep=";", stringsAsFactors = F)
     
-    if(any(grepl("429,",a))) {
-      cat(paste("Przekroczono limit pobierania. Czekam 5 min. przed ponowną próbą\n"))
-      cat(paste(link))
-      cat("Komunikat ze strony:\t",paste(a))
-      Sys.sleep(300)
-      a <- tryCatch(getURL(link,userpwd = user_pass, cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")), error=function(e) 0)
-      a <-gsub(a,  pattern = "\\r",replacement = "")
-    }
     
     if(any(grepl("Unauthorized", a))) {
       cat(paste("Wystąpił problem z autoryzacją. Sprawdź nazwę użytkownika i hasło oraz sprawdź czy link:\n", link[1] , " działa poprawnie w przeglądarce"))
