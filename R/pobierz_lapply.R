@@ -75,7 +75,7 @@ lista <- split(daty2, rep(1:ceiling(nr/n), each=n, length.out=nr)) # dzielenie n
         bb <- parallel::mclapply(lista[[i]]$daty, FUN = wyciagnij, kod=kod, stacja=stacja, 
                        user_pass=user_pass,mc.cores = cores )
         
-        bb <- tryCatch(do.call(rbind.data.frame, bb), error=function(e) 0) # tryCatch aby nie wywalalo...
+        bb <- tryCatch(do.call(rbind.data.frame, bb), error=function(e) data.frame(a=1)) # tryCatch aby nie wywalalo..
         
             proba_nr <- 1
             while(ncol(bb)!=3 & proba_nr<=12) {
