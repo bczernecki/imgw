@@ -74,7 +74,8 @@ lista <- split(daty2, rep(1:ceiling(nr/n), each=n, length.out=nr)) # dzielenie n
     for (i in 1:length(lista)){
         bb <- parallel::mclapply(lista[[i]]$daty, FUN = wyciagnij, kod=kod, stacja=stacja, 
                        user_pass=user_pass,mc.cores = cores )
-        bb <- do.call(rbind.data.frame, bb)
+        
+        bb <- tryCatch(do.call(rbind.data.frame, bb), error=function(e) 0) # tryCatch aby nie wywalalo...
         
             proba_nr <- 1
             while(ncol(bb)!=3 & proba_nr<=12) {
@@ -96,8 +97,8 @@ lista <- split(daty2, rep(1:ceiling(nr/n), each=n, length.out=nr)) # dzielenie n
             } # koniec petli while ncol
         
         wynik <- rbind.data.frame(wynik, bb)
-        cat(paste0(kod, "  ", stacja, "  ", as.Date(range(bb$data)[1]), "  ", as.Date(range(bb$data)[2]), " | ",
-                   round(i/length(lista)*100,1),"%", "\n"))
+        cat(paste0("\r", kod, "  ", stacja, "  ", min(bb$data), "  ", max(bb$data), " | ",
+                   sprintf("%5.1f",round(i/length(lista)*100,1)),"%"))
         closeAllConnections()
     } # koniec petli 'for' lista
 
