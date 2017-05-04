@@ -33,4 +33,16 @@ stacja <- "352160330" # przykladowe id dla Poznania; numer mozna pobrac ze stron
 kod <- "B100B008CD" # srednia dobowa temp. powietrza synop; j.w.
 cores <- 4 # liczba watkow do mclapply
 pobierz_lapply(data_start,data_end,user_pass,stacja,kod,cores)
+
+
+# mozna takze uruchomic w petli dla kilku stacji...
+
+stacja <- c("350150500", "350190560", "350160520","351160415", "350170530")
+kod <- "B609B00400"
+for(stacja2 in stacja){
+  data_start <- "1966-01-01"
+  data_end <- "2017-01-01"
+  tmp <- pobierz_lapply(data_start,data_end,user_pass,stacja2,kod, cores=4) # pobieranie danych
+   write.table(x = tmp, file=paste0(stacja2, ".csv" ), row.names = F) # zapisywanie danego roku do pliku
+} # koniec petli dla stacji
 }
