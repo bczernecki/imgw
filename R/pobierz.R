@@ -24,7 +24,7 @@
 #' pobierz(data_start,data_end,user_pass,stacja,kod)
 
 
-pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE){
+pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max_prob=12){
   library(RCurl)
   options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))) 
   
@@ -42,8 +42,35 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE){
       link <- paste0("https://dane.imgw.pl/1.0/pomiary/cbdh/",
                     stacja,"-",kod,"/tydzien/",daty[i],"?format=csv")
       
-      a <- tryCatch(getURL(link,userpwd = user_pass, cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")), error=function(e) 0)
+      a <- tryCatch(getURL(link,userpwd = user_pass[1], cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")), error=function(e) 0)
       a <-gsub(a,  pattern = "\\r",replacement = "")
+      
+      if(any(grepl("Gateway|techniczny|code",a))) {
+        proba_nr <- 1
+        while(any(grepl("Gateway|techniczny|code",a)) & proba_nr<=max_prob){
+        cat(paste("Błąd Gateway lub techniczny. Czekam 1 min. przed ponowną próbą\n"))
+        cat(paste("link:", link))
+        cat("\nKomunikat ze strony:\t",paste(a))
+        cat(paste("proba nr", proba_nr))
+        Sys.sleep(60)
+        
+        # test z podwojnym loginem i haslem
+        if((proba_nr %% 2)==1 & length(user_pass)>1) {
+          user <- 2
+        } else {
+          user <- 1
+        }
+        
+        a <- tryCatch(getURL(link,userpwd = user_pass[user], cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")), error=function(e) 0)
+        a <-gsub(a,  pattern = "\\r",replacement = "")
+        proba_nr <- proba_nr+1
+        
+        if(proba_nr>max_prob)  a <- data.frame(data=NA,wartosc=NA,status=NA) # w tym momencie program sie wywali, wiec mozna dopisac cos glupiego
+        
+        } #koniec petli
+      } # koniec ifa
+        
+        
       
       if(any(grepl("429,",a))) {
         cat(paste("Przekroczono limit pobierania. Czekam 5 min. przed ponowną próbą\n"))
