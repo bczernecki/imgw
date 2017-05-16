@@ -9,6 +9,8 @@
 #' @param stacja Kod stacji wg strony https://dane.imgw.pl
 #' @param kod Kod pobieranego elementu meteorologicznego/hydrologicznego
 #' @param podglad Wyświetla szczegółowe informacje cząstkowe (link oraz pierwsze kilkanaście znaków) w trakcie pobierania (TRUE/FALSE). Domyślnie FALSE 
+#' @param max_prob W przypadku niepowodzenia pobierania ile razy ma być ponowiona próba; domyślnie 60s. odstępy pomiędzy próbami lub 60s pomnozone przez parametr wielokrotnosc
+#' @param wielokrotnosc Mnoznik dla domyslnego czasu ponowienia pobierania, ktory domyslnie wynosi 1 min.
 
 #' @importFrom RCurl getURL
 #'
@@ -21,10 +23,10 @@
 #' data_end <- "2017-02-20" 
 #' stacja <- "352160330" # przykladowe id dla Poznania; numer mozna pobrac ze strony https://dane.imgw.pl
 #' kod <- "B100B008CD" # srednia dobowa temp. powietrza synop; j.w.
-#' pobierz(data_start,data_end,user_pass,stacja,kod)
+#' pobierz(data_start,data_end,user_pass,stacja,kod,podglad=TRUE, max_prob=12)
 
 
-pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max_prob=12){
+pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max_prob=12, wielokrotnosc=1){
   library(RCurl)
   options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))) 
   
@@ -52,7 +54,7 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max
         cat(paste("link:", link))
         cat("\nKomunikat ze strony:\t",paste(a))
         cat(paste("proba nr", proba_nr))
-        Sys.sleep(60)
+        Sys.sleep(60*wielokrotnosc)
         
         # test z podwojnym loginem i haslem
         if((proba_nr %% 2)==1 & length(user_pass)>1) {
@@ -65,7 +67,7 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max
         a <-gsub(a,  pattern = "\\r",replacement = "")
         proba_nr <- proba_nr+1
         
-        if(proba_nr>max_prob)  a <- data.frame(data=NA,wartosc=NA,status=NA) # w tym momencie program sie wywali, wiec mozna dopisac cos glupiego
+        if(proba_nr>max_prob)  a <- ("data;wartosc;status\n2200-01-01 00:00:00;-999;-999") # w tym momencie program sie wywali, wiec mozna dopisac cos glupiego
         
         } #koniec petli
       } # koniec ifa
@@ -76,7 +78,7 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max
         cat(paste("Przekroczono limit pobierania. Czekam 5 min. przed ponowną próbą\n"))
         cat(paste(link))
         cat("Komunikat ze strony:\t",paste(a))
-        Sys.sleep(300)
+        Sys.sleep(300*wielokrotnosc)
         a <- tryCatch(getURL(link,userpwd = user_pass, cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")), error=function(e) 0)
         a <-gsub(a,  pattern = "\\r",replacement = "")
       }
@@ -100,7 +102,7 @@ pobierz <- function(data_start,data_end,user_pass,stacja,kod, podglad=FALSE, max
         } else {
           cat(paste("Wystąpił błąd\tdata:", link))
           cat(paste("Pobieranie będzie kontynuowane dla kolejnych dat za 1 min."))
-          Sys.sleep(60)
+          Sys.sleep(60*wielokrotnosc)
         } # koniec if-else dla nchar(a)>1
     
     i <- i+1

@@ -4,7 +4,8 @@
 \alias{pobierz}
 \title{Pobieranie danych meteorologicznych z serwisu IMGW-PIB (https://dane.imgw.pl)}
 \usage{
-pobierz(data_start, data_end, user_pass, stacja, kod, podglad = FALSE)
+pobierz(data_start, data_end, user_pass, stacja, kod, podglad = FALSE,
+  max_prob = 12, wielokrotnosc = 1)
 }
 \arguments{
 \item{data_start}{Data początkowa od której będą pobierane dane. Obiekt klasy Date}
@@ -18,6 +19,10 @@ pobierz(data_start, data_end, user_pass, stacja, kod, podglad = FALSE)
 \item{kod}{Kod pobieranego elementu meteorologicznego/hydrologicznego}
 
 \item{podglad}{Wyświetla szczegółowe informacje cząstkowe (link oraz pierwsze kilkanaście znaków) w trakcie pobierania (TRUE/FALSE). Domyślnie FALSE}
+
+\item{max_prob}{W przypadku niepowodzenia pobierania ile razy ma być ponowiona próba; domyślnie 60s. odstępy pomiędzy próbami lub 60s pomnozone przez parametr wielokrotnosc}
+
+\item{wielokrotnosc}{Mnoznik dla domyslnego czasu ponowienia pobierania, ktory domyslnie wynosi 1 min.}
 }
 \description{
 Funkcja pozwalająca na zautomatyzowanie procesu pobierania danych meteorologicznych i hydrologicznych z oficjalnego repozytorium Instytutu Meteorologii i Gospodarki Wodnej - Państwowego Instytutu Badawczego - https://dane.imgw.pl.
@@ -31,5 +36,5 @@ data_start <- "2016-12-26"
 data_end <- "2017-02-20" 
 stacja <- "352160330" # przykladowe id dla Poznania; numer mozna pobrac ze strony https://dane.imgw.pl
 kod <- "B100B008CD" # srednia dobowa temp. powietrza synop; j.w.
-pobierz(data_start,data_end,user_pass,stacja,kod)
+pobierz(data_start,data_end,user_pass,stacja,kod,podglad=TRUE, max_prob=12)
 }
