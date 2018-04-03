@@ -1,8 +1,8 @@
 Package: imgw
 Type: Package
 Title: imgw meteorological data downloader
-Version: 0.1.9.0000
-Authors@R: c(person("Bartosz", "Czernecki", email = "nwp@amu.edu.pl", role = c("aut", "cre"))
+Version: 0.2.0
+Authors@R: person("Bartosz", "Czernecki", email = "nwp@amu.edu.pl", role = c("aut", "cre"))
 Description: A set of functions for downloading Polish meteorological data from the IMGW-PIB.
 License: MIT + file LICENSE
 Encoding: UTF-8
