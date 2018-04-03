@@ -1,11 +1,10 @@
 Package: imgw
 Type: Package
-Title: Automatize downloading of IMGW-PIB meteorological data
-Version: 0.04
-Date: 2017-04-05
-Authors@R: c(person("Bartosz", "Czernecki", role = c("aut","cre"), email = "bczernecki@gmail.com"))
-Imports: RCurl, bitops, parallel
-License: MIT
-Description: Automatize download of IMGW-PIB meteorological/hydrological dataset. Pre-registration at https://dane.imgw.pl required.
-RoxygenNote: 6.0.1
+Title: imgw meteorological data downloader
+Version: 0.1.9.0000
+Authors@R: c(person("Bartosz", "Czernecki", email = "nwp@amu.edu.pl", role = c("aut", "cre"))
+Description: A set of functions for downloading Polish meteorological data from the IMGW-PIB.
+License: MIT + file LICENSE
 Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
