@@ -9,6 +9,7 @@ W celu zainstalowania pakietu najszybciej wykorzystać pakiet `devtools`:
 install.packages("devtools") 
 install.packages("RSelenium")
 install.packages("RCurl")
+install.packages("dplyr")
 library(devtools)
 install_github("bczernecki/imgw")
 devtools::install_github("bczernecki/imgw")
