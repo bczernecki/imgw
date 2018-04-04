@@ -5,7 +5,12 @@
 W celu zainstalowania pakietu najszybciej wykorzystać pakiet `devtools`:
 
 ``` r
-# install.packages("devtools") # opcjonalnie
+# dla swiezej instalacji R:
+install.packages("devtools") 
+install.packages("RSelenium")
+install.packages("RCurl")
+library(devtools)
+install_github("bczernecki/imgw")
 devtools::install_github("bczernecki/imgw")
 ```
 
