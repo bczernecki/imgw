@@ -1,7 +1,7 @@
 #' Funkcja pobierająca dane miesięczne
 #'
 #' Funkcja pobierająca wszystkie dostępne dane miesięczne ze stacji SYNOP dostępne w zbiorze danepubliczne.imgw.pl
-#' @import RCurl rvest
+#' @import RCurl rvest XML
 #' @export
 #' @examples
 #' miesieczne <- pobierz_miesieczne

@@ -3,9 +3,8 @@
 #' Funkcja pobiera wszystkie dostępne dane terminowe ze stacji SYNOP dostępne w zbiorze danepubliczne.imgw.pl
 #' W obecnej (mocno roboczej postaci) funkcja pobiera wszystkie dane, co wymaga dostepu do duzej ilosc pamieci RAM (~kilkadziesiat GB)
 #' 
-#' @import RCurl rvest dplyr 
+#' @import RCurl rvest dplyr XML 
 #' @importFrom data.table rbindlist
-#' @importFrom XML readHTMLTable
 #' @export
 #' @examples
 #' result <- pobierz_terminowe() # currently requires lot of memory!
