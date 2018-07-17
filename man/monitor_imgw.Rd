@@ -6,16 +6,8 @@
 \usage{
 monitor_imgw(adres_monitor)
 }
-\arguments{
-\item{adres_monitor}{adres URL strony Monitora IMGW-PIB (np. http://monitor.pogodynka.pl/#station/meteo/352160330)}
-}
 \description{
 Dane meteorologiczne i hydrologiczne zawarte w serwisie monitor IMGW
 są dostarczane przez Instytut Meteorologii i Gospodarki Wodnej - Państwowy Instytutu Badawczy
-}
-\examples{
-# przykladowe pobranie:
-adres_monitor <- "http://monitor.pogodynka.pl/#station/meteo/352160330"
-monitor_imgw(adres_monitor)
 }
 
