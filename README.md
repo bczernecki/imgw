@@ -1,6 +1,6 @@
 # Automatyzacja pobierania danych hydro-meteorologicznych IMGW-PIB
 
-1. Instalacja
+# 1. Instalacja
 --------------------
 W celu zainstalowania pakietu najszybciej wykorzystać pakiet `devtools`:
 
@@ -17,7 +17,7 @@ install_github("bczernecki/imgw")
 devtools::install_github("bczernecki/imgw")
 ```
 
-2. Aktywacja
+# 2. Aktywacja
 --------------------
 W celu aktywowania pobranego pakietu należy wydać polecenie:
 
@@ -26,7 +26,7 @@ library(imgw)
 ```
 
 
-3. Dane dobowe i miesięczne:
+# 3. Dane dobowe i miesięczne:
 --------------------
 Część danych ze stacji synoptycznych (miesięczne i dobowe) jest już wstępnie pobrana (do 02/2018) i nie wymaga uruchamiania funkcji 'pobierz_..()'.
 
@@ -37,17 +37,17 @@ miesieczne = readRDS(system.file("extdata", "miesieczne.rds", package = "imgw"))
 dobowe = readRDS(system.file("extdata", "dobowe.rds", package = "imgw"))
 ```
   
-4. Dokumentacja w paczce
+# 4. Dokumentacja w paczce
 --------------------
 W chwili obecnej obsługiwane są tylko dane miesięczne, dobowe i terminowe ze stacji synoptycznych.
-Nie wszystkie funkcje w dokumentacji są odpowiednio opisane i aktualizowane. 
+Nie wszystkie funkcje w dokumentacji mogą być w pełni opisane
 * w chwili obecnej wyłączono pobieranie danych z monitora IMGW ze względu na konieczność instalowania pakietu RSelenium, który sprawiał sporo problemów
 * wywołanie niektórych funkcji może być czaso- i pamięciożerne (zwłaszcza dla danych terminowych)
 * domyślnie pobierany jest cały zakres czasowy (wszystkie foldery i podfoldery) znalezione w serwisie danepubliczne.imgw.pl dla wybranego zestawu danych. W przyszłości przewiduje się pobieranie poszczególnych podokresów
 * Metadane dla danych terminowych na dzień 17/07/2018 (107 parametrów)
 
 
-5. Przykład użycia:
+# 5. Przykład użycia:
 --------------------
 
 * Pobieranie danych terminowych:
