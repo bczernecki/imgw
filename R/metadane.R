@@ -25,7 +25,7 @@ metadane <- function(okres){ # okres moze byc: miesieczne, dobowe, terminowe
   }
   
   if(okres=="terminowe"){
-    b[[1]] <- clean_metadata("inst/extdata/terminowe_format.txt")
+    b[[1]] <- clean_metadata(system.file("extdata", "terminowe_format.txt", package = "imgw"))
   }
   return(b)
 }
