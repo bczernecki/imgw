@@ -4,15 +4,15 @@
 #' są dostarczane przez Instytut Meteorologii i Gospodarki Wodnej - Państwowy Instytutu Badawczy
 #' 
 #' 
-#
-# param adres_monitor  adres URL strony Monitora IMGW-PIB (np. http://monitor.pogodynka.pl/#station/meteo/352160330)
-# import RCurl rvest RSelenium
-# 
-# export
-# examples
-# # przykladowe pobranie:
-# adres_monitor <- "http://monitor.pogodynka.pl/#station/meteo/352160330"
-# monitor_imgw(adres_monitor)
+#'
+#' param adres_monitor  adres URL strony Monitora IMGW-PIB (np. http://monitor.pogodynka.pl/#station/meteo/352160330)
+#' import RCurl rvest RSelenium
+#' 
+#' export
+#' examples
+#' # przykladowe pobranie:
+#' adres_monitor <- "http://monitor.pogodynka.pl/#station/meteo/352160330"
+#' monitor_imgw(adres_monitor)
 
 
 # library(RSelenium)
@@ -26,9 +26,9 @@
 # remDr$goForward()
 # remDr$quit()
 # 
- monitor_imgw <- function(adres_monitor){
-   print('funkcja chwilowo wylaczona...')
- }
+# monitor_imgw <- function(adres_monitor){
+#   print('funkcja chwilowo wylaczona...')
+# }
 # 
 #   adres_monitor <- "http://monitor.pogodynka.pl/#station/meteo/352160330"
 #   rD <- rsDriver(port = 4567L, browser = c("chrome"))

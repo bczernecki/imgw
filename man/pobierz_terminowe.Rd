@@ -13,4 +13,3 @@ W obecnej (mocno roboczej postaci) funkcja pobiera wszystkie dane, co wymaga dos
 \examples{
 result <- pobierz_terminowe() # currently requires lot of memory!
 }
-

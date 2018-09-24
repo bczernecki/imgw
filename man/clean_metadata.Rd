@@ -18,4 +18,3 @@ Na potrzeby funkcji 'metadane()'
 clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
 
 }
-

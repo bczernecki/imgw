@@ -1,7 +1,7 @@
 #' Funkcja pobierająca dane terminowe ale tylko dla wybranego roku / wielolecia
 #'
 #' Funkcja pobiera dane terminowe ze stacji SYNOP dostępne w jednym z katalogow pod adresem https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/terminowe/synop/
-#' Jako argument nalezy podac POJEDYNCZY rok (>=2001) lub wielolecie (dla danych sprzed 2000)
+#' @param rok Jako argument nalezy podac POJEDYNCZY rok (>=2001) lub wielolecie (dla danych sprzed 2000)
 #' 
 #' @import RCurl rvest dplyr XML 
 #' @importFrom data.table rbindlist

@@ -7,9 +7,12 @@
 #' Uwaga! Inne pliki z rozszerzeniem .zip w katalogu roboczym rowniez zostana rozpakowane!
 #' Uwaga2! W przypadku duzej liczby plikow caly proces moze byc czaso- i obliczeniochlonny!
 #' 
+#' @param katalog Wskazany katalog z plikami .zip
 #'  
 #' @import dplyr
 #' @importFrom data.table rbindlist
+#' @importFrom utils download.file unzip
+#' 
 #' @export
 #' @examples
 #' a <- (dir(pattern=".zip")) # tu mam 1500 plikow zip, z ktorych kazdy zawiera ~2-3 pliki w srodku

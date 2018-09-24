@@ -1,10 +1,17 @@
 Package: imgw
 Type: Package
 Title: imgw meteorological data downloader
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: person("Bartosz", "Czernecki", email = "nwp@amu.edu.pl", role = c("aut", "cre"))
 Description: A set of functions for downloading Polish meteorological data from the IMGW-PIB.
+Imports:
+    data.table,
+    dplyr,
+    RCurl,
+    rvest,
+    XML,
+    magrittr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.0

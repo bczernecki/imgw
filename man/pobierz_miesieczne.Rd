@@ -13,4 +13,3 @@ Funkcja pobierająca wszystkie dostępne dane miesięczne ze stacji SYNOP dostę
 miesieczne <- pobierz_miesieczne
 head(miesieczne)
 }
-
