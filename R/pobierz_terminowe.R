@@ -19,8 +19,8 @@ pobierz_terminowe <- function(){
   meta <- metadane(okres="terminowe")[[1]]
   
   a <- RCurl::getURL(paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/",okres,"/synop/"),ftp.use.epsv = FALSE,dirlistonly = TRUE)
-  ind <- rvest::readHTMLTable(a)[[1]]$Name %>% grep(pattern="/")
-  katalogi <- rvest::readHTMLTable(a)[[1]]$Name[ind] %>% as.character()
+  ind <- readHTMLTable(a)[[1]]$Name %>% grep(pattern="/")
+  katalogi <- readHTMLTable(a)[[1]]$Name[ind] %>% as.character()
   calosc <- NULL
   
   for (i in 1:length(katalogi)){

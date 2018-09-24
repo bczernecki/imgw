@@ -6,6 +6,9 @@
 \usage{
 wczytaj_miesieczne(katalog)
 }
+\arguments{
+\item{katalog}{Wskazany katalog z plikami .zip}
+}
 \description{
 Funkcja wczytuje wszystkie (uprzednio pobrane) pliki z rozszerzeniem '.zip' w katalogu roboczym (lub wskazanym).
 Komenda rozpakowywuje wszystkie pliki .zip, w ktorych domyslnie znajduja sie pliki .csv (s_d_t... oraz s_d...),
@@ -23,4 +26,3 @@ lapply(b, FUN = function(x) unzip(zipfile = x)) # i wszystko rozpakowywuje
 
 dane <- wczytaj_miesieczne(katalog = "/home/bartosz/github/imgw/inst/extdata/dobowe/")
 }
-

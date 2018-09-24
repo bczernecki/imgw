@@ -5,15 +5,6 @@
 W celu zainstalowania pakietu najszybciej wykorzystać pakiet `devtools`:
 
 ``` r
-# dla swiezej instalacji R:
-install.packages("devtools") 
-# install.packages("RSelenium") # paczka chwilowo niepotrzebne ze wzgledu na wylaczenie monitora IMGW
-install.packages("XML")
-install.packages("RCurl")
-install.packages("dplyr")
-install.packages("rvest")
-install.packages("data.table")
-
 library(devtools)
 install_github("bczernecki/imgw")
 ```
@@ -25,7 +16,6 @@ W celu aktywowania pobranego pakietu należy wydać polecenie:
 ``` r
 library(imgw)
 ```
-
 
 # 3. Dane dobowe i miesięczne:
 --------------------

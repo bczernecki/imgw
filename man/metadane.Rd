@@ -19,4 +19,3 @@ meta <- metadane(okres="terminowe")
 meta <- metadane(okres="miesieczne")
 
 }
-

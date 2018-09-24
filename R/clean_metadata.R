@@ -2,17 +2,16 @@
 #' 
 #' Tylko do wewnetrznego uzytku...
 #' Na potrzeby funkcji 'metadane()'
-#' @param adres  adres URL do pliku z metadanymi 
-
+#' @param adres  adres URL do pliku z metadanymi
 #' @importFrom RCurl getURL
+#' @importFrom utils read.fwf
+#' @importFrom stats na.omit
 #'
 #' @export
 #' @examples
 #' # przykladowe pobranie:
 #' clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
 #' 
-
-
 
 clean_metadata <- function(adres){
   a <- na.omit(read.fwf(adres, widths = c(1000),  fileEncoding="CP1250", stringsAsFactors=F))

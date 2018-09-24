@@ -6,9 +6,11 @@
 \usage{
 pobierz_terminowe2(rok = 2017)
 }
+\arguments{
+\item{rok}{Jako argument nalezy podac POJEDYNCZY rok (>=2001) lub wielolecie (dla danych sprzed 2000)}
+}
 \description{
 Funkcja pobiera dane terminowe ze stacji SYNOP dostępne w jednym z katalogow pod adresem https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/terminowe/synop/
-Jako argument nalezy podac POJEDYNCZY rok (>=2001) lub wielolecie (dla danych sprzed 2000)
 }
 \examples{
 result <- pobierz_terminowe2(rok=2005) 
@@ -18,4 +20,3 @@ wynik <- lapply(2005:2007, pobierz_terminowe2)
 library(data.table)
 wynik2 <- rbindlist(wynik)
 }
-

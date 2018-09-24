@@ -16,4 +16,3 @@ pobierz_dobowe() # download all files into current working directory
 # next steps should involve (1) unpacking and (2) reading into R environment:
 # wczytaj_dobowe()
 }
-

@@ -8,6 +8,8 @@
 #'  
 #' @import RCurl rvest dplyr
 #' @importFrom data.table rbindlist
+#' @importFrom utils download.file
+#'  
 #' @export
 #' @examples
 #' pobierz_dobowe() # download all files into current working directory
