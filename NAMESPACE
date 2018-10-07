@@ -3,6 +3,7 @@
 export(clean_metadata)
 export(metadane)
 export(pobierz_dobowe)
+export(pobierz_dobowe2)
 export(pobierz_miesieczne)
 export(pobierz_terminowe)
 export(pobierz_terminowe2)

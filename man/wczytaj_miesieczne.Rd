@@ -2,7 +2,7 @@
 % Please edit documentation in R/wczytaj_miesieczne.R
 \name{wczytaj_miesieczne}
 \alias{wczytaj_miesieczne}
-\title{Funkcja wczytujaca pobrane dane miesięczne}
+\title{Funkcja wczytujaca pobrane dane}
 \usage{
 wczytaj_miesieczne(katalog)
 }

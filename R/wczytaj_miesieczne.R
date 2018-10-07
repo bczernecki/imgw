@@ -1,4 +1,4 @@
-#' Funkcja wczytujaca pobrane dane miesięczne
+#' Funkcja wczytujaca pobrane dane 
 #'
 #' Funkcja wczytuje wszystkie (uprzednio pobrane) pliki z rozszerzeniem '.zip' w katalogu roboczym (lub wskazanym).
 #' Komenda rozpakowywuje wszystkie pliki .zip, w ktorych domyslnie znajduja sie pliki .csv (s_d_t... oraz s_d...),
@@ -61,6 +61,8 @@ wczytaj_miesieczne <- function(katalog){
     return(calosc)
 }
 
+wczytaj <- wczytaj_miesieczne
+
 # calosc <- wczytaj_miesieczne(katalog = "/home/bartosz/github/imgw/inst/extdata/dobowe/")
 # saveRDS(calosc, file = "~/Dropbox/matas_part1.rds")
 
@@ -89,3 +91,4 @@ wczytaj_miesieczne <- function(katalog){
 #   geom_histogram(bins = 8,show.legend = T,na.rm = T,col="white", fill="lightblue")+
 #   xlab("temperatura powietrza")+
 #   facet_wrap(~variable,scales = "free")
+
