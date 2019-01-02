@@ -21,7 +21,7 @@ metadane <- function(okres){ # okres moze byc: miesieczne, dobowe, terminowe
   }
   
   if(okres=="miesieczne") {
-    b[[1]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/synop/s_m_d_format.txt")
+    b[[1]] <- clean_metadata_miesieczne("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/synop/s_m_d_format.txt")
   }
   
   if(okres=="terminowe"){
