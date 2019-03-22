@@ -7,7 +7,9 @@
 #' @importFrom data.table rbindlist
 #' @export
 #' @examples
+#' \dontrun{
 #' result <- pobierz_terminowe() # currently requires lot of memory!
+#' }
 
 
 ################################

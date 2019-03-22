@@ -14,8 +14,9 @@ Funkcja metadane
 }
 \examples{
 # przykladowe uzycie:
+\dontrun{
 meta <- metadane(okres="dobowe")
 meta <- metadane(okres="terminowe")
 meta <- metadane(okres="miesieczne")
-
+}
 }

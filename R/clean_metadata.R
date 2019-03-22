@@ -10,7 +10,9 @@
 #' @export
 #' @examples
 #' # przykladowe pobranie:
-#' clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
+#' \dontrun{
+#'   clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
+#' }
 #' 
 
 clean_metadata <- function(adres){

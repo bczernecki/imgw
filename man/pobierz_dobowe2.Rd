@@ -11,11 +11,3 @@ Funkcja pobiera wszystkie dostępne dane miesięczne ze stacji SYNOP dostępne w
 Domyślnie dane zapisywane są w aktualnie wskazanym katalogu roboczym.
 Po pobraniu danych nalezy jest nastepnie rozpakowac i wczytac za pomoca funkcji 'wczytaj_dobowe()'
 }
-\examples{
-pobierz_dobowe2(rok=2005) # download all files into current working directory
-# next steps should involve (1) unpacking and (2) reading into R environment:
-a <- (dir(pattern=".zip")) # tu mam 1500 plikow zip, z ktorych kazdy zawiera ~2-3 pliki w srodku
-b <- as.list(a)    # robie z tego liste
-lapply(c("1996_2000",2001:2005), pobierz_dobowe2) # wskazujemy katalogi do pobrania
-# uwaga! moze troche mulic przy duzej liczbie lat!
-}

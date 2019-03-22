@@ -12,13 +12,14 @@
 #'  
 #' @export
 #' @examples
+#' \dontrun{
 #' pobierz_dobowe2(rok=2005) # download all files into current working directory
 #' # next steps should involve (1) unpacking and (2) reading into R environment:
 #' a <- (dir(pattern=".zip")) # tu mam 1500 plikow zip, z ktorych kazdy zawiera ~2-3 pliki w srodku
 #' b <- as.list(a)    # robie z tego liste
-# 'lapply(b, FUN = function(x) unzip(zipfile = x)) # i wszystko rozpakowywuje
-# dane <- wczytaj() # lub wczytaj_miesieczne jesli samo wczytaj() nie dziala
-
+#' 'lapply(b, FUN = function(x) unzip(zipfile = x)) # i wszystko rozpakowywuje
+#' dane <- wczytaj() # lub wczytaj_miesieczne jesli samo wczytaj() nie dziala
+#' }
 
 #' lapply(c("1996_2000",2001:2005), pobierz_dobowe2) # wskazujemy katalogi do pobrania
 #' # uwaga! moze troche mulic przy duzej liczbie lat!

@@ -10,6 +10,8 @@ pobierz_miesieczne()
 Funkcja pobierająca wszystkie dostępne dane miesięczne ze stacji SYNOP dostępne w zbiorze danepubliczne.imgw.pl
 }
 \examples{
+\dontrun{
 miesieczne <- pobierz_miesieczne
 head(miesieczne)
+}
 }

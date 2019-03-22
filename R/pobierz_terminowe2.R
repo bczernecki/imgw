@@ -7,13 +7,14 @@
 #' @importFrom data.table rbindlist
 #' @export
 #' @examples
+#' \dontrun{
 #' result <- pobierz_terminowe2(rok=2005) 
 #' # jesli chcemy pobrac wiecej niz 1 rok warto skorzystac z funkcji 'lapply'
 #' # ponizsza operacja automatycznie pobierze lata 2005-2007:
 #' wynik <- lapply(2005:2007, pobierz_terminowe2)
 #' library(data.table)
 #' wynik2 <- rbindlist(wynik)
-
+#' }
 
 
 ################################

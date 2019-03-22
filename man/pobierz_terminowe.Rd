@@ -11,5 +11,7 @@ Funkcja pobiera wszystkie dostępne dane terminowe ze stacji SYNOP dostępne w z
 W obecnej (mocno roboczej postaci) funkcja pobiera wszystkie dane, co wymaga dostepu do duzej ilosc pamieci RAM (~kilkadziesiat GB)
 }
 \examples{
+\dontrun{
 result <- pobierz_terminowe() # currently requires lot of memory!
+}
 }

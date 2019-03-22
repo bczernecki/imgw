@@ -15,13 +15,14 @@
 #' 
 #' @export
 #' @examples
+#' \dontrun{
 #' a <- (dir(pattern=".zip")) # tu mam 1500 plikow zip, z ktorych kazdy zawiera ~2-3 pliki w srodku
 #' b <- as.list(a)    # robie z tego liste
 #' lapply(b, FUN = function(x) unzip(zipfile = x)) # i wszystko rozpakowywuje
 #' # next steps should involve (1) unpacking and (2) reading into R environment:
 #' 
 #' dane <- wczytaj_miesieczne(katalog = "/home/bartosz/github/imgw/inst/extdata/dobowe/")
-
+#' }
 
 
 

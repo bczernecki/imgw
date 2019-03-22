@@ -5,8 +5,10 @@
 #' @importFrom utils download.file unzip read.csv
 #' @export
 #' @examples
+#' \dontrun{
 #' miesieczne <- pobierz_miesieczne
 #' head(miesieczne)
+#' }
 
 
 # source("R/clean_metadata.R")

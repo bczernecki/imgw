@@ -19,10 +19,12 @@ Uwaga! Inne pliki z rozszerzeniem .zip w katalogu roboczym rowniez zostana rozpa
 Uwaga2! W przypadku duzej liczby plikow caly proces moze byc czaso- i obliczeniochlonny!
 }
 \examples{
+\dontrun{
 a <- (dir(pattern=".zip")) # tu mam 1500 plikow zip, z ktorych kazdy zawiera ~2-3 pliki w srodku
 b <- as.list(a)    # robie z tego liste
 lapply(b, FUN = function(x) unzip(zipfile = x)) # i wszystko rozpakowywuje
 # next steps should involve (1) unpacking and (2) reading into R environment:
 
 dane <- wczytaj_miesieczne(katalog = "/home/bartosz/github/imgw/inst/extdata/dobowe/")
+}
 }

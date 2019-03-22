@@ -8,10 +8,11 @@
 #' @export
 #' @examples
 #' # przykladowe uzycie:
+#' \dontrun{
 #' meta <- metadane(okres="dobowe")
 #' meta <- metadane(okres="terminowe")
 #' meta <- metadane(okres="miesieczne")
-#' 
+#' }
 
 metadane <- function(okres){ # okres moze byc: miesieczne, dobowe, terminowe
   b <- NULL
