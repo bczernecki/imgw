@@ -1,5 +1,5 @@
 Package: imgw
-Title: Download Polish Meteorological and Hydrological Data
+Title: Polish Meteorological and Hydrological Data
 Version: 0.0.1
 Authors@R: c(person(given = "Bartosz",
            family = "Czernecki",

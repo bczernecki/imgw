@@ -4,7 +4,7 @@
 \name{imgw-package}
 \alias{imgw}
 \alias{imgw-package}
-\title{imgw: Download Polish Meteorological and Hydrological Data}
+\title{imgw: Polish Meteorological and Hydrological Data}
 \description{
 Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
 }
