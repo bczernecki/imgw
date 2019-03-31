@@ -12,38 +12,28 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
 # imgw
 
-The goal of imgw is to ...
+The goal of **imgw** is to automatize downloading Polish meteorological and hydrological data from the [IMGW-PIB](https://dane.imgw.pl/).
 
 ## Installation
 
-You can install the released version of imgw from [CRAN](https://CRAN.R-project.org) with:
+<!-- You can install the released version of imgw from [CRAN](https://CRAN.R-project.org) with: -->
+
+<!-- ``` r -->
+<!-- install.packages("imgw") -->
+<!-- ``` -->
+
+You can install the development version of **imgw** from [GitHub](https://github.com/bczernecki/imgw) with:
 
 ``` r
-install.packages("imgw")
+library(devtools)
+install_github("bczernecki/imgw")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+## Acknowledgment
 
-```{r example}
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+Institute of Meteorology and Water Management - National Research Institute is the source of the data.
