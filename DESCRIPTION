@@ -4,17 +4,18 @@ Version: 0.0.1
 Authors@R: c(person(given = "Bartosz",
            family = "Czernecki",
            role = c("aut", "cre"),
-           email = "first.last@example.com"),
+           email = "nwp@amu.edu.pl"),
+           person(given = "Arkadiusz", 
+           family = "Głogowski", 
+           role = "aut"),
            person(given = "Jakub", 
            family = "Nowosad", 
            role = "aut",
            email = "nowosad.jakub@gmail.com", 
            comment = c(ORCID = "0000-0002-1057-3721")),
-           person(given = "Arkadiusz", 
-           family = "Głogowski", 
-           role = "aut"))
+           person("IMGW-PIB", role = "ctb", comment = "source of the data"))
 Description: Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
-License: What license it uses
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
