@@ -2,27 +2,29 @@
 % Please edit documentation in R/metadane.R
 \name{metadane}
 \alias{metadane}
-\title{Funkcja metadane}
+\title{Pobranie opisu (metadanych) do danych meteorologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
+Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)}
 \usage{
-metadane(okres, rodzaj = "synop")
+metadane(interwal = "dobowe", rzad = "synop")
 }
 \arguments{
-\item{okres}{\itemize{
-\item argumenty przyjmujący wartość: 'dobowe', 'miesieczne' badz 'terminowe'.  Oznacza dla jakiej rozdzielczosci czasowej maja zostac przygotowane metadane dla srodowiska R
+\item{interwal}{\itemize{
+\item Argument przyjmujący wartość: 'terminowe' , dobowe' (domyślnie), lub 'miesieczne'.  Oznacza dla jakiej rozdzielczosci czasowej maja zostac przygotowane metadane dla srodowiska R
 }}
 
-\item{rodzaj}{\itemize{
-\item argumenty przyjmujący wartość: 'synop' (domyślnie) lub 'klimat'.  Oznacza dla jakiego rodzaju/rzędu staji mają zostać przygotowane metadane.
+\item{rzad}{\itemize{
+\item Argument przyjmujący wartość: 'synop' (domyślnie) lub 'klimat'.  Oznacza dla jakiego rzadu/rzędu staji mają zostać przygotowane metadane.
 }}
 }
 \description{
-Funkcja metadane
+Pobranie opisu (metadanych) do danych meteorologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
+Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)
 }
 \examples{
 # przykladowe uzycie:
 \dontrun{
-meta <- metadane(okres="dobowe")
-meta <- metadane(okres="terminowe")
-meta <- metadane(okres="miesieczne")
+meta <- metadane(interwal="dobowe", rzad="synop")
+meta <- metadane(interwal="terminowe", rzad="synop")
+meta <- metadane(interwal="miesieczne", rzad="opad")
 }
 }

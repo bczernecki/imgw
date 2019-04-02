@@ -15,14 +15,19 @@
 #' }
 #'
 
-clean_metadata <- function(adres, rodzaj="synop"){
+clean_metadata <- function(adres, rzad="synop", interwal="terminowe"){
   a <- na.omit(read.fwf(adres, widths = c(1000),  fileEncoding="CP1250", stringsAsFactors=F))
   doilu <- max(nchar(a$V1),na.rm=T)
 
-  if(rodzaj=="opad") doilu <- 40 # wyjatek dla opadow
-
+  if(rzad=="opad" & interwal=="terminowe") doilu <- 40 # wyjatek dla opadow
 
   pola <- substr(a$V1,doilu-3,doilu)
+
+  if(rzad == "synop" & interwal=="miesieczne") {
+    doilu <- as.numeric(names(sort(table(nchar(a$V1)), decreasing=T)[1]))+2
+    pola <- substr(a$V1,doilu-3,doilu+2)
+    }
+
   a$pole1 <- as.numeric(unlist(lapply(strsplit(pola, "/"), function(x) x[1])))
   a$pole2 <- as.numeric(unlist(lapply(strsplit(pola, "/"), function(x) x[2])))
 

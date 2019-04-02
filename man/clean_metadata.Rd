@@ -4,7 +4,7 @@
 \alias{clean_metadata}
 \title{Funkcja czyszczaca metadane}
 \usage{
-clean_metadata(adres)
+clean_metadata(adres, rzad = "synop", interwal = "terminowe")
 }
 \arguments{
 \item{adres}{adres URL do pliku z metadanymi}
