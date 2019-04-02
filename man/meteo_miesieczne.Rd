@@ -2,10 +2,13 @@
 % Please edit documentation in R/meteo_miesieczne.R
 \name{meteo_miesieczne}
 \alias{meteo_miesieczne}
-\title{Title}
+\title{Funkcja pobierająca dane miesięczne ze stacji SYNOP/KLIMAT dostępne w zbiorze danepubliczne.imgw.pl}
 \usage{
-meteo_miesieczne()
+meteo_miesieczne(okres = "miesieczne", rodzaj = "synop")
 }
 \description{
-Title
+Funkcja pobierająca dane miesięczne ze stacji SYNOP/KLIMAT dostępne w zbiorze danepubliczne.imgw.pl
+}
+\examples{
+
 }
