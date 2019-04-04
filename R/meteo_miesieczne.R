@@ -14,7 +14,7 @@
 #' }
 #'
 
-meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, status = FALSE, ...){
+meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, ...){
 
     interwal <- "miesieczne" # to mozemy ustawic na sztywno
     meta <- metadane(interwal = "miesieczne", rzad = rzad)
@@ -28,7 +28,7 @@ meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, status = FALSE, .
     # fragment dla lat (ktore katalogi wymagaja pobrania:
     lata_w_katalogach <- strsplit( gsub(x= katalogi, pattern = "/", replacement = ""), split="_")
     lata_w_katalogach <- lapply(lata_w_katalogach, function(x) x[1]:x[length(x)])
-    ind <- lapply(lata_w_katalogach, function(x) sum(x %in% lata)>0)
+    ind <- lapply(lata_w_katalogach, function(x) sum(x %in% rok) > 0)
     katalogi <- katalogi[unlist(ind)] # to sa nasze prawdziwe katalogi do przemielenia
 
     calosc <- vector("list", length = length(katalogi))
@@ -65,15 +65,14 @@ meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, status = FALSE, .
 
       # usuwa statusy
       if(status == FALSE){
-      data1[grep("^Status", colnames(data1))] = NULL
-      data2[grep("^Status", colnames(data2))] = NULL
+        data1[grep("^Status", colnames(data1))] = NULL
+        data2[grep("^Status", colnames(data2))] = NULL
       }
 
       unlink(c(temp, temp2))
       calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"), all.x = TRUE)
     }
 
-
     calosc <- do.call(rbind, calosc)
-    return(calosc[calosc$Rok %in% lata,]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
+    return(calosc[calosc$Rok %in% rok,]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
   }
