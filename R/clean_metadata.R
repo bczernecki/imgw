@@ -18,7 +18,7 @@
 #'
 
 clean_metadata <- function(adres, rzad = "synop", interwal = "terminowe"){
-  a <- na.omit(read.fwf(adres, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE))
+  a <- na.omit(read.fwf2(adres, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE))
   doilu <- max(nchar(a$V1), na.rm = TRUE)
 
   if(rzad == "opad") doilu <- 40 # wyjatek dla opadow
