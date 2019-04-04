@@ -1,8 +1,9 @@
 #' Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")
-#' @param lata wektor dla wybranych lat (np. 1966:2000)
-#' @param status czy usunac kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )
+#' @param rok wektor dla wybranych lat (np. 1966:2000)
+#' @param status czy usunac kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane)
+#' @param coords czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)
 #' @import RCurl XML magrittr
 #' @importFrom utils download.file unzip read.csv
 #' @return
@@ -14,7 +15,7 @@
 #' }
 #'
 
-meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, ...){
+meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
 
     interwal <- "miesieczne" # to mozemy ustawic na sztywno
     meta <- metadane(interwal = "miesieczne", rzad = rzad)
@@ -74,5 +75,12 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, ..
     }
 
     calosc <- do.call(rbind, calosc)
-    return(calosc[calosc$Rok %in% rok,]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
+    calosc <- calosc[calosc$Rok %in% rok, ]
+
+    if (coords){
+      # data("stacje_meteo")
+      calosc <- merge(stacje_meteo, calosc, by.x = "Kod_stacji", by.y = "Kod stacji", all.y = TRUE)
+    }
+
+    return(calosc) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
   }
