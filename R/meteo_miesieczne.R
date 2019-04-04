@@ -1,4 +1,4 @@
-#' Pobranie danych miesięcznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostępnionych w zbiorze danepubliczne.imgw.pl
+#' Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #' @param rzad rzad
 #'
@@ -9,8 +9,10 @@
 #' @return
 #' @export
 #'
-#' @examples mies <- meteo_miesieczne(rzad = "klimat")
-#' @examples head(mies)
+#' @examples \dontrun{
+#'   mies <- meteo_miesieczne(rzad = "klimat")
+#'   head(mies)
+#' }
 #'
 
 meteo_miesieczne <- function(rzad = "synop"){
