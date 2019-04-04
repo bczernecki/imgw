@@ -51,7 +51,7 @@ meteo_miesieczne <- function(rzad = "synop"){
       colnames(data2) <- meta[[2]]$parametr
 
       unlink(c(temp, temp2))
-      calosc[[i]] <- left_join(data1, data2)
+      calosc[[i]] <- left_join(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
     }
 
     #return(data.table::rbindlist(calosc, fill = T)) # trzeba sie zastanowic ktore z ponizzszych rozwiazan jest lepsze
