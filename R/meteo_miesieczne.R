@@ -12,7 +12,7 @@
 #' }
 #'
 
-meteo_miesieczne <- function(rzad = "synop"){
+meteo_miesieczne <- function(rzad = "synop", ...){
 
   # TODO:
   # 1: DODAC %>%  oraz data.table z rbindlist() do eksportowanych funkcji:
@@ -51,7 +51,7 @@ meteo_miesieczne <- function(rzad = "synop"){
 
       unlink(c(temp, temp2))
       #calosc[[i]] <- left_join(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
-      calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
+      calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"), all.x = TRUE)
     }
 
     #return(data.table::rbindlist(calosc, fill = T)) # trzeba sie zastanowic ktore z ponizzszych rozwiazan jest lepsze
