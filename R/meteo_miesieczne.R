@@ -33,11 +33,12 @@ meteo_miesieczne <- function(rzad = "synop"){
     calosc <- NULL
 
     for (i in 1:length(katalogi)){
-      print(i)
+      # print(i)
       katalog <- gsub(katalogi[i], pattern = "/", replacement = "")
 
       if(rzad == "synop") adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/", rzad, "/", katalog, "/", katalog, "_m_s.zip")
       if(rzad == "klimat") adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/", rzad, "/", katalog, "/", katalog, "_m_k.zip")
+
       temp <- tempfile()
       temp2 <- tempfile()
       download.file(adres, temp)
