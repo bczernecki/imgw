@@ -19,6 +19,40 @@ library(devtools)
 install_github("bczernecki/imgw")
 ```
 
+Overview
+--------
+
+-   **clean\_metadata()** - Metadata cleaning function. Giving table containing parameters of selected period and character (SYNOP/KLIMAT/OPAD)
+
+-   **metadata()** - Downloading the description (metadata) to the meteorological data provided in the danepubliczne.imgw.pl repository. By default, the function returns a list or data frame for a selected subset.
+
+-   **meteo\_miesieczne()** - Downloading monthly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
+
+-   **meteo\_dobowe()** - Downloading daily (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
+
+-   **meteo\_terminowe()** - Downloading hourly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
+
+Usege
+-----
+
+-   **clean\_metadata**(adres , ......)
+
+#### Arguments
+
+**adres** -
+
+**rzad** -
+
+**interwal** -
+
+-   **metadata**(interwal, rzad)
+
+#### Arguments
+
+**rzad** -
+
+**interwal** -
+
 Example
 -------
 
