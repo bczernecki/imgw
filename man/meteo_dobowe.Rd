@@ -2,10 +2,24 @@
 % Please edit documentation in R/meteo_dobowe.R
 \name{meteo_dobowe}
 \alias{meteo_dobowe}
-\title{Title}
+\title{Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
-meteo_dobowe()
+meteo_dobowe(rzad = "synop", lata = 1966:2018, status = FALSE, ...)
+}
+\arguments{
+\item{rzad}{rzad stacji (do wyboru: "synop" , "klimat" , "opad")}
+
+\item{lata}{wektor dla wybranych lat (np. 1966:2000)}
+
+\item{status}{czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )}
 }
 \description{
-Title
+Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
+}
+\examples{
+\dontrun{
+  dobowe <- meteo_dobowe(rzad = "klimat", lata = 1970:2000)
+  head(dobowe)
+}
+
 }

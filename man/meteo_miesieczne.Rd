@@ -4,12 +4,15 @@
 \alias{meteo_miesieczne}
 \title{Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
-meteo_miesieczne(rzad = "synop", lata = 1966:2018, ...)
+meteo_miesieczne(rzad = "synop", lata = 1966:2018, status = FALSE,
+  ...)
 }
 \arguments{
 \item{rzad}{rzad stacji (do wyboru: "synop" , "klimat" , "opad")}
 
 \item{lata}{wektor dla wybranych lat (np. 1966:2000)}
+
+\item{status}{czy usunac kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )}
 }
 \description{
 Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
