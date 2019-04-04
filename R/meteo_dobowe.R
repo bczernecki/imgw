@@ -3,6 +3,7 @@
 #' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")
 #' @param lata wektor dla wybranych lat (np. 1966:2000)
 #' @param status czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )
+#' @param coords czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)
 #' @import RCurl XML magrittr
 #' @importFrom utils download.file unzip read.csv
 #' @return
@@ -14,7 +15,7 @@
 #' }
 #'
 
-meteo_dobowe <- function(rzad = "synop", lata = 1966:2018, status = FALSE, ...){
+meteo_dobowe <- function(rzad = "synop", lata = 1966:2018, status = FALSE, coords = FALSE, ...){
 
   interwal <- "dobowe" # to mozemy ustawic na sztywno
   meta <- metadane(interwal = "dobowe", rzad = rzad)
