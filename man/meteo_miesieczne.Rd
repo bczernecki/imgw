@@ -6,6 +6,9 @@
 \usage{
 meteo_miesieczne(rzad = "synop")
 }
+\arguments{
+\item{rzad}{rzad}
+}
 \description{
 Pobranie danych miesięcznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostępnionych w zbiorze danepubliczne.imgw.pl
 }

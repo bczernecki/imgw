@@ -2,7 +2,9 @@
 #'
 #' Tylko do wewnetrznego uzytku...
 #' Na potrzeby funkcji 'metadane()'
-#' @param adres  adres URL do pliku z metadanymi
+#' @param adres adres URL do pliku z metadanymi
+#' @param rzad rzad
+#' @param interwal interwal czasowy
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @importFrom stats na.omit

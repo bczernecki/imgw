@@ -1,7 +1,10 @@
 #' Pobranie danych miesięcznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostępnionych w zbiorze danepubliczne.imgw.pl
 #'
+#' @param rzad rzad
+#'
 #' @import RCurl XML
 #' @importFrom utils download.file unzip read.csv
+#' @importFrom dplyr left_join
 #'
 #' @return
 #' @export

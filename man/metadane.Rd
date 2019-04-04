@@ -23,8 +23,8 @@ Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w
 \examples{
 # przykladowe uzycie:
 \dontrun{
-meta <- metadane(interwal="dobowe", rzad="synop")
-meta <- metadane(interwal="terminowe", rzad="synop")
-meta <- metadane(interwal="miesieczne", rzad="opad")
+meta <- metadane(interwal = "dobowe", rzad = "synop")
+meta <- metadane(interwal = "terminowe", rzad = "synop")
+meta <- metadane(interwal = "miesieczne", rzad = "opad")
 }
 }
