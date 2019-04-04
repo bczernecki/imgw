@@ -26,16 +26,22 @@ meteo_miesieczne <- function(rzad = "synop", ...){
     a <- getURL(paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/", interwal, "/", rzad, "/"),
                 ftp.use.epsv = FALSE,
                 dirlistonly = TRUE)
-    ind <- readHTMLTable(a)[[1]]$Name %>% grep(pattern = "/")
-    katalogi <- readHTMLTable(a)[[1]]$Name[ind] %>% as.character()
+    ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
+    katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
     calosc <- NULL
 
-    for (i in 1:length(katalogi)){
+    for (i in seq_along(katalogi)){
       # print(i)
       katalog <- gsub(katalogi[i], pattern = "/", replacement = "")
 
-      if(rzad == "synop") adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/", rzad, "/", katalog, "/", katalog, "_m_s.zip")
-      if(rzad == "klimat") adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/", rzad, "/", katalog, "/", katalog, "_m_k.zip")
+      if(rzad == "synop") {
+        adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
+                        rzad, "/", katalog, "/", katalog, "_m_s.zip")
+        }
+      if(rzad == "klimat") {
+        adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
+                        rzad, "/", katalog, "/", katalog, "_m_k.zip")
+        }
 
       temp <- tempfile()
       temp2 <- tempfile()
@@ -57,6 +63,3 @@ meteo_miesieczne <- function(rzad = "synop", ...){
     #return(data.table::rbindlist(calosc, fill = T)) # trzeba sie zastanowic ktore z ponizzszych rozwiazan jest lepsze
     return(do.call(rbind, calosc))
   }
-
-
-
