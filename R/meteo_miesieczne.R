@@ -28,7 +28,7 @@ meteo_miesieczne <- function(rzad = "synop", ...){
                 dirlistonly = TRUE)
     ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
     katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
-    calosc <- NULL
+    calosc <- vector("list", length = length(katalogi))
 
     for (i in seq_along(katalogi)){
       # print(i)
