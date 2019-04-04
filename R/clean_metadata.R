@@ -12,7 +12,7 @@
 #' @examples
 #' # przykladowe pobranie:
 #' \dontrun{
-#'   clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
+#'   clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rzad="synop", interwal="terminowe")
 #' }
 #'
 

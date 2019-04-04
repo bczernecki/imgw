@@ -7,7 +7,7 @@
 meteo_miesieczne(rzad = "synop")
 }
 \arguments{
-\item{rzad}{rzad}
+\item{rzad}{rzad stacji (do wyboru: "synop" , "klimat" , "opad")}
 }
 \description{
 Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl

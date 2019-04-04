@@ -1,11 +1,8 @@
 #' Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
-#' @param rzad rzad
-#'
-#' @import RCurl XML
+#' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")
+#' @import RCurl XML magrittr
 #' @importFrom utils download.file unzip read.csv
-#' @importFrom dplyr left_join
-#'
 #' @return
 #' @export
 #'
@@ -53,7 +50,8 @@ meteo_miesieczne <- function(rzad = "synop"){
       colnames(data2) <- meta[[2]]$parametr
 
       unlink(c(temp, temp2))
-      calosc[[i]] <- left_join(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
+      #calosc[[i]] <- left_join(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
+      calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
     }
 
     #return(data.table::rbindlist(calosc, fill = T)) # trzeba sie zastanowic ktore z ponizzszych rozwiazan jest lepsze
