@@ -5,7 +5,7 @@
 \title{Pobranie opisu (metadanych) do danych meteorologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
 Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)}
 \usage{
-metadane(interwal = "dobowe", rzad = "synop")
+metadane(interwal, rzad)
 }
 \arguments{
 \item{interwal}{\itemize{
@@ -23,8 +23,8 @@ Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w
 \examples{
 # przykladowe uzycie:
 \dontrun{
-meta <- metadane(interwal="dobowe", rzad="synop")
-meta <- metadane(interwal="terminowe", rzad="synop")
-meta <- metadane(interwal="miesieczne", rzad="opad")
+meta <- metadane(interwal = "dobowe", rzad = "synop")
+meta <- metadane(interwal = "terminowe", rzad = "synop")
+meta <- metadane(interwal = "miesieczne", rzad = "opad")
 }
 }

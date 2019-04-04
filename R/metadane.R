@@ -9,9 +9,9 @@
 #' @examples
 #' # przykladowe uzycie:
 #' \dontrun{
-#' meta <- metadane(interwal="dobowe", rzad="synop")
-#' meta <- metadane(interwal="terminowe", rzad="synop")
-#' meta <- metadane(interwal="miesieczne", rzad="opad")
+#' meta <- metadane(interwal = "dobowe", rzad = "synop")
+#' meta <- metadane(interwal = "terminowe", rzad = "synop")
+#' meta <- metadane(interwal = "miesieczne", rzad = "opad")
 #' }
 
 metadane <- function(interwal, rzad){ # interwal moze byc: miesieczne, dobowe, terminowe
@@ -20,18 +20,18 @@ metadane <- function(interwal, rzad){ # interwal moze byc: miesieczne, dobowe, t
   # METADANE DOBOWE:
   if(interwal == "dobowe")   { # uwaga! dobowe maja dla klimatow i synopow po 2 pliki z metadanymi!!!
 
-    if(rzad=="synop"){
-      b[[1]] <-   clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
-      b[[2]] <-   clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_t_format.txt")
+    if(rzad == "synop"){
+      b[[1]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
+      b[[2]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_t_format.txt")
     }
 
-    if(rzad=="klimat"){
+    if(rzad == "klimat"){
       b[[1]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/klimat/k_d_format.txt")
       b[[2]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/klimat/k_d_t_format.txt")
     }
 
-    if(rzad=="opad"){
-      b[[1]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/opad/o_d_format.txt", rzad="opad")
+    if(rzad == "opad"){
+      b[[1]] <- clean_metadata("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/opad/o_d_format.txt", rzad = "opad")
     }
 
   } # koniec "DOBOWE"
@@ -71,4 +71,3 @@ metadane <- function(interwal, rzad){ # interwal moze byc: miesieczne, dobowe, t
 # metadane(interwal = "dobowe", rzad = "synop")
 # metadane(interwal = "dobowe", rzad = "klimat")
 # metadane(interwal = "dobowe", rzad = "opad")
-

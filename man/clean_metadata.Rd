@@ -8,6 +8,10 @@ clean_metadata(adres, rzad = "synop", interwal = "terminowe")
 }
 \arguments{
 \item{adres}{adres URL do pliku z metadanymi}
+
+\item{rzad}{rzad}
+
+\item{interwal}{interwal czasowy}
 }
 \description{
 Tylko do wewnetrznego uzytku...
