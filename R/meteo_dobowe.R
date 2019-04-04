@@ -68,25 +68,96 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
         }
 
         unlink(c(temp, temp2))
-        calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"), all.x = TRUE)
+        calosc[[i]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiąc", "Dzień"), all.x = TRUE)
       } # koniec petli po zipach do pobrania
 
     } # koniec if'a dla synopa
+
+######################
+###### KLIMAT: #######
+    if(rzad == "klimat") {
+      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/",
+                      rzad, "/", katalog, "/")
+      zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
+
+      ind <- grep(readHTMLTable(zawartosc_folderu)[[1]]$Name, pattern = "zip")
+      pliki <- as.character(readHTMLTable(zawartosc_folderu)[[1]]$Name[ind])
+      adresy_do_pobrania <- paste0(adres, pliki)
+      # w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:
+      # na podstawie zawartosci obiektu pliki
+
+      for(j in seq_along(adresy_do_pobrania)){
+        temp <- tempfile()
+        temp2 <- tempfile()
+        download.file(adresy_do_pobrania[j], temp)
+        unzip(zipfile = temp, exdir = temp2)
+        plik1 <- paste(temp2, dir(temp2), sep = "/")[1]
+        data1 <- read.csv(plik1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
+        colnames(data1) <- meta[[1]]$parametr
+
+        plik2 <- paste(temp2, dir(temp2), sep = "/")[2]
+        data2 <- read.csv(plik2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
+        colnames(data2) <- meta[[2]]$parametr
+
+        # usuwa statusy
+        if(status == FALSE){
+          data1[grep("^Status", colnames(data1))] = NULL
+          data2[grep("^Status", colnames(data2))] = NULL
+        }
+
+        unlink(c(temp, temp2))
+        calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Rok", "Miesiąc","Dzień"), all.x = TRUE)
+      } # koniec petli po zipach do pobrania
+    } # koniec if'a dla klimatu
+
+
+
+    ######################
+    ######## OPAD: #######
+    if(rzad == "opad") {
+      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/",
+                      rzad, "/", katalog, "/")
+      zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
+
+      ind <- grep(readHTMLTable(zawartosc_folderu)[[1]]$Name, pattern = "zip")
+      pliki <- as.character(readHTMLTable(zawartosc_folderu)[[1]]$Name[ind])
+      adresy_do_pobrania <- paste0(adres, pliki)
+
+      for(j in seq_along(adresy_do_pobrania)){
+        temp <- tempfile()
+        temp2 <- tempfile()
+        download.file(adresy_do_pobrania[j], temp)
+        unzip(zipfile = temp, exdir = temp2)
+        plik1 <- paste(temp2, dir(temp2), sep = "/")[1]
+        data1 <- read.csv(plik1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
+        colnames(data1) <- meta[[1]]$parametr
+        # usuwa statusy
+        if(status == FALSE){
+          data1[grep("^Status", colnames(data1))] = NULL
+          data2[grep("^Status", colnames(data2))] = NULL
+        }
+
+        unlink(c(temp, temp2))
+        calosc[[i]] <- data1
+      } # koniec petli po zipach do pobrania
+    } # koniec if'a dla klimatu
 
 
     } # koniec petli po glownych katalogach danych dobowych
 
 
-    # TODO:
-    # to samo dla KLIMATow i OPADowek:
-
-    # if(rzad == "klimat") {
-    # }
-    #
-    # if(rzad == "opad") {
-    # }
-
 
   calosc <- do.call(rbind, calosc)
+
+  # dodaje rzad
+  kod_rzedu <- switch(rzad, synop = "SYNOPTYCZNA", klimat = "KLIMATYCZNA", opad = "OPADOWA")
+  calosc <- cbind(data.frame(Kod_rzedu = kod_rzedu), calosc)
+
+  if (coords){
+    # data("stacje_meteo")
+    calosc <- merge(stacje_meteo, calosc, by.x = "Kod_stacji", by.y = "Kod stacji", all.y = TRUE)
+  }
+
+
   return(calosc[calosc$Rok %in% rok, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_dobowe

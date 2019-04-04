@@ -70,7 +70,7 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
       }
 
       unlink(c(temp, temp2))
-      calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"), all.x = TRUE)
+      calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Rok", "Miesiąc"), all.x = TRUE)
     }
 
     calosc <- do.call(rbind, calosc)
