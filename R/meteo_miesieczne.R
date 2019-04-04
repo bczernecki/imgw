@@ -24,7 +24,6 @@ meteo_miesieczne <- function(rzad = "synop"){
   # 4: w tej chwili uzytkownik pobiera wszystkie lata; byc moze warto dac mu wybor - przyda sie takze w innych funkcjach pobierajacych
 
     interwal <- "miesieczne" # to mozemy ustawic na sztywno
-    meta <- metadane(interwal = "miesieczne", rzad = rzad)[[1]]
     meta <- metadane(interwal = "miesieczne", rzad = rzad)
 
     a <- getURL(paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/", interwal, "/", rzad, "/"),
