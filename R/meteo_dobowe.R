@@ -1,10 +1,10 @@
 #' Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")
-#' @param lata wektor dla wybranych lat (np. 1966:2000)
+#' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param status czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )
 #' @param coords czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)
-#' @import RCurl XML magrittr
+#' @import RCurl XML
 #' @importFrom utils download.file unzip read.csv
 #' @return
 #' @export
@@ -15,7 +15,7 @@
 #' }
 #'
 
-meteo_dobowe <- function(rzad = "synop", lata = 1966:2018, status = FALSE, coords = FALSE, ...){
+meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
 
   interwal <- "dobowe" # to mozemy ustawic na sztywno
   meta <- metadane(interwal = "dobowe", rzad = rzad)
@@ -27,9 +27,9 @@ meteo_dobowe <- function(rzad = "synop", lata = 1966:2018, status = FALSE, coord
   katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
 
   # fragment dla lat (ktore katalogi wymagaja pobrania:
-  lata_w_katalogach <- strsplit( gsub(x= katalogi, pattern = "/", replacement = ""), split="_")
+  lata_w_katalogach <- strsplit(gsub(x = katalogi, pattern = "/", replacement = ""), split = "_")
   lata_w_katalogach <- lapply(lata_w_katalogach, function(x) x[1]:x[length(x)])
-  ind <- lapply(lata_w_katalogach, function(x) sum(x %in% lata)>0)
+  ind <- lapply(lata_w_katalogach, function(x) sum(x %in% rok) > 0)
   katalogi <- katalogi[unlist(ind)] # to sa nasze prawdziwe katalogi do przemielenia
 
   calosc <- vector("list", length = length(katalogi))
@@ -40,11 +40,11 @@ meteo_dobowe <- function(rzad = "synop", lata = 1966:2018, status = FALSE, coord
     if(rzad == "synop") {
       adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/",
                       rzad, "/", katalog, "/")
-      zawartosc_folderu <- getURL(adres,ftp.use.epsv = FALSE,dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
+      zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
-      ind <- grep(readHTMLTable(zawartosc_folderu)[[1]]$Name,pattern = "zip")
-      pliki <- readHTMLTable(zawartosc_folderu)[[1]]$Name[ind] %>% as.character()
-      adresy_do_pobrania <- paste0(adres,pliki)
+      ind <- grep(readHTMLTable(zawartosc_folderu)[[1]]$Name, pattern = "zip")
+      pliki <- as.character(readHTMLTable(zawartosc_folderu)[[1]]$Name[ind])
+      adresy_do_pobrania <- paste0(adres, pliki)
       # w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:
       # na podstawie zawartosci obiektu pliki
 
@@ -88,5 +88,5 @@ meteo_dobowe <- function(rzad = "synop", lata = 1966:2018, status = FALSE, coord
 
 
   calosc <- do.call(rbind, calosc)
-  return(calosc[calosc$Rok %in% lata,]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
+  return(calosc[calosc$Rok %in% rok, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_dobowe

@@ -4,7 +4,7 @@
 #' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param status czy usunac kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane)
 #' @param coords czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)
-#' @import RCurl XML magrittr
+#' @import RCurl XML
 #' @importFrom utils download.file unzip read.csv
 #' @return
 #' @export
