@@ -27,7 +27,7 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
     katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
 
     # fragment dla lat (ktore katalogi wymagaja pobrania:
-    lata_w_katalogach <- strsplit( gsub(x= katalogi, pattern = "/", replacement = ""), split="_")
+    lata_w_katalogach <- strsplit(gsub(x = katalogi, pattern = "/", replacement = ""), split = "_")
     lata_w_katalogach <- lapply(lata_w_katalogach, function(x) x[1]:x[length(x)])
     ind <- lapply(lata_w_katalogach, function(x) sum(x %in% rok) > 0)
     katalogi <- katalogi[unlist(ind)] # to sa nasze prawdziwe katalogi do przemielenia
@@ -82,4 +82,4 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
     }
 
     return(calosc) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
-  }
+}
