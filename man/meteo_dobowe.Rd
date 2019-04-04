@@ -4,14 +4,17 @@
 \alias{meteo_dobowe}
 \title{Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
-meteo_dobowe(rzad = "synop", lata = 1966:2018, status = FALSE, ...)
+meteo_dobowe(rzad = "synop", rok = 1966:2018, status = FALSE,
+  coords = FALSE, ...)
 }
 \arguments{
 \item{rzad}{rzad stacji (do wyboru: "synop" , "klimat" , "opad")}
 
-\item{lata}{wektor dla wybranych lat (np. 1966:2000)}
+\item{rok}{wektor dla wybranych lat (np. 1966:2000)}
 
 \item{status}{czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )}
+
+\item{coords}{czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)}
 }
 \description{
 Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
