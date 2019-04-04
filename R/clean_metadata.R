@@ -9,7 +9,6 @@
 #' @importFrom utils read.fwf
 #' @importFrom stats na.omit
 #'
-#' @export
 #' @examples
 #' # przykladowe pobranie:
 #' \dontrun{
@@ -19,9 +18,10 @@
 
 clean_metadata <- function(adres, rzad = "synop", interwal = "terminowe"){
   a <- suppressWarnings(na.omit(read.fwf(adres, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
+
   doilu <- max(nchar(a$V1), na.rm = TRUE)
 
-  if(rzad == "opad") doilu <- 40 # wyjatek dla opadow
+  if(rzad == "opad" & interwal == "terminowe") doilu <- 40 # wyjatek dla opadow
 
   pola <- substr(a$V1, doilu - 3, doilu)
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/meteo_miesieczne.R
 \name{meteo_miesieczne}
 \alias{meteo_miesieczne}
-\title{Pobranie danych miesięcznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostępnionych w zbiorze danepubliczne.imgw.pl}
+\title{Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
 meteo_miesieczne(rzad = "synop")
 }
@@ -10,10 +10,12 @@ meteo_miesieczne(rzad = "synop")
 \item{rzad}{rzad}
 }
 \description{
-Pobranie danych miesięcznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostępnionych w zbiorze danepubliczne.imgw.pl
+Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 }
 \examples{
-mies <- meteo_miesieczne(rzad = "klimat")
-head(mies)
+\dontrun{
+  mies <- meteo_miesieczne(rzad = "klimat")
+  head(mies)
+}
 
 }
