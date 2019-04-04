@@ -41,7 +41,7 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
       if(rzad == "synop") {
         adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
                         rzad, "/", katalog, "/", katalog, "_m_s.zip")
-        }
+      }
       if(rzad == "klimat") {
         adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
                         rzad, "/", katalog, "/", katalog, "_m_k.zip")
@@ -75,6 +75,10 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
 
     calosc <- do.call(rbind, calosc)
     calosc <- calosc[calosc$Rok %in% rok, ]
+
+    # dodaje rzad
+    kod_rzedu <- switch(rzad, synop = "SYNOPTYCZNA", klimat = "KLIMATYCZNA", opad = "OPADOWA")
+    calosc <- cbind(data.frame(Kod_rzedu = kod_rzedu), calosc)
 
     if (coords){
       # data("stacje_meteo")
