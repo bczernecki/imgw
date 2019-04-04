@@ -55,6 +55,10 @@ meteo_miesieczne <- function(rzad = "synop", ...){
       data2 <- read.csv(plik2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
       colnames(data2) <- meta[[2]]$parametr
 
+      # usuwa statusy
+      data1[grep("^Status", colnames(data1))] = NULL
+      data2[grep("^Status", colnames(data2))] = NULL
+
       unlink(c(temp, temp2))
       #calosc[[i]] <- left_join(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
       calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"), all.x = TRUE)
