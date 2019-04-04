@@ -51,7 +51,6 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
                         rzad, "/", katalog, "/", katalog, "_m_o.zip")
       }
 
-
       temp <- tempfile()
       temp2 <- tempfile()
       download.file(adres, temp)
