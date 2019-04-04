@@ -17,10 +17,7 @@
 
 meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
 
-  if(!(rzad %in% c("synop","terminowe"))){
-    print("rzad dla danych terminowych moze byc tylko 'synop' lub 'klimat' ")
-    stop("przerwanie pobierania")
-  }
+  stopifnot(rzad == "synop" | rzad == "klimat") # dla terminowek tylko synopy i klimaty maja dane
 
   interwal <- "terminowe" # to mozemy ustawic na sztywno
   meta <- metadane(interwal = "terminowe", rzad = rzad)
@@ -65,7 +62,6 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
         # usuwa statusy
         if(status == FALSE){
           data1[grep("^Status", colnames(data1))] = NULL
-          data2[grep("^Status", colnames(data2))] = NULL
         }
 
         unlink(c(temp, temp2))
@@ -98,7 +94,6 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
         # usuwa statusy
         if(status == FALSE){
           data1[grep("^Status", colnames(data1))] = NULL
-          data2[grep("^Status", colnames(data2))] = NULL
         }
 
         unlink(c(temp, temp2))

@@ -8,6 +8,7 @@
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @importFrom stats na.omit
+#' @export
 #'
 #' @examples
 #' # przykladowe pobranie:
@@ -22,6 +23,7 @@ clean_metadata <- function(adres, rzad = "synop", interwal = "terminowe"){
   doilu <- max(nchar(a$V1), na.rm = TRUE)
 
   if(rzad == "opad" & interwal == "terminowe") doilu <- 40 # wyjatek dla opadow
+  if(rzad == "synop" & interwal == "terminowe") doilu <- 60 # wyjatek dla synopow terminowych
 
   pola <- substr(a$V1, doilu - 3, doilu)
 
