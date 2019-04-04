@@ -2,6 +2,7 @@
 #'
 #' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")
 #' @param lata wektor dla wybranych lat (np. 1966:2000)
+#' @param status czy usunac kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )
 #' @import RCurl XML magrittr
 #' @importFrom utils download.file unzip read.csv
 #' @return
@@ -13,10 +14,7 @@
 #' }
 #'
 
-meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, ...){
-
-  # TODO:
-  # 1: w tej chwili uzytkownik pobiera wszystkie lata; byc moze warto dac mu wybor - przyda sie takze w innych funkcjach pobierajacych
+meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, status = FALSE, ...){
 
     interwal <- "miesieczne" # to mozemy ustawic na sztywno
     meta <- metadane(interwal = "miesieczne", rzad = rzad)
@@ -27,7 +25,7 @@ meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, ...){
     ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
     katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
 
-    # tutaj dodac funkcje rozbijajaca na lata:
+    # fragment dla lat (ktore katalogi wymagaja pobrania:
     lata_w_katalogach <- strsplit( gsub(x= katalogi, pattern = "/", replacement = ""), split="_")
     lata_w_katalogach <- lapply(lata_w_katalogach, function(x) x[1]:x[length(x)])
     ind <- lapply(lata_w_katalogach, function(x) sum(x %in% lata)>0)
@@ -66,16 +64,16 @@ meteo_miesieczne <- function(rzad = "synop", lata = 1966:2018, ...){
       colnames(data2) <- meta[[2]]$parametr
 
       # usuwa statusy
+      if(status == FALSE){
       data1[grep("^Status", colnames(data1))] = NULL
       data2[grep("^Status", colnames(data2))] = NULL
+      }
 
       unlink(c(temp, temp2))
-      #calosc[[i]] <- left_join(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"))
       calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiąc"), all.x = TRUE)
     }
 
-    #return(data.table::rbindlist(calosc, fill = T)) # trzeba sie zastanowic ktore z ponizzszych rozwiazan jest lepsze
-    #return(do.call(rbind, calosc))
+
     calosc <- do.call(rbind, calosc)
     return(calosc[calosc$Rok %in% lata,]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
   }
