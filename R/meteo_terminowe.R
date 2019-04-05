@@ -34,7 +34,7 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
   ind <- lapply(lata_w_katalogach, function(x) sum(x %in% rok) > 0)
   katalogi <- katalogi[unlist(ind)] # to sa nasze prawdziwe katalogi do przemielenia
 
-  calosc <- vector("list", length = length(katalogi))
+  calosc <- NULL
 
   for (i in seq_along(katalogi)){
     katalog <- gsub(katalogi[i], pattern = "/", replacement = "")
@@ -65,7 +65,7 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
         }
 
         unlink(c(temp, temp2))
-        calosc[[i]] <- data1
+        calosc[[length(calosc)+1]] <- data1
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla synopa
 
@@ -97,7 +97,7 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
         }
 
         unlink(c(temp, temp2))
-        calosc[[i]] <- data1
+        calosc[[length(calosc)+1]] <- data1
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
 
