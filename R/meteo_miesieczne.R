@@ -17,10 +17,12 @@
 
 meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
 
+    base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
+
     interwal <- "miesieczne" # to mozemy ustawic na sztywno
     meta <- metadane(interwal = "miesieczne", rzad = rzad)
 
-    a <- getURL(paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/", interwal, "/", rzad, "/"),
+    a <- getURL(paste0(base_url, "dane_meteorologiczne/", interwal, "/", rzad, "/"),
                 ftp.use.epsv = FALSE,
                 dirlistonly = TRUE)
     ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
@@ -39,15 +41,15 @@ meteo_miesieczne <- function(rzad = "synop", rok = 1966:2018, status = FALSE, co
       katalog <- gsub(katalogi[i], pattern = "/", replacement = "")
 
       if(rzad == "synop") {
-        adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
+        adres <- paste0(base_url, "dane_meteorologiczne/miesieczne/",
                         rzad, "/", katalog, "/", katalog, "_m_s.zip")
       }
       if(rzad == "klimat") {
-        adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
+        adres <- paste0(base_url, "dane_meteorologiczne/miesieczne/",
                         rzad, "/", katalog, "/", katalog, "_m_k.zip")
       }
       if(rzad == "opad") {
-        adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/",
+        adres <- paste0(base_url, "dane_meteorologiczne/miesieczne/",
                         rzad, "/", katalog, "/", katalog, "_m_o.zip")
       }
 

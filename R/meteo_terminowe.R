@@ -19,10 +19,12 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
 
   stopifnot(rzad == "synop" | rzad == "klimat") # dla terminowek tylko synopy i klimaty maja dane
 
+  base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
+
   interwal <- "terminowe" # to mozemy ustawic na sztywno
   meta <- metadane(interwal = "terminowe", rzad = rzad)
 
-  a <- getURL(paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/", interwal, "/", rzad, "/"),
+  a <- getURL(paste0(base_url, "dane_meteorologiczne/", interwal, "/", rzad, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
@@ -40,7 +42,7 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
     katalog <- gsub(katalogi[i], pattern = "/", replacement = "")
 
     if(rzad == "synop") {
-      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/terminowe/",
+      adres <- paste0(base_url, "dane_meteorologiczne/terminowe/",
                       rzad, "/", katalog, "/")
       zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
@@ -73,7 +75,7 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
     ###### KLIMAT: #######
     ######################
     if(rzad == "klimat") {
-      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/terminowe/",
+      adres <- paste0(base_url, "dane_meteorologiczne/terminowe/",
                       rzad, "/", katalog, "/")
       zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 

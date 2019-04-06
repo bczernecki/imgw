@@ -17,10 +17,12 @@
 
 meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
 
+  base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
+
   interwal <- "dobowe" # to mozemy ustawic na sztywno
   meta <- metadane(interwal = "dobowe", rzad = rzad)
 
-  a <- getURL(paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/", interwal, "/", rzad, "/"),
+  a <- getURL(paste0(base_url, "dane_meteorologiczne/", interwal, "/", rzad, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
@@ -38,7 +40,7 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
     katalog <- gsub(katalogi[i], pattern = "/", replacement = "")
 
     if(rzad == "synop") {
-      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/",
+      adres <- paste0(base_url, "/dane_meteorologiczne/dobowe/",
                       rzad, "/", katalog, "/")
       zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
@@ -76,7 +78,7 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
 ######################
 ###### KLIMAT: #######
     if(rzad == "klimat") {
-      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/",
+      adres <- paste0(base_url, "dane_meteorologiczne/dobowe/",
                       rzad, "/", katalog, "/")
       zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
@@ -115,7 +117,7 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
     ######################
     ######## OPAD: #######
     if(rzad == "opad") {
-      adres <- paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/",
+      adres <- paste0(base_url, "dane_meteorologiczne/dobowe/",
                       rzad, "/", katalog, "/")
       zawartosc_folderu <- getURL(adres, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
@@ -144,8 +146,6 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
 
 
     } # koniec petli po glownych katalogach danych dobowych
-
-
 
   calosc <- do.call(rbind, calosc)
 
