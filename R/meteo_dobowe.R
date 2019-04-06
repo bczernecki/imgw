@@ -70,7 +70,7 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
         }
 
         unlink(c(temp, temp2))
-        calosc[[length(calosc)+1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiąc", "Dzień"), all.x = TRUE)
+        calosc[[length(calosc)+1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesi\u0105c", "Dzień"), all.x = TRUE)
       } # koniec petli po zipach do pobrania
 
     } # koniec if'a dla synopa
