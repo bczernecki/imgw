@@ -16,9 +16,6 @@
 # Stan wody 9999 oznacza brak danych w bazie lub przerwy w obserwacjach w danym miesiącu i stad brak możliwości obliczenia charakterystyk.
 #Przepływ 99999.999 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 #Temperatura wody 99.9 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
-library(RCurl)
-library(XML)
-library(utils)
 # Działa tylko dla miesiecznych hydro
 hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
@@ -82,6 +79,3 @@ hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
   calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
   return(calosc)
   }
-a <- suppressWarnings(na.omit(read.fwf("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt", widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
-b<-a[2:11,]
-a$pole1 <- suppressWarnings(as.numeric(unlist(lapply(strsplit(pola, "/"), function(x) x[1]))))
