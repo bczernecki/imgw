@@ -15,7 +15,7 @@
 #' }
 #'
 
-meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
+meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE){
 
   stopifnot(rzad == "synop" | rzad == "klimat") # dla terminowek tylko synopy i klimaty maja dane
 

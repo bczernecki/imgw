@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'mies <- hydro_miesieczne(rok = 2000)
+#'   mies <- hydro_miesieczne(rok = 2000)
 #'   head(mies)
 #' }
 #'

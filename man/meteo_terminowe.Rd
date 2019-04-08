@@ -5,7 +5,7 @@
 \title{Pobranie danych terminowych  (meteorologicznych) ze stacji SYNOP/KLIMAT udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
 meteo_terminowe(rzad = "synop", rok = 1966:2018, status = FALSE,
-  coords = FALSE, ...)
+  coords = FALSE)
 }
 \arguments{
 \item{rzad}{rzad stacji (do wyboru: "synop", "klimat")}

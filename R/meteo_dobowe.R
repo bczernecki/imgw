@@ -15,7 +15,7 @@
 #' }
 #'
 
-meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE, ...){
+meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE){
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 

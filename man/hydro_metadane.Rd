@@ -19,8 +19,8 @@ Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w
 \examples{
 # przykladowe uzycie:
 \dontrun{
-meta <- metadane(interwal = "dobowe")
-meta <- metadane(interwal = "miesieczne")
-meta <- metadane(interwal = "polroczne_i_roczne")
+  meta <- metadane(interwal = "dobowe")
+  meta <- metadane(interwal = "miesieczne")
+  meta <- metadane(interwal = "polroczne_i_roczne")
 }
 }

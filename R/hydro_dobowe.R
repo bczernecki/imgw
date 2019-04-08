@@ -1,7 +1,6 @@
 #' Pobranie danych hydrologicznych dla dobowego okresu
 #' udostepnionego w zbiorze danepubliczne.imgw.pl
 #'
-#' @param interwal interwał stacji (do wyboru: "dobowe" , "miesieczny"(domyslnie) , "polroczne_i_roczne")
 #' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param coords czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)
 #' @import RCurl XML
@@ -10,7 +9,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' dobowe <- hydro_dobowe(rok = 2000)
+#'   dobowe <- hydro_dobowe(rok = 2000)
 #'   head(mies)
 #' }
 #'
@@ -66,7 +65,7 @@ hydro_dobowe <- function(rok = 1966:2000, coords = FALSE){
     calosc[[i]] <- merge(data1, data2,
                          by = c("Kod stacji", "Nazwa stacji",
                                "Rok hydrologiczny", "Nazwa rzeki/jeziora",
-                               "Wskaźnik miesiąca w roku hydrologicznym", "Dzień"),
+                               "Wska\u017anik miesi\u0105ca w roku hydrologicznym", "Dzie\u0144"),
                          all.x = TRUE)
   }
   calosc <- do.call(rbind, calosc)

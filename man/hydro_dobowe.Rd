@@ -11,8 +11,6 @@ hydro_dobowe(rok = 1966:2000, coords = FALSE)
 \item{rok}{wektor dla wybranych lat (np. 1966:2000)}
 
 \item{coords}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
-
-\item{interwal}{interwał stacji (do wyboru: "dobowe" , "miesieczny"(domyslnie) , "polroczne_i_roczne")}
 }
 \description{
 Pobranie danych hydrologicznych dla dobowego okresu
@@ -20,7 +18,7 @@ udostepnionego w zbiorze danepubliczne.imgw.pl
 }
 \examples{
 \dontrun{
-dobowe <- hydro_dobowe(rok = 2000)
+  dobowe <- hydro_dobowe(rok = 2000)
   head(mies)
 }
 
