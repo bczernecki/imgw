@@ -18,7 +18,7 @@
 #Przepływ 99999.999 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 #Temperatura wody 99.9 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 # Działa tylko dla miesiecznych hydro
-hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
+hydro = function(interwal="miesieczne", rok = 1966:2000, coords = FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
 
   a <- getURL(paste0(base_url, interwal, "/"),
@@ -27,7 +27,7 @@ hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
 
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
   katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
-  katalogi <-gsub(x = katalogi, pattern = "/", replacement = "")
+  katalogi <- gsub(x = katalogi, pattern = "/", replacement = "")
 # pewnie można to zastapić jakąś funkcją zeby nie pisać tego tyle razy...
   if(interwal == "miesieczne") {
     adres_meta=paste0(base_url,interwal,"/mies_info.txt")
@@ -47,7 +47,7 @@ hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
   # Dobowe maja 13 plików w katalogu ta petla działa póki co na miesięczne
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
-    katalog=katalogi[i]
+    katalog <- katalogi[i]
     print(i)
 
     if(interwal == "miesieczne") {
@@ -58,12 +58,12 @@ hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
       adres_H <- paste0(base_url, interwal, "/", katalog, "polr_H_", katalog, ".zip")
       adres_Q <- paste0(base_url, interwal, "/", katalog, "polr_Q_", katalog, ".zip")
       adres_T <- paste0(base_url, interwal, "/", katalog, "polr_T_", katalog, ".zip")
-      adres=list(adres_H=adres_H,adres_Q=adres_Q,adres_T=adres_T)
+      adres <- list(adres_H = adres_H, adres_Q = adres_Q, adres_T = adres_T)
     }
     #interwal="dobowe"
-    if(interwal== "dobowe") {
-      adres_meta=paste0(base_url,interwal,"/codz_info.txt")
-      meta <- hydro_clean_metadata(adres_meta,interwal)
+    if(interwal == "dobowe") {
+      adres_meta <- paste0(base_url,interwal, "/codz_info.txt")
+      meta <- hydro_clean_metadata(adres_meta, interwal)
       adres <- paste0(base_url, interwal, "/", katalog, "polr_H_", katalog, ".zip")
     }
 
@@ -75,8 +75,8 @@ hydro = function(interwal="miesieczne",rok = 1966:2000,coords=FALSE){
     data1 <- read.csv(plik1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
     colnames(data1) <- meta
     calosc[[i]] <-data1
-}
+  }
   calosc <- do.call(rbind, calosc)
   calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
   return(calosc)
-  }
+}
