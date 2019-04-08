@@ -23,16 +23,15 @@ hydro = function(interwal = "miesieczne", rok = 1966:2000, coords = FALSE, value
 
   if (interwal == "dobowe"){
     # dobowe
-    hydro_dobowe(rok = rok, coords = coords)
+    calosc <- hydro_dobowe(rok = rok, coords = coords)
   } else if (interwal == "miesieczne"){
     #miesieczne
-    hydro_miesieczne(rok = rok, coords = coords)
+    calosc <- hydro_miesieczne(rok = rok, coords = coords)
   } else if (interwal == "polroczne_i_roczne"){
     # polroczne_i_roczne
-    hydro_roczne(rok = rok, coords = coords, value = value)
+    calosc <- hydro_roczne(rok = rok, coords = coords, value = value)
   } else{
     stop("Wrong `interwal` value. It should be either 'dobowe', 'miesieczne', or 'polroczne_i_roczne'.")
   }
-
   return(calosc)
 }
