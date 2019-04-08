@@ -36,15 +36,29 @@ install_github("bczernecki/imgw")
 
 ## Overview
 
-* **clean_metadata()** - Metadata cleaning function. Giving table containing parameters of selected period and character (SYNOP/KLIMAT/OPAD)
+### Meteorological data
 
-* **metadata()** - Downloading the description (metadata) to the meteorological data provided in the danepubliczne.imgw.pl repository. By default, the function returns a list or data frame for a selected subset.
+* **meteo_metadata()** - Downloading the description (metadata) of the meteorological data provided in the danepubliczne.imgw.pl repository. 
+By default, the function returns a list or data frame for a selected subset.
+<!--lista czy ramka??-->
 
-* **meteo_miesieczne()** - Downloading monthly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
+* **meteo_miesieczne()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
-* **meteo_dobowe()** - Downloading daily (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
+* **meteo_dobowe()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
-* **meteo_terminowe()** -  Downloading hourly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
+* **meteo_terminowe()** -  Downloading hourly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+
+
+### Hydrological data
+
+* **hydro_metadata()** - Downloading the description (metadata) of the hydrological data provided in the danepubliczne.imgw.pl repository. 
+
+* **hydro_roczne()** - Downloading semiannual and annual hydrological data from the danepubliczne.imgw.pl database
+
+* **hydro_miesieczne()** - Downloading monthly hydrological data from the danepubliczne.imgw.pl database
+
+* **hydro_dobowe()** - Downloading daily hydrological data from the danepubliczne.imgw.pl database
+
 
 ## Examples
 
