@@ -16,26 +16,24 @@
 #Przepływ 99999.999 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 #Temperatura wody 99.9 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 # Działa tylko dla miesiecznych hydro
-hydro_miesieczne = function(rok = 1966:2000,coords=FALSE){
+hydro_miesieczne <- function(rok = 1966:2000, coords = FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
-  interwal="miesieczne"
+  interwal <- "miesieczne"
   a <- getURL(paste0(base_url, interwal, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
 
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
   katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
-  katalogi <-gsub(x = katalogi, pattern = "/", replacement = "")
+  katalogi <- gsub(x = katalogi, pattern = "/", replacement = "")
   # mniej plików do wczytywania
-  katalogi=katalogi[katalogi %in% as.character(rok)]
-  adres_meta=paste0(base_url,interwal,"/mies_info.txt")
-  meta <- hydro_clean_metadata(adres_meta,interwal)
-
-
+  katalogi <- katalogi[katalogi %in% as.character(rok)]
+  adres_meta <- paste0(base_url, interwal, "/mies_info.txt")
+  meta <- hydro_clean_metadata(adres_meta, interwal)
 
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
-    katalog=katalogi[i]
+    katalog <- katalogi[i]
     #print(i)
 
     adres <- paste0(base_url, interwal, "/", katalog, "/mies_", katalog, ".zip")
@@ -51,9 +49,9 @@ hydro_miesieczne = function(rok = 1966:2000,coords=FALSE){
   }
   calosc <- do.call(rbind, calosc)
   # wyjatki na brak stanu, przeplywu i temperatury
-  calosc[calosc==9999]<-NA
-  calosc[calosc==99999.999]<-NA
-  calosc[calosc==99.9]<-NA
+  calosc[calosc==9999] <- NA
+  calosc[calosc==99999.999] <- NA
+  calosc[calosc==99.9] <- NA
   #calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
   return(calosc)
 }

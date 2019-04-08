@@ -21,34 +21,36 @@
 #999 oznacza brak pomiaru gruboci lodu przy występowaniu zjawisk lodowych lub (w miesišcach letnich)
 #występowanie zarastania przy braku zjawisk lodowych (tzn. jeli kod pole zjawiska lodowego jest puste)
 
-hydro_dobowe = function(rok = 1966:2000,coords=FALSE){
+hydro_dobowe <- function(rok = 1966:2000, coords=FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
-  interwal="dobowe"
+  interwal <- "dobowe"
   a <- getURL(paste0(base_url, interwal, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
 
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
   katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
-  katalogi <-gsub(x = katalogi, pattern = "/", replacement = "")
+  katalogi <- gsub(x = katalogi, pattern = "/", replacement = "")
   # mniej plików do wczytywania
   katalogi=katalogi[katalogi %in% as.character(rok)]
 
-  adres_meta1=paste0(base_url,interwal,"/codz_info.txt")
-  adres_meta2=paste0(base_url,interwal,"/zjaw_info.txt")
-  meta <- list(hydro_clean_metadata(adres_meta1,interwal),hydro_clean_metadata(adres_meta2,interwal))
+  adres_meta1 <- paste0(base_url,interwal, "/codz_info.txt")
+  adres_meta2 <- paste0(base_url,interwal, "/zjaw_info.txt")
+  meta <- list(hydro_clean_metadata(adres_meta1, interwal),
+               hydro_clean_metadata(adres_meta2, interwal))
 
   # Dobowe maja 13 plików w katalogu ta petla działa póki co na miesięczne
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
-    katalog=katalogi[i]
+    katalog <- katalogi[i]
     print(i)
 
-  iterator=c("01","02","03","04","05","06","07","08","09","10","11","12")
+  iterator <- c("01", "02", "03", "04", "05", "06",
+                "07", "08", "09", "10", "11", "12")
    for (j in seq_along(iterator)) {
-     adres <- paste0(base_url, interwal, "/", katalog, "/codz_", katalog,"_",iterator[j], ".zip")
+     adres <- paste0(base_url, interwal, "/", katalog, "/codz_", katalog,"_", iterator[j], ".zip")
      temp <- tempfile()
-     temp2<- tempfile()
+     temp2 <- tempfile()
      download.file(adres, temp)
      unzip(zipfile = temp, exdir = temp2)
      plik1 <- paste(temp2, dir(temp2), sep = "/")[1]
@@ -72,8 +74,11 @@ hydro_dobowe = function(rok = 1966:2000,coords=FALSE){
    #Wskanik miesišca w roku hydrologicznym
    #Dzień
 
-   calosc[[i]] <- merge(data1, data2, by = c("Kod stacji", "Nazwa stacji", "Rok hydrologiczny", "Nazwa rzeki/jeziora",
-                                             "Wskaźnik miesiąca w roku hydrologicznym", "Dzień"), all.x = TRUE)
+   calosc[[i]] <- merge(data1, data2,
+                        by = c("Kod stacji", "Nazwa stacji",
+                               "Rok hydrologiczny", "Nazwa rzeki/jeziora",
+                               "Wskaźnik miesiąca w roku hydrologicznym", "Dzień"),
+                        all.x = TRUE)
   }
   calosc <- do.call(rbind, calosc)
   #calosc <- calosc[calosc$Rok %in% rok, ]
@@ -85,11 +90,11 @@ hydro_dobowe = function(rok = 1966:2000,coords=FALSE){
   #Wskanik miesišca w roku hydrologicznym
   #Dzień
   calosc <- do.call(rbind, calosc)
-  calosc[calosc==9999]<-NA
-  calosc[calosc==99999.999]<-NA
-  calosc[calosc==99.9]<-NA
+  calosc[calosc==9999] <- NA
+  calosc[calosc==99999.999] <- NA
+  calosc[calosc==99.9] <- NA
   #zjawiska lodowe nie uwzględniam 0 przy braku zjawisk lodowych bo to znaczy ze było poprostu 0
-  calosc[calosc==999]<-NA
+  calosc[calosc==999] <- NA
   #calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
   return(calosc)
 }
