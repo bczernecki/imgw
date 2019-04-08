@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
-udostepnionych w zbiorze danepubliczne.imgw.pl — meteo • imgw</title>
+<title>Funkcja czyszczaca hydro metadane — clean_metadata_hydro • imgw</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,11 +30,10 @@ udostepnionych w zbiorze danepubliczne.imgw.pl — meteo • imgw</title>
 
 
 
-<meta property="og:title" content="Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
-udostepnionych w zbiorze danepubliczne.imgw.pl — meteo" />
+<meta property="og:title" content="Funkcja czyszczaca hydro metadane — clean_metadata_hydro" />
 
-<meta property="og:description" content="Pobranie danych meteorologicznych dla okresów &quot;dobowe&quot; , &quot;miesieczne&quot; , &quot;terminowe&quot;
-udostepnionych w zbiorze danepubliczne.imgw.pl" />
+<meta property="og:description" content="Tylko do wewnetrznego uzytku...
+Na potrzeby funkcji &quot;hydro()&quot; ?" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,44 +98,30 @@ udostepnionych w zbiorze danepubliczne.imgw.pl" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
-udostepnionych w zbiorze danepubliczne.imgw.pl</h1>
+    <h1>Funkcja czyszczaca hydro metadane</h1>
     
-    <div class="hidden name"><code>meteo.Rd</code></div>
+    <div class="hidden name"><code>clean_metadata_hydro.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
-udostepnionych w zbiorze danepubliczne.imgw.pl</p>
+    <p>Tylko do wewnetrznego uzytku...
+Na potrzeby funkcji "hydro()" ?</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>meteo</span>(<span class='no'>interwal</span>, <span class='kw'>rzad</span> <span class='kw'>=</span> <span class='st'>"synop"</span>, <span class='kw'>rok</span> <span class='kw'>=</span> <span class='fl'>1966</span>:<span class='fl'>2018</span>, <span class='kw'>status</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>clean_metadata_hydro</span>(<span class='no'>adres</span>, <span class='kw'>interwal</span> <span class='kw'>=</span> <span class='st'>"miesieczne"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>adres</th>
+      <td><p>adres URL do pliku z metadanymi</p></td>
+    </tr>
+    <tr>
       <th>interwal</th>
-      <td><p>interwał stacji (do wyboru: "dobowe" , "miesieczne" , "terminowe")</p></td>
-    </tr>
-    <tr>
-      <th>rzad</th>
-      <td><p>rzad stacji (do wyboru: "synop" , "klimat" , "opad")</p></td>
-    </tr>
-    <tr>
-      <th>rok</th>
-      <td><p>wektor dla wybranych lat (np. 1966:2000)</p></td>
-    </tr>
-    <tr>
-      <th>status</th>
-      <td><p>czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )</p></td>
-    </tr>
-    <tr>
-      <th>coords</th>
-      <td><p>czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)</p></td>
+      <td><p>interwal czasowy</p></td>
     </tr>
     </table>
     

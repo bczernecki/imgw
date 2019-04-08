@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Title — hydro • imgw</title>
+<title>Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
+udostepnionych w zbiorze danepubliczne.imgw.pl — hydro • imgw</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +31,11 @@
 
 
 
-<meta property="og:title" content="Title — hydro" />
+<meta property="og:title" content="Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
+udostepnionych w zbiorze danepubliczne.imgw.pl — hydro" />
 
-<meta property="og:description" content="Title" />
+<meta property="og:description" content="Pobranie danych hydrologicznych dla okresów &quot;dobowe&quot; , &quot;miesieczny&quot; , &quot;polroczne_i_roczne&quot;
+udostepnionych w zbiorze danepubliczne.imgw.pl" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,25 +100,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Title</h1>
+    <h1>Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
+udostepnionych w zbiorze danepubliczne.imgw.pl</h1>
     
     <div class="hidden name"><code>hydro.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Title</p>
+    <p>Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
+udostepnionych w zbiorze danepubliczne.imgw.pl</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>hydro</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>hydro</span>(<span class='kw'>interwal</span> <span class='kw'>=</span> <span class='st'>"miesieczne"</span>, <span class='kw'>rok</span> <span class='kw'>=</span> <span class='fl'>1966</span>:<span class='fl'>2000</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>interwal</th>
+      <td><p>interwał stacji (do wyboru: "dobowe" , "miesieczny"(domyslnie) , "polroczne_i_roczne")</p></td>
+    </tr>
+    <tr>
+      <th>rok</th>
+      <td><p>wektor dla wybranych lat (np. 1966:2000)</p></td>
+    </tr>
+    <tr>
+      <th>coords</th>
+      <td><p>czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")</p></td>
+    </tr>
+    </table>
+    
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"># NOT RUN {
+# }
+<div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
