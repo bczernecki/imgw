@@ -8,7 +8,6 @@
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @importFrom stats na.omit
-#' @export
 #'
 #' @examples
 #' # przykladowe pobranie:

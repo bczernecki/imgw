@@ -7,7 +7,6 @@
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @return
-#' @export
 #'
 #' @examples \dontrun{
 #'
