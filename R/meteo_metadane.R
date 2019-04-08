@@ -9,9 +9,9 @@
 #' @examples
 #' # przykladowe uzycie:
 #' \dontrun{
-#' meta <- metadane(interwal = "dobowe", rzad = "synop")
-#' meta <- metadane(interwal = "terminowe", rzad = "synop")
-#' meta <- metadane(interwal = "miesieczne", rzad = "opad")
+#' meta <- meteo_metadane(interwal = "dobowe", rzad = "synop")
+#' meta <- meteo_metadane(interwal = "terminowe", rzad = "synop")
+#' meta <- meteo_metadane(interwal = "miesieczne", rzad = "opad")
 #' }
 
 meteo_metadane <- function(interwal, rzad){ # interwal moze byc: miesieczne, dobowe, terminowe

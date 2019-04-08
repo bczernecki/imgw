@@ -1,7 +1,7 @@
 #' Funkcja czyszczaca metadane
 #'
 #' Tylko do wewnetrznego uzytku...
-#' Na potrzeby funkcji 'metadane()'
+#' Na potrzeby funkcji 'meteo_metadane()'
 #' @param adres adres URL do pliku z metadanymi
 #' @param rzad rzad
 #' @param interwal interwal czasowy
@@ -13,7 +13,7 @@
 #' @examples
 #' # przykladowe pobranie:
 #' \dontrun{
-#'   clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rzad="synop", interwal="terminowe")
+#'   clean_metadata_meteo(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rzad="synop", interwal="terminowe")
 #' }
 #'
 
