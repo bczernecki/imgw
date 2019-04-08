@@ -2,10 +2,29 @@
 % Please edit documentation in R/meteo.R
 \name{meteo}
 \alias{meteo}
-\title{Title}
+\title{Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
+udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
-meteo()
+meteo(interwal, rzad = "synop", rok = 1966:2018, status = FALSE,
+  coords = FALSE)
+}
+\arguments{
+\item{interwal}{interwał stacji (do wyboru: "dobowe" , "miesieczne" , "terminowe")}
+
+\item{rzad}{rzad stacji (do wyboru: "synop" , "klimat" , "opad")}
+
+\item{rok}{wektor dla wybranych lat (np. 1966:2000)}
+
+\item{status}{czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )}
+
+\item{coords}{czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)}
 }
 \description{
-Title
+Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
+udostepnionych w zbiorze danepubliczne.imgw.pl
+}
+\examples{
+\dontrun{
+
+}
 }

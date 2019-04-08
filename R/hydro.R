@@ -1,4 +1,3 @@
-# do zmiany jakog główna funkcja
 #' Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
 #' udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
@@ -6,8 +5,6 @@
 #' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param coords czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)
 #' @param value rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")
-#' @import RCurl XML
-#' @importFrom utils download.file unzip read.csv
 #' @return
 #' @export
 #'

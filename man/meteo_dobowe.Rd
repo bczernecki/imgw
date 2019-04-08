@@ -12,7 +12,7 @@ meteo_dobowe(rzad = "synop", rok = 1966:2018, status = FALSE,
 
 \item{rok}{wektor dla wybranych lat (np. 1966:2000)}
 
-\item{status}{czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )}
+\item{status}{czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane)}
 
 \item{coords}{czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)}
 }
