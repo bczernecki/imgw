@@ -20,7 +20,7 @@ meteo_dobowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interwal <- "dobowe" # to mozemy ustawic na sztywno
-  meta <- metadane(interwal = "dobowe", rzad = rzad)
+  meta <- metadane_meteo(interwal = "dobowe", rzad = rzad)
 
   a <- getURL(paste0(base_url, "dane_meteorologiczne/", interwal, "/", rzad, "/"),
               ftp.use.epsv = FALSE,
