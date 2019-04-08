@@ -4,12 +4,23 @@
 \name{imgw-package}
 \alias{imgw}
 \alias{imgw-package}
-\title{imgw: imgw meteorological data downloader}
+\title{imgw: Polish Meteorological and Hydrological Data}
 \description{
-A set of functions for downloading Polish meteorological data from the IMGW-PIB.
+Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
 }
 \author{
 \strong{Maintainer}: Bartosz Czernecki \email{nwp@amu.edu.pl}
+
+Authors:
+\itemize{
+  \item Arkadiusz Głogowski
+  \item Jakub Nowosad \email{nowosad.jakub@gmail.com} (0000-0002-1057-3721)
+}
+
+Other contributors:
+\itemize{
+  \item IMGW-PIB (source of the data) [contributor]
+}
 
 }
 \keyword{internal}

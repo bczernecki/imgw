@@ -4,10 +4,14 @@
 \alias{clean_metadata}
 \title{Funkcja czyszczaca metadane}
 \usage{
-clean_metadata(adres)
+clean_metadata(adres, rzad = "synop", interwal = "terminowe")
 }
 \arguments{
 \item{adres}{adres URL do pliku z metadanymi}
+
+\item{rzad}{rzad}
+
+\item{interwal}{interwal czasowy}
 }
 \description{
 Tylko do wewnetrznego uzytku...
@@ -16,7 +20,7 @@ Na potrzeby funkcji 'metadane()'
 \examples{
 # przykladowe pobranie:
 \dontrun{
-  clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt")
+  clean_metadata(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rzad="synop", interwal="terminowe")
 }
 
 }

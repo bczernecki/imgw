@@ -1,61 +1,62 @@
-# imgw
 
-Celem pakietu **imgw** jest automatyzacja pobierania danych hydro-meteorologicznych IMGW-PIB.
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+imgw
+====
 
-## Instalacja 
+The goal of **imgw** is to automatize downloading Polish meteorological and hydrological data from the [IMGW-PIB](https://dane.imgw.pl/).
 
-W celu zainstalowania pakietu najszybciej wykorzystać pakiet `devtools`:
+Installation
+------------
+
+<!-- You can install the released version of imgw from [CRAN](https://CRAN.R-project.org) with: -->
+<!-- ``` r -->
+<!-- install.packages("imgw") -->
+<!-- ``` -->
+You can install the development version of **imgw** from [GitHub](https://github.com/bczernecki/imgw) with:
 
 ``` r
 library(devtools)
 install_github("bczernecki/imgw")
 ```
 
-## Przykład użycia:
+Overview
+--------
 
-* Pobieranie danych terminowych:
+-   **clean\_metadata()** - Metadata cleaning function. Giving table containing parameters of selected period and character (SYNOP/KLIMAT/OPAD)
 
-```r
-wynik2006 <- pobierz_terminowe2(2006)
-```
+-   **metadata()** - Downloading the description (metadata) to the meteorological data provided in the danepubliczne.imgw.pl repository. By default, the function returns a list or data frame for a selected subset.
 
-* Jeśli chcemy pobrać wiecęj niż 1 rok warto skorzystać z funkcji `lapply()`
-* Poniższa operacja automatycznie pobierze lata 2005-2007:
+-   **meteo\_miesieczne()** - Downloading monthly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
 
-```r
-wynik <- lapply(2005:2007, pobierz_terminowe2)
-library(data.table)
-wynik2 <- rbindlist(wynik)
-```
+-   **meteo\_dobowe()** - Downloading daily (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
 
-* Dane dobowe:
+-   **meteo\_terminowe()** - Downloading hourly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
 
-```r
-?pobierz_dobowe
-```
+Usege
+-----
 
-## Dane dobowe i miesięczne:
+-   **clean\_metadata**(adres , ......)
 
-Część danych ze stacji synoptycznych (miesięczne i dobowe) jest już wstępnie pobrana (do 02/2018) i nie wymaga uruchamiania funkcji `pobierz_..()`.
+#### Arguments
 
-Dane znajdują się w katalogu `extdata` paczki **imgw** i mogą być wczytane do środowiska R za pomocą funkcji `readRDS()`:
+**adres** -
 
-``` r2
-miesieczne = readRDS(system.file("extdata", "miesieczne.rds", package = "imgw"))
-dobowe = readRDS(system.file("extdata", "dobowe.rds", package = "imgw"))
-```
+**rzad** -
 
-## Dokumentacja w paczce
+**interwal** -
 
-W chwili obecnej obsługiwane są tylko dane miesięczne, dobowe i terminowe ze stacji synoptycznych.
-Nie wszystkie funkcje w dokumentacji mogą być w pełni opisane:
+-   **metadata**(interwal, rzad)
 
-* w chwili obecnej wyłączono pobieranie danych z monitora IMGW ze względu na konieczność instalowania pakietu RSelenium, który sprawiał sporo problemów
-* wywołanie niektórych funkcji może być czaso- i pamięciożerne (zwłaszcza dla danych terminowych)
-* domyślnie pobierany jest cały zakres czasowy (wszystkie foldery i podfoldery) znalezione w serwisie danepubliczne.imgw.pl dla wybranego zestawu danych. W przyszłości przewiduje się pobieranie poszczególnych podokresów
-* Metadane dla danych terminowych na dzień 17/07/2018 (107 parametrów)
+#### Arguments
 
-## Współpraca
+**rzad** -
 
-Zachęcamy do zgłaszania wszelkich komentarzy, uwag, błędów czy propozycji zmian na stronie
-https://github.com/bczernecki/imgw/issues.
+**interwal** -
+
+Example
+-------
+
+Acknowledgment
+--------------
+
+Institute of Meteorology and Water Management - National Research Institute is the source of the data.

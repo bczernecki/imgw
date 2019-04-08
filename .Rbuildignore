@@ -1,2 +1,9 @@
-^.*\.Rproj$
+^LICENSE\.md$
+^\.travis\.yml$
+^docs$
+^_pkgdown\.yml$
+^README\.Rmd$
+^imgw\.Rproj$
 ^\.Rproj\.user$
+^\.httr-oauth$
+^data-raw$
