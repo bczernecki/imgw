@@ -5,7 +5,8 @@
 #'
 #' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param coords czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)
-#' @import RCurl XML
+#' @importFrom RCurl getURL
+#' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
 #' @return
 #' @export

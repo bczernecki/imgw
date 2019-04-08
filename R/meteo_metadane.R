@@ -5,7 +5,6 @@
 #`
 #' @param interwal -  Argument przyjmujący wartość: 'terminowe' , dobowe' (domyślnie), lub 'miesieczne'.  Oznacza dla jakiej rozdzielczosci czasowej maja zostac przygotowane metadane dla srodowiska R
 #' @param rzad -  Argument przyjmujący wartość: 'synop' (domyślnie) lub 'klimat'.  Oznacza dla jakiego rzadu/rzędu staji mają zostać przygotowane metadane.
-#' @importFrom RCurl getURL
 #'
 #' @export
 #' @examples

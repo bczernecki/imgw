@@ -6,7 +6,8 @@
 #' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param status czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )
 #' @param coords czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)
-#' @import RCurl XML
+#' @importFrom RCurl getURL
+#' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
 #' @return
 #' @export
