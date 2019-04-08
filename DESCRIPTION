@@ -4,7 +4,7 @@ Version: 0.0.2
 Authors@R: c(person(given = "Bartosz",
            family = "Czernecki",
            role = c("aut", "cre"),
-           email = "nwp@amu.edu.pl"),
+           email = "nwp@amu.edu.pl",
            comment = c(ORCID = "0000-0001-6496-1386")),
            person(given = "Arkadiusz", 
            family = "Głogowski", 
@@ -24,7 +24,6 @@ RoxygenNote: 6.1.1
 Depends: 
     R (>= 3.1)
 Imports: 
-    dplyr,
     magrittr,
     RCurl,
     XML

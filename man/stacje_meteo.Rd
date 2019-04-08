@@ -3,7 +3,7 @@
 \docType{data}
 \name{stacje_meteo}
 \alias{stacje_meteo}
-\title{Weather stations}
+\title{Location of weather stations}
 \format{The data contains a data.frame with 1998 obs. of 4 variables:
 \itemize{
 \item{X} {Longitude}

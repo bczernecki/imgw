@@ -9,7 +9,7 @@
 Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
 }
 \author{
-\strong{Maintainer}: Bartosz Czernecki \email{nwp@amu.edu.pl}
+\strong{Maintainer}: Bartosz Czernecki \email{nwp@amu.edu.pl} (0000-0001-6496-1386)
 
 Authors:
 \itemize{
