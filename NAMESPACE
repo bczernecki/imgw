@@ -2,6 +2,10 @@
 
 export(clean_metadata)
 export(hydro)
+export(hydro_clean_metadata)
+export(hydro_dobowe)
+export(hydro_miesieczne)
+export(hydro_roczne)
 export(metadane)
 export(meteo)
 export(meteo_dobowe)

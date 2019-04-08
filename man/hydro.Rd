@@ -2,10 +2,25 @@
 % Please edit documentation in R/hydro.R
 \name{hydro}
 \alias{hydro}
-\title{Title}
+\title{Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
+udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
-hydro()
+hydro(interwal = "miesieczne", rok = 1966:2000, coords = FALSE)
+}
+\arguments{
+\item{interwal}{interwał stacji (do wyboru: "dobowe" , "miesieczny"(domyslnie) , "polroczne_i_roczne")}
+
+\item{rok}{wektor dla wybranych lat (np. 1966:2000)}
+
+\item{coords}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
 }
 \description{
-Title
+Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
+udostepnionych w zbiorze danepubliczne.imgw.pl
+}
+\examples{
+\dontrun{
+
+}
+
 }

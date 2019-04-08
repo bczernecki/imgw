@@ -12,11 +12,10 @@
 #' @examples \dontrun{
 #'
 #' }
-#' TODO:dane dobowe
-#' w folderze /dobowe/  sa 2 rodzaje metadanych
-#' czy usunac informacje z wierszy 6:8 w polroczach
 
-
+#TODO:dane dobowe
+#w folderze /dobowe/  sa 2 rodzaje metadanych
+#czy usunac informacje z wierszy 6:8 w polroczach
 #miesieczne
 #adres="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
 #dobowe
