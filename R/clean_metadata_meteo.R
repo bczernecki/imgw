@@ -17,7 +17,7 @@
 #' }
 #'
 
-clean_metadata <- function(adres, rzad = "synop", interwal = "terminowe"){
+clean_metadata_meteo <- function(adres, rzad = "synop", interwal = "terminowe"){
   a <- suppressWarnings(na.omit(read.fwf(adres, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   doilu <- max(nchar(a$V1), na.rm = TRUE)
