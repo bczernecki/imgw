@@ -1,5 +1,5 @@
-#' Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
-#' udostepnionych w zbiorze danepubliczne.imgw.pl
+#' Pobranie danych hydrologicznych dla rocznego okresu
+#' udostepnionego w zbiorze danepubliczne.imgw.pl
 #'
 #' @param value rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")
 #' @param rok wektor dla wybranych lat hydrologicznych (np. 1966:2000)
