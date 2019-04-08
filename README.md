@@ -32,29 +32,8 @@ Overview
 
 -   **meteo\_terminowe()** - Downloading hourly (meteorological) data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl databased
 
-Usege
------
-
--   **clean\_metadata**(adres , ......)
-
-#### Arguments
-
-**adres** -
-
-**rzad** -
-
-**interwal** -
-
--   **metadata**(interwal, rzad)
-
-#### Arguments
-
-**rzad** -
-
-**interwal** -
-
-Example
--------
+Examples
+--------
 
 Acknowledgment
 --------------
