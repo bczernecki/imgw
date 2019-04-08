@@ -28,8 +28,7 @@ hydro_miesieczne <- function(rok = 1966:2000, coords = FALSE){
   katalogi <- gsub(x = katalogi, pattern = "/", replacement = "")
   # mniej plików do wczytywania
   katalogi <- katalogi[katalogi %in% as.character(rok)]
-  adres_meta <- paste0(base_url, interwal, "/mies_info.txt")
-  meta <- hydro_clean_metadata(adres_meta, interwal)
+  meta <- hydro_metadane(interwal)
 
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
