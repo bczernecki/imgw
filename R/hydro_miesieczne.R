@@ -26,6 +26,8 @@ hydro_miesieczne = function(rok = 1966:2000,coords=FALSE){
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
   katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
   katalogi <-gsub(x = katalogi, pattern = "/", replacement = "")
+  # mniej plików do wczytywania
+  katalogi=katalogi[katalogi %in% as.character(rok)]
   adres_meta=paste0(base_url,interwal,"/mies_info.txt")
   meta <- hydro_clean_metadata(adres_meta,interwal)
 
@@ -34,7 +36,7 @@ hydro_miesieczne = function(rok = 1966:2000,coords=FALSE){
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
     katalog=katalogi[i]
-    print(i)
+    #print(i)
 
     adres <- paste0(base_url, interwal, "/", katalog, "/mies_", katalog, ".zip")
 
@@ -52,6 +54,6 @@ hydro_miesieczne = function(rok = 1966:2000,coords=FALSE){
   calosc[calosc==9999]<-NA
   calosc[calosc==99999.999]<-NA
   calosc[calosc==99.9]<-NA
-  calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
+  #calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
   return(calosc)
 }
