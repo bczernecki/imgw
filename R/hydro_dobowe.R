@@ -10,16 +10,17 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'
+#' dobowe <- hydro_dobowe(rok = 2000)
+#'   head(mies)
 #' }
 #'
 # Stan wody 9999 oznacza brak danych w bazie lub przerwy w obserwacjach w danym miesiącu i stad brak możliwości obliczenia charakterystyk.
 #Przepływ 99999.999 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 #Temperatura wody 99.9 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
-#Gruboć lodu
-#0   oznacza brak pomiaru gruboci lodu ze względu na brak zjawisk lodowych
-#999 oznacza brak pomiaru gruboci lodu przy występowaniu zjawisk lodowych lub (w miesišcach letnich)
-#występowanie zarastania przy braku zjawisk lodowych (tzn. jeli kod pole zjawiska lodowego jest puste)
+#Grubość lodu
+#0   oznacza brak pomiaru grubości lodu ze względu na brak zjawisk lodowych
+#999 oznacza brak pomiaru grubości lodu przy występowaniu zjawisk lodowych lub (w miesišcach letnich)
+#występowanie zarastania przy braku zjawisk lodowych (tzn. jeżli kod pole zjawiska lodowego jest puste)
 
 hydro_dobowe <- function(rok = 1966:2000, coords=FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
@@ -39,7 +40,7 @@ hydro_dobowe <- function(rok = 1966:2000, coords=FALSE){
   meta <- list(hydro_clean_metadata(adres_meta1, interwal),
                hydro_clean_metadata(adres_meta2, interwal))
 
-  # Dobowe maja 13 plików w katalogu ta petla działa póki co na miesięczne
+
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
     katalog <- katalogi[i]
@@ -66,13 +67,6 @@ hydro_dobowe <- function(rok = 1966:2000, coords=FALSE){
    plik2 <- paste(temp2, dir(temp2), sep = "/")[1]
    data2 <- read.csv(plik2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
    colnames(data2) <- meta[[2]]
-   # czesc wspolna
-   #Kod stacji
-   #Nazwa stacji
-   #Nazwa rzeki/jeziora
-   #Rok hydrologiczny
-   #Wskanik miesišca w roku hydrologicznym
-   #Dzień
 
    calosc[[i]] <- merge(data1, data2,
                         by = c("Kod stacji", "Nazwa stacji",
@@ -81,20 +75,13 @@ hydro_dobowe <- function(rok = 1966:2000, coords=FALSE){
                         all.x = TRUE)
   }
   calosc <- do.call(rbind, calosc)
-  #calosc <- calosc[calosc$Rok %in% rok, ]
-  # czesc wspolna
-  #Kod stacji
-  #Nazwa stacji
-  #Nazwa rzeki/jeziora
-  #Rok hydrologiczny
-  #Wskanik miesišca w roku hydrologicznym
-  #Dzień
+
   calosc <- do.call(rbind, calosc)
   calosc[calosc==9999] <- NA
   calosc[calosc==99999.999] <- NA
   calosc[calosc==99.9] <- NA
   #zjawiska lodowe nie uwzględniam 0 przy braku zjawisk lodowych bo to znaczy ze było poprostu 0
   calosc[calosc==999] <- NA
-  #calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
+  # brak wykorzystania coords
   return(calosc)
 }

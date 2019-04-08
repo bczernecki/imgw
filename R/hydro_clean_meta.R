@@ -12,10 +12,6 @@
 #' @examples \dontrun{
 #'
 #' }
-
-#TODO:dane dobowe
-#w folderze /dobowe/  sa 2 rodzaje metadanych
-#czy usunac informacje z wierszy 6:8 w polroczach
 #miesieczne
 #adres="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
 #dobowe
@@ -29,14 +25,14 @@ hydro_clean_metadata <- function(adres, interwal = "miesieczne"){
 
   if(interwal == "miesieczne") {
     b <- a[2:11, ] # skład danych jeszcze nie wiem jak ominąć problem kontroli
-    #wyjatek=substr(a[19,],65,68)  ale on może się zmienić nie wiem czy nie lepiej wykluczyć ostatni rok
+                    # ale on może się zmienić nie wiem czy nie lepiej wykluczyć ostatni rok
   }
-  if(interwal == "dobowe") { #narazie nie uwzględniam zjawisk w oddzielnym pliku
+  if(interwal == "dobowe") {
     b <- a[2:11, ]
   }
-  if(interwal == "polroczne_i_roczne") { #
+  if(interwal == "polroczne_i_roczne") {
     godzina <- paste0(a[14, ], ":", a[15, ]) # nie jestem pewien czy tak bo w dokumentacji jest podzial na dwie kolumny,
-                                        #ale ale w pliku jest jedna kolumna a pomiaru brak
+                                            #ale w pliku jest jedna kolumna a pomiaru brak
     data <- c(a[11:13, ], godzina)
     data_od <- paste0("wystapienie_od_", data)
     data_do <- paste0("wystapienie_od_", data)

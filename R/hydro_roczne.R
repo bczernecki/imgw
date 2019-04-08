@@ -10,7 +10,8 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'
+#'roczne <- hydro_roczne(rok = 2000,value="H")
+#'   head(mies)
 #' }
 #'
 # do wyboru jeden z 3 value nie zadziała dla pobrania wszystkiego na raz przytanie czy potrzeba?
@@ -51,6 +52,6 @@ hydro_roczne <-  function(rok = 1966:2000, value = "H", coords = FALSE){
   calosc <- do.call(rbind, calosc)
   # ten sam warunek braku danych lub obserwacji dla wszytkich wartosci
   calosc[calosc==99999.999] <- NA
-  #calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
+  # brak wykorzystania coords
   return(calosc)
 }

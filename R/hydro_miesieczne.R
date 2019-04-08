@@ -9,13 +9,13 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'
+#'mies <- hydro_miesieczne(rok = 2000)
+#'   head(mies)
 #' }
 #'
 # Stan wody 9999 oznacza brak danych w bazie lub przerwy w obserwacjach w danym miesiącu i stad brak możliwości obliczenia charakterystyk.
 #Przepływ 99999.999 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 #Temperatura wody 99.9 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
-# Działa tylko dla miesiecznych hydro
 hydro_miesieczne <- function(rok = 1966:2000, coords = FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interwal <- "miesieczne"
@@ -52,6 +52,6 @@ hydro_miesieczne <- function(rok = 1966:2000, coords = FALSE){
   calosc[calosc==9999] <- NA
   calosc[calosc==99999.999] <- NA
   calosc[calosc==99.9] <- NA
-  #calosc <- calosc[calosc$`Rok hydrologiczny` %in% rok, ]
+  # brak wykorzystania coords
   return(calosc)
 }
