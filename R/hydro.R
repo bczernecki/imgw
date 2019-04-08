@@ -18,7 +18,7 @@
 #Przepływ 99999.999 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 #Temperatura wody 99.9 oznacza brak danych lub przerwy w obserwacjach w danym miesiacu i stad brak możliwości obliczenia charakterystyk.
 # Działa tylko dla miesiecznych hydro
-hydro = function(interwal="miesieczne", rok = 1966:2000, coords = FALSE){
+hydro = function(interwal = "miesieczne", rok = 1966:2000, coords = FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
 
   a <- getURL(paste0(base_url, interwal, "/"),
@@ -28,22 +28,9 @@ hydro = function(interwal="miesieczne", rok = 1966:2000, coords = FALSE){
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
   katalogi <- as.character(readHTMLTable(a)[[1]]$Name[ind])
   katalogi <- gsub(x = katalogi, pattern = "/", replacement = "")
-# pewnie można to zastapić jakąś funkcją zeby nie pisać tego tyle razy...
-  if(interwal == "miesieczne") {
-    adres_meta=paste0(base_url,interwal,"/mies_info.txt")
-    meta <- hydro_clean_metadata(adres_meta,interwal)
-  }
-  #interwal="polroczne_i_roczne"
-  if(interwal == "polroczne_i_roczne") { # trzeba inaczej iterować jeszcze nie zrobione
-    adres_meta=paste0(base_url,interwal,"/polr_info.txt")
-    meta <- hydro_clean_metadata(adres_meta,interwal)
 
-  }
-  interwal="dobowe"
-  if(interwal== "dobowe") {
-    adres_meta=paste0(base_url,interwal,"/codz_info.txt")
-    meta <- hydro_clean_metadata(adres_meta,interwal)
-  }
+  meta <- hydro_metadane(interwal)
+
   # Dobowe maja 13 plików w katalogu ta petla działa póki co na miesięczne
   calosc <- vector("list", length = length(katalogi))
   for (i in seq_along(katalogi)){
