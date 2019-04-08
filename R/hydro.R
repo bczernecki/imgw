@@ -1,3 +1,4 @@
+# do zmiany jakog główna funkcja
 #' Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
 #' udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
