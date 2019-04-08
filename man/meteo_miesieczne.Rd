@@ -2,7 +2,7 @@
 % Please edit documentation in R/meteo_miesieczne.R
 \name{meteo_miesieczne}
 \alias{meteo_miesieczne}
-\title{Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl}
+\title{Monthly meteorological data}
 \usage{
 meteo_miesieczne(rzad = "synop", rok = 1966:2018, status = FALSE,
   coords = FALSE)

@@ -2,8 +2,7 @@
 % Please edit documentation in R/hydro.R
 \name{hydro}
 \alias{hydro}
-\title{Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
-udostepnionych w zbiorze danepubliczne.imgw.pl}
+\title{Hydrological data}
 \usage{
 hydro(interwal = "miesieczne", rok = 1966:2000, coords = FALSE,
   value = NULL)

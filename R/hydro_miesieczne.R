@@ -1,3 +1,5 @@
+#' Monthly hydrological data
+#'
 #' Pobranie danych hydrologicznych dla miesiecznego okresu, udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #'

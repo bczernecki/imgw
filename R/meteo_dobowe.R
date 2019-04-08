@@ -1,3 +1,5 @@
+#' Daily meteorological data
+#'
 #' Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")

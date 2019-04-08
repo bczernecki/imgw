@@ -2,7 +2,7 @@
 % Please edit documentation in R/meteo_dobowe.R
 \name{meteo_dobowe}
 \alias{meteo_dobowe}
-\title{Pobranie danych dobowych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl}
+\title{Daily meteorological data}
 \usage{
 meteo_dobowe(rzad = "synop", rok = 1966:2018, status = FALSE,
   coords = FALSE)

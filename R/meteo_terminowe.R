@@ -1,3 +1,5 @@
+#' Hourly meteorological data
+#'
 #' Pobranie danych terminowych  (meteorologicznych) ze stacji SYNOP/KLIMAT udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #' @param rzad rzad stacji (do wyboru: "synop", "klimat")

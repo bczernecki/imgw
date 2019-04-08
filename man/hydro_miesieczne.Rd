@@ -2,7 +2,7 @@
 % Please edit documentation in R/hydro_miesieczne.R
 \name{hydro_miesieczne}
 \alias{hydro_miesieczne}
-\title{Pobranie danych hydrologicznych dla miesiecznego okresu, udostepnionych w zbiorze danepubliczne.imgw.pl}
+\title{Monthly hydrological data}
 \usage{
 hydro_miesieczne(rok = 1966:2000, coords = FALSE)
 }

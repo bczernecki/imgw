@@ -1,3 +1,5 @@
+#' Hydrological metadata
+#'
 #' Pobranie opisu (metadanych) do danych hydrologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
 #' Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)
 #`

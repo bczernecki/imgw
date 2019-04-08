@@ -2,7 +2,7 @@
 % Please edit documentation in R/meteo_terminowe.R
 \name{meteo_terminowe}
 \alias{meteo_terminowe}
-\title{Pobranie danych terminowych  (meteorologicznych) ze stacji SYNOP/KLIMAT udostepnionych w zbiorze danepubliczne.imgw.pl}
+\title{Hourly meteorological data}
 \usage{
 meteo_terminowe(rzad = "synop", rok = 1966:2018, status = FALSE,
   coords = FALSE)

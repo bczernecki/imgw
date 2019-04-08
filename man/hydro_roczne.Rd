@@ -2,8 +2,7 @@
 % Please edit documentation in R/hydro_roczne.R
 \name{hydro_roczne}
 \alias{hydro_roczne}
-\title{Pobranie danych hydrologicznych dla rocznego okresu
-udostepnionego w zbiorze danepubliczne.imgw.pl}
+\title{Semiannual and annual hydrological data}
 \usage{
 hydro_roczne(rok = 1966:2000, coords = FALSE, value = "H")
 }

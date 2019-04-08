@@ -1,3 +1,5 @@
+#' Monthly meteorological data
+#'
 #' Pobranie danych miesiecznych (meteorologicznych) ze stacji SYNOP/KLIMAT/OPAD udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
 #' @param rzad rzad stacji (do wyboru: "synop" , "klimat" , "opad")

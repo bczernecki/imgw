@@ -2,8 +2,7 @@
 % Please edit documentation in R/meteo_metadane.R
 \name{meteo_metadane}
 \alias{meteo_metadane}
-\title{Pobranie opisu (metadanych) do danych meteorologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
-Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)}
+\title{Meteorological metadata}
 \usage{
 meteo_metadane(interwal, rzad)
 }

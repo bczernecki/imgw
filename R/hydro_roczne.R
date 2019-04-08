@@ -1,3 +1,5 @@
+#' Semiannual and annual hydrological data
+#'
 #' Pobranie danych hydrologicznych dla rocznego okresu
 #' udostepnionego w zbiorze danepubliczne.imgw.pl
 #'

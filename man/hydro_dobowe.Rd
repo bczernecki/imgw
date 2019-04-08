@@ -2,8 +2,7 @@
 % Please edit documentation in R/hydro_dobowe.R
 \name{hydro_dobowe}
 \alias{hydro_dobowe}
-\title{Pobranie danych hydrologicznych dla dobowego okresu
-udostepnionego w zbiorze danepubliczne.imgw.pl}
+\title{Daily hydrological data}
 \usage{
 hydro_dobowe(rok = 1966:2000, coords = FALSE)
 }

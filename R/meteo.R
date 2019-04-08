@@ -1,3 +1,5 @@
+#' Meteorological data
+#'
 #' Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
 #' udostepnionych w zbiorze danepubliczne.imgw.pl
 #'

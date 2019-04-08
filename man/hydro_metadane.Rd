@@ -2,8 +2,7 @@
 % Please edit documentation in R/hydro_metadane.R
 \name{hydro_metadane}
 \alias{hydro_metadane}
-\title{Pobranie opisu (metadanych) do danych hydrologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
-Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)}
+\title{Hydrological metadata}
 \usage{
 hydro_metadane(interwal)
 }

@@ -2,8 +2,7 @@
 % Please edit documentation in R/meteo.R
 \name{meteo}
 \alias{meteo}
-\title{Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
-udostepnionych w zbiorze danepubliczne.imgw.pl}
+\title{Meteorological data}
 \usage{
 meteo(interwal, rzad = "synop", rok = 1966:2018, status = FALSE,
   coords = FALSE)

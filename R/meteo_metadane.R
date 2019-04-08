@@ -1,3 +1,5 @@
+#' Meteorological metadata
+#'
 #' Pobranie opisu (metadanych) do danych meteorologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
 #' Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)
 #`

@@ -1,3 +1,5 @@
+#' Daily hydrological data
+#'
 #' Pobranie danych hydrologicznych dla dobowego okresu
 #' udostepnionego w zbiorze danepubliczne.imgw.pl
 #'
