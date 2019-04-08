@@ -117,7 +117,9 @@ meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coo
 
   if (coords){
     # data("stacje_meteo")
-    calosc <- merge(stacje_meteo, calosc, by.x = "Kod_stacji", by.y = "Kod stacji", all.y = TRUE)
+    calosc <- merge(stacje_meteo, calosc,
+                    by.x = "Kod_stacji", by.y = "Kod stacji",
+                    all.y = TRUE)
   }
 
 
