@@ -16,7 +16,8 @@ Pobranie danych hydrologicznych dla miesiecznego okresu, udostepnionych w zbiorz
 }
 \examples{
 \dontrun{
-
+mies <- hydro_miesieczne(rok = 2000)
+  head(mies)
 }
 
 }

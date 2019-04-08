@@ -20,7 +20,8 @@ udostepnionego w zbiorze danepubliczne.imgw.pl
 }
 \examples{
 \dontrun{
-
+dobowe <- hydro_dobowe(rok = 2000)
+  head(mies)
 }
 
 }
