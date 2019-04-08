@@ -14,7 +14,7 @@
 #' meta <- metadane(interwal = "miesieczne", rzad = "opad")
 #' }
 
-metadane_meteo <- function(interwal, rzad){ # interwal moze byc: miesieczne, dobowe, terminowe
+meteo_metadane <- function(interwal, rzad){ # interwal moze byc: miesieczne, dobowe, terminowe
   b <- NULL
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
