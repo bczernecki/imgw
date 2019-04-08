@@ -16,7 +16,7 @@
 # do wyboru jeden z 3 value nie zadziała dla pobrania wszystkiego na raz przytanie czy potrzeba?
 # nie używam coords czy jest taka baza jak ("stacje_meteo")?
 
-hydro_polroczne_i_roczne = function(rok = 1966:2000,value="H",coords=FALSE){
+hydro_roczne = function(rok = 1966:2000,value="H",coords=FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interwal="polroczne_i_roczne"
   a <- getURL(paste0(base_url, interwal, "/"),
