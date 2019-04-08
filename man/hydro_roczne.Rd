@@ -5,14 +5,14 @@
 \title{Pobranie danych hydrologicznych dla rocznego okresu
 udostepnionego w zbiorze danepubliczne.imgw.pl}
 \usage{
-hydro_roczne(rok = 1966:2000, value = "H", coords = FALSE)
+hydro_roczne(rok = 1966:2000, coords = FALSE, value = "H")
 }
 \arguments{
 \item{rok}{wektor dla wybranych lat hydrologicznych (np. 1966:2000)}
 
-\item{value}{rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")}
-
 \item{coords}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
+
+\item{value}{rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")}
 }
 \description{
 Pobranie danych hydrologicznych dla rocznego okresu

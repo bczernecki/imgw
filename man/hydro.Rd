@@ -5,7 +5,8 @@
 \title{Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
 udostepnionych w zbiorze danepubliczne.imgw.pl}
 \usage{
-hydro(interwal = "miesieczne", rok = 1966:2000, coords = FALSE)
+hydro(interwal = "miesieczne", rok = 1966:2000, coords = FALSE,
+  value = NULL)
 }
 \arguments{
 \item{interwal}{interwał stacji (do wyboru: "dobowe" , "miesieczny"(domyslnie) , "polroczne_i_roczne")}
@@ -13,6 +14,8 @@ hydro(interwal = "miesieczne", rok = 1966:2000, coords = FALSE)
 \item{rok}{wektor dla wybranych lat (np. 1966:2000)}
 
 \item{coords}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
+
+\item{value}{rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")}
 }
 \description{
 Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"

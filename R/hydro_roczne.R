@@ -1,9 +1,9 @@
 #' Pobranie danych hydrologicznych dla rocznego okresu
 #' udostepnionego w zbiorze danepubliczne.imgw.pl
 #'
-#' @param value rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")
 #' @param rok wektor dla wybranych lat hydrologicznych (np. 1966:2000)
 #' @param coords czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)
+#' @param value rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")
 #' @import RCurl XML
 #' @importFrom utils download.file unzip read.csv
 #' @return
@@ -17,7 +17,7 @@
 # do wyboru jeden z 3 value nie zadziała dla pobrania wszystkiego na raz przytanie czy potrzeba?
 # nie używam coords czy jest taka baza jak ("stacje_meteo")?
 
-hydro_roczne <-  function(rok = 1966:2000, value = "H", coords = FALSE){
+hydro_roczne <-  function(rok = 1966:2000, coords = FALSE, value = "H"){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interwal <- "polroczne_i_roczne"
   a <- getURL(paste0(base_url, interwal, "/"),
