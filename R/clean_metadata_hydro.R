@@ -2,8 +2,8 @@
 #'
 #' Tylko do wewnetrznego uzytku...
 #' Na potrzeby funkcji "hydro()" ?
-#' @param adres adres URL do pliku z metadanymi
-#' @param interwal interwal czasowy
+#' @param address address URL do pliku z metadanymi
+#' @param interval interval czasowy
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @return
@@ -12,24 +12,24 @@
 #'
 #' }
 #miesieczne
-#adres="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
+#address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
 #dobowe
 #"https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/dobowe/codz_info.txt"
 #"https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/dobowe/zjaw_info.txt"
 #polroczne_i_roczne
-#adres="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/polr_info.txt"
+#address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/polr_info.txt"
 
-clean_metadata_hydro <- function(adres, interwal = "miesieczne"){
-  a <- suppressWarnings(na.omit(read.fwf(adres, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
+clean_metadata_hydro <- function(address, interval = "miesieczne"){
+  a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
-  if(interwal == "miesieczne") {
+  if(interval == "miesieczne") {
     b <- a[2:11, ] # skład danych jeszcze nie wiem jak ominąć problem kontroli
                     # ale on może się zmienić nie wiem czy nie lepiej wykluczyć ostatni rok
   }
-  if(interwal == "dobowe") {
+  if(interval == "dobowe") {
     b <- a[2:11, ]
   }
-  if(interwal == "polroczne_i_roczne") {
+  if(interval == "polroczne_i_roczne") {
     godzina <- paste0(a[14, ], ":", a[15, ]) # nie jestem pewien czy tak bo w dokumentacji jest podzial na dwie kolumny,
                                             #ale w pliku jest jedna kolumna a pomiaru brak
     data <- c(a[11:13, ], godzina)

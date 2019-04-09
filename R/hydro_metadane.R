@@ -1,40 +1,39 @@
 #' Hydrological metadata
 #'
-#' Pobranie opisu (metadanych) do danych hydrologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
-#' Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)
+#' Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
+#' By default, the function returns a list or data frame for a selected subset (depending on how to cope)
 #`
-#' @param interwal -  Argument przyjmujący wartość: 'dobowe' , miesieczne' lub 'polroczne_i_roczne'.  Oznacza dla jakiej rozdzielczosci czasowej maja zostac przygotowane metadane dla srodowiska R
+#' @param interval - Argument accepts the values: 'dobowe' , miesieczne' or 'polroczne_i_roczne'.  Indicates for which time resolution metadata for environment R should be prepared
 #' @importFrom RCurl getURL
 #'
 #' @export
 #' @examples
-#' # przykladowe uzycie:
 #' \dontrun{
-#'   meta <- metadane(interwal = "dobowe")
-#'   meta <- metadane(interwal = "miesieczne")
-#'   meta <- metadane(interwal = "polroczne_i_roczne")
+#'   meta <- metadane(interval = "dobowe")
+#'   meta <- metadane(interval = "miesieczne")
+#'   meta <- metadane(interval = "polroczne_i_roczne")
 #' }
 
-hydro_metadane <- function(interwal){
+hydro_metadane <- function(interval){
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
 
-  if (interwal == "dobowe"){
+  if (interval == "dobowe"){
     # dobowe
-    adres_meta1 <- paste0(base_url, interwal, "/codz_info.txt")
-    adres_meta2 <- paste0(base_url, interwal, "/zjaw_info.txt")
-    meta <- list(hydro_clean_metadata(adres_meta1, interwal),
-                 hydro_clean_metadata(adres_meta2, interwal))
-  } else if (interwal == "miesieczne"){
+    address_meta1 <- paste0(base_url, interval, "/codz_info.txt")
+    address_meta2 <- paste0(base_url, interval, "/zjaw_info.txt")
+    meta <- list(hydro_clean_metadata(address_meta1, interval),
+                 hydro_clean_metadata(address_meta2, interval))
+  } else if (interval == "miesieczne"){
     #miesieczne
-    adres_meta <- paste0(base_url, interwal, "/mies_info.txt")
-    meta <- hydro_clean_metadata(adres_meta, interwal)
-  } else if (interwal == "polroczne_i_roczne"){
+    address_meta <- paste0(base_url, interval, "/mies_info.txt")
+    meta <- hydro_clean_metadata(address_meta, interval)
+  } else if (interval == "polroczne_i_roczne"){
     # polroczne_i_roczne
-    adres_meta <- paste0(base_url, interwal, "/polr_info.txt")
-    meta <- hydro_clean_metadata(adres_meta, interwal)
+    address_meta <- paste0(base_url, interval, "/polr_info.txt")
+    meta <- hydro_clean_metadata(address_meta, interval)
   } else{
-    stop("Wrong `interwal` value. It should be either 'dobowe', 'miesieczne', or 'polroczne_i_roczne'.")
+    stop("Wrong `interval` value. It should be either 'dobowe', 'miesieczne', or 'polroczne_i_roczne'.")
   }
 
   return(meta)
