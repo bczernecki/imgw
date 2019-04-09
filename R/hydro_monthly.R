@@ -4,7 +4,7 @@
 #'
 #'
 #' @param year vector of years (e.g. 1966:2000)
-#' @param coords geographical coordinates if TRUE (WGS84)  (defaults coords = FALSE)
+#' @param coords add coordinates for the station (logical value TRUE or FALSE)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv

@@ -4,7 +4,7 @@
 # 'available in the collection danepubliczne.imgw.pl
 #'
 #' @param year vector of years (e.g. 1966:2000)
-#' @param coords geographical coordinates if TRUE (WGS84)(defaults coords = FALSE)
+#' @param coords add coordinates for the station (logical value TRUE or FALSE)
 #' @param value type of data ( "State=H (default)" , "Flow=Q" , "Temperature=T")
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
