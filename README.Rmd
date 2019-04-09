@@ -38,7 +38,6 @@ install_github("bczernecki/imgw")
 
 ### Meteorological data
 
-
 * **meteo_miesieczne()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
 * **meteo_dobowe()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
@@ -51,14 +50,13 @@ By default, the function returns a list or data frame for a selected subset.
 
 ### Hydrological data
 
-* **hydro_metadata()** - Downloading the description (metadata) of the hydrological data provided in the danepubliczne.imgw.pl repository. 
-
 * **hydro_roczne()** - Downloading semiannual and annual hydrological data from the danepubliczne.imgw.pl database
 
 * **hydro_miesieczne()** - Downloading monthly hydrological data from the danepubliczne.imgw.pl database
 
 * **hydro_dobowe()** - Downloading daily hydrological data from the danepubliczne.imgw.pl database
 
+* **hydro_metadata()** - Downloading the description (metadata) of the hydrological data provided in the danepubliczne.imgw.pl repository. 
 
 ## Examples
 
