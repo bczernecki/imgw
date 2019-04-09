@@ -4,24 +4,42 @@
 \alias{meteo_sounding}
 \title{Sounding data downloader}
 \usage{
-meteo_sounding(wmo_id = 12120, yy = 2019, mm = 4, dd = 9, hh = 0,
+meteo_sounding(wmo_id = 12120, yy = 2019, mm = 1, dd = 1, hh = 0,
   sounding_indices = FALSE)
 }
 \arguments{
-\item{wmo_id}{międzynarodowy kod stacji wg WMO (World Meteorological Organization); Dla polskich stacji: Łeba - 12330, Legionowo - 12374, Wrocław- 12425}
+\item{wmo_id}{International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12330, Legionowo - 12374, Wrocław- 12425 (default value = 12150)}
 
-\item{yy}{rok}
+\item{yy}{year - single number (default = 2019)}
 
-\item{mm}{czy usunac kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane)}
+\item{mm}{month - single number denoting month (default = 1, i.e. January)}
 
-\item{dd}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
+\item{dd}{day - single number denoting day (default = 1)}
 
-\item{hh}{na większość stacji do wyboru godziny 00 i 12; sporadczynie pomiary wykonywane co 6h}
+\item{hh}{hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day; default value = 12}
 
-\item{sounding_indices}{pobieranie dodatkowych informacji o wyliczonych indeksach oraz metadanych sondowania}
+\item{sounding_indices}{\itemize{
+\item logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE ; if set to TRUE returns list instead of data.frame
+}}
+}
+\value{
+Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
+\enumerate{
+\item PRES - Pressure \link{hPa}
+\item HGHT - Height \link{metres}
+\item TEMP - Temperature \link{C}
+\item DWPT - Dew point \link{C}
+\item RELH - Relative humidity \link{\%}
+\item MIXR - Mixing ratio \link{g/kg}
+\item DRCT - Wind direction \link{deg}
+\item SKNT - Wind speed \link{knots}
+\item THTA = \link{K}
+\item THTE = \link{K}
+\item THTV = \link{K}
+}
 }
 \description{
-Pobranie danych z pionowych sondowań atmosfery; Dane oryginalnie dostępne w serwisie: http://weather.uwyo.edu/upperair/sounding.html
+Downloading sounding data mea (i.e. measurements of the vertical profile of atmosphere); Source  oryginalnie dostępne w serwisie: http://weather.uwyo.edu/upperair/sounding.html
 }
 \examples{
 \dontrun{
