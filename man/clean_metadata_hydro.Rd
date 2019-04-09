@@ -4,12 +4,12 @@
 \alias{clean_metadata_hydro}
 \title{Funkcja czyszczaca hydro metadane}
 \usage{
-clean_metadata_hydro(adres, interwal = "miesieczne")
+clean_metadata_hydro(address, interval = "miesieczne")
 }
 \arguments{
-\item{adres}{adres URL do pliku z metadanymi}
+\item{address}{address URL do pliku z metadanymi}
 
-\item{interwal}{interwal czasowy}
+\item{interval}{interval czasowy}
 }
 \description{
 Tylko do wewnetrznego uzytku...

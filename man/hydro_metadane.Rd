@@ -4,22 +4,21 @@
 \alias{hydro_metadane}
 \title{Hydrological metadata}
 \usage{
-hydro_metadane(interwal)
+hydro_metadane(interval)
 }
 \arguments{
-\item{interwal}{\itemize{
-\item Argument przyjmujący wartość: 'dobowe' , miesieczne' lub 'polroczne_i_roczne'.  Oznacza dla jakiej rozdzielczosci czasowej maja zostac przygotowane metadane dla srodowiska R
+\item{interval}{\itemize{
+\item Argument accepts the values: 'dobowe' , miesieczne' or 'polroczne_i_roczne'.  Indicates for which time resolution metadata for environment R should be prepared
 }}
 }
 \description{
-Pobranie opisu (metadanych) do danych hydrologicznych  udostępnionych w repozytorium danepubliczne.imgw.pl
-Domyślnie funkcja zwraca listę bądź ramkę danych dla wybranego podzbioru (w zależności od radzaj)
+Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
+By default, the function returns a list or data frame for a selected subset (depending on how to cope)
 }
 \examples{
-# przykladowe uzycie:
 \dontrun{
-  meta <- metadane(interwal = "dobowe")
-  meta <- metadane(interwal = "miesieczne")
-  meta <- metadane(interwal = "polroczne_i_roczne")
+  meta <- metadane(interval = "dobowe")
+  meta <- metadane(interval = "miesieczne")
+  meta <- metadane(interval = "polroczne_i_roczne")
 }
 }

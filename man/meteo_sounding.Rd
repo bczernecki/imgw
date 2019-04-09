@@ -4,7 +4,8 @@
 \alias{meteo_sounding}
 \title{Sounding data downloader}
 \usage{
-meteo_sounding(wmo_id = 12120, yy = 2019, mm = 4, dd = 9, hh = 0)
+meteo_sounding(wmo_id = 12120, yy = 2019, mm = 4, dd = 9, hh = 0,
+  sounding_indices = FALSE)
 }
 \arguments{
 \item{wmo_id}{międzynarodowy kod stacji wg WMO (World Meteorological Organization); Dla polskich stacji: Łeba - 12330, Legionowo - 12374, Wrocław- 12425}
@@ -16,6 +17,8 @@ meteo_sounding(wmo_id = 12120, yy = 2019, mm = 4, dd = 9, hh = 0)
 \item{dd}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
 
 \item{hh}{na większość stacji do wyboru godziny 00 i 12; sporadczynie pomiary wykonywane co 6h}
+
+\item{sounding_indices}{pobieranie dodatkowych informacji o wyliczonych indeksach oraz metadanych sondowania}
 }
 \description{
 Pobranie danych z pionowych sondowań atmosfery; Dane oryginalnie dostępne w serwisie: http://weather.uwyo.edu/upperair/sounding.html

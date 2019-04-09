@@ -4,23 +4,22 @@
 \alias{clean_metadata_meteo}
 \title{Funkcja czyszczaca metadane}
 \usage{
-clean_metadata_meteo(adres, rzad = "synop", interwal = "terminowe")
+clean_metadata_meteo(address, rank = "synop", interval = "terminowe")
 }
 \arguments{
-\item{adres}{adres URL do pliku z metadanymi}
+\item{address}{address URL to file with metadata}
 
-\item{rzad}{rzad}
+\item{rank}{rank}
 
-\item{interwal}{interwal czasowy}
+\item{interval}{interval czasowy}
 }
 \description{
 Tylko do wewnetrznego uzytku...
 Na potrzeby funkcji 'meteo_metadane()'
 }
 \examples{
-# przykladowe pobranie:
 \dontrun{
-  clean_metadata_meteo(adres = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rzad = "synop", interwal = "terminowe")
+  clean_metadata_meteo(address = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rank = "synop", interval = "terminowe")
 }
 
 }
