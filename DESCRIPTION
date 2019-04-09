@@ -27,3 +27,7 @@ Imports:
     magrittr,
     RCurl,
     XML
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

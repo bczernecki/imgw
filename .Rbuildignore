@@ -7,3 +7,4 @@
 ^\.Rproj\.user$
 ^\.httr-oauth$
 ^data-raw$
+^vignettes/articles$
