@@ -9,12 +9,12 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' meta <- meteo_metadane(interval = "dobowe", rank = "synop")
-#' meta <- meteo_metadane(interval = "terminowe", rank = "synop")
-#' meta <- meteo_metadane(interval = "miesieczne", rank = "opad")
+#' meta <- meteo_metadata(interval = "dobowe", rank = "synop")
+#' meta <- meteo_metadata(interval = "terminowe", rank = "synop")
+#' meta <- meteo_metadata(interval = "miesieczne", rank = "opad")
 #' }
 
-meteo_metadane <- function(interval, rank){ # interval moze byc: miesieczne, dobowe, terminowe
+meteo_metadata <- function(interval, rank){ # interval moze byc: miesieczne, dobowe, terminowe
   b <- NULL
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"

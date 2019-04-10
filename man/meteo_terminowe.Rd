@@ -4,11 +4,11 @@
 \alias{meteo_terminowe}
 \title{Hourly meteorological data}
 \usage{
-meteo_terminowe(rzad = "synop", rok = 1966:2018, status = FALSE,
+meteo_terminowe(rank = "synop", rok = 1966:2018, status = FALSE,
   coords = FALSE)
 }
 \arguments{
-\item{rzad}{rzad stacji (do wyboru: "synop", "klimat")}
+\item{rank}{rzad stacji (do wyboru: "synop", "klimat")}
 
 \item{rok}{wektor dla wybranych lat (np. 1966:2000)}
 

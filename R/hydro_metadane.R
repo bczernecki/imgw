@@ -9,12 +9,12 @@
 #' @export
 #' @examples
 #' \dontrun{
-#'   meta <- metadane(interval = "dobowe")
-#'   meta <- metadane(interval = "miesieczne")
-#'   meta <- metadane(interval = "polroczne_i_roczne")
+#'   meta <- hydro_metadata(interval = "dobowe")
+#'   meta <- hydro_metadata(interval = "miesieczne")
+#'   meta <- hydro_metadata(interval = "polroczne_i_roczne")
 #' }
 
-hydro_metadane <- function(interval){
+hydro_metadata <- function(interval){
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
 

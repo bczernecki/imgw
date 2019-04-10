@@ -23,7 +23,7 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interval <- "daily" # to mozemy ustawic na sztywno
-  meta <- meteo_metadane(interval = "daily", rank = rank)
+  meta <- meteo_metadata(interval = "daily", rank = rank)
 
   a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval, "/", rank, "/"),
               ftp.use.epsv = FALSE,
@@ -166,4 +166,4 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
 
   return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_daily
-meteo_daily(rank = "synop",year=2000)
+# meteo_daily(rank = "synop",year=2000)

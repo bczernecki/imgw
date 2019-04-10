@@ -30,7 +30,7 @@ hydro_monthly <- function(year = 1966:2000, coords = FALSE){
   catalogs  <- as.character(readHTMLTable(a)[[1]]$Name[ind])
   catalogs  <- gsub(x = catalogs , pattern = "/", replacement = "")
   catalogs  <- catalogs [catalogs  %in% as.character(year)]
-  meta <- hydro_metadane(interval)
+  meta <- hydro_metadata(interval)
 
   all_data <- vector("list", length = length(catalogs ))
   for (i in seq_along(catalogs )){

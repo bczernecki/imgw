@@ -31,7 +31,7 @@ hydro_yearly <-  function(year = 1966:2000, coords = FALSE, value = "H"){
   catalogs <- gsub(x = catalogs, pattern = "/", replacement = "")
   # mniej plików do wczytywania
   catalogs <- catalogs[catalogs %in% as.character(year)]
-  meta <- hydro_metadane(interval)
+  meta <- hydro_metadata(interval)
 
   all_data <- vector("list", length = length(catalogs))
   for (i in seq_along(catalogs)){
@@ -51,7 +51,7 @@ hydro_yearly <-  function(year = 1966:2000, coords = FALSE, value = "H"){
   }
   all_data <- do.call(rbind, all_data)
   # ten sam warunek braku danych lub obserwacji dla wszytkich wartosci
-  all_data[all_data==99999.999] <- NA
+  all_data[all_data == 99999.999] <- NA
   # brak wykorzystania coords
   return(all_data)
 }

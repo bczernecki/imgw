@@ -2,7 +2,7 @@
 #'
 #' Pobranie danych terminowych  (meteorologicznych) ze stacji SYNOP/KLIMAT udostepnionych w zbiorze danepubliczne.imgw.pl
 #'
-#' @param rzad rzad stacji (do wyboru: "synop", "klimat")
+#' @param rank rzad stacji (do wyboru: "synop", "klimat")
 #' @param rok wektor dla wybranych lat (np. 1966:2000)
 #' @param status czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )
 #' @param coords czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)
@@ -18,14 +18,14 @@
 #' }
 #'
 
-meteo_terminowe <- function(rzad = "synop", rok = 1966:2018, status = FALSE, coords = FALSE){
+meteo_terminowe <- function(rank = "synop", rok = 1966:2018, status = FALSE, coords = FALSE){
 
   stopifnot(rzad == "synop" | rzad == "klimat") # dla terminowek tylko synopy i klimaty maja dane
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interwal <- "terminowe" # to mozemy ustawic na sztywno
-  meta <- meteo_metadane(interwal = "terminowe", rzad = rzad)
+  meta <- meteo_metadata(interval = "terminowe", rank = rank)
 
   a <- getURL(paste0(base_url, "dane_meteorologiczne/", interwal, "/", rzad, "/"),
               ftp.use.epsv = FALSE,

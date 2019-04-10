@@ -35,7 +35,7 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE){
   catalogs <- as.character(readHTMLTable(a)[[1]]$Name[ind])
   catalogs <- gsub(x = catalogs, pattern = "/", replacement = "")
   catalogs <- catalogs[catalogs %in% as.character(year)]
-  meta <- hydro_metadane(interval)
+  meta <- hydro_metadata(interval)
 
   all_data <- vector("list", length = length(catalogs))
   for (i in seq_along(catalogs)){
@@ -67,16 +67,16 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE){
     all_data[[i]] <- merge(data1, data2,
                          by = c("Kod stacji", "Nazwa stacji",
                                "Rok hydrologiczny", "Nazwa rzeki/jeziora",
-                               "Wskaźnik miesiąca w roku hydrologicznym", "Dzień"),
+                               "Wska\u017anik miesi\u0105ca w roku hydrologicznym", "Dzie\u0144"),
                          all.x = TRUE)
   }
 
   all_data <- do.call(rbind, all_data)
-  all_data[all_data==9999] <- NA
-  all_data[all_data==99999.999] <- NA
-  all_data[all_data==99.9] <- NA
+  all_data[all_data == 9999] <- NA
+  all_data[all_data == 99999.999] <- NA
+  all_data[all_data == 99.9] <- NA
   #zjawiska lodowe nie uwzględniam 0 przy braku zjawisk lodowych bo to znaczy ze było poprostu 0
-  all_data[all_data==999] <- NA
+  all_data[all_data == 999] <- NA
   # brak wykorzystania coords
   return(all_data)
 }

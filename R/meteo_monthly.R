@@ -23,7 +23,7 @@ meteo_monthly <- function(rank = "synop", year = 1966:2018, status = FALSE, coor
     base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
     interval <- "miesieczne" # to mozemy ustawic na sztywno
-    meta <- meteo_metadane(interval = "miesieczne", rank = rank)
+    meta <- meteo_metadata(interval = "miesieczne", rank = rank)
 
     a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval, "/", rank, "/"),
                 ftp.use.epsv = FALSE,
@@ -94,4 +94,4 @@ meteo_monthly <- function(rank = "synop", year = 1966:2018, status = FALSE, coor
 
     return(all_data) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 }
-meteo_monthly(rank="synop",year=2000)
+# meteo_monthly(rank="synop",year=2000)
