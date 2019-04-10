@@ -38,11 +38,11 @@ install_github("bczernecki/imgw")
 
 ### Meteorological data
 
-* **meteo_miesieczne()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+* **meteo_monthly()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
-* **meteo_dobowe()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+* **meteo_daily()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
-* **meteo_terminowe()** -  Downloading hourly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+* **meteo_hourly()** -  Downloading hourly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
 * **meteo_metadata()** - Downloading the description (metadata) of the meteorological data provided in the danepubliczne.imgw.pl repository. 
 By default, the function returns a list or data frame for a selected subset.
@@ -50,11 +50,11 @@ By default, the function returns a list or data frame for a selected subset.
 
 ### Hydrological data
 
-* **hydro_roczne()** - Downloading semiannual and annual hydrological data from the danepubliczne.imgw.pl database
+* **hydro_yearly()** - Downloading semiannual and annual hydrological data from the danepubliczne.imgw.pl database
 
-* **hydro_miesieczne()** - Downloading monthly hydrological data from the danepubliczne.imgw.pl database
+* **hydro_monthly()** - Downloading monthly hydrological data from the danepubliczne.imgw.pl database
 
-* **hydro_dobowe()** - Downloading daily hydrological data from the danepubliczne.imgw.pl database
+* **hydro_daily()** - Downloading daily hydrological data from the danepubliczne.imgw.pl database
 
 * **hydro_metadata()** - Downloading the description (metadata) of the hydrological data provided in the danepubliczne.imgw.pl repository. 
 
