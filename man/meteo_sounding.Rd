@@ -4,7 +4,7 @@
 \alias{meteo_sounding}
 \title{Sounding data downloader}
 \usage{
-meteo_sounding(wmo_id = 12120, yy = 2019, mm = 1, dd = 1, hh = 0,
+meteo_sounding(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0,
   sounding_indices = FALSE)
 }
 \arguments{
@@ -39,7 +39,7 @@ Returns data.frame or list with values described at: weather.uwyo.edu ; For data
 }
 }
 \description{
-Downloading sounding data mea (i.e. measurements of the vertical profile of atmosphere); Source  oryginalnie dostępne w serwisie: http://weather.uwyo.edu/upperair/sounding.html
+Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html
 }
 \examples{
 \dontrun{

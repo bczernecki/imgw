@@ -1,6 +1,6 @@
 #' Sounding data downloader
 #'
-#' Downloading sounding data mea (i.e. measurements of the vertical profile of atmosphere); Source  oryginalnie dostępne w serwisie: http://weather.uwyo.edu/upperair/sounding.html
+#' Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html
 #'
 #' @param wmo_id International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12330, Legionowo - 12374, Wrocław- 12425 (default value = 12150)
 #' @param yy year - single number (default = 2019)
@@ -23,7 +23,6 @@
 #'  \item THTE = [K]
 #'  \item THTV = [K]
 #'  }
-
 #' @export
 #'
 #' @examples \dontrun{
@@ -32,34 +31,34 @@
 #' }
 #'
 
-meteo_sounding <- function(wmo_id = 12120, yy = 2019, mm = 1, dd = 1, hh = 0, sounding_indices = FALSE){
+meteo_sounding <- function(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0, sounding_indices = FALSE){
 
   mm <- formatC(mm, width = 2, format = "d", flag = "0")
   dd <- formatC(dd, width = 2, format = "d", flag = "0")
   hh <- formatC(hh, width = 2, format = "d", flag = "0")
 
-  url <- paste0("http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=",yy,"&MONTH=",
+  url <- paste0("http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=", yy, "&MONTH=",
                 mm, "&FROM=", dd, hh, "&TO=", dd, hh, "&STNM=", wmo_id)
 
   temp <- tempfile()
   download.file(url, temp)
 
   txt <- read.fwf(file = temp, widths = 1000)
-  sects <- grep(pattern="PRE>", x = txt$V1)
-  df <- read.fwf(file = temp, skip = sects[1]+4, widths = c(7,7,7,7,7,7,7,7,7,7,7), n = (sects[2]-(sects[1]+5)))
-  colnames(df) <- c("PRES","HGHT","TEMP","DWPT","RELH","MIXR","DRCT","SKNT","THTA","THTE","THTV")
+  sects <- grep(pattern = "PRE>", x = txt$V1)
+  df <- read.fwf(file = temp, skip = sects[1] + 4, widths = rep(7, 11),
+                 n = (sects[2] - (sects[1] + 5)))
+  colnames(df) <- c("PRES", "HGHT", "TEMP", "DWPT", "RELH", "MIXR", "DRCT", "SKNT", "THTA", "THTE", "THTV")
 
   if(sounding_indices == TRUE){
-
-    txt <- read.fwf(file = temp, skip = sects[2]+1, widths = 1000, n = (sects[3]-(sects[2]+2)), stringsAsFactors = F)$V1
-    df2 <- as.data.frame(matrix(data = unlist(strsplit(txt, split=": ")), ncol=2, byrow = T))
-    colnames(df2) <- c("parameter","value")
+    txt <- read.fwf(file = temp, skip = sects[2] + 1, widths = 1000,
+                    n = (sects[3] - (sects[2] + 2)), stringsAsFactors = FALSE)$V1
+    df2 <- as.data.frame(matrix(data = unlist(strsplit(txt, split = ": ")), ncol = 2, byrow = TRUE))
+    colnames(df2) <- c("parameter"," value")
     df <- list(df, df2)
   }
 
   unlink(temp)
 }
-
 
 # ONLY FOR TESTING PURPOSES:
 # a <- meteo_sounding(wmo_id = 12374, yy = 2018, mm = 8, dd = 24, hh = 12)
