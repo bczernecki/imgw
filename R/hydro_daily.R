@@ -1,4 +1,4 @@
-#' dobowe hydrological data
+#' Daily hydrological data
 #'
 #' Downloading hydrological data for the dobowe period
 #' available in the collection danepubliczne.imgw.pl
@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   dobowe <- hydro_daily(year = 2000)
+#'   daily <- hydro_daily(year = 2000)
 #'   head(mies)
 #' }
 #'
