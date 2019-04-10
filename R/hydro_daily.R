@@ -1,6 +1,6 @@
-#' Daily hydrological data
+#' dobowe hydrological data
 #'
-#' Downloading hydrological data for the daily period
+#' Downloading hydrological data for the dobowe period
 #' available in the collection danepubliczne.imgw.pl
 #'
 #' @param year vector of years (e.g. 1966:2000)
@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   daily <- hydro_daily(year = 2000)
+#'   dobowe <- hydro_daily(year = 2000)
 #'   head(mies)
 #' }
 #'
@@ -26,7 +26,7 @@
 
 hydro_daily <- function(year = 1966:2000, coords = FALSE){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
-  interval <- "daily"
+  interval <- "dobowe"
   a <- getURL(paste0(base_url, interval, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
@@ -66,11 +66,10 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE){
 
     all_data[[i]] <- merge(data1, data2,
                          by = c("Kod stacji", "Nazwa stacji",
-                               "year hydrologiczny", "Nazwa rzeki/jeziora",
-                               "Wska\u017anik miesi\u0105ca w yearu hydrologicznym", "Dzie\u0144"),
+                               "Rok hydrologiczny", "Nazwa rzeki/jeziora",
+                               "Wskaźnik miesiąca w roku hydrologicznym", "Dzień"),
                          all.x = TRUE)
   }
-  all_data <- do.call(rbind, all_data)
 
   all_data <- do.call(rbind, all_data)
   all_data[all_data==9999] <- NA
