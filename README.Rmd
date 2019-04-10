@@ -40,7 +40,7 @@ install_github("bczernecki/imgw")
 
 * **meteo_monthly()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
-* **meteo_daily()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+* **meteo_dail()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
 * **meteo_hourly()** -  Downloading hourly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
