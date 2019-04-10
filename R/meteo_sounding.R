@@ -2,7 +2,7 @@
 #'
 #' Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html
 #'
-#' @param wmo_id International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12330, Legionowo - 12374, Wrocław- 12425 (default value = 12150)
+#' @param wmo_id International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425 (default value = 12150)
 #' @param yy year - single number (default = 2019)
 #' @param mm month - single number denoting month (default = 1, i.e. January)
 #' @param dd day - single number denoting day (default = 1)

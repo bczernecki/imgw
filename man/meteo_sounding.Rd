@@ -8,7 +8,7 @@ meteo_sounding(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0,
   sounding_indices = FALSE)
 }
 \arguments{
-\item{wmo_id}{International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12330, Legionowo - 12374, Wrocław- 12425 (default value = 12150)}
+\item{wmo_id}{International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425 (default value = 12150)}
 
 \item{yy}{year - single number (default = 2019)}
 
