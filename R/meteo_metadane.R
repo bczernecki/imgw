@@ -23,28 +23,28 @@ meteo_metadane <- function(interval, rank){ # interval moze byc: miesieczne, dob
   if(interval == "dobowe")   { # uwaga! dobowe maja dla klimatow i synopow po 2 pliki z metadanymi!!!
 
     if(rank == "synop"){
-      b[[1]] <- clean_metadata_meteo(adres = paste0(base_url, "dane_meteorologiczne/dobowe/synop/s_d_format.txt"),
+      b[[1]] <- clean_metadata_meteo(address = paste0(base_url, "dane_meteorologiczne/dobowe/synop/s_d_format.txt"),
                                rank = "synop", interval = "dobowe")
-      b[[2]] <- clean_metadata_meteo(adres = paste0(base_url, "dane_meteorologiczne/dobowe/synop/s_d_t_format.txt"),
+      b[[2]] <- clean_metadata_meteo(address = paste0(base_url, "dane_meteorologiczne/dobowe/synop/s_d_t_format.txt"),
                                               rank = "synop", interval = "dobowe")
     }
 
     if(rank == "klimat"){
-      b[[1]] <- clean_metadata_meteo(adres = paste0(base_url, "dane_meteorologiczne/dobowe/klimat/k_d_format.txt"),
+      b[[1]] <- clean_metadata_meteo(address = paste0(base_url, "dane_meteorologiczne/dobowe/klimat/k_d_format.txt"),
                                rank = "klimat", interval = "dobowe")
-      b[[2]] <- clean_metadata_meteo(adres = paste0(base_url, "dane_meteorologiczne/dobowe/klimat/k_d_t_format.txt"),
+      b[[2]] <- clean_metadata_meteo(address = paste0(base_url, "dane_meteorologiczne/dobowe/klimat/k_d_t_format.txt"),
                                rank = "klimat", interval = "dobowe")
     }
 
     if(rank == "opad"){
-      b[[1]] <- clean_metadata_meteo(adres = paste0(base_url, "dane_meteorologiczne/dobowe/opad/o_d_format.txt"),
+      b[[1]] <- clean_metadata_meteo(address = paste0(base_url, "dane_meteorologiczne/dobowe/opad/o_d_format.txt"),
                                rank = "opad", interval = "dobowe")
     }
 
   } # koniec "DOBOWE"
 
 
-  # TODO: pod adresem: https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/synop/
+  # TODO: pod addressem: https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/miesieczne/synop/
   # sa 2 ranke metadanych, bo pliki miesieczne maja 2 ranke danych; w starej wersji paczki tylko jedna wersja jest uwzgledniana
   # dodatkowo inne ranke danych beda do pobrania w zaleznosci od danych SYNOP, KLIMAT, OPAD:
   if(interval == "miesieczne") {
