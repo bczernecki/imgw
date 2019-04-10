@@ -164,6 +164,6 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
   }
 
 
-  return(all_data[all_data$year %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
+  return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_daily
 meteo_daily(rank = "synop",year=2000)
