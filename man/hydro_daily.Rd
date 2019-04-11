@@ -7,13 +7,12 @@
 hydro_daily(year = 1966:2000, coords = FALSE)
 }
 \arguments{
-\item{year}{vector of years (e.g. 1966:2000)}
+\item{year}{vector of years (e.g., 1966:2000)}
 
-\item{coords}{add coordinates for the station (logical value TRUE or FALSE)}
+\item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 }
 \description{
-Downloading hydrological data for the dobowe period
-available in the collection danepubliczne.imgw.pl
+Downloading daily hydrological data from the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{

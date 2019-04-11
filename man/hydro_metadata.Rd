@@ -13,7 +13,7 @@ hydro_metadata(interval)
 }
 \description{
 Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
-By default, the function returns a list or data frame for a selected subset (depending on how to cope)
+By default, the function returns a list or data frame for a selected subset
 }
 \examples{
 \dontrun{

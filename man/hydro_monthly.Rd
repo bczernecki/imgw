@@ -4,20 +4,18 @@
 \alias{hydro_monthly}
 \title{Monthly hydrological data}
 \usage{
-hydro_monthly(year = 1966:2000, coords = FALSE)
+hydro_monthly(year)
 }
 \arguments{
-\item{year}{vector of years (e.g. 1966:2000)}
-
-\item{coords}{add coordinates for the station (logical value TRUE or FALSE)}
+\item{year}{vector of years (e.g., 1966:2000)}
 }
 \description{
-Downloading hydrological data for the monthly period, available in the collection danepubliczne.imgw.pl
+Downloading monthly hydrological data from the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{
   monthly <- hydro_monthly(year = 2000)
-  head(mies)
+  head(monthly)
 }
 
 }
