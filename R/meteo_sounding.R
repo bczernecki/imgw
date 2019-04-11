@@ -9,7 +9,7 @@
 #' @param hh hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day
 #' @param sounding_indices logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE; if set to TRUE returns list instead of data.frame
 #' @importFrom utils download.file read.fwf
-#' @return Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
+#' @return Returns list with values described at: weather.uwyo.edu ; The first list of returned object contains:
 #' \enumerate{
 #'  \item PRES - Pressure (hPa)
 #'  \item HGHT - Height (metres)
@@ -32,7 +32,7 @@
 #' }
 #'
 
-meteo_sounding <- function(wmo_id, yy, mm, dd, hh, sounding_indices = FALSE){
+meteo_sounding <- function(wmo_id, yy, mm, dd, hh){
 
   mm <- formatC(mm, width = 2, format = "d", flag = "0")
   dd <- formatC(dd, width = 2, format = "d", flag = "0")
@@ -51,15 +51,14 @@ meteo_sounding <- function(wmo_id, yy, mm, dd, hh, sounding_indices = FALSE){
   colnames(df) <- c("PRES", "HGHT", "TEMP", "DWPT", "RELH",
                     "MIXR", "DRCT", "SKNT", "THTA", "THTE", "THTV")
 
-  if(sounding_indices == TRUE){
-    txt <- read.fwf(file = temp, skip = sects[2] + 1, widths = 1000,
+  txt <- read.fwf(file = temp, skip = sects[2] + 1, widths = 1000,
                     n = (sects[3] - (sects[2] + 2)), stringsAsFactors = FALSE)$V1
-    df2 <- as.data.frame(matrix(data = unlist(strsplit(txt, split = ": ")), ncol = 2, byrow = TRUE))
-    colnames(df2) <- c("parameter"," value")
-    df <- list(df, df2)
-  }
-
+  df2 <- as.data.frame(matrix(data = unlist(strsplit(txt, split = ": ")), ncol = 2, byrow = TRUE))
+  colnames(df2) <- c("parameter"," value")
+  df <- list(df, df2)
   unlink(temp)
+
+  return(df)
 }
 
 # ONLY FOR TESTING PURPOSES:

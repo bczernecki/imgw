@@ -65,20 +65,31 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE){
       data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
       colnames(data1) <- meta[[1]]$parameters
 
+      if( rank != "precip"){ # w opadpwkach jest tylko jeden plik
       file2 <- paste(temp2, dir(temp2), sep = "/")[2]
       data2 <- read.csv(file2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
       colnames(data2) <- meta[[2]]$parameters
+      }
 
       # usuwa statusy
       if(status == FALSE){
         data1[grep("^Status", colnames(data1))] = NULL
-        data2[grep("^Status", colnames(data2))] = NULL
+
+          if(rank != "precip"){ # w plikach opadowych tylko jeden plik
+          data2[grep("^Status", colnames(data2))] = NULL
+          }
+
       }
 
       unlink(c(temp, temp2))
+
+      if(rank != "precip"){
       all_data[[i]] <- merge(data1, data2,
                            by = c("Kod stacji", "Rok", "Miesi\u0105c"),
                            all.x = TRUE)
+      } else {
+        all_data[[i]] <- data1
+      }
     }
 
     all_data <- do.call(rbind, all_data)
