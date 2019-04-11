@@ -7,7 +7,6 @@ citEntry(entry = "manual",
   title = "imgw: Polish Meteorological and Hydrological Data",
   year = "2019",
   note = "R package version 0.0.1",
-  doi = "10.5281/zenodo.1493487",
-  url = "https://bczernecki.github.io/waterquality/",
-  textVersion = "Czernecki, B., Głogowski A., Nowosad, J. (2019). imgw: Polish Meteorological and Hydrological Data. R package version 0.0.1. https://bczernecki.github.io/waterquality/"
+  url = "https://bczernecki.github.io/imgw/",
+  textVersion = "Czernecki, B., Głogowski A., Nowosad, J. (2019). imgw: Polish Meteorological and Hydrological Data. R package version 0.0.1. https://bczernecki.github.io/imgw/"
 )
