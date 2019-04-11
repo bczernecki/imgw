@@ -26,23 +26,23 @@ Overview
 
 ### Meteorological data
 
--   **meteo\_miesieczne()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+-   **meteo\_monthly()** - Downloading monthly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
--   **meteo\_dobowe()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+-   **meteo\_daily()** - Downloading daily meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
--   **meteo\_terminowe()** - Downloading hourly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
+-   **meteo\_hourly()** - Downloading hourly meteorological data from SYNOP/KLIMAT/OPAD stations made available in the danepubliczne.imgw.pl database
 
--   **meteo\_metadata()** - Downloading the description (metadata) of the meteorological data provided in the danepubliczne.imgw.pl repository. By default, the function returns a list or data frame for a selected subset. <!--lista czy ramka??-->
+-   **meteo\_metadata()** - Downloading the description (metadata) of the meteorological data provided in the danepubliczne.imgw.pl database <!-- By default, the function returns a list or data frame for a selected subset. --> <!--lista czy ramka??-->
 
 ### Hydrological data
 
--   **hydro\_roczne()** - Downloading semiannual and annual hydrological data from the danepubliczne.imgw.pl database
+-   **hydro\_annual()** - Downloading semiannual and annual hydrological data from the danepubliczne.imgw.pl database
 
--   **hydro\_miesieczne()** - Downloading monthly hydrological data from the danepubliczne.imgw.pl database
+-   **hydro\_monthly()** - Downloading monthly hydrological data from the danepubliczne.imgw.pl database
 
--   **hydro\_dobowe()** - Downloading daily hydrological data from the danepubliczne.imgw.pl database
+-   **hydro\_daily()** - Downloading daily hydrological data from the danepubliczne.imgw.pl database
 
--   **hydro\_metadata()** - Downloading the description (metadata) of the hydrological data provided in the danepubliczne.imgw.pl repository.
+-   **hydro\_metadata()** - Downloading the description (metadata) of the hydrological data provided in the danepubliczne.imgw.pl database
 
 Examples
 --------
