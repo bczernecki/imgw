@@ -1,10 +1,9 @@
-#' Funkcja czyszczaca metadane
+#' Meteorological metadata cleaning
 #'
-#' Tylko do wewnetrznego uzytku...
-#' Na potrzeby funkcji 'meteo_metadane()'
-#' @param address address URL to file with metadata
-#' @param rank rank
-#' @param interval interval czasowy
+#' Internal function for meteorological metadata cleaning
+#' @param address URL address of the metadata file
+#' @param rank stations' rank
+#' @param interval temporal interval
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @importFrom stats na.omit
@@ -16,7 +15,8 @@
 #'
 
 clean_metadata_meteo <- function(address, rank = "synop", interval = "terminowe"){
-  a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
+  a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
+                                         fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   length_char <- max(nchar(a$V1), na.rm = TRUE)
 

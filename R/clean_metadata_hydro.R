@@ -2,7 +2,7 @@
 #'
 #' Internal function for hydrological metadata cleaning
 #' @param address URL address of the metadata file
-#' @param interval interval
+#' @param interval temporal interval
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @return
