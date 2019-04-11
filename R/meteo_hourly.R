@@ -1,10 +1,10 @@
 #' Hourly meteorological data
 #'
-#' Downloading term (meteorological) data from the SYNOP / KLIMAT station available in the danepubliczne.imgw.pl collection
+#' Downloading hourly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
-#' @param rank rank of station ("synop" , "klimat" , "opad")
+#' @param rank rank of station ("synop" , "climate" , "precip")
 #' @param year vector of years (np. 1966:2000)
-#' @param status leave the columns with measurement or observation statuses (default status = FALSE - i.e. the status columns are deleted)
+#' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates for the station (logical value TRUE or FALSE)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
@@ -13,21 +13,25 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   hourly <- meteo_hourly(rank = "klimat", year = 1970:2000)
+#'   hourly <- meteo_hourly(rank = "climate", year = 1970:2000)
 #'   head(terminowe)
 #' }
 #'
 
 meteo_hourly <- function(rank = "synop", year = 1966:2018, status = FALSE, coords = FALSE){
 
-  stopifnot(rank == "synop" | rank == "klimat") # dla terminowek tylko synopy i klimaty maja dane
+  stopifnot(rank == "synop" | rank == "climate") # dla terminowek tylko synopy i klimaty maja dane
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
-  interval <- "terminowe" # to mozemy ustawic na sztywno
-  meta <- meteo_metadata(interval = "terminowe", rank = rank)
+  interval <- "hourly" # to mozemy ustawic na sztywno
+  interval_pl <- "terminowe" # to mozemy ustawic na sztywno
 
-  a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval, "/", rank, "/"),
+  meta <- meteo_metadata(interval = "hourly", rank = rank)
+
+  rank_pl <- switch(rank, synop = "synop", climate = "klimat", precip = "opad")
+
+  a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval_pl, "/", rank_pl, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
@@ -45,8 +49,8 @@ meteo_hourly <- function(rank = "synop", year = 1966:2018, status = FALSE, coord
     catalog <- gsub(catalogs[i], pattern = "/", replacement = "")
 
     if(rank == "synop") {
-      address <- paste0(base_url, "dane_meteorologiczne/terminowe/",
-                      rank, "/", catalog, "/")
+      address <- paste0(base_url, "dane_meteorologiczne/terminowe/synop",
+                        "/", catalog, "/")
       folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
@@ -70,16 +74,16 @@ meteo_hourly <- function(rank = "synop", year = 1966:2018, status = FALSE, coord
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data)+1]] <- data1
+        all_data[[length(all_data) + 1]] <- data1
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla synopa
 
     ######################
     ###### KLIMAT: #######
     ######################
-    if(rank == "klimat") {
-      address <- paste0(base_url, "dane_meteorologiczne/terminowe/",
-                      rank, "/", catalog, "/")
+    if(rank == "climate") {
+      address <- paste0(base_url, "dane_meteorologiczne/terminowe/klimat",
+                        "/", catalog, "/")
       folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego roku
 
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
@@ -102,20 +106,15 @@ meteo_hourly <- function(rank = "synop", year = 1966:2018, status = FALSE, coord
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data)+1]] <- data1
+        all_data[[length(all_data) + 1]] <- data1
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
-
-
-
   } # koniec petli po glownych catalogach danych dobowych
-
-
 
   all_data <- do.call(rbind, all_data)
 
   # dodaje rank
-  rank_code <- switch(rank, synop = "SYNOPTYCZNA", klimat = "KLIMATYCZNA")
+  rank_code <- switch(rank, synop = "SYNOPTYCZNA", climate = "KLIMATYCZNA")
   all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
   if (coords){
@@ -124,7 +123,6 @@ meteo_hourly <- function(rank = "synop", year = 1966:2018, status = FALSE, coord
                     by.x = "Kod_stacji", by.y = "Kod stacji",
                     all.y = TRUE)
   }
-
 
   return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_terminowe
