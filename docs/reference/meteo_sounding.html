@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hydrological metadata cleaning — clean_metadata_hydro • imgw</title>
+<title>Sounding data downloader — meteo_sounding • imgw</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Hydrological metadata cleaning — clean_metadata_hydro" />
+<meta property="og:title" content="Sounding data downloader — meteo_sounding" />
 
-<meta property="og:description" content="Internal function for hydrological metadata cleaning" />
+<meta property="og:description" content="Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,39 +112,85 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Hydrological metadata cleaning</h1>
+    <h1>Sounding data downloader</h1>
     
-    <div class="hidden name"><code>clean_metadata_hydro.Rd</code></div>
+    <div class="hidden name"><code>meteo_sounding.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Internal function for hydrological metadata cleaning</p>
+    <p>Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>clean_metadata_hydro</span>(<span class='no'>address</span>, <span class='no'>interval</span>)</pre>
+    <pre class="usage"><span class='fu'>meteo_sounding</span>(<span class='no'>wmo_id</span>, <span class='kw'>yy</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>dd</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>hh</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>sounding_indices</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>address</th>
-      <td><p>URL address of the metadata file</p></td>
+      <th>wmo_id</th>
+      <td><p>International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425 (default value = 12150)</p></td>
     </tr>
     <tr>
-      <th>interval</th>
-      <td><p>temporal interval</p></td>
+      <th>yy</th>
+      <td><p>year - single number (default = 2019)</p></td>
+    </tr>
+    <tr>
+      <th>mm</th>
+      <td><p>month - single number denoting month (default = 1, i.e. January)</p></td>
+    </tr>
+    <tr>
+      <th>dd</th>
+      <td><p>day - single number denoting day (default = 1)</p></td>
+    </tr>
+    <tr>
+      <th>hh</th>
+      <td><p>hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day; default value = 12</p></td>
+    </tr>
+    <tr>
+      <th>sounding_indices</th>
+      <td><ul>
+<li><p>logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE ; if set to TRUE returns list instead of data.frame</p></li>
+</ul></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:</p><ol>
+<li><p>PRES - Pressure (hPa)</p></li>
+<li><p>HGHT - Height (metres)</p></li>
+<li><p>TEMP - Temperature (C)</p></li>
+<li><p>DWPT - Dew point (C)</p></li>
+<li><p>RELH - Relative humidity (<!-- %) --></p></li>
+<li><p>MIXR - Mixing ratio (g/kg)</p></li>
+<li><p>DRCT - Wind direction (deg)</p></li>
+<li><p>SKNT - Wind speed (knots)</p></li>
+<li><p>THTA = (K)</p></li>
+<li><p>THTE = (K)</p></li>
+<li><p>THTV = (K)</p></li>
+</ol>
+
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+  <span class='no'>sounding</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_sounding</span>()
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>sounding</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

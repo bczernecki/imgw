@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hydrological metadata cleaning — clean_metadata_hydro • imgw</title>
+<title>Hydrological metadata — hydro_metadata • imgw</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Hydrological metadata cleaning — clean_metadata_hydro" />
+<meta property="og:title" content="Hydrological metadata — hydro_metadata" />
 
-<meta property="og:description" content="Internal function for hydrological metadata cleaning" />
+<meta property="og:description" content="Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
+By default, the function returns a list or data frame for a selected subset" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,39 +113,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Hydrological metadata cleaning</h1>
+    <h1>Hydrological metadata</h1>
     
-    <div class="hidden name"><code>clean_metadata_hydro.Rd</code></div>
+    <div class="hidden name"><code>hydro_metadata.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Internal function for hydrological metadata cleaning</p>
+    <p>Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
+By default, the function returns a list or data frame for a selected subset</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>clean_metadata_hydro</span>(<span class='no'>address</span>, <span class='no'>interval</span>)</pre>
+    <pre class="usage"><span class='fu'>hydro_metadata</span>(<span class='no'>interval</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>address</th>
-      <td><p>URL address of the metadata file</p></td>
-    </tr>
-    <tr>
       <th>interval</th>
-      <td><p>temporal interval</p></td>
+      <td><ul>
+<li><p>temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")</p></li>
+</ul></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+  <span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_metadata</span>(<span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"daily"</span>)
+  <span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_metadata</span>(<span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"monthly"</span>)
+  <span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_metadata</span>(<span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"semiannual_and_annual"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
