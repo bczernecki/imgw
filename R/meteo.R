@@ -7,8 +7,6 @@
 #' @param year vector of years (e.g., 1966:2000)
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
-#'
-#' @return
 #' @export
 #'
 #' @examples \dontrun{

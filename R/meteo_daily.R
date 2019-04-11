@@ -9,7 +9,6 @@
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
-#' @return
 #' @export
 #'
 #' @examples \dontrun{
