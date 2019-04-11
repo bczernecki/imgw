@@ -1,6 +1,6 @@
-#' Semiannual and annual hydrological data
+#' Semi-annual and annual hydrological data
 #'
-#' Downloading hydrological data for the annual period
+#' Downloading hydrological data for the semi-annual and annual period
 #' available in the collection danepubliczne.imgw.pl
 #'
 #' @param year vector of years (e.g. 1966:2000)
@@ -13,13 +13,11 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   yearly <- hydro_yearly(year = 2000,value="H")
-#'   head(mies)
+#'   yearly <- hydro_annual(year = 2000, value="H")
+#'   head(yearly)
 #' }
 #'
-
-
-hydro_yearly <-  function(year = 1966:2000, coords = FALSE, value = "H"){
+hydro_annual <-  function(year = 1966:2000, coords = FALSE, value = "H"){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "polroczne_i_roczne"
   a <- getURL(paste0(base_url, interval, "/"),
