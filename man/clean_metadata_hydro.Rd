@@ -4,7 +4,7 @@
 \alias{clean_metadata_hydro}
 \title{Hydrological metadata cleaning}
 \usage{
-clean_metadata_hydro(address, interval = "miesieczne")
+clean_metadata_hydro(address, interval)
 }
 \arguments{
 \item{address}{URL address of the metadata file}

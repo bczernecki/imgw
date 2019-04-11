@@ -14,18 +14,18 @@
 #polroczne_i_roczne
 #address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/polr_info.txt"
 
-clean_metadata_hydro <- function(address, interval = "miesieczne"){
+clean_metadata_hydro <- function(address, interval){
   a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
                                          fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
-  if(interval == "miesieczne") {
+  if(interval == "monthly") {
     b <- a[2:11, ] # skład danych jeszcze nie wiem jak ominąć problem kontroli
                     # ale on może się zmienić nie wiem czy nie lepiej wykluczyć ostatni rok
   }
-  if(interval == "dobowe") {
+  if(interval == "daily") {
     b <- a[2:11, ]
   }
-  if(interval == "polroczne_i_roczne") {
+  if(interval == "semiannual_and_annual") {
     godzina <- paste0(a[14, ], ":", a[15, ]) # nie jestem pewien czy tak bo w dokumentacji jest podzial na dwie kolumny,
                                             #ale w pliku jest jedna kolumna a pomiaru brak
     data <- c(a[11:13, ], godzina)
