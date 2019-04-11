@@ -7,15 +7,13 @@
 meteo_metadata(interval, rank)
 }
 \arguments{
-\item{interval}{\itemize{
-\item Argument accepting the value 'hourly', 'daily' (default), or 'monthly'.  Indicates for which time resolution metadata for environment R should be prepared
-}}
+\item{interval}{temporal resolution of the data ("hourly", "daily", "monthly")}
 
-\item{rank}{rank of station ("synop" , "climate" , "precip")}
+\item{rank}{rank of station ("synop", "climate", "precip")}
 }
 \description{
-Downloading the description (metadata) to the meteorological data available in the danepubliczne repository.imgw.pl
-By default, the function returns a list or data frame for a selected subset (depending on how to cop#`
+Downloading the description (metadata) to the meteorological data available in the danepubliczne repository.imgw.pl.
+By default, the function returns a list or data frame for a selected subset
 }
 \examples{
 \dontrun{

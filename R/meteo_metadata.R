@@ -1,10 +1,10 @@
 #' Meteorological metadata
 #'
-#' Downloading the description (metadata) to the meteorological data available in the danepubliczne repository.imgw.pl
-#' By default, the function returns a list or data frame for a selected subset (depending on how to cop#`
+#' Downloading the description (metadata) to the meteorological data available in the danepubliczne repository.imgw.pl.
+#' By default, the function returns a list or data frame for a selected subset
 #'
-#' @param interval -  Argument accepting the value 'hourly', 'daily' (default), or 'monthly'.  Indicates for which time resolution metadata for environment R should be prepared
-#' @param rank rank of station ("synop" , "climate" , "precip")
+#' @param interval temporal resolution of the data ("hourly", "daily", "monthly")
+#' @param rank rank of station ("synop", "climate", "precip")
 #'
 #' @export
 #' @examples

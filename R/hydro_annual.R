@@ -5,7 +5,7 @@
 #'
 #' @param year vector of years (e.g., 1966:2000)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
-#' @param value type of data (can be: "State=H (default)", "Flow=Q", "Temperature=T")
+#' @param value type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv

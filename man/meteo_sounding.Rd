@@ -2,25 +2,25 @@
 % Please edit documentation in R/meteo_sounding.R
 \name{meteo_sounding}
 \alias{meteo_sounding}
-\title{Sounding data downloader}
+\title{Sounding data}
+\source{
+http://weather.uwyo.edu/upperair/sounding.html
+}
 \usage{
-meteo_sounding(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0,
-  sounding_indices = FALSE)
+meteo_sounding(wmo_id, yy, mm, dd, hh, sounding_indices = FALSE)
 }
 \arguments{
-\item{wmo_id}{International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425 (default value = 12150)}
+\item{wmo_id}{international WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425}
 
-\item{yy}{year - single number (default = 2019)}
+\item{yy}{year - single number}
 
-\item{mm}{month - single number denoting month (default = 1, i.e. January)}
+\item{mm}{month - single number denoting month}
 
-\item{dd}{day - single number denoting day (default = 1)}
+\item{dd}{day - single number denoting day}
 
-\item{hh}{hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day; default value = 12}
+\item{hh}{hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day}
 
-\item{sounding_indices}{\itemize{
-\item logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE ; if set to TRUE returns list instead of data.frame
-}}
+\item{sounding_indices}{logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE; if set to TRUE returns list instead of data.frame}
 }
 \value{
 Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
@@ -39,7 +39,7 @@ Returns data.frame or list with values described at: weather.uwyo.edu ; For data
 }
 }
 \description{
-Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html
+Downloading the mea (i.e., measurements of the vertical profile of atmosphere) sounding data
 }
 \examples{
 \dontrun{

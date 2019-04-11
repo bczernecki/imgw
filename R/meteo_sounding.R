@@ -1,13 +1,13 @@
-#' Sounding data downloader
+#' Sounding data
 #'
-#' Downloading the mea (i.e. measurements of the vertical profile of atmosphere) sounding data; Source: http://weather.uwyo.edu/upperair/sounding.html
+#' Downloading the mea (i.e., measurements of the vertical profile of atmosphere) sounding data
 #'
-#' @param wmo_id International WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425 (default value = 12150)
-#' @param yy year - single number (default = 2019)
-#' @param mm month - single number denoting month (default = 1, i.e. January)
-#' @param dd day - single number denoting day (default = 1)
-#' @param hh hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day; default value = 12
-#' @param sounding_indices - logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE ; if set to TRUE returns list instead of data.frame
+#' @param wmo_id international WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425
+#' @param yy year - single number
+#' @param mm month - single number denoting month
+#' @param dd day - single number denoting day
+#' @param hh hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day
+#' @param sounding_indices logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE; if set to TRUE returns list instead of data.frame
 #' @importFrom utils download.file read.fwf
 #' @return Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
 #' \enumerate{
@@ -23,6 +23,7 @@
 #'  \item THTE = (K)
 #'  \item THTV = (K)
 #'  }
+#' @source http://weather.uwyo.edu/upperair/sounding.html
 #' @export
 #'
 #' @examples \dontrun{
@@ -31,7 +32,7 @@
 #' }
 #'
 
-meteo_sounding <- function(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0, sounding_indices = FALSE){
+meteo_sounding <- function(wmo_id, yy, mm, dd, hh, sounding_indices = FALSE){
 
   mm <- formatC(mm, width = 2, format = "d", flag = "0")
   dd <- formatC(dd, width = 2, format = "d", flag = "0")

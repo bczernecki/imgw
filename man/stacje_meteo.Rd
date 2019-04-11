@@ -3,7 +3,7 @@
 \docType{data}
 \name{stacje_meteo}
 \alias{stacje_meteo}
-\title{Location of weather stations}
+\title{Location of the weather stations}
 \format{The data contains a data.frame with 1998 obs. of 4 variables:
 \itemize{
 \item{X} {Longitude}
@@ -11,7 +11,7 @@
 \item{Kod_stacji} {Station ID}
 \item{Wysokosc} {Station elevation in m asl}
 }
-The object is in geographic coordinates using WGS84 (EPSG:4326).}
+The object is in the geographic coordinates using WGS84 (EPSG:4326).}
 \usage{
 stacje_meteo
 }

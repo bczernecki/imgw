@@ -1,6 +1,6 @@
 #' Meteorological data
 #'
-#' Downloading hourly, daily, and monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
+#' Downloading hourly, daily, and monthly meteorological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
 #' @param interval temporal resolution of the data ("hourly", "daily", "monthly")
 #' @param rank rank of the stations ("synop", "climate", "precip")

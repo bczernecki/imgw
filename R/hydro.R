@@ -1,11 +1,10 @@
 #' Hydrological data
 #'
-#' Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
-#' udostepnionych w zbiorze danepubliczne.imgw.pl
+#' Downloading hourly, daily, and monthly hydrological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
-#' @param interval - temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")
+#' @param interval temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")
 #' @param year vector of years (e.g., 1966:2000)
-#' @param value type of data (can be: "State=H (default)", "Flow=Q", "Temperature=T")
+#' @param value type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")
 #' @export
 #'
 #' @examples \dontrun{

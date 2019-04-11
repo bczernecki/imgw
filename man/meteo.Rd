@@ -18,7 +18,7 @@ meteo(interval, rank, year, status = FALSE, coords = FALSE)
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 }
 \description{
-Downloading hourly, daily, and monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
+Downloading hourly, daily, and monthly meteorological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{

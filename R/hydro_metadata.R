@@ -1,9 +1,9 @@
 #' Hydrological metadata
 #'
-#' Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
+#' Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository.
 #' By default, the function returns a list or data frame for a selected subset
 #`
-#' @param interval - temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")
+#' @param interval temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")
 #' @importFrom RCurl getURL
 #'
 #' @export

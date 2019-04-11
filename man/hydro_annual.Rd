@@ -11,7 +11,7 @@ hydro_annual(year, coords = FALSE, value = "H")
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 
-\item{value}{type of data (can be: "State=H (default)", "Flow=Q", "Temperature=T")}
+\item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
 }
 \description{
 Downloading hydrological data for the semi-annual and annual period

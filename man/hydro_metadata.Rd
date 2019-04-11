@@ -7,12 +7,10 @@
 hydro_metadata(interval)
 }
 \arguments{
-\item{interval}{\itemize{
-\item temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")
-}}
+\item{interval}{temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")}
 }
 \description{
-Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository
+Downloading the description (metadata) to hydrological data available in the danepubliczne.imgw.pl repository.
 By default, the function returns a list or data frame for a selected subset
 }
 \examples{
