@@ -1,10 +1,10 @@
 #' Daily meteorological data
 #'
-#' Downloading daily (meteorological) data from the SYNOP / KLIMAT / OPAD stations available in the danepubliczne.imgw.pl collection
+#' Downloading daily (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
-#' @param rank rank of station ("synop" , "klimat" , "opad")
+#' @param rank rank of station ("synop" , "climate" , "precip")
 #' @param year vector of years (np. 1966:2000)
-#' @param status leave the columns with measurement or observation statuses (default status = FALSE - i.e. the status columns are deleted)
+#' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates for the station (logical value TRUE or FALSE)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   daily <- meteo_daily(rank = "klimat", lata = 1970:2000)
+#'   daily <- meteo_daily(rank = "climate", lata = 1970:2000)
 #'   head(daily)
 #' }
 #'
@@ -23,9 +23,12 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interval <- "daily" # to mozemy ustawic na sztywno
+  interval_pl <- "dobowe"
   meta <- meteo_metadata(interval = "daily", rank = rank)
 
-  a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval, "/", rank, "/"),
+  rank_pl <- switch(rank, synop = "synop", climate = "klimat", precip = "opad")
+
+  a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval_pl, "/", rank_pl, "/"),
               ftp.use.epsv = FALSE,
               dirlistonly = TRUE)
   ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
@@ -43,8 +46,8 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
     catalog <- gsub(catalogs[i], pattern = "/", replacement = "")
 
     if(rank == "synop") {
-      address <- paste0(base_url, "/dane_meteorologiczne/daily/",
-                      rank, "/", catalog, "/")
+      address <- paste0(base_url, "/dane_meteorologiczne/dobowe/synop",
+                        "/", catalog, "/")
       folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego yearu
 
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
@@ -73,16 +76,16 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data)+1]] <- merge(data1, data2, by = c("Kod stacji",  "year", "Miesi\u0105c", "Dzie\u0144"), all.x = TRUE)
+        all_data[[length(all_data) + 1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesi\u0105c", "Dzie\u0144"), all.x = TRUE)
       } # koniec petli po zipach do pobrania
 
     } # koniec if'a dla synopa
 
 ######################
 ###### KLIMAT: #######
-    if(rank == "klimat") {
-      address <- paste0(base_url, "dane_meteorologiczne/daily/",
-                      rank, "/", catalog, "/")
+    if(rank == "climate") {
+      address <- paste0(base_url, "dane_meteorologiczne/dobowe/klimat",
+                        "/", catalog, "/")
       folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego yearu
 
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
@@ -112,7 +115,7 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
 
         unlink(c(temp, temp2))
         all_data[[length(all_data)+1]] <- merge(data1, data2,
-                                            by = c("Kod stacji", "year", "Miesi\u0105c", "Dzie\u0144"),
+                                            by = c("Kod stacji", "Rok", "Miesi\u0105c", "Dzie\u0144"),
                                             all.x = TRUE)
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
@@ -121,9 +124,9 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
 
     ######################
     ######## OPAD: #######
-    if(rank == "opad") {
-      address <- paste0(base_url, "dane_meteorologiczne/daily/",
-                      rank, "/", catalog, "/")
+    if(rank == "precip") {
+      address <- paste0(base_url, "dane_meteorologiczne/dobowe/opad",
+                        "/", catalog, "/")
       folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego yearu
 
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
@@ -155,7 +158,7 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
   all_data <- do.call(rbind, all_data)
 
   # dodaje rank
-  rank_code <- switch(rank, synop = "SYNOPTYCZNA", klimat = "KLIMATYCZNA", opad = "OPADOWA")
+  rank_code <- switch(rank, synop = "SYNOPTYCZNA", climate = "KLIMATYCZNA", precip = "OPADOWA")
   all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
   if (coords){
@@ -163,7 +166,5 @@ meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords
     all_data <- merge(stacje_meteo, all_data, by.x = "Kod_stacji", by.y = "Kod stacji", all.y = TRUE)
   }
 
-
   return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_daily
-# meteo_daily(rank = "synop",year=2000)
