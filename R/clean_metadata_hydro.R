@@ -1,16 +1,11 @@
-#' Funkcja czyszczaca hydro metadane
+#' Hydrological metadata cleaning
 #'
-#' Tylko do wewnetrznego uzytku...
-#' Na potrzeby funkcji "hydro()" ?
-#' @param address address URL do pliku z metadanymi
-#' @param interval interval czasowy
+#' Internal function for hydrological metadata cleaning
+#' @param address URL address of the metadata file
+#' @param interval interval
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 #' @return
-#'
-#' @examples \dontrun{
-#'
-#' }
 #miesieczne
 #address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
 #dobowe
@@ -20,7 +15,8 @@
 #address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/polr_info.txt"
 
 clean_metadata_hydro <- function(address, interval = "miesieczne"){
-  a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000), fileEncoding = "CP1250", stringsAsFactors = FALSE)))
+  a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
+                                         fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   if(interval == "miesieczne") {
     b <- a[2:11, ] # skład danych jeszcze nie wiem jak ominąć problem kontroli
