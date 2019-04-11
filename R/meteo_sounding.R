@@ -8,7 +8,7 @@
 #' @param dd day - single number denoting day
 #' @param hh hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day
 #' @importFrom utils download.file read.fwf
-#' @return Returns list with values described at: weather.uwyo.edu ; The first list of returned object contains:
+#' @return Returns two lists with values described at: weather.uwyo.edu ; The first list contains:
 #' \enumerate{
 #'  \item PRES - Pressure (hPa)
 #'  \item HGHT - Height (metres)
@@ -30,7 +30,7 @@
 #' @examples \dontrun{
 #'   sounding <- meteo_sounding(wmo_id = 12120, yy = 2019, mm = 4, dd = 4, hh = 0)
 #'   head(sounding)
-#'   plot(sounding[[1]]$HGHT, sounding[[1]]$PRES, type='l')
+#'   plot(sounding[[1]]$HGHT, sounding[[1]]$PRES, type = 'l')
 #' }
 #'
 
