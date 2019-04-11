@@ -7,7 +7,7 @@
 http://weather.uwyo.edu/upperair/sounding.html
 }
 \usage{
-meteo_sounding(wmo_id, yy, mm, dd, hh, sounding_indices = FALSE)
+meteo_sounding(wmo_id, yy, mm, dd, hh)
 }
 \arguments{
 \item{wmo_id}{international WMO station code (World Meteorological Organization ID); For Polish stations: Łeba - 12120, Legionowo - 12374, Wrocław- 12425}
@@ -23,7 +23,7 @@ meteo_sounding(wmo_id, yy, mm, dd, hh, sounding_indices = FALSE)
 \item{sounding_indices}{logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE; if set to TRUE returns list instead of data.frame}
 }
 \value{
-Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
+Returns list with values described at: weather.uwyo.edu ; The first list of returned object contains:
 \enumerate{
 \item PRES - Pressure (hPa)
 \item HGHT - Height (metres)
