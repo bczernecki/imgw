@@ -19,8 +19,6 @@ meteo_sounding(wmo_id, yy, mm, dd, hh)
 \item{dd}{day - single number denoting day}
 
 \item{hh}{hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day}
-
-\item{sounding_indices}{logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE; if set to TRUE returns list instead of data.frame}
 }
 \value{
 Returns list with values described at: weather.uwyo.edu ; The first list of returned object contains:
@@ -36,6 +34,7 @@ Returns list with values described at: weather.uwyo.edu ; The first list of retu
 \item THTA = (K)
 \item THTE = (K)
 \item THTV = (K)
+The second list contains metadata and calculated thermodynamic / atmospheric instability indices
 }
 }
 \description{

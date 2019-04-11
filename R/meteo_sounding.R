@@ -7,7 +7,6 @@
 #' @param mm month - single number denoting month
 #' @param dd day - single number denoting day
 #' @param hh hour - single number denoting initial hour of sounding; for most stations this measurement is done twice a day (i.e. at 12 and 00 UTC), sporadically 4 times a day
-#' @param sounding_indices logical (default = FALSE); whether to download an extra information about sounding instability indices and metadata? default = FALSE; if set to TRUE returns list instead of data.frame
 #' @importFrom utils download.file read.fwf
 #' @return Returns list with values described at: weather.uwyo.edu ; The first list of returned object contains:
 #' \enumerate{
@@ -22,6 +21,7 @@
 #'  \item THTA = (K)
 #'  \item THTE = (K)
 #'  \item THTV = (K)
+#'  The second list contains metadata and calculated thermodynamic / atmospheric instability indices
 #'  }
 #' @source http://weather.uwyo.edu/upperair/sounding.html
 #' @export
