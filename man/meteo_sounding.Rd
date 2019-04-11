@@ -25,17 +25,17 @@ meteo_sounding(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0,
 \value{
 Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
 \enumerate{
-\item PRES - Pressure \link{hPa}
-\item HGHT - Height \link{metres}
-\item TEMP - Temperature \link{C}
-\item DWPT - Dew point \link{C}
-\item RELH - Relative humidity \link{\%}
-\item MIXR - Mixing ratio \link{g/kg}
-\item DRCT - Wind direction \link{deg}
-\item SKNT - Wind speed \link{knots}
-\item THTA = \link{K}
-\item THTE = \link{K}
-\item THTV = \link{K}
+\item PRES - Pressure (hPa)
+\item HGHT - Height (metres)
+\item TEMP - Temperature (C)
+\item DWPT - Dew point (C)
+\item RELH - Relative humidity (%)
+\item MIXR - Mixing ratio (g/kg)
+\item DRCT - Wind direction (deg)
+\item SKNT - Wind speed (knots)
+\item THTA = (K)
+\item THTE = (K)
+\item THTV = (K)
 }
 }
 \description{

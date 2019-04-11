@@ -11,17 +11,17 @@
 #' @importFrom utils download.file read.fwf
 #' @return Returns data.frame or list with values described at: weather.uwyo.edu ; For data frame the values in columns stands for:
 #' \enumerate{
-#'  \item PRES - Pressure [hPa]
-#'  \item HGHT - Height [metres]
-#'  \item TEMP - Temperature [C]
-#'  \item DWPT - Dew point [C]
-#'  \item RELH - Relative humidity [%]
-#'  \item MIXR - Mixing ratio [g/kg]
-#'  \item DRCT - Wind direction [deg]
-#'  \item SKNT - Wind speed [knots]
-#'  \item THTA = [K]
-#'  \item THTE = [K]
-#'  \item THTV = [K]
+#'  \item PRES - Pressure (hPa)
+#'  \item HGHT - Height (metres)
+#'  \item TEMP - Temperature (C)
+#'  \item DWPT - Dew point (C)
+#'  \item RELH - Relative humidity (%)
+#'  \item MIXR - Mixing ratio (g/kg)
+#'  \item DRCT - Wind direction (deg)
+#'  \item SKNT - Wind speed (knots)
+#'  \item THTA = (K)
+#'  \item THTE = (K)
+#'  \item THTV = (K)
 #'  }
 #' @export
 #'
@@ -37,8 +37,8 @@ meteo_sounding <- function(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0, sounding_i
   dd <- formatC(dd, width = 2, format = "d", flag = "0")
   hh <- formatC(hh, width = 2, format = "d", flag = "0")
 
-  url <- paste0("http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=", yy, "&MONTH=",
-                mm, "&FROM=", dd, hh, "&TO=", dd, hh, "&STNM=", wmo_id)
+  url <- paste0("http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=",
+                yy, "&MONTH=", mm, "&FROM=", dd, hh, "&TO=", dd, hh, "&STNM=", wmo_id)
 
   temp <- tempfile()
   download.file(url, temp)
@@ -47,7 +47,8 @@ meteo_sounding <- function(wmo_id, yy = 2019, mm = 1, dd = 1, hh = 0, sounding_i
   sects <- grep(pattern = "PRE>", x = txt$V1)
   df <- read.fwf(file = temp, skip = sects[1] + 4, widths = rep(7, 11),
                  n = (sects[2] - (sects[1] + 5)))
-  colnames(df) <- c("PRES", "HGHT", "TEMP", "DWPT", "RELH", "MIXR", "DRCT", "SKNT", "THTA", "THTE", "THTV")
+  colnames(df) <- c("PRES", "HGHT", "TEMP", "DWPT", "RELH",
+                    "MIXR", "DRCT", "SKNT", "THTA", "THTE", "THTV")
 
   if(sounding_indices == TRUE){
     txt <- read.fwf(file = temp, skip = sects[2] + 1, widths = 1000,
