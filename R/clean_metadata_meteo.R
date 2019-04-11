@@ -10,22 +10,22 @@
 #'
 #' @examples
 #' \dontrun{
-#'   clean_metadata_meteo(address = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rank = "synop", interval = "terminowe")
+#'   clean_metadata_meteo(address = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rank = "synop", interval = "hourly")
 #' }
 #'
 
-clean_metadata_meteo <- function(address, rank = "synop", interval = "terminowe"){
+clean_metadata_meteo <- function(address, rank = "synop", interval = "hourly"){
   a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
                                          fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   length_char <- max(nchar(a$V1), na.rm = TRUE)
 
-  if(rank == "opad" & interval == "terminowe") length_char <- 40 # wyjatek dla opadow
-  if(rank == "synop" & interval == "terminowe") length_char <- 60 # wyjatek dla synopow terminowych
+  if(rank == "precip" & interval == "hourly") length_char <- 40 # wyjatek dla precipow
+  if(rank == "synop" & interval == "hourly") length_char <- 60 # wyjatek dla synopow terminowych
 
   field <- substr(a$V1, length_char - 3, length_char)
 
-  if(rank == "synop" & interval == "miesieczne") {
+  if(rank == "synop" & interval == "monthly") {
     length_char <- as.numeric(names(sort(table(nchar(a$V1)), decreasing = TRUE)[1])) + 2
     field <- substr(a$V1, length_char - 3, length_char + 2)
   }
