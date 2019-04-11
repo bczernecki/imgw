@@ -1,11 +1,11 @@
 #' Monthly meteorological data
 #'
-#' Downloading monthly (meteorological) data from SYNOP / KLIMAT / OPAD stations available in the danepubliczne.imgw.pl collection
+#' Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
-#' @param rank rank of station ("synop" , "klimat" , "opad")
-#' @param year vector of years (np. 1966:2000)
-#' @param status leave the columns with measurement or observation statuses (default status = FALSE - i.e. the status columns are deleted)
-#' @param coords add coordinates for the station (logical value TRUE or FALSE)
+#' @param rank rank of the stations ("synop", "klimat", or "opad")
+#' @param year vector of years (e.g., 1966:2000)
+#' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
+#' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -13,19 +13,21 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   monthly <- meteo_monthly(rank = "klimat")
+#'   monthly <- meteo_monthly(rank = "climate", year = 1969)
 #'   head(monthly)
 #' }
 #'
 
-meteo_monthly <- function(rank = "synop", year = 1966:2018, status = FALSE, coords = FALSE){
+meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE){
 
     base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
     interval <- "miesieczne" # to mozemy ustawic na sztywno
-    meta <- meteo_metadata(interval = "miesieczne", rank = rank)
+    meta <- meteo_metadata(interval = "monthly", rank = rank)
 
-    a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval, "/", rank, "/"),
+    rank_pl <- switch(rank, synop = "synop", climate = "klimat", precip = "opad")
+
+    a <- getURL(paste0(base_url, "dane_meteorologiczne/", interval, "/", rank_pl, "/"),
                 ftp.use.epsv = FALSE,
                 dirlistonly = TRUE)
     ind <- grep(readHTMLTable(a)[[1]]$Name, pattern = "/")
@@ -44,16 +46,16 @@ meteo_monthly <- function(rank = "synop", year = 1966:2018, status = FALSE, coor
       catalog <- gsub(catalogs[i], pattern = "/", replacement = "")
 
       if(rank == "synop") {
-        address <- paste0(base_url, "dane_meteorologiczne/miesieczne/",
-                        rank, "/", catalog, "/", catalog, "_m_s.zip")
+        address <- paste0(base_url, "dane_meteorologiczne/miesieczne/synop",
+                          "/", catalog, "/", catalog, "_m_s.zip")
       }
-      if(rank == "klimat") {
-        address <- paste0(base_url, "dane_meteorologiczne/miesieczne/",
-                        rank, "/", catalog, "/", catalog, "_m_k.zip")
+      if(rank == "climate") {
+        address <- paste0(base_url, "dane_meteorologiczne/miesieczne/klimat",
+                          "/", catalog, "/", catalog, "_m_k.zip")
       }
-      if(rank == "opad") {
-        address <- paste0(base_url, "dane_meteorologiczne/miesieczne/",
-                        rank, "/", catalog, "/", catalog, "_m_o.zip")
+      if(rank == "precip") {
+        address <- paste0(base_url, "dane_meteorologiczne/miesieczne/opad",
+                          "/", catalog, "/", catalog, "_m_o.zip")
       }
 
       temp <- tempfile()
@@ -84,7 +86,7 @@ meteo_monthly <- function(rank = "synop", year = 1966:2018, status = FALSE, coor
     all_data <- all_data[all_data$Rok %in% year, ]
 
     # dodaje rank
-    rank_code <- switch(rank, synop = "SYNOPTYCZNA", klimat = "KLIMATYCZNA", opad = "OPADOWA")
+    rank_code <- switch(rank, synop = "SYNOPTYCZNA", climate = "KLIMATYCZNA", precip = "OPADOWA")
     all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
     if (coords){
@@ -94,4 +96,3 @@ meteo_monthly <- function(rank = "synop", year = 1966:2018, status = FALSE, coor
 
     return(all_data) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 }
-# meteo_monthly(rank="synop",year=2000)

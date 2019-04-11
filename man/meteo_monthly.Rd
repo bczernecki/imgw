@@ -4,24 +4,23 @@
 \alias{meteo_monthly}
 \title{Monthly meteorological data}
 \usage{
-meteo_monthly(rank = "synop", year = 1966:2018, status = FALSE,
-  coords = FALSE)
+meteo_monthly(rank, year, status = FALSE, coords = FALSE)
 }
 \arguments{
-\item{rank}{rank of station ("synop" , "klimat" , "opad")}
+\item{rank}{rank of the stations ("synop", "klimat", or "opad")}
 
-\item{year}{vector of years (np. 1966:2000)}
+\item{year}{vector of years (e.g., 1966:2000)}
 
-\item{status}{leave the columns with measurement or observation statuses (default status = FALSE - i.e. the status columns are deleted)}
+\item{status}{leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)}
 
-\item{coords}{add coordinates for the station (logical value TRUE or FALSE)}
+\item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 }
 \description{
-Downloading monthly (meteorological) data from SYNOP / KLIMAT / OPAD stations available in the danepubliczne.imgw.pl collection
+Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{
-  monthly <- meteo_monthly(rank = "klimat")
+  monthly <- meteo_monthly(rank = "climate", year = 1969)
   head(monthly)
 }
 

@@ -4,24 +4,23 @@
 \alias{meteo_daily}
 \title{Daily meteorological data}
 \usage{
-meteo_daily(rank = "synop", year = 1966:2018, status = FALSE,
-  coords = FALSE)
+meteo_daily(rank, year, status = FALSE, coords = FALSE)
 }
 \arguments{
-\item{rank}{rank of station ("synop" , "klimat" , "opad")}
+\item{rank}{rank of the stations ("synop", "climate", or "precip")}
 
-\item{year}{vector of years (np. 1966:2000)}
+\item{year}{vector of years (e.g., 1966:2000)}
 
-\item{status}{leave the columns with measurement or observation statuses (default status = FALSE - i.e. the status columns are deleted)}
+\item{status}{leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)}
 
-\item{coords}{add coordinates for the station (logical value TRUE or FALSE)}
+\item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 }
 \description{
-Downloading daily (meteorological) data from the SYNOP / KLIMAT / OPAD stations available in the danepubliczne.imgw.pl collection
+Downloading daily (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{
-  daily <- meteo_daily(rank = "klimat", lata = 1970:2000)
+  daily <- meteo_daily(rank = "climate", year = 2000)
   head(daily)
 }
 

@@ -4,26 +4,25 @@
 \alias{meteo}
 \title{Meteorological data}
 \usage{
-meteo(interwal, rzad = "synop", rok = 1966:2018, status = FALSE,
-  coords = FALSE)
+meteo(interval, rank, year, status = FALSE, coords = FALSE)
 }
 \arguments{
-\item{interwal}{interwał stacji (do wyboru: "dobowe" , "miesieczne" , "terminowe")}
+\item{interval}{temporal resolution of the data ("hourly", "daily", "monthly")}
 
-\item{rzad}{rzad stacji (do wyboru: "synop" , "klimat" , "opad")}
+\item{rank}{rank of the stations ("synop", "climate", "precip")}
 
-\item{rok}{wektor dla wybranych lat (np. 1966:2000)}
+\item{year}{vector of years (e.g., 1966:2000)}
 
-\item{status}{czy pozostawic kolumny ze statusami pomiarow lub obserwacji (domyslnie status = FALSE - tj. kolumny ze statusami sa usuwane )}
+\item{status}{leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)}
 
-\item{coords}{czy dodac koordynaty dla stacji (wartosc logiczna TRUE lub FALSE)}
+\item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 }
 \description{
-Pobranie danych meteorologicznych dla okresów "dobowe" , "miesieczne" , "terminowe"
-udostepnionych w zbiorze danepubliczne.imgw.pl
+Downloading hourly, daily, and monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{
-
+  x <- meteo("monthly", rank = "synop", year = 2018, coords = TRUE)
+  head(x)
 }
 }

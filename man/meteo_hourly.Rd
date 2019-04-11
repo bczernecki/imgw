@@ -4,25 +4,24 @@
 \alias{meteo_hourly}
 \title{Hourly meteorological data}
 \usage{
-meteo_hourly(rank = "synop", year = 1966:2018, status = FALSE,
-  coords = FALSE)
+meteo_hourly(rank, year, status = FALSE, coords = FALSE)
 }
 \arguments{
-\item{rank}{rank of station ("synop" , "klimat" , "opad")}
+\item{rank}{rank of the stations ("synop", "climate", or "precip")}
 
-\item{year}{vector of years (np. 1966:2000)}
+\item{year}{vector of years (e.g., 1966:2000)}
 
-\item{status}{leave the columns with measurement or observation statuses (default status = FALSE - i.e. the status columns are deleted)}
+\item{status}{leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)}
 
-\item{coords}{add coordinates for the station (logical value TRUE or FALSE)}
+\item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 }
 \description{
-Downloading term (meteorological) data from the SYNOP / KLIMAT station available in the danepubliczne.imgw.pl collection
+Downloading hourly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{
-  hourly <- meteo_hourly(rank = "klimat", year = 1970:2000)
-  head(terminowe)
+  hourly <- meteo_hourly(rank = "climate", year = 1984)
+  head(hourly)
 }
 
 }

@@ -2,10 +2,10 @@
 #'
 #' Downloading daily (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
-#' @param rank rank of station ("synop" , "climate" , "precip")
-#' @param year vector of years (np. 1966:2000)
+#' @param rank rank of the stations ("synop", "climate", or "precip")
+#' @param year vector of years (e.g., 1966:2000)
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
-#' @param coords add coordinates for the station (logical value TRUE or FALSE)
+#' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -13,12 +13,12 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   daily <- meteo_daily(rank = "climate", lata = 1970:2000)
+#'   daily <- meteo_daily(rank = "climate", year = 2000)
 #'   head(daily)
 #' }
 #'
 
-meteo_daily <- function(rank = "synop", year = 1966:2018, status = FALSE, coords = FALSE){
+meteo_daily <- function(rank, year, status = FALSE, coords = FALSE){
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
