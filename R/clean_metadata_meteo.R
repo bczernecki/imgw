@@ -21,7 +21,9 @@ clean_metadata_meteo <- function(address, rank = "synop", interval = "hourly"){
   length_char <- max(nchar(a$V1), na.rm = TRUE)
 
   if(rank == "precip" & interval == "hourly") length_char <- 40 # wyjatek dla precipow
+  if(rank == "precip" & interval == "daily") length_char <- 40 # wyjatek dla precipow dobowych
   if(rank == "synop" & interval == "hourly") length_char <- 60 # wyjatek dla synopow terminowych
+
 
   field <- substr(a$V1, length_char - 3, length_char)
 
