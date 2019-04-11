@@ -34,8 +34,8 @@ Returns list with values described at: weather.uwyo.edu ; The first list of retu
 \item THTA = (K)
 \item THTE = (K)
 \item THTV = (K)
-The second list contains metadata and calculated thermodynamic / atmospheric instability indices
 }
+The second list contains metadata and calculated thermodynamic / atmospheric instability indices
 }
 \description{
 Downloading the mea (i.e., measurements of the vertical profile of atmosphere) sounding data

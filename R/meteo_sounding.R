@@ -21,8 +21,9 @@
 #'  \item THTA = (K)
 #'  \item THTE = (K)
 #'  \item THTV = (K)
-#'  The second list contains metadata and calculated thermodynamic / atmospheric instability indices
 #'  }
+#'  The second list contains metadata and calculated thermodynamic / atmospheric instability indices
+#'
 #' @source http://weather.uwyo.edu/upperair/sounding.html
 #' @export
 #'
