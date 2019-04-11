@@ -2,21 +2,15 @@
 % Please edit documentation in R/clean_metadata_hydro.R
 \name{clean_metadata_hydro}
 \alias{clean_metadata_hydro}
-\title{Funkcja czyszczaca hydro metadane}
+\title{Hydrological metadata cleaning}
 \usage{
 clean_metadata_hydro(address, interval = "miesieczne")
 }
 \arguments{
-\item{address}{address URL do pliku z metadanymi}
+\item{address}{URL address of the metadata file}
 
-\item{interval}{interval czasowy}
+\item{interval}{temporal interval}
 }
 \description{
-Tylko do wewnetrznego uzytku...
-Na potrzeby funkcji "hydro()" ?
-}
-\examples{
-\dontrun{
-
-}
+Internal function for hydrological metadata cleaning
 }

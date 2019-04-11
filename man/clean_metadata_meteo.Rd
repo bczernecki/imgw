@@ -2,24 +2,23 @@
 % Please edit documentation in R/clean_metadata_meteo.R
 \name{clean_metadata_meteo}
 \alias{clean_metadata_meteo}
-\title{Funkcja czyszczaca metadane}
+\title{Meteorological metadata cleaning}
 \usage{
-clean_metadata_meteo(address, rank = "synop", interval = "terminowe")
+clean_metadata_meteo(address, rank = "synop", interval = "hourly")
 }
 \arguments{
-\item{address}{address URL to file with metadata}
+\item{address}{URL address of the metadata file}
 
-\item{rank}{rank}
+\item{rank}{stations' rank}
 
-\item{interval}{interval czasowy}
+\item{interval}{temporal interval}
 }
 \description{
-Tylko do wewnetrznego uzytku...
-Na potrzeby funkcji 'meteo_metadane()'
+Internal function for meteorological metadata cleaning
 }
 \examples{
 \dontrun{
-  clean_metadata_meteo(address = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rank = "synop", interval = "terminowe")
+  clean_metadata_meteo(address = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/dobowe/synop/s_d_format.txt", rank = "synop", interval = "hourly")
 }
 
 }

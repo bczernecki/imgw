@@ -4,17 +4,17 @@
 \alias{hydro}
 \title{Hydrological data}
 \usage{
-hydro(interwal = "miesieczne", rok = 1966:2000, coords = FALSE,
+hydro(interval = "miesieczne", year = 1966:2000, coords = FALSE,
   value = NULL)
 }
 \arguments{
-\item{interwal}{interwał stacji (do wyboru: "dobowe" , "miesieczny"(domyslnie) , "polroczne_i_roczne")}
+\item{interval}{argument accepting the value 'terminowe' , dobowe' (default), or 'miesieczne'.  Indicates for which time resolution metadata for environment R should be prepared}
 
-\item{rok}{wektor dla wybranych lat (np. 1966:2000)}
+\item{year}{vector of years (e.g. 1966:2000)}
 
-\item{coords}{czy dodac wspolrzedne (WGS84) i wysokosc stacji? (domyslnie coords = FALSE)}
+\item{coords}{add coordinates for the station (logical value TRUE or FALSE)}
 
-\item{value}{rodzaj danych (do wyboru: "Stan=H (domyslnie)" , "Przepływ=Q" , "Temperatura=T")}
+\item{value}{type of data ( can be: "State=H (default)" , "Flow=Q" , "Temperature=T")}
 }
 \description{
 Pobranie danych hydrologicznych dla okresów "dobowe" , "miesieczny" , "polroczne_i_roczne"
@@ -24,5 +24,4 @@ udostepnionych w zbiorze danepubliczne.imgw.pl
 \dontrun{
 
 }
-
 }
