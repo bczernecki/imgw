@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "imgw",
   "description": "Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).",
@@ -98,18 +101,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "magrittr",
-      "name": "magrittr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=magrittr"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "RCurl",
       "name": "RCurl",
       "provider": {
@@ -136,7 +127,7 @@
   "codeRepository": "https://github.com/bczernecki/imgw",
   "releaseNotes": "https://github.com/bczernecki/imgw/blob/master/NEWS.md",
   "readme": "https://github.com/bczernecki/imgw/blob/master/README.md",
-  "fileSize": "62.796KB",
+  "fileSize": "62.937KB",
   "contIntegration": "https://travis-ci.org/bczernecki/imgw",
   "citation": [
     {

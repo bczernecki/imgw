@@ -69,7 +69,7 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE){
 
         # usuwa statusy
         if(status == FALSE){
-          data1[grep("^Status", colnames(data1))] = NULL
+          data1[grep("^Status", colnames(data1))] <- NULL
         }
 
         unlink(c(temp, temp2))
@@ -101,7 +101,7 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE){
         colnames(data1) <- meta[[1]]$parameters
         # usuwa statusy
         if(status == FALSE){
-          data1[grep("^Status", colnames(data1))] = NULL
+          data1[grep("^Status", colnames(data1))] <- NULL
         }
 
         unlink(c(temp, temp2))

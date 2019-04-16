@@ -26,7 +26,7 @@ clean_metadata_hydro <- function(address, interval){
     SPT[1] <- paste0(SPT[1], "]")
     SPT[2] <- paste0(SPT[2], "]")
     b <- NULL
-    for (i in 1:length(SPT)) {
+    for (i in seq_along(SPT)) {
       tmp <- c(a[2:8, ], SPT[i], data_od, data_do)
       b <- cbind(b, tmp)
     }

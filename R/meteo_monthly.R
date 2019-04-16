@@ -73,10 +73,10 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE){
 
       # usuwa statusy
       if(status == FALSE){
-        data1[grep("^Status", colnames(data1))] = NULL
+        data1[grep("^Status", colnames(data1))] <- NULL
 
           if(rank != "precip"){ # w plikach opadowych tylko jeden plik
-          data2[grep("^Status", colnames(data2))] = NULL
+          data2[grep("^Status", colnames(data2))] <- NULL
           }
 
       }

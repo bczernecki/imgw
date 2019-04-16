@@ -11,7 +11,7 @@
 #'   x <- hydro("monthly", year = 1999)
 #'   head(x)
 #' }
-hydro = function(interval, year, value = NULL){
+hydro <- function(interval, year, value = NULL){
 
   if (interval == "daily"){
     # dobowe

@@ -13,7 +13,7 @@
 #'   x <- meteo("monthly", rank = "synop", year = 2018, coords = TRUE)
 #'   head(x)
 #' }
-meteo = function(interval, rank, year, status = FALSE, coords = FALSE){
+meteo <- function(interval, rank, year, status = FALSE, coords = FALSE){
   if (interval == "daily"){
     # daily
     calosc <- meteo_daily(rank = rank, year = year, status = status, coords = coords)
