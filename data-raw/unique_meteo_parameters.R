@@ -1,5 +1,15 @@
 library(imgw)
 library(stringr)
+
+m_hs <- meteo_metadata("hourly", "synop")
+m_hc <- meteo_metadata("hourly", "climate")
+m_ds <- meteo_metadata("daily", "synop")
+m_dc <- meteo_metadata("daily", "climate")
+m_dp <- meteo_metadata("daily", "precip")
+m_ms <- meteo_metadata("monthly", "synop")
+m_mc <- meteo_metadata("monthly", "climate")
+m_mp <- meteo_metadata("monthly", "precip")
+
 all_meteo_metadata = dplyr::bind_rows(
   m_hs[[1]],
   m_hc[[1]],
@@ -15,10 +25,8 @@ all_meteo_metadata = dplyr::bind_rows(
   m_mp[[1]]
 )
 
-unique_meteo_parameters = str_squish(x$parameters) #usuwa podwojne spacje, etc.
+unique_meteo_parameters = str_squish(all_meteo_metadata$parameters) #usuwa podwojne spacje, etc.
 unique_meteo_parameters = unique(unique_meteo_parameters)
 unique_meteo_parameters = sort(unique_meteo_parameters)
 
-# Bartek, czym się różni:
-# Suma dobowa opadów [mm]
-# Suma dobowa opadu [mm]
+View(unique_meteo_parameters)
