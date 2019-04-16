@@ -6,6 +6,13 @@
 #' @importFrom RCurl getURL
 #' @importFrom utils read.fwf
 clean_metadata_hydro <- function(address, interval){
+  #miesieczne
+  #address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
+  #dobowe
+  #"https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/dobowe/codz_info.txt"
+  #"https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/dobowe/zjaw_info.txt"
+  #polroczne_i_roczne
+  #address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/polr_info.txt"
   a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
                                          fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
@@ -36,10 +43,4 @@ clean_metadata_hydro <- function(address, interval){
   b
 }
 
-#miesieczne
-#address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/miesieczne/mies_info.txt"
-#dobowe
-#"https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/dobowe/codz_info.txt"
-#"https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/dobowe/zjaw_info.txt"
-#polroczne_i_roczne
-#address="https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/polr_info.txt"
+
