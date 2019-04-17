@@ -17,12 +17,12 @@ clean_metadata_hydro <- function(address, interval){
                                          fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   if(interval == "monthly") {
-    b <- a[2:11, ] # skład danych jeszcze nie wiem jak ominąć problem kontroli
+    b <- list(data.frame(a[2:11, ])) # skład danych jeszcze nie wiem jak ominąć problem kontroli
                     # ale on może się zmienić nie wiem czy nie lepiej wykluczyć ostatni rok
   }
   if(interval == "daily") {
-    b <- a[2:11, ]
-  }
+    b <- data.frame(a[2:11, ])
+    }
   if(interval == "semiannual_and_annual") {
     godzina <- paste0(a[14, ], ":", a[15, ]) # nie jestem pewien czy tak bo w dokumentacji jest podzial na dwie kolumny,
                                             #ale w pliku jest jedna kolumna a pomiaru brak
@@ -37,8 +37,7 @@ clean_metadata_hydro <- function(address, interval){
       tmp <- c(a[2:8, ], SPT[i], data_od, data_do)
       b <- cbind(b, tmp)
     }
-    colnames(b) <- c("H", "Q", "T")
-    b <- as.data.frame(b)
+    b <- list("H"=b[,1], "Q"=b[,2], "T"=b[,2])
     }
   b
 }
