@@ -15,8 +15,14 @@
 #'
 
 clean_metadata_meteo <- function(address, rank = "synop", interval = "hourly"){
-  a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
-                                         fileEncoding = "CP1250", stringsAsFactors = FALSE)))
+
+  a <- readLines(address, warn = F)
+  a <- iconv(a, from = "cp1250", to = "utf-8")
+  a <- data.frame(V1=a[nchar(a)>0], stringsAsFactors = F)
+
+  # to nie dziala na windowsie:
+  # a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
+  #                                        fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   length_char <- max(nchar(a$V1), na.rm = TRUE)
 
