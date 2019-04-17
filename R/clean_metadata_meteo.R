@@ -17,7 +17,7 @@
 clean_metadata_meteo <- function(address, rank = "synop", interval = "hourly"){
 
   a <- readLines(address, warn = F)
-  a <- iconv(a, from = "cp1250", to = "utf-8")
+  a <- iconv(a, from = "cp1250",  to = 'ASCII//TRANSLIT') # usuwamy polskie znaki, bo to robi spore "kuku"
   a <- data.frame(V1=a[nchar(a)>0], stringsAsFactors = F)
 
   # to nie dziala na windowsie:
