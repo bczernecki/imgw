@@ -85,7 +85,7 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE){
 
       if(rank != "precip"){
       all_data[[i]] <- merge(data1, data2,
-                           by = c("Kod stacji", "Rok", "Miesi\u0105c"),
+                           by = c("Kod stacji", "Rok", "Miesiac"),
                            all.x = TRUE)
       } else {
         all_data[[i]] <- data1
