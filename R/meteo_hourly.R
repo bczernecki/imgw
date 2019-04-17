@@ -21,6 +21,8 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE){
 
   stopifnot(rank == "synop" | rank == "climate") # dla terminowek tylko synopy i klimaty maja dane
 
+  options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
+
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interval <- "hourly" # to mozemy ustawic na sztywno
