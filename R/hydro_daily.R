@@ -100,4 +100,4 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE,station=F){
   }
   return(all_data)
 }
-daily <- hydro_daily(year = 2000,station="KRZYŻANOWICE")
+
