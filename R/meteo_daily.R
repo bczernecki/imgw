@@ -19,6 +19,8 @@
 
 meteo_daily <- function(rank, year, status = FALSE, coords = FALSE){
 
+  options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
+
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interval <- "daily" # to mozemy ustawic na sztywno
@@ -75,7 +77,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE){
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data) + 1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesi\u0105c", "Dzie\u0144"), all.x = TRUE)
+        all_data[[length(all_data) + 1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
       } # koniec petli po zipach do pobrania
 
     } # koniec if'a dla synopa
@@ -114,7 +116,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE){
 
         unlink(c(temp, temp2))
         all_data[[length(all_data)+1]] <- merge(data1, data2,
-                                            by = c("Kod stacji", "Rok", "Miesi\u0105c", "Dzie\u0144"),
+                                            by = c("Kod stacji", "Rok", "Miesiac", "Dzien"),
                                             all.x = TRUE)
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
