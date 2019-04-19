@@ -6,17 +6,19 @@
 #' @param year vector of years (e.g., 1966:2000)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @param value type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")
+#'  @param station vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
+#' or ID of station(numeric)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
 #' @export
 #'
 #' @examples \dontrun{
-#'   yearly <- hydro_annual(year = 2000, value = "H")
+#'   yearly <- hydro_annual(year = 2000, value = "H",station="ANNOPOL")
 #'   head(yearly)
 #' }
 #'
-hydro_annual <-  function(year, coords = FALSE, value = "H"){
+hydro_annual <-  function(year, coords = FALSE, value = "H",station=F){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "semiannual_and_annual"
   interval_pl <- "polroczne_i_roczne"
@@ -55,5 +57,23 @@ hydro_annual <-  function(year, coords = FALSE, value = "H"){
   # ten sam warunek braku danych lub obserwacji dla wszytkich wartosci
   all_data[all_data == 99999.999] <- NA
   # brak wykorzystania coords
+  #station selection
+  if (station !=F) {
+    stations=read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",header = F)
+    if (is.character(station)) {
+      if( dim(stations[stations$V2  %in% station,])[1]==0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data=all_data[all_data$`Nazwa stacji` %in% station,]
+    } else if (is.numeric(station)){
+      if( dim(stations[stations$V1  %in% station,])[1]==0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data=all_data[all_data$`Kod stacji` %in% station,]
+    }else {
+      stop("Selected station(s) are not in proper format.", call. = FALSE)
+    }
+  }
   return(all_data)
 }
+yearly <- hydro_annual(year = 2000, value = "H",station="ANNOPOL")

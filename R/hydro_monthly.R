@@ -3,6 +3,8 @@
 #' Downloading monthly hydrological data from the danepubliczne.imgw.pl collection
 #'
 #' @param year vector of years (e.g., 1966:2000)
+#'  @param station vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
+#' or ID of station(numeric)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -13,7 +15,7 @@
 #'   head(monthly)
 #' }
 #'
-hydro_monthly <- function(year){
+hydro_monthly <- function(year,station=F){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "monthly"
   interval_pl <- "miesieczne"
@@ -43,7 +45,7 @@ hydro_monthly <- function(year){
     unzip(zipfile = temp, exdir = temp2)
     file1 <- paste(temp2, dir(temp2), sep = "/")[1]
     data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-    colnames(data1) <- meta[[1]]
+    colnames(data1) <- meta[[1]][,1]
     all_data[[i]] <- data1
   }
   all_data <- do.call(rbind, all_data)
@@ -54,6 +56,25 @@ hydro_monthly <- function(year){
   all_data[all_data == 9999] <- NA
   all_data[all_data == 99999.999] <- NA
   all_data[all_data == 99.9] <- NA
+  colnames(all_data) <- meta[[1]][,1]
   # brak wykorzystania coords
+  #station selection
+  if (station !=F) {
+    stations=read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",header = F)
+    if (is.character(station)) {
+      if( dim(stations[stations$V2  %in% station,])[1]==0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+     all_data=all_data[all_data$`Nazwa stacji` %in% station,]
+    } else if (is.numeric(station)){
+      if( dim(stations[stations$V1  %in% station,])[1]==0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data=all_data[all_data$`Kod stacji` %in% station,]
+    }else {
+      stop("Selected station(s) are not in proper format.", call. = FALSE)
+      }
+  }
   return(all_data)
 }
+

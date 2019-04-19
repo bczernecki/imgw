@@ -4,6 +4,8 @@
 #'
 #' @param year vector of years (e.g., 1966:2000)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
+#' @param station vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
+#' or ID of station(numeric)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -15,7 +17,7 @@
 #' }
 #'
 
-hydro_daily <- function(year = 1966:2000, coords = FALSE){
+hydro_daily <- function(year = 1966:2000, coords = FALSE,station=F){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "daily"
   interval_pl <- "dobowe"
@@ -47,7 +49,7 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE){
       unzip(zipfile = temp, exdir = temp2)
       file1 <- paste(temp2, dir(temp2), sep = "/")[1]
       data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-      colnames(data1) <- meta[[1]]
+      colnames(data1) <- meta[[1]][,1]
     }
     address <- paste0(base_url, interval_pl, "/", catalog, "/zjaw_", catalog, ".zip")
 
@@ -57,7 +59,7 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE){
     unzip(zipfile = temp, exdir = temp2)
     file2 <- paste(temp2, dir(temp2), sep = "/")[1]
     data2 <- read.csv(file2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-    colnames(data2) <- meta[[2]]
+    colnames(data2) <- meta[[2]][,1]
 
     all_data[[i]] <- merge(data1, data2,
                          by = c("Kod stacji", "Nazwa stacji",
@@ -79,5 +81,23 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE){
   #zjawiska lodowe nie uwzględniam 0 przy braku zjawisk lodowych bo to znaczy ze było poprostu 0
   all_data[all_data == 999] <- NA
   # brak wykorzystania coords
+  #station selection
+  if (station !=F) {
+    stations=read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",header = F)
+    if (is.character(station)) {
+      if( dim(stations[stations$V2  %in% station,])[1]==0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data=all_data[all_data$`Nazwa stacji` %in% station,]
+    } else if (is.numeric(station)){
+      if( dim(stations[stations$V1  %in% station,])[1]==0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data=all_data[all_data$`Kod stacji` %in% station,]
+    }else {
+      stop("Selected station(s) are not in proper format.", call. = FALSE)
+    }
+  }
   return(all_data)
 }
+daily <- hydro_daily(year = 2000,station="KRZYŻANOWICE")
