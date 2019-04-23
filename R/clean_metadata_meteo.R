@@ -16,9 +16,11 @@
 
 clean_metadata_meteo <- function(address, rank = "synop", interval = "hourly"){
 
-  a <- readLines(address, warn = F)
-  a <- iconv(a, from = "cp1250",  to = 'ASCII//TRANSLIT') # usuwamy polskie znaki, bo to robi spore "kuku"
-  a <- data.frame(V1=a[nchar(a)>0], stringsAsFactors = F)
+  a <- readLines(address, warn = FALSE)
+  a <- iconv(a, from = "cp1250", to = "ASCII//TRANSLIT") # usuwamy polskie znaki, bo to robi spore "kuku"
+  # a <- iconv(a, from = "cp1250", to = 'UTF-8') # usuwamy polskie znaki, bo to robi spore "kuku"
+
+  a <- data.frame(V1 = a[nchar(a) > 0], stringsAsFactors = FALSE)
 
   # to nie dziala na windowsie:
   # a <- suppressWarnings(na.omit(read.fwf(address, widths = c(1000),
@@ -26,14 +28,13 @@ clean_metadata_meteo <- function(address, rank = "synop", interval = "hourly"){
 
   length_char <- max(nchar(a$V1), na.rm = TRUE)
 
-  if(rank == "precip" & interval == "hourly") length_char <- 40 # wyjatek dla precipow
-  if(rank == "precip" & interval == "daily") length_char <- 40 # wyjatek dla precipow dobowych
-  if(rank == "synop" & interval == "hourly") length_char <- 60 # wyjatek dla synopow terminowych
-
+  if(rank == "precip" && interval == "hourly") length_char <- 40 # wyjatek dla precipow
+  if(rank == "precip" && interval == "daily") length_char <- 40 # wyjatek dla precipow dobowych
+  if(rank == "synop" && interval == "hourly") length_char <- 60 # wyjatek dla synopow terminowych
 
   field <- substr(a$V1, length_char - 3, length_char)
 
-  if(rank == "synop" & interval == "monthly") {
+  if(rank == "synop" && interval == "monthly") {
     length_char <- as.numeric(names(sort(table(nchar(a$V1)), decreasing = TRUE)[1])) + 2
     field <- substr(a$V1, length_char - 3, length_char + 2)
   }
