@@ -3,8 +3,8 @@
 #' Downloading monthly hydrological data from the danepubliczne.imgw.pl collection
 #'
 #' @param year vector of years (e.g., 1966:2000)
-#'  @param station vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
-#' or ID of station(numeric)
+#' @param station name or ID of hydrological station(s).
+#' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -15,7 +15,7 @@
 #'   head(monthly)
 #' }
 #'
-hydro_monthly <- function(year,station=F){
+hydro_monthly <- function(year, station = NULL){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "monthly"
   interval_pl <- "miesieczne"
@@ -59,20 +59,21 @@ hydro_monthly <- function(year,station=F){
   colnames(all_data) <- meta[[1]][,1]
   # brak wykorzystania coords
   #station selection
-  if (station !=F) {
-    stations=read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",header = F)
+  if (!is.null(station)) {
+    stations=read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",
+                      header = FALSE)
     if (is.character(station)) {
-      if( dim(stations[stations$V2  %in% station,])[1]==0){
+      if(dim(stations[stations$V2 %in% station, ])[1] == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
-     all_data=all_data[all_data$`Nazwa stacji` %in% station,]
+     all_data <- all_data[all_data$`Nazwa stacji` %in% station, ]
     } else if (is.numeric(station)){
-      if( dim(stations[stations$V1  %in% station,])[1]==0){
+      if( dim(stations[stations$V1 %in% station, ])[1] == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
-      all_data=all_data[all_data$`Kod stacji` %in% station,]
+      all_data <- all_data[all_data$`Kod stacji` %in% station, ]
     }else {
-      stop("Selected station(s) are not in proper format.", call. = FALSE)
+      stop("Selected station(s) are not in the proper format.", call. = FALSE)
       }
   }
   return(all_data)

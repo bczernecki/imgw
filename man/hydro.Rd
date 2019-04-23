@@ -4,7 +4,7 @@
 \alias{hydro}
 \title{Hydrological data}
 \usage{
-hydro(interval, year, value = NULL)
+hydro(interval, year, value = NULL, station = F)
 }
 \arguments{
 \item{interval}{temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")}
@@ -12,6 +12,9 @@ hydro(interval, year, value = NULL)
 \item{year}{vector of years (e.g., 1966:2000)}
 
 \item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
+
+\item{station}{vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
+or ID of station(numeric)}
 }
 \description{
 Downloading hourly, daily, and monthly hydrological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection

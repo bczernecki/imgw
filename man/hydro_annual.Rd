@@ -4,7 +4,7 @@
 \alias{hydro_annual}
 \title{Semi-annual and annual hydrological data}
 \usage{
-hydro_annual(year, coords = FALSE, value = "H")
+hydro_annual(year, coords = FALSE, value = "H", station = NULL)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
@@ -12,6 +12,9 @@ hydro_annual(year, coords = FALSE, value = "H")
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 
 \item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
+
+\item{station}{name or ID of hydrological station(s).
+It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 }
 \description{
 Downloading hydrological data for the semi-annual and annual period
@@ -19,8 +22,7 @@ available in the danepubliczne.imgw.pl collection
 }
 \examples{
 \dontrun{
-  yearly <- hydro_annual(year = 2000, value = "H")
+  yearly <- hydro_annual(year = 2000, value = "H", station = "ANNOPOL")
   head(yearly)
 }
-
 }

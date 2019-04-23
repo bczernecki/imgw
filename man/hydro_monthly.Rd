@@ -4,10 +4,13 @@
 \alias{hydro_monthly}
 \title{Monthly hydrological data}
 \usage{
-hydro_monthly(year)
+hydro_monthly(year, station = NULL)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
+
+\item{station}{name or ID of hydrological station(s).
+It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 }
 \description{
 Downloading monthly hydrological data from the danepubliczne.imgw.pl collection
