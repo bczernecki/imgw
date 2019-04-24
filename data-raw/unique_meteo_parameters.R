@@ -30,3 +30,9 @@ unique_meteo_parameters = unique(unique_meteo_parameters)
 unique_meteo_parameters = sort(unique_meteo_parameters)
 
 View(unique_meteo_parameters)
+
+# sprawdzenie czy stworzona recznie baza daje sie polaczyc left_joinem:
+skroty <- read.csv("data-raw/parametry_skrot.csv", stringsAsFactors = F)
+wsio <- data.frame(fullname = unique_meteo_parameters)
+laczenie <- dplyr::left_join(wsio,skroty)
+head(laczenie)
