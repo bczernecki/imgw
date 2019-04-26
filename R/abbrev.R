@@ -15,7 +15,7 @@
 
 abbrev <- function(data, duplicates = TRUE, format = "short"){
 
-  abbrev <- readRDS("data/abbrev.rda")
+  load("data/abbrev.rda")
   orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
 
   if(format == "short"){
