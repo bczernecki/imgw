@@ -1,6 +1,6 @@
-#' Shortening column names
+#' Shortening column names for meteorological variables
 #'
-#' Shortening column names to improve the readability of downloaded dataset and removing duplicated column names
+#' Shortening column names of meteorological parameters to improve the readability of downloaded dataset and removing duplicated column names
 #'
 #' @param data downloaded dataset with original column names
 #' @param format three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description
@@ -9,24 +9,24 @@
 #'
 #' @examples \dontrun{
 #'   colnames(data)
-#'   abbr <- shortening(data = data, format = "short", duplicates = TRUE)
+#'   abbr <- meteo_shortening(data = data, format = "short", duplicates = TRUE)
 #'   head(abbr)
 #' }
 #'
 
-shortening <- function(data, format = "short", duplicates = TRUE){
+meteo_shortening <- function(data, format = "short", duplicates = TRUE){
 
-  abbrev <- imgw::abbrev
+  abbrev <- imgw::meteo_abbrev
   orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
 
   if (format == "short"){
     # abbrev english
-    colnames(data) <- abbrev$abbr_ang[match(orig_columns, abbrev$fullname)]
+    colnames(data) <- abbrev$abbr_eng[match(orig_columns, abbrev$fullname)]
   }
 
   if (format == "full"){
     # full english names:
-    colnames(data) <- abbrev$fullname_ang[match(orig_columns, abbrev$fullname)]
+    colnames(data) <- abbrev$fullname_eng[match(orig_columns, abbrev$fullname)]
   }
 
   #if(format == "polish"){

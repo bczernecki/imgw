@@ -1,4 +1,4 @@
-fullname,abbr_ang,fullname_ang
+fullname,abbr_eng,fullname_eng
 Absolutna temperatura maksymalna [C],tmax_abs,Absolute maximum air temperature [C]
 Absolutna temperatura minimalna [C],tmin_abs,Absolute minimum air temperature [C]
 Aktynometria [J/cm2],irrad,Irradiance [J/cm2]
@@ -231,8 +231,8 @@ Widzialnosc [kod],visibility_code,Visibility [code]
 Widzialnosc automat [m],visibility_auto,Visibilty by device [m]
 Widzialnosc operatora [m],visibility_human,Visibilty by observer [m]
 Wilgotnosc wzgledna [%],rh,Relative humidity [%]
-Wskaźnik lodu [L/W],ice_indicator,Ice indicator [L/W]
-Wskaźnik wentylacji [W/N],ventil_indicator,Ventilation indicator [W/N]
+Wskaznik lodu [L/W],ice_indicator,Ice indicator [L/W]
+Wskaznik wentylacji [W/N],ventil_indicator,Ventilation indicator [W/N]
 Wysokosc podstawy chmur CL CM szyfrowana [kod],cloudbase_CM_code,Middle cloud base [code]
 Wysokosc podstawy nizszej [m],cloudbase_low,Lower cloud base [m]
 Wysokosc podstawy tekstowy [opis],cloudbase,Upper cloud base [text]

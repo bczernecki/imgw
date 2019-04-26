@@ -114,7 +114,7 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, short = TR
 
     # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
     if(short == TRUE){
-      all_data <- shortening(all_data, ...)
+      all_data <- meteo_shortening(all_data, ...)
     }
 
     return(all_data) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo

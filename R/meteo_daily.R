@@ -173,7 +173,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, short  = TRU
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   if(short == TRUE){
-    all_data <- shortening(all_data, ...)
+    all_data <- meteo_shortening(all_data, ...)
   }
 
 
