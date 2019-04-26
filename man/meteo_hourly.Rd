@@ -5,7 +5,7 @@
 \title{Hourly meteorological data}
 \usage{
 meteo_hourly(rank, year, status = FALSE, coords = FALSE,
-  col_names = "short", ...)
+  short = TRUE, ...)
 }
 \arguments{
 \item{rank}{rank of the stations ("synop", "climate", or "precip")}
@@ -16,7 +16,7 @@ meteo_hourly(rank, year, status = FALSE, coords = FALSE,
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 
-\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
+\item{short}{shortening column names (logical value TRUE or FALSE)}
 
 \item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
 }

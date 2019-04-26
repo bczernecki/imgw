@@ -11,7 +11,7 @@ meteo_shortening(data, format = "short", duplicates = TRUE)
 
 \item{format}{three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description}
 
-\item{duplicates}{whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)}
+\item{remove_duplicates}{whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)}
 }
 \description{
 Shortening column names of meteorological parameters to improve the readability of downloaded dataset and removing duplicated column names

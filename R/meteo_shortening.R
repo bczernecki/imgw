@@ -4,7 +4,7 @@
 #'
 #' @param data downloaded dataset with original column names
 #' @param format three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description
-#' @param duplicates whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)
+#' @param remove_duplicates whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)
 #' @export
 #'
 #' @examples \dontrun{
@@ -36,7 +36,7 @@ meteo_shortening <- function(data, format = "short", duplicates = TRUE){
 
 
   # removing duplicated column names:  (e.g. station's name)
-  if (duplicates == TRUE) {
+  if (remove_duplicates == TRUE) {
     data <- data[, !duplicated(colnames(data))]
   }
 
