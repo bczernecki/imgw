@@ -9,12 +9,12 @@
 #'
 #' @examples \dontrun{
 #'   colnames(data)
-#'   abbr <- meteo_shortening(data = data, format = "short", duplicates = TRUE)
+#'   abbr <- meteo_shortening(data = data, format = "short", remove_duplicates = TRUE)
 #'   head(abbr)
 #' }
 #'
 
-meteo_shortening <- function(data, format = "short", duplicates = TRUE){
+meteo_shortening <- function(data, format = "short", remove_duplicates = TRUE){
 
   abbrev <- imgw::meteo_abbrev
   orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
