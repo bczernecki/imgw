@@ -4,12 +4,12 @@
 \alias{shortening}
 \title{Shortening column names}
 \usage{
-shortening(data, format = "short", duplicates = TRUE)
+shortening(data, col_names = "short", duplicates = TRUE)
 }
 \arguments{
 \item{data}{downloaded dataset with original column names}
 
-\item{format}{three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description}
+\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 
 \item{duplicates}{whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)}
 }
@@ -19,7 +19,7 @@ Shortening column names to improve the readability of downloaded dataset and rem
 \examples{
 \dontrun{
   colnames(data)
-  abbr <- shortening(data = data, format = "short", duplicates = TRUE)
+  abbr <- shortening(data = data, colnames = "short", duplicates = TRUE)
   head(abbr)
 }
 
