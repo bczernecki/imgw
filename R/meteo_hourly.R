@@ -6,7 +6,7 @@
 #' @param year vector of years (e.g., 1966:2000)
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
-#' @param short shortening column names (logical value TRUE or FALSE)
+#' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
 #' @param ... other parameters that may be passed to 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
@@ -19,7 +19,7 @@
 #' }
 #'
 
-meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, short = TRUE, ...){
+meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, col_names = "short", ...){
 
   stopifnot(rank == "synop" | rank == "climate") # dla terminowek tylko synopy i klimaty maja dane
 
@@ -128,10 +128,7 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, short = TRU
   all_data <- all_data[all_data$Rok %in% year, ] # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
-  if(short == TRUE){
-    all_data <- shortening(all_data, ...)
-  }
-
+  all_data <- shortening(all_data, col_names = col_names, ...)
 
   return(all_data)
 } # koniec funkcji meteo_terminowe
