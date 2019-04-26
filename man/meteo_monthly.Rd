@@ -27,6 +27,10 @@ Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stat
 \dontrun{
   monthly <- meteo_monthly(rank = "climate", year = 1969)
   head(monthly)
+  #
+  # a descriptive (long) column names:
+  b <- meteo_monthly(rank = 'synop', year=2018, short = TRUE, format = "full")
+  head(b)
 }
 
 }
