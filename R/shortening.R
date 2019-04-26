@@ -16,24 +16,23 @@
 
 shortening <- function(data, format = "short", duplicates = TRUE){
 
-  abbrev <- imgw::abbrev
-  orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
+  if (format != "polish"){
+    abbrev <- imgw::abbrev
+    orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
 
-  if (format == "short"){
-    # abbrev english
-    colnames(data) <- abbrev$abbr_ang[match(orig_columns, abbrev$fullname)]
+    matches <- match(orig_columns, abbrev$fullname)
+    matches <- matches[!is.na(matches)]
+
+    if (format == "short"){
+      # abbrev english
+      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$abbr_ang[matches]
+    }
+
+    if (format == "full"){
+      # full english names:
+      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$fullname_ang[matches]
+    }
   }
-
-  if (format == "full"){
-    # full english names:
-    colnames(data) <- abbrev$fullname_ang[match(orig_columns, abbrev$fullname)]
-  }
-
-  #if(format == "polish"){
-  # fullname polish, no changes required:
-  # abbrev$fullname[match(orig_columns, abbrev$fullname)]
-  #}
-
 
   # removing duplicated column names:  (e.g. station's name)
   if (duplicates == TRUE) {
