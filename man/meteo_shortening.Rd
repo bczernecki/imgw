@@ -4,7 +4,7 @@
 \alias{meteo_shortening}
 \title{Shortening column names for meteorological variables}
 \usage{
-meteo_shortening(data, format = "short", duplicates = TRUE)
+meteo_shortening(data, format = "short", remove_duplicates = TRUE)
 }
 \arguments{
 \item{data}{downloaded dataset with original column names}
@@ -19,7 +19,7 @@ Shortening column names of meteorological parameters to improve the readability 
 \examples{
 \dontrun{
   colnames(data)
-  abbr <- meteo_shortening(data = data, format = "short", duplicates = TRUE)
+  abbr <- meteo_shortening(data = data, format = "short", remove_duplicates = TRUE)
   head(abbr)
 }
 
