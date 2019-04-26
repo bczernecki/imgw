@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meteorological metadata — meteo_metadata • imgw</title>
+<title>Location of the hydrological stations — hydro_stations • imgw</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Meteorological metadata — meteo_metadata" />
+<meta property="og:title" content="Location of the hydrological stations — hydro_stations" />
 
-<meta property="og:description" content="Downloading the description (metadata) to the meteorological data available in the danepubliczne repository.imgw.pl.
-By default, the function returns a list or data frame for a selected subset" />
+<meta property="og:description" content="The object contains weather stations
+coordinates, ID numbers, and elevations" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,46 +113,47 @@ By default, the function returns a list or data frame for a selected subset" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Meteorological metadata</h1>
+    <h1>Location of the hydrological stations</h1>
     
-    <div class="hidden name"><code>meteo_metadata.Rd</code></div>
+    <div class="hidden name"><code>hydro_stations.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Downloading the description (metadata) to the meteorological data available in the danepubliczne repository.imgw.pl.
-By default, the function returns a list or data frame for a selected subset</p>
+    <p>The object contains weather stations
+coordinates, ID numbers, and elevations</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>meteo_metadata</span>(<span class='no'>interval</span>, <span class='no'>rank</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>interval</th>
-      <td><p>temporal resolution of the data ("hourly", "daily", "monthly")</p></td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td><p>rank of station ("synop", "climate", "precip")</p></td>
-    </tr>
-    </table>
+    <pre class="usage"><span class='no'>hydro_stations</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>The data contains a data.frame with 1304 obs. of 3 variables:</p><ul>
+<li><p>id Station ID</p></li>
+<li><p>X Longitude</p></li>
+<li><p>Y Latitude</p></li>
+</ul><p>The object is in the geographic coordinates using WGS84 (EPSG:4326).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_metadata</span>(<span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"hourly"</span>, <span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"synop"</span>)
-  <span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_metadata</span>(<span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"daily"</span>, <span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"synop"</span>)
-  <span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_metadata</span>(<span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"monthly"</span>, <span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"precip"</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>hydro_stations</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>hydro_stations</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 3</span><span>
+#&gt;          id     X     Y
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 149</span><span style='text-decoration: underline;'>180</span><span>020  18.3  49.9
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 149</span><span style='text-decoration: underline;'>180</span><span>300  18.3  50.0
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 149</span><span style='text-decoration: underline;'>180</span><span>010 </span><span style='color: #BB0000;'>NaN</span><span>   </span><span style='color: #BB0000;'>NaN</span><span>  
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 150</span><span style='text-decoration: underline;'>189</span><span>994  18.2  50.1
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 150</span><span style='text-decoration: underline;'>180</span><span>060  18.2  50.1
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> 150</span><span style='text-decoration: underline;'>180</span><span>030  18.1  50.4</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#format">Format</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
