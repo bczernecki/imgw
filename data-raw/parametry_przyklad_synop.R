@@ -5,6 +5,8 @@ daily <- synop
 head(daily)
 
 abbrev <- read.csv("data-raw/parametry_skrot.csv", stringsAsFactors = F)
+saveRDS(abbrev, file="data/abbrev.rda")
+abbrev <- read.csv("data-raw/parametry_skrot.csv", stringsAsFactors = F)
 
 orig_columns <- trimws(gsub("\\s+", " ", colnames(daily))) # remove double spaces
 
