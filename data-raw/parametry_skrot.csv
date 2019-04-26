@@ -159,54 +159,54 @@ Status pomiaru ROSA,StatusROSA,Status of dew length
 Status pomiaru ROSD,StatusROSD,Status of days with dew
 Status pomiaru ROSW,StatusROSW,Status of dew occurrence
 Status pomiaru RPSN,StatusRPSN,Status of snow cover type
-Status pomiaru RWSN,StatusRWSN,
-Status pomiaru SADD,StatusSADD,
-Status pomiaru SADZ,StatusSADZ,
-Status pomiaru SGRN,StatusSGRN,
-Status pomiaru SMDB,StatusSMDB,
-Status pomiaru SNEG,StatusSNEG,
-Status pomiaru SNID,StatusSNID,
-Status pomiaru STD,StatusSTD,
-Status pomiaru STM,StatusSTM,
-Status pomiaru SUMM,StatusSUMM,
-Status pomiaru SUUS,StatusSUUS,
-Status pomiaru SZRD,StatusSZRD,
-Status pomiaru SZRO,StatusSZRO,
-Status pomiaru TEMP,StatusTEMP,
-Status pomiaru TG05,StatusTG05,
-Status pomiaru TG10,StatusTG10,
-Status pomiaru TG100,StatusTG100,
-Status pomiaru TG20,StatusTG20,
-Status pomiaru TG50,StatusTG50,
-Status pomiaru TGMI,StatusTGMI,
-Status pomiaru TMAX,StatusTMAX,
-Status pomiaru TMIN,StatusTMIN,
-Status pomiaru TMNG,StatusTMNG,
-Status pomiaru TMNS,StatusTMNS,
-Status pomiaru TMXS,StatusTMXS,
-Status pomiaru TPTR,StatusTPTR,
-Status pomiaru TTZW,StatusTTZW,
-Status pomiaru USL,StatusUSL,
-Status pomiaru USLN,StatusUSLN,
-Status pomiaru W10D,StatusW10D,
-Status pomiaru W15D,StatusW15D,
-Status pomiaru WID,StatusWID,
-Status pomiaru WIDA,StatusWIDA,
-Status pomiaru WIDO,StatusWIDO,
-Status pomiaru WLGS,StatusWLGS,
-Status pomiaru WLGW,StatusWLGW,
-Status pomiaru WO6G,StatusWO6G,
-Status pomiaru WODZ,StatusWODZ,
-Status pomiaru WONO,StatusWONO,
-Status pomiaru ZAMD,StatusZAMD,
-Status pomiaru ZAND,StatusZAND,
-Status pomiaru ZAWD,StatusZAWD,
-Status pomiaru ZMED,StatusZMED,
-Status pomiaru ZMET,StatusZMET,
-Status pomiaru ZMGL,StatusZMGL,
-Status pomiaru ZMNI,StatusZMNI,
-Status pomiaru ZMWS,StatusZMWS,
-Status pomiaru ZOGK,StatusZOGK,
+Status pomiaru RWSN,StatusRWSN,Status of snow water equivalent
+Status pomiaru SADD,StatusSADD,Status of number of days with rime 
+Status pomiaru SADZ,StatusSADZ,Status of length of rime 
+Status pomiaru SGRN,StatusSGRN,Status of soil state
+Status pomiaru SMDB,StatusSMDB,Status of daily precipitation
+Status pomiaru SNEG,StatusSNEG,Status of length of snowing
+Status pomiaru SNID,StatusSNID,Status of number of days with snowing
+Status pomiaru STD,StatusSTD,Status of daily mean air temperature
+Status pomiaru STM,StatusSTM,Status of monthly mean air temperature
+Status pomiaru SUMM,StatusSUMM,Status of monthly total precipitation
+Status pomiaru SUUS,StatusSUUS,Status of monthly total insolation
+Status pomiaru SZRD,StatusSZRD,Status of number of days with hoarfrost
+Status pomiaru SZRO,StatusSZRO,Status of length of hoarfrost
+Status pomiaru TEMP,StatusTEMP,Status of air temperature
+Status pomiaru TG05,StatusTG05,Status of soil temperature 5 cm below ground
+Status pomiaru TG10,StatusTG10,Status of soil temperature 10 cm below ground
+Status pomiaru TG100,StatusTG100,Status of soil temperature 100 cm below ground
+Status pomiaru TG20,StatusTG20,Status of soil temperature 20 cm below ground
+Status pomiaru TG50,StatusTG50,Status of soil temperature 50 cm below ground
+Status pomiaru TGMI,StatusTGMI,Status of minimum soil temperature in last 12 hours
+Status pomiaru TMAX,StatusTMAX,Status of maximum air temperature in last 12 hours
+Status pomiaru TMIN,StatusTMIN,Status of minimum air temperature in last 12 hours
+Status pomiaru TMNG,StatusTMNG,Status of minimum near surface air temperature 
+Status pomiaru TMNS,StatusTMNS,Status of mean minimum air temperature
+Status pomiaru TMXS,StatusTMXS,Status of mean maximum air temperature
+Status pomiaru TPTR,StatusTPTR,Status of dew point temperature
+Status pomiaru TTZW,StatusTTZW,Status of wet thermometer
+Status pomiaru USL,StatusUSL,Status of insolation
+Status pomiaru USLN,StatusUSLN,Status of daily max precipitation
+Status pomiaru W10D,StatusW10D,Status of number of days with wind speed above 10 ms
+Status pomiaru W15D,StatusW15D,Status of number of days with wind speed above 15 ms
+Status pomiaru WID,StatusWID,Status of visibility (human)
+Status pomiaru WIDA,StatusWIDA,Status of cloudiness [octants]
+Status pomiaru WIDO,StatusWIDO,Status of visibility (automated)
+Status pomiaru WLGS,StatusWLGS,Status of daily mean relative humidity
+Status pomiaru WLGW,StatusWLGW,Status of relative humidity
+Status pomiaru WO6G,StatusWO6G,Status of 6 hour precipitation
+Status pomiaru WODZ,StatusWODZ,Status of daily precipitation
+Status pomiaru WONO,StatusWONO,Status of nightly precipitation
+Status pomiaru ZAMD,StatusZAMD,Status of number of days with fogginess
+Status pomiaru ZAND,StatusZAND,Status of number of days with low snowstorm
+Status pomiaru ZAWD,StatusZAWD,Status of number of days with high snowstorm
+Status pomiaru ZMED,StatusZMED,Status of number of days with hazyness
+Status pomiaru ZMET,StatusZMET,Status of duration of hazyness
+Status pomiaru ZMGL,StatusZMGL,Status of duration of fogginess
+Status pomiaru ZMNI,StatusZMNI,Status of duration of low snowstorm
+Status pomiaru ZMWS,StatusZMWS,Status of duration of high snowstorm
+Status pomiaru ZOGK,StatusZOGK,Status of total cloudiness [0-10 before 1988 and 0-8 since 1989]
 Suma dobowa opadow [mm],rr_daily,Total daily preciptation [mm]
 Suma dobowa opadu [mm],rr_daily,Total daily preciptation [mm]
 Suma opadu dzien [mm],rr_daytime,Total precipitation during day [mm]
