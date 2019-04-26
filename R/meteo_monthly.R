@@ -109,7 +109,7 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, short = TR
 
     if (coords){
       # data("meteo_stations")
-      all_data <- merge(imgw::meteo_stations, all_data, by.x = "id", by.y = "id", all.y = TRUE)
+      all_data <- merge(imgw::meteo_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
     }
 
     # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
