@@ -1,19 +1,19 @@
 #' Shortening column names
 #'
-#' Shortening column names to improve readability of downloaded dataset and removing duplicated column names
+#' Shortening column names to improve the readability of downloaded dataset and removing duplicated column names
 #'
 #' @param data downloaded dataset with original column names
-#' @param duplicates whether to remove duplicated column names (default TRUE - i.e. columns with duplicated names are deleted)
 #' @param format three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description
+#' @param duplicates whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)
 #' @export
 #'
 #' @examples \dontrun{
-#'   abbrev <- abbre(rank = "climate", year = 1969)
-#'   head(monthly)
+#'   abbrev <- abbrev(rank = "climate", year = 1969)
+#'   head(abbrev)
 #' }
 #'
 
-abbrev <- function(data, duplicates = TRUE, format = "short"){
+abbrev <- function(data, format = "short", duplicates = TRUE){
 
   abbrev <- imgw::abbrev
   orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
