@@ -163,8 +163,8 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE){
   all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
   if (coords){
-    # data("stacje_meteo")
-    all_data <- merge(stacje_meteo, all_data, by.x = "Kod_stacji", by.y = "Kod stacji", all.y = TRUE)
+    # data("meteo_stations")
+    all_data <- merge(imgw::meteo_stations, all_data, by.x = "id", by.y = "id", all.y = TRUE)
   }
 
   return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
