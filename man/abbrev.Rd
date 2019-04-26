@@ -4,22 +4,22 @@
 \alias{abbrev}
 \title{Shortening column names}
 \usage{
-abbrev(data, duplicates = TRUE, format = "short")
+abbrev(data, format = "short", duplicates = TRUE)
 }
 \arguments{
 \item{data}{downloaded dataset with original column names}
 
-\item{duplicates}{whether to remove duplicated column names (default TRUE - i.e. columns with duplicated names are deleted)}
-
 \item{format}{three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description}
+
+\item{duplicates}{whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)}
 }
 \description{
-Shortening column names to improve readability of downloaded dataset and removing duplicated column names
+Shortening column names to improve the readability of downloaded dataset and removing duplicated column names
 }
 \examples{
 \dontrun{
-  abbrev <- abbre(rank = "climate", year = 1969)
-  head(monthly)
+  abbrev <- abbrev(rank = "climate", year = 1969)
+  head(abbrev)
 }
 
 }
