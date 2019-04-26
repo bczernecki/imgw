@@ -15,7 +15,7 @@
 
 abbrev <- function(data, duplicates = TRUE, format = "short"){
 
-  load("data/abbrev.rda")
+  abbrev = imgw::abbrev
   orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
 
   if(format == "short"){
