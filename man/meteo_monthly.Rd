@@ -4,7 +4,8 @@
 \alias{meteo_monthly}
 \title{Monthly meteorological data}
 \usage{
-meteo_monthly(rank, year, status = FALSE, coords = FALSE)
+meteo_monthly(rank, year, status = FALSE, coords = FALSE,
+  short = TRUE, ...)
 }
 \arguments{
 \item{rank}{rank of the stations ("synop", "klimat", or "opad")}
@@ -14,6 +15,10 @@ meteo_monthly(rank, year, status = FALSE, coords = FALSE)
 \item{status}{leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)}
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
+
+\item{short}{shortening column names (logical value TRUE or FALSE)}
+
+\item{...}{other parameters that may be passed to 'abbrev' function that shortens column names}
 }
 \description{
 Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection

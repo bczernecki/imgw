@@ -124,5 +124,12 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE){
   }
 
   return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
+
+  # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
+  if(short == TRUE){
+    all_data <- shortening(all_data, ...)
+  }
+
+
 } # koniec funkcji meteo_terminowe
 

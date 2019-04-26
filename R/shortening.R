@@ -8,12 +8,13 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   abbrev <- abbrev(rank = "climate", year = 1969)
-#'   head(abbrev)
+#'   colnames(data)
+#'   abbr <- shortening(data = data, format = "short", duplicates = TRUE)
+#'   head(abbr)
 #' }
 #'
 
-abbrev <- function(data, format = "short", duplicates = TRUE){
+shortening <- function(data, format = "short", duplicates = TRUE){
 
   abbrev <- imgw::abbrev
   orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces

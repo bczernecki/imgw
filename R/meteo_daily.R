@@ -167,5 +167,11 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE){
     all_data <- merge(imgw::meteo_stations, all_data, by.x = "id", by.y = "id", all.y = TRUE)
   }
 
+  # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
+  if(short == TRUE){
+    all_data <- shortening(all_data, ...)
+  }
+
+
   return(all_data[all_data$Rok %in% year, ]) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 } # koniec funkcji meteo_daily
