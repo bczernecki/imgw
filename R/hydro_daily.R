@@ -84,14 +84,15 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE, station = NULL){
   #station selection
   if (!is.null(station)) {
     stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",
-                         header = FALSE)
+                         header = FALSE,
+                         fileEncoding = "CP1250")
     if (is.character(station)) {
-      if(dim(stations[stations$V2  %in% station, ])[1] == 0){
+      if (dim(stations[stations$V2  %in% station, ])[1] == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
       all_data <- all_data[all_data$`Nazwa stacji` %in% station, ]
     } else if (is.numeric(station)){
-      if(dim(stations[stations$V1 %in% station, ])[1] == 0){
+      if (dim(stations[stations$V1 %in% station, ])[1] == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
       all_data <- all_data[all_data$`Kod stacji` %in% station, ]

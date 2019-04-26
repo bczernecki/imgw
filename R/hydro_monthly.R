@@ -45,7 +45,7 @@ hydro_monthly <- function(year, station = NULL){
     unzip(zipfile = temp, exdir = temp2)
     file1 <- paste(temp2, dir(temp2), sep = "/")[1]
     data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-    colnames(data1) <- meta[[1]][,1]
+    colnames(data1) <- meta[[1]][, 1]
     all_data[[i]] <- data1
   }
   all_data <- do.call(rbind, all_data)
@@ -56,23 +56,24 @@ hydro_monthly <- function(year, station = NULL){
   all_data[all_data == 9999] <- NA
   all_data[all_data == 99999.999] <- NA
   all_data[all_data == 99.9] <- NA
-  colnames(all_data) <- meta[[1]][,1]
+  colnames(all_data) <- meta[[1]][, 1]
   # brak wykorzystania coords
   #station selection
   if (!is.null(station)) {
-    stations=read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",
-                      header = FALSE)
+    stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",
+                         header = FALSE,
+                         fileEncoding = "CP1250")
     if (is.character(station)) {
-      if(dim(stations[stations$V2 %in% station, ])[1] == 0){
+      if (dim(stations[stations$V2 %in% station, ])[1] == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
      all_data <- all_data[all_data$`Nazwa stacji` %in% station, ]
     } else if (is.numeric(station)){
-      if( dim(stations[stations$V1 %in% station, ])[1] == 0){
+      if (dim(stations[stations$V1 %in% station, ])[1] == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
       all_data <- all_data[all_data$`Kod stacji` %in% station, ]
-    }else {
+    } else {
       stop("Selected station(s) are not in the proper format.", call. = FALSE)
       }
   }
