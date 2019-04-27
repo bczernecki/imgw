@@ -4,12 +4,12 @@
 \alias{meteo_shortening}
 \title{Shortening column names for meteorological variables}
 \usage{
-meteo_shortening(data, format = "short", remove_duplicates = TRUE)
+meteo_shortening(data, col_names = "short", remove_duplicates = TRUE)
 }
 \arguments{
 \item{data}{downloaded dataset with original column names}
 
-\item{format}{three types of column names possible: "short" - default, values with shorten names, "polish" - (original names as downloaded), "full" - full English description}
+\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 
 \item{remove_duplicates}{whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)}
 }
@@ -18,8 +18,9 @@ Shortening column names of meteorological parameters to improve the readability 
 }
 \examples{
 \dontrun{
-  colnames(data)
-  abbr <- meteo_shortening(data = data, format = "short", remove_duplicates = TRUE)
+  monthly <- meteo_monthly(rank = "climate", year = 1969)
+  colnames(monthly)
+  abbr <- meteo_shortening(data = monthly, col_names = "short", remove_duplicates = TRUE)
   head(abbr)
 }
 

@@ -5,7 +5,7 @@
 \title{Monthly meteorological data}
 \usage{
 meteo_monthly(rank, year, status = FALSE, coords = FALSE,
-  short = TRUE, ...)
+  col_names = "short", ...)
 }
 \arguments{
 \item{rank}{rank of the stations ("synop", "klimat", or "opad")}
@@ -16,9 +16,9 @@ meteo_monthly(rank, year, status = FALSE, coords = FALSE,
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 
-\item{short}{shortening column names (logical value TRUE or FALSE)}
+\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 
-\item{...}{other parameters that may be passed to 'abbrev' function that shortens column names}
+\item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
 }
 \description{
 Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
@@ -27,10 +27,10 @@ Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stat
 \dontrun{
   monthly <- meteo_monthly(rank = "climate", year = 1969)
   head(monthly)
-  #
+
   # a descriptive (long) column names:
-  b <- meteo_monthly(rank = 'synop', year=2018, short = TRUE, format = "full")
-  head(b)
+  monthly2 <- meteo_monthly(rank = "synop", year=2018, col_names = "full")
+  head(monthly2)
 }
 
 }
