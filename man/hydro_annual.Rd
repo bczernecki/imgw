@@ -9,7 +9,7 @@ hydro_annual(year, coords = FALSE, value = "H", station = NULL)
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
 
-\item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
+\item{coords}{add coordinates of the stations (logical value TRUE or FALSE)}
 
 \item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
 

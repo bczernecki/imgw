@@ -3,7 +3,7 @@
 #' Downloading daily hydrological data from the danepubliczne.imgw.pl collection
 #'
 #' @param year vector of years (e.g., 1966:2000)
-#' @param coords add coordinates of the station (logical value TRUE or FALSE)
+#' @param coords add coordinates of the stations (logical value TRUE or FALSE)
 #' @param station name or ID of hydrological station(s).
 #' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
 #' @importFrom RCurl getURL
@@ -17,7 +17,7 @@
 #' }
 #'
 
-hydro_daily <- function(year = 1966:2000, coords = FALSE, station = NULL){
+hydro_daily <- function(year, coords = FALSE, station = NULL){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "daily"
   interval_pl <- "dobowe"

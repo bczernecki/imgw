@@ -3,6 +3,7 @@
 #' Downloading monthly hydrological data from the danepubliczne.imgw.pl collection
 #'
 #' @param year vector of years (e.g., 1966:2000)
+#' @param coords add coordinates of the stations (logical value TRUE or FALSE)
 #' @param station name or ID of hydrological station(s).
 #' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
 #' @importFrom RCurl getURL
@@ -15,7 +16,7 @@
 #'   head(monthly)
 #' }
 #'
-hydro_monthly <- function(year, station = NULL){
+hydro_monthly <- function(year, coords = FALSE, station = NULL){
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "monthly"
   interval_pl <- "miesieczne"

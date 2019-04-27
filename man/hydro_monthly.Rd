@@ -4,10 +4,12 @@
 \alias{hydro_monthly}
 \title{Monthly hydrological data}
 \usage{
-hydro_monthly(year, station = NULL)
+hydro_monthly(year, coords = FALSE, station = NULL)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
+
+\item{coords}{add coordinates of the stations (logical value TRUE or FALSE)}
 
 \item{station}{name or ID of hydrological station(s).
 It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}

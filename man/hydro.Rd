@@ -4,12 +4,14 @@
 \alias{hydro}
 \title{Hydrological data}
 \usage{
-hydro(interval, year, value = NULL, station = NULL)
+hydro(interval, year, coords = FALSE, value = NULL, station = NULL)
 }
 \arguments{
 \item{interval}{temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")}
 
 \item{year}{vector of years (e.g., 1966:2000)}
+
+\item{coords}{add coordinates of the stations (logical value TRUE or FALSE)}
 
 \item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
 
