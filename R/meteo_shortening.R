@@ -18,7 +18,7 @@
 meteo_shortening <- function(data, col_names = "short", remove_duplicates = TRUE){
 
   if (col_names != "polish"){
-    abbrev <- imgw::abbrev
+    abbrev <- imgw::meteo_abbrev
     orig_columns <- trimws(gsub("\\s+", " ", colnames(data))) # remove double spaces
 
     matches <- match(orig_columns, abbrev$fullname)
@@ -36,7 +36,7 @@ meteo_shortening <- function(data, col_names = "short", remove_duplicates = TRUE
   }
 
   # removing duplicated column names:  (e.g. station's name)
-  if (duplicates == TRUE) {
+  if (remove_duplicates == TRUE) {
     data <- data[, !duplicated(colnames(data))]
   }
 
