@@ -80,7 +80,10 @@ hydro_daily <- function(year = 1966:2000, coords = FALSE, station = NULL){
   all_data[all_data == 99.9] <- NA
   #zjawiska lodowe nie uwzględniam 0 przy braku zjawisk lodowych bo to znaczy ze było poprostu 0
   all_data[all_data == 999] <- NA
-  # brak wykorzystania coords
+  # coords
+  if (coords){
+    all_data <- merge(imgw::hydro_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
+  }
   #station selection
   if (!is.null(station)) {
     stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",

@@ -56,7 +56,10 @@ hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL){
   all_data <- do.call(rbind, all_data)
   # ten sam warunek braku danych lub obserwacji dla wszytkich wartosci
   all_data[all_data == 99999.999] <- NA
-  # brak wykorzystania coords
+  # coords
+  if (coords){
+    all_data <- merge(imgw::hydro_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
+  }
   #station selection
   if (!is.null(station)) {
     stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",

@@ -57,7 +57,10 @@ hydro_monthly <- function(year, station = NULL){
   all_data[all_data == 99999.999] <- NA
   all_data[all_data == 99.9] <- NA
   colnames(all_data) <- meta[[1]][, 1]
-  # brak wykorzystania coords
+  # coords
+  if (coords){
+    all_data <- merge(imgw::hydro_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
+  }
   #station selection
   if (!is.null(station)) {
     stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",
