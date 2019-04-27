@@ -13,4 +13,8 @@ test_that("meteo works!", {
   x <- meteo("monthly", "precip", year = y)
   x <- meteo("monthly", "synop", year = y, status = TRUE)
   x <- meteo("monthly", "synop", year = y, coords = TRUE)
+  x <- meteo("monthly", "synop", year = y, col_names = "full")
+  x <- meteo("monthly", "synop", year = y, coords = TRUE, col_names = "full")
+  x <- meteo("monthly", "synop", year = y, col_names = "polish")
+  x <- meteo("monthly", "synop", year = y, coords = TRUE, col_names = "polish")
 })
