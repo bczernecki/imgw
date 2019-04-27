@@ -7,24 +7,27 @@
 #' @param coords add coordinates of the stations (logical value TRUE or FALSE)
 #' @param value type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")
 #' @param station vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
-#' or ID of station(numeric)
+#' @param ... or ID of station(numeric)
+#' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
+#' @param ... other parameters that may be passed to 'shortening' function that shortens column names
+#' @export
 #' @export
 #'
 #' @examples \dontrun{
 #'   x <- hydro("monthly", year = 1999)
 #'   head(x)
 #' }
-hydro <- function(interval, year, coords = FALSE, value = NULL, station = NULL){
+hydro <- function(interval, year, coords = FALSE, value = NULL, station = NULL, col_names = "short", ...){
 
   if (interval == "daily"){
     # dobowe
-    calosc <- hydro_daily(year = year, coords = FALSE, station = station)
+    calosc <- hydro_daily(year = year, coords = FALSE, station = station, col_names = "short", ...)
   } else if (interval == "monthly"){
     #miesieczne
-    calosc <- hydro_monthly(year = year, coords = FALSE, station = station)
+    calosc <- hydro_monthly(year = year, coords = FALSE, station = station, col_names = "short", ...)
   } else if (interval == "semiannual_and_annual"){
     # polroczne_i_roczne
-    calosc <- hydro_annual(year = year, coords = FALSE, value = value, station = station)
+    calosc <- hydro_annual(year = year, coords = FALSE, value = value, station = station, col_names = "short", ...)
   } else{
     stop("Wrong `interval` value. It should be either 'daily', 'monthly', or 'semiannual_and_annual'.", call. = FALSE)
   }

@@ -7,7 +7,9 @@
 #' @param coords add coordinates of the stations (logical value TRUE or FALSE)
 #' @param value type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")
 #' @param station name or ID of hydrological station(s).
-#' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
+#' @param ... It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
+#' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
+#' @param ... other parameters that may be passed to 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -18,7 +20,10 @@
 #'   yearly <- hydro_annual(year = 2000, value = "H", station = "ANNOPOL")
 #'   head(yearly)
 #' }
-hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL){
+hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL, col_names= "short", ...){
+
+  options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
+
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
   interval <- "semiannual_and_annual"
   interval_pl <- "polroczne_i_roczne"
@@ -79,5 +84,9 @@ hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL){
       stop("Selected station(s) are not in the proper format.", call. = FALSE)
     }
   }
+
+  # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
+  all_data <- meteo_shortening(all_data, col_names = col_names, ...)
+
   return(all_data)
 }
