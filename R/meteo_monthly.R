@@ -18,7 +18,7 @@
 #'   head(monthly)
 #'
 #'   # a descriptive (long) column names:
-#'   monthly2 <- meteo_monthly(rank = "synop", year=2018, col_names = "full")
+#'   monthly2 <- meteo_monthly(rank = "synop", year = 2018, col_names = "full")
 #'   head(monthly2)
 #' }
 #'
