@@ -20,7 +20,7 @@ Downloading daily hydrological data from the danepubliczne.imgw.pl collection
 \examples{
 \dontrun{
   daily <- hydro_daily(year = 2000)
-  head(mies)
+  head(daily)
 }
 
 }

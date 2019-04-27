@@ -4,7 +4,7 @@
 \alias{hydro}
 \title{Hydrological data}
 \usage{
-hydro(interval, year, value = NULL, station = F)
+hydro(interval, year, value = NULL, station = NULL)
 }
 \arguments{
 \item{interval}{temporal resolution of the data ("daily" , "monthly", or "semiannual_and_annual")}
