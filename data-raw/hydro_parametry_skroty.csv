@@ -1,1 +1,19 @@
-fullname,abbrev,fullname_engKod stacji,id,IDDzien,dd,DayMiesiac kalendarzowy,mm,monthNazwa rzeki/jeziora,riv/lake,River/LakeNazwa stacji,station,StationPrzeplyw [m^3/s],Q,Flow"Rodzaj wielkosci        (H - stan wody, Q - przeplyw, T - temperatura wody)",Mesu,"Mesurment [state - ""H"", flow - ""Q"", or temperature - ""T""]"Rok hydrologiczny,hyy,Hydrologic yearStan wody [cm],H,State [cm]Temperatura wody [st. C],T,TemperatureWskaznik ekstremum,Mesu,"Mesurment [state - ""H"", flow - ""Q"", or temperature - ""T""]""Wskaznik ekstremum      (1 - minimum, 2 - srednia, 3 - maksimum)",idmax,Extreme IDWskaznik miesiaca w roku hydrologicznym,idhyy,Hydrologic year ID"Wskaznik polrocza       (13 - zima, 14 - lato, 15 - rok)",idyy,Year IDwystapienie_od_Dzien,bedd,Occurrence from daywystapienie_od_Godzina:Minuta,behm,Occurrence from timewystapienie_od_Miesiac,bemm,Occurrence from monthwystapienie_od_Rok,beyy,Occurrence from year
+fullname;abbrev;fullname_eng
+Kod stacji;id;ID
+Dzien;dd;Day
+Miesiac kalendarzowy;mm;month
+Nazwa rzeki/jeziora;riv/lake;River/Lake
+Nazwa stacji;station;Station
+Przeplyw [m^3/s];Q;Flow [m3/s]
+Rodzaj wielkosci        (H - stan wody, Q - przeplyw, T - temperatura wody);Mesu;"Mesurment [state - ""H"", flow - ""Q"", or temperature - ""T""]"
+Rok hydrologiczny;hyy;Hydrologic year
+Stan wody [cm];H;State [cm]
+Temperatura wody [st. C];T;Temperature [C]
+Wskaznik ekstremum;idex;Extreme ID [min - 1, mean - 2, Max - 3]
+Wskaznik ekstremum      (1 - minimum, 2 - srednia, 3 - maksimum);idex;Extreme ID [min - 1, mean - 2, Max - 3]
+Wskaznik miesiaca w roku hydrologicznym;idhyy;Hydrologic year ID
+Wskaznik polrocza       (13 - zima, 14 - lato, 15 - rok);idyy;Year ID [13 -winter, 14 - summer, 15 - year]
+wystapienie_od_Dzien;bedd;Occurrence from day
+wystapienie_od_Godzina:Minuta;behm;Occurrence from time
+wystapienie_od_Miesiac;bemm;Occurrence from month
+wystapienie_od_Rok;beyy;Occurrence from year
