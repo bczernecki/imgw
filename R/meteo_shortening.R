@@ -26,12 +26,12 @@ meteo_shortening <- function(data, col_names = "short", remove_duplicates = TRUE
 
     if (col_names == "short"){
       # abbrev english
-      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$abbr_ang[matches]
+      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$abbr_eng[matches]
     }
 
     if (col_names == "full"){
       # full english names:
-      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$fullname_ang[matches]
+      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$fullname_eng[matches]
     }
   }
 

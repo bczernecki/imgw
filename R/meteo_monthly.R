@@ -102,13 +102,13 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, col_names 
     all_data <- do.call(rbind, all_data)
     all_data <- all_data[all_data$Rok %in% year, ]
 
-    # dodaje rank
-    rank_code <- switch(rank, synop = "SYNOPTYCZNA", climate = "KLIMATYCZNA", precip = "OPADOWA")
-    all_data <- cbind(data.frame(rank_code = rank_code), all_data)
-
     if (coords){
       all_data <- merge(imgw::meteo_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
     }
+
+    # dodaje rank
+    rank_code <- switch(rank, synop = "SYNOPTYCZNA", climate = "KLIMATYCZNA", precip = "OPADOWA")
+    all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
     # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
     all_data <- meteo_shortening(all_data, col_names = col_names, ...)

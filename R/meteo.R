@@ -9,7 +9,6 @@
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
 #' @param ... other parameters that may be passed to 'shortening' function that shortens column names
-
 #' @export
 #'
 #' @examples \dontrun{
