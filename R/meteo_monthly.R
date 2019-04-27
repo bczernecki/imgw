@@ -6,8 +6,8 @@
 #' @param year vector of years (e.g., 1966:2000)
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
-#' @param short shortening column names (logical value TRUE or FALSE)
-#' @param ... other parameters that may be passed to 'abbrev' function that shortens column names
+#' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
+#' @param ... other parameters that may be passed to 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -16,14 +16,14 @@
 #' @examples \dontrun{
 #'   monthly <- meteo_monthly(rank = "climate", year = 1969)
 #'   head(monthly)
-#'   #
+#'
 #'   # a descriptive (long) column names:
-#'   b <- meteo_monthly(rank = 'synop', year=2018, short = TRUE, format = "full")
-#'   head(b)
+#'   monthly2 <- meteo_monthly(rank = "synop", year=2018, col_names = "full")
+#'   head(monthly2)
 #' }
 #'
 
-meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, short = TRUE, ...){
+meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, col_names = "short", ...){
 
     options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 
@@ -86,14 +86,13 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, short = TR
           if(rank != "precip"){ # w plikach opadowych tylko jeden plik
           data2[grep("^Status", colnames(data2))] <- NULL
           }
-
       }
 
       unlink(c(temp, temp2))
 
       if(rank != "precip"){
       all_data[[i]] <- merge(data1, data2,
-                           by = c("Kod stacji", "Rok", "Miesiac"),
+                           by = c("Kod stacji", "Nazwa stacji", "Rok", "Miesiac"),
                            all.x = TRUE)
       } else {
         all_data[[i]] <- data1
@@ -108,14 +107,11 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, short = TR
     all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
     if (coords){
-      # data("meteo_stations")
       all_data <- merge(imgw::meteo_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
     }
 
     # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
-    if(short == TRUE){
-      all_data <- meteo_shortening(all_data, ...)
-    }
+    all_data <- meteo_shortening(all_data, col_names = col_names, ...)
 
     return(all_data) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 }
