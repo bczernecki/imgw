@@ -17,12 +17,11 @@ clean_metadata_hydro <- function(address, interval){
                                          fileEncoding = "CP1250", stringsAsFactors = FALSE)))
 
   if (interval == "monthly") {
-    b <-
-      list(data.frame(a[2:11, ])) # skład danych jeszcze nie wiem jak ominąć problem kontroli
+    b <- list(data.frame(parameters = a[2:11, ])) # skład danych jeszcze nie wiem jak ominąć problem kontroli
     # ale on może się zmienić nie wiem czy nie lepiej wykluczyć ostatni rok
   }
   if (interval == "daily") {
-    b <- data.frame(a[2:11, ])
+    b <- data.frame(parameters = a[2:11, ])
   }
   if (interval == "semiannual_and_annual") {
     godzina <- paste0(a[14, ], ":", a[15, ]) # nie jestem pewien czy tak bo w dokumentacji jest podzial na dwie kolumny,
@@ -35,12 +34,12 @@ clean_metadata_hydro <- function(address, interval){
     SPT[2] <- paste0(SPT[2], "]")
     b <- NULL
     for (i in seq_along(SPT)) {
-      tmp <- c(a[2:8,], SPT[i], data_od, data_do)
+      tmp <- c(a[2:8, ], SPT[i], data_od, data_do)
       b <- cbind(b, tmp)
     }
-    b <- list("H" = b[, 1],
-              "Q" = b[, 2],
-              "T" = b[, 2])
+    b <- list("H" = data.frame(parameters = b[, 1]),
+              "Q" = data.frame(parameters = b[, 2]),
+              "T" = data.frame(parameters = b[, 3]))
   }
   b
 }
