@@ -50,7 +50,7 @@ hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL){
     unzip(zipfile = temp, exdir = temp2)
     file1 <- paste(temp2, dir(temp2), sep = "/")[1]
     data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-    colnames(data1) <- meta[[value]]
+    colnames(data1) <- meta[[value]]$parameters
     all_data[[i]] <- data1
   }
   all_data <- do.call(rbind, all_data)
