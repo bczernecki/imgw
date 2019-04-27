@@ -147,7 +147,6 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, col_names = 
         # usuwa statusy
         if(status == FALSE){
           data1[grep("^Status", colnames(data1))] <- NULL
-          data2[grep("^Status", colnames(data2))] <- NULL
         }
 
         unlink(c(temp, temp2))
