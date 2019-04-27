@@ -5,7 +5,7 @@
 \title{Meteorological data}
 \usage{
 meteo(interval, rank, year, status = FALSE, coords = FALSE,
-  short = TRUE, ...)
+  col_names = "short", ...)
 }
 \arguments{
 \item{interval}{temporal resolution of the data ("hourly", "daily", "monthly")}
@@ -18,7 +18,7 @@ meteo(interval, rank, year, status = FALSE, coords = FALSE,
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 
-\item{short}{shortening column names (logical value TRUE or FALSE)}
+\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 
 \item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
 }
