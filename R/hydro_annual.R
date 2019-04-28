@@ -61,6 +61,8 @@ hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL, col
   all_data <- do.call(rbind, all_data)
   # ten sam warunek braku danych lub obserwacji dla wszytkich wartosci
   all_data[all_data == 99999.999] <- NA
+  all_data <- all_data[, !duplicated(colnames(all_data))]
+
   # coords
   if (coords){
     all_data <- merge(imgw::hydro_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
