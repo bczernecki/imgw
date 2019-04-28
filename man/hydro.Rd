@@ -4,7 +4,7 @@
 \alias{hydro}
 \title{Hydrological data}
 \usage{
-hydro(interval, year, coords = FALSE, value = NULL, station = NULL,
+hydro(interval, year, coords = FALSE, value = "H", station = NULL,
   col_names = "short", ...)
 }
 \arguments{

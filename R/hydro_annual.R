@@ -20,7 +20,7 @@
 #'   yearly <- hydro_annual(year = 2000, value = "H", station = "ANNOPOL")
 #'   head(yearly)
 #' }
-hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL, col_names= "short", ...){
+hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL, col_names = "short", ...){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 
