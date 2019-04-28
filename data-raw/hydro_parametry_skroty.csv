@@ -1,11 +1,11 @@
 fullname;abbrev;fullname_eng
 Kod stacji;id;ID
 Dzien;dd;Day
-Miesiac kalendarzowy;mm;month
-Nazwa rzeki/jeziora;riv/lake;River/Lake
+Miesiac kalendarzowy;mm;Month
+Nazwa rzeki/jeziora;riv_or_lake;River_or_Lake
 Nazwa stacji;station;Station
-Przeplyw [m^3/s];Q;Flow [m3/s]
-Rodzaj wielkosci        (H - stan wody, Q - przeplyw, T - temperatura wody);Mesu;"Mesurment [state - ""H"", flow - ""Q"", or temperature - ""T""]"
+Przeplyw [m^3/s];Q;Flow [m3_s]
+Rodzaj wielkosci        (H - stan wody, Q - przeplyw, T - temperatura wody);Mesu;"Measurement [state - ""H"", flow - ""Q"", or temperature - ""T""]"
 Rok hydrologiczny;hyy;Hydrologic year
 Stan wody [cm];H;State [cm]
 Temperatura wody [st. C];T;Temperature [C]
