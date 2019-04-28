@@ -10,7 +10,7 @@
 #'     \item{abbr_eng} {shorten column names with abbreviations derived from the most popular scheme used for meteorological parameters}
 #'     \item{fullname_eng} {detailed description of downloaded meteorological variables}
 #' }
-#' The object is created mostly to be used altogether with the hydro_shortening function
+#' The object is created mostly to be used altogether with the hydro_shortening() function
 #'
 #' @docType data
 #' @keywords datasets hydro abbreviations shortening
@@ -18,3 +18,4 @@
 #' data(hydro_abbrev)
 #' head(hydro_abbrev)
 "hydro_abbrev"
+

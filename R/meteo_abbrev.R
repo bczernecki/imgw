@@ -18,5 +18,3 @@
 #' data(meteo_abbrev)
 #' head(meteo_abbrev)
 "meteo_abbrev"
-
-

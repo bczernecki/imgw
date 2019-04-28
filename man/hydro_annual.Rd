@@ -4,7 +4,8 @@
 \alias{hydro_annual}
 \title{Semi-annual and annual hydrological data}
 \usage{
-hydro_annual(year, coords = FALSE, value = "H", station = NULL)
+hydro_annual(year, coords = FALSE, value = "H", station = NULL,
+  col_names = "short", ...)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
@@ -13,8 +14,13 @@ hydro_annual(year, coords = FALSE, value = "H", station = NULL)
 
 \item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
 
-\item{station}{name or ID of hydrological station(s).
-It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
+\item{station}{name or ID of hydrological station(s).}
+
+\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
+
+\item{...}{It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
+
+\item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
 }
 \description{
 Downloading hydrological data for the semi-annual and annual period

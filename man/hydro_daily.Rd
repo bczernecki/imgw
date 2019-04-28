@@ -4,15 +4,21 @@
 \alias{hydro_daily}
 \title{Daily hydrological data}
 \usage{
-hydro_daily(year, coords = FALSE, station = NULL)
+hydro_daily(year, coords = FALSE, station = NULL,
+  col_names = "short", ...)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
 
 \item{coords}{add coordinates of the stations (logical value TRUE or FALSE)}
 
-\item{station}{name or ID of hydrological station(s).
-It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
+\item{station}{name or ID of hydrological station(s).}
+
+\item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
+
+\item{...}{It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
+
+\item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
 }
 \description{
 Downloading daily hydrological data from the danepubliczne.imgw.pl collection
