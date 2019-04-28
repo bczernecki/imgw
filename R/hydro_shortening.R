@@ -26,7 +26,7 @@ hydro_shortening <- function(data, col_names = "short", remove_duplicates = TRUE
 
     if (col_names == "short"){
       # abbrev english
-      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$abbrev[matches]
+      colnames(data)[orig_columns %in% abbrev$fullname] <- abbrev$abbr_eng[matches]
     }
 
     if (col_names == "full"){
