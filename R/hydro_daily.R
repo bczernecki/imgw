@@ -69,7 +69,7 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
     all_data[[i]] <- merge(data1, data2,
                          by = c("Kod stacji", "Nazwa stacji",
                                "Rok hydrologiczny", "Nazwa rzeki/jeziora",
-                               "Wska\u017anik miesi\u0105ca w roku hydrologicznym", "Dzie\u0144"),
+                               "Wskaznik miesiaca w roku hydrologicznym", "Dzien"),
                          all.x = TRUE)
   }
   # Stan wody 9999 oznacza brak danych w bazie lub przerwy w obserwacjach w danym miesiącu i stad brak możliwości obliczenia charakterystyk.
