@@ -86,7 +86,7 @@ hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL, col
   }
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
-  all_data <- meteo_shortening(all_data, col_names = col_names, ...)
+  all_data <- hydro_shortening(all_data, col_names = col_names, ...)
 
   return(all_data)
 }

@@ -110,7 +110,7 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
   }
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
-  all_data <- meteo_shortening(all_data, col_names = col_names, ...)
+  all_data <- hydro_shortening(all_data, col_names = col_names, ...)
 
   return(all_data)
 }
