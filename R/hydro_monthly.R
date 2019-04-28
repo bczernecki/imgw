@@ -5,9 +5,9 @@
 #' @param year vector of years (e.g., 1966:2000)
 #' @param coords add coordinates of the stations (logical value TRUE or FALSE)
 #' @param station name or ID of hydrological station(s).
-#' @param ... It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
+#' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
 #' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
-#' @param ... other parameters that may be passed to 'shortening' function that shortens column names
+#' @param ... other parameters that may be passed to the 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv

@@ -7,7 +7,7 @@
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
-#' @param ... other parameters that may be passed to 'shortening' function that shortens column names
+#' @param ... other parameters that may be passed to the 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv

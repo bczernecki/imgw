@@ -16,13 +16,12 @@ hydro(interval, year, coords = FALSE, value = NULL, station = NULL,
 
 \item{value}{type of data (can be: state - "H" (default), flow - "Q", or temperature - "T")}
 
-\item{station}{vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)}
+\item{station}{vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
+It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 
 \item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 
-\item{...}{or ID of station(numeric)}
-
-\item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
+\item{...}{other parameters that may be passed to the 'shortening' function that shortens column names}
 }
 \description{
 Downloading hourly, daily, and monthly hydrological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection

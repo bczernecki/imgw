@@ -20,7 +20,7 @@ meteo(interval, rank, year, status = FALSE, coords = FALSE,
 
 \item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 
-\item{...}{other parameters that may be passed to 'shortening' function that shortens column names}
+\item{...}{other parameters that may be passed to the 'shortening' function that shortens column names}
 }
 \description{
 Downloading hourly, daily, and monthly meteorological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
