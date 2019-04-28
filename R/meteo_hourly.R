@@ -8,6 +8,8 @@
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
 #' @param ... other parameters that may be passed to the 'shortening' function that shortens column names
+#' @param station name or ID of meteorological station(s).
+#' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
@@ -19,7 +21,7 @@
 #' }
 #'
 
-meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, col_names = "short", ...){
+meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", ...){
 
   stopifnot(rank == "synop" | rank == "climate") # dla terminowek tylko synopy i klimaty maja dane
 
@@ -125,6 +127,26 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, col_names =
   all_data <- cbind(data.frame(rank_code = rank_code), all_data)
 
   all_data <- all_data[all_data$Rok %in% year, ] # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
+
+  #station selection
+  if (!is.null(station)) {
+    stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/wykaz_stacji.csv",
+                         header = FALSE,
+                         fileEncoding = "CP1250")
+    if (is.character(station)) {
+      if (dim(stations[stations$V2 %in% station, ])[1] == 0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data <- all_data[all_data$`Nazwa stacji` %in% station, ]
+    } else if (is.numeric(station)){
+      if (dim(stations[stations$V1 %in% station, ])[1] == 0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
+      all_data <- all_data[all_data$`Kod stacji` %in% station, ]
+    } else {
+      stop("Selected station(s) are not in the proper format.", call. = FALSE)
+    }
+  }
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- meteo_shortening(all_data, col_names = col_names, ...)
