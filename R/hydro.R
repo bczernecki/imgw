@@ -17,17 +17,17 @@
 #'   x <- hydro("monthly", year = 1999)
 #'   head(x)
 #' }
-hydro <- function(interval, year, coords = FALSE, value = NULL, station = NULL, col_names = "short", ...){
+hydro <- function(interval, year, coords = FALSE, value = "H", station = NULL, col_names = "short", ...){
 
   if (interval == "daily"){
     # dobowe
-    calosc <- hydro_daily(year = year, coords = FALSE, station = station, col_names = "short", ...)
+    calosc <- hydro_daily(year = year, coords = coords, station = station, col_names = "short", ...)
   } else if (interval == "monthly"){
     #miesieczne
-    calosc <- hydro_monthly(year = year, coords = FALSE, station = station, col_names = "short", ...)
+    calosc <- hydro_monthly(year = year, coords = coords, station = station, col_names = "short", ...)
   } else if (interval == "semiannual_and_annual"){
     # polroczne_i_roczne
-    calosc <- hydro_annual(year = year, coords = FALSE, value = value, station = station, col_names = "short", ...)
+    calosc <- hydro_annual(year = year, coords = coords, value = value, station = station, col_names = "short", ...)
   } else{
     stop("Wrong `interval` value. It should be either 'daily', 'monthly', or 'semiannual_and_annual'.", call. = FALSE)
   }
