@@ -15,7 +15,7 @@
 #' }
 #'
 
-meteo_shortening <- function(data, col_names = "short", remove_duplicates = TRUE){
+hydro_shortening <- function(data, col_names = "short", remove_duplicates = TRUE){
 
   if (col_names != "polish"){
     abbrev <- imgw::hydro_abbrev
