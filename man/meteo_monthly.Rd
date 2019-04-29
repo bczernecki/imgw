@@ -5,7 +5,7 @@
 \title{Monthly meteorological data}
 \usage{
 meteo_monthly(rank, year, status = FALSE, coords = FALSE,
-  col_names = "short", ...)
+  station = NULL, col_names = "short", ...)
 }
 \arguments{
 \item{rank}{rank of the stations ("synop", "klimat", or "opad")}
@@ -15,6 +15,9 @@ meteo_monthly(rank, year, status = FALSE, coords = FALSE,
 \item{status}{leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)}
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
+
+\item{station}{name or ID of meteorological station(s).
+It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 
 \item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 

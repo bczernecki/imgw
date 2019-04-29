@@ -91,24 +91,20 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
   }
   #station selection
   if (!is.null(station)) {
-    stations <- read.csv("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/lista_stacji_hydro.csv",
-                         header = FALSE,
-                         fileEncoding = "CP1250")
     if (is.character(station)) {
-      if (dim(stations[stations$V2  %in% station, ])[1] == 0){
-        stop("Selected station(s) is not available in the database.", call. = FALSE)
-      }
       all_data <- all_data[all_data$`Nazwa stacji` %in% station, ]
-    } else if (is.numeric(station)){
-      if (dim(stations[stations$V1 %in% station, ])[1] == 0){
+      if (nrow(all_data) == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
+    } else if (is.numeric(station)){
       all_data <- all_data[all_data$`Kod stacji` %in% station, ]
+      if (nrow(all_data) == 0){
+        stop("Selected station(s) is not available in the database.", call. = FALSE)
+      }
     } else {
       stop("Selected station(s) are not in the proper format.", call. = FALSE)
     }
   }
-
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- hydro_shortening(all_data, col_names = col_names, ...)
 
