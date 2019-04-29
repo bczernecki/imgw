@@ -18,5 +18,5 @@ test_that("meteo works!", {
   x <- meteo("monthly", "synop", year = y, col_names = "polish")
   x <- meteo("monthly", "synop", year = y, coords = TRUE, col_names = "polish")
   x <- meteo("monthly", "synop", year = y, station = "BIAŁYSTOK")
-  y <- meteo("monthly", "synop", year = y, station = 353230295)
+  x2 <- meteo("monthly", "synop", year = y, station = 353230295)
 })
