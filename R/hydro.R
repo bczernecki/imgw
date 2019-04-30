@@ -21,13 +21,13 @@ hydro <- function(interval, year, coords = FALSE, value = "H", station = NULL, c
 
   if (interval == "daily"){
     # dobowe
-    calosc <- hydro_daily(year = year, coords = coords, station = station, col_names = "short", ...)
+    calosc <- hydro_daily(year = year, coords = coords, station = station, col_names = col_names, ...)
   } else if (interval == "monthly"){
     #miesieczne
-    calosc <- hydro_monthly(year = year, coords = coords, station = station, col_names = "short", ...)
+    calosc <- hydro_monthly(year = year, coords = coords, station = station, col_names = col_names, ...)
   } else if (interval == "semiannual_and_annual"){
     # polroczne_i_roczne
-    calosc <- hydro_annual(year = year, coords = coords, value = value, station = station, col_names = "short", ...)
+    calosc <- hydro_annual(year = year, coords = coords, value = value, station = station, col_names = col_names, ...)
   } else{
     stop("Wrong `interval` value. It should be either 'daily', 'monthly', or 'semiannual_and_annual'.", call. = FALSE)
   }

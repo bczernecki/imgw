@@ -15,3 +15,4 @@ test_that("hydro works!", {
   x <- hydro("semiannual_and_annual", year = y, station = "BOGUSŁAW")
   x2 <- hydro("semiannual_and_annual", year = y, station = 149180020)
 })
+

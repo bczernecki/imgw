@@ -20,7 +20,7 @@ Shortening column names of hydrological parameters to improve the readability of
 \dontrun{
   monthly <- hydro_monthly(year = 1969)
   colnames(monthly)
-  abbr <- hydro_shortening(data = monthly, col_names = "short", remove_duplicates = TRUE)
+  abbr <- hydro_shortening(data = monthly, col_names = "polish", remove_duplicates = TRUE)
   head(abbr)
 }
 
