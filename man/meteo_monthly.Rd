@@ -8,7 +8,7 @@ meteo_monthly(rank, year, status = FALSE, coords = FALSE,
   station = NULL, col_names = "short", ...)
 }
 \arguments{
-\item{rank}{rank of the stations ("synop", "klimat", or "opad")}
+\item{rank}{rank of the stations ("synop", "climate", or "precip")}
 
 \item{year}{vector of years (e.g., 1966:2000)}
 

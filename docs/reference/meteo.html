@@ -124,7 +124,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>meteo</span>(<span class='no'>interval</span>, <span class='no'>rank</span>, <span class='no'>year</span>, <span class='kw'>status</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>col_names</span> <span class='kw'>=</span> <span class='st'>"short"</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>station</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col_names</span> <span class='kw'>=</span> <span class='st'>"short"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,12 +150,17 @@
       <td><p>add coordinates of the station (logical value TRUE or FALSE)</p></td>
     </tr>
     <tr>
+      <th>station</th>
+      <td><p>vector of hydrological stations danepubliczne.imgw.pl can be name of station CAPITAL LETTERS(character)
+It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)</p></td>
+    </tr>
+    <tr>
       <th>col_names</th>
       <td><p>three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other parameters that may be passed to 'shortening' function that shortens column names</p></td>
+      <td><p>other parameters that may be passed to the 'shortening' function that shortens column names</p></td>
     </tr>
     </table>
     
