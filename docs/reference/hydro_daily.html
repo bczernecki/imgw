@@ -123,7 +123,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>hydro_daily</span>(<span class='no'>year</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>station</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>hydro_daily</span>(<span class='no'>year</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>station</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>col_names</span> <span class='kw'>=</span> <span class='st'>"short"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,6 +141,14 @@
       <th>station</th>
       <td><p>name or ID of hydrological station(s).
 It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)</p></td>
+    </tr>
+    <tr>
+      <th>col_names</th>
+      <td><p>three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other parameters that may be passed to the 'shortening' function that shortens column names</p></td>
     </tr>
     </table>
     
