@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "imgw",
-  "description": "Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).",
+  "description": "Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).\n    This package also allows for adding geographical coordinates for each observation.",
   "name": "imgw: Polish Meteorological and Hydrological Data",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.1",
@@ -127,7 +127,7 @@
   "codeRepository": "https://github.com/bczernecki/imgw",
   "releaseNotes": "https://github.com/bczernecki/imgw/blob/master/NEWS.md",
   "readme": "https://github.com/bczernecki/imgw/blob/master/README.md",
-  "fileSize": "62.937KB",
+  "fileSize": "86.847KB",
   "contIntegration": "https://travis-ci.org/bczernecki/imgw",
   "citation": [
     {
