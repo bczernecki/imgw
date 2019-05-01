@@ -7,6 +7,7 @@
 \title{imgw: Polish Meteorological and Hydrological Data}
 \description{
 Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
+    This package also allows for adding geographical coordinates for each observation.
 }
 \author{
 \strong{Maintainer}: Bartosz Czernecki \email{nwp@amu.edu.pl} (0000-0001-6496-1386)
