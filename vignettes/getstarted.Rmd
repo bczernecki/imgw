@@ -20,106 +20,93 @@ library(dplyr)
 options(scipen=999)
 ```
 
-Data is and will be always an element of the analysis for many people. 
-When we start working with data first thing we do are:
+Data is central to understand and analyze actual meteorological and hydrological phenomena. 
+When we start working with new data, first thing we do are:
 
--	Knowing the way of stored and accessibility.
+- Understanding where the data is stored and how it can be retrieved
+- Downloading the data
+- Preparing the data to a readable format (if the format is unclear)
 
--	Downloading the data,
+The main goal of the **imgw** package is to give access to the Polish database of meteorological and hydrological parameters.
+It consists of tools that are:
 
--	Preparing to readable format (if the format is unclear)
-
-The imgw package is a repository giving access to Polish databased of meteorological and hydrological parameters.
-The Autor’s offer the tools which are:
-
--	Giving the easier access to public data stored in Institute of Meteorology and Water Management ([IMGW](https://dane.imgw.pl/))
-
--	Downloading the selected data for us
-
--	The data are converted from among eleven different forms of publicity depending on the interval and type of data
-
--	Description is available in two languages Polish and Engilsh 
+- Giving more accessible access to the public data stored in the Institute of Meteorology and Water Management ([IMGW](https://dane.imgw.pl/))
+- Downloading the selected data from among eleven different forms of data depending on the interval and the data type
+- Providing the description of the parameters in two languages: Polish and English, as well as in the abbreviated form
+<!--co jeszcze>-->
 
 ## Functions 
 
-imgw R package it consists of 9 usefull functions 4 to meteorological data 4 to hyrological and one to sounding meteo:
+The **imgw** package consists of nine functions - four for meteorological data, four for hydrological data and one for  sounding meteo:
 
 1. Meteorological data:
 
-- `meteo_hourly()` Downloading meteorological the data with hourly interval 
-
-- `meteo_daily()` Downloading meteorological the data with daily interval 
-
-- `meteo_monthly()` Downloading meteorological the data with monthly interval 
-
-- `meteo()` Downloading meteorological the data with interval the user want to choose 
+- `meteo_hourly()` - downloading meteorological the data with hourly interval 
+- `meteo_daily()` - downloading meteorological the data with daily interval 
+- `meteo_monthly()` - downloading meteorological the data with monthly interval 
+- `meteo()` - downloading meteorological the data with interval the user want to choose 
 
 2. Hydrological data: 
 
-- `hydro_daily()` Downloading hyrological the data with daily interval
-
-- `meteo_monthly()`  Downloading hyrological the data with monthly interval
-
-- `meteo_annual()`  Downloading hyrological the data with annual interval
-
-- `meteo()` Downloading hyrological the data with interval the user want to choose
+- `hydro_daily()` - downloading hydrological the data with daily interval
+- `meteo_monthly()` - downloading hyrological the data with monthly interval
+- `meteo_annual()` - downloading hyrological the data with annual interval
+- `meteo()` - downloading hydrological the data with interval the user want to choose
 
 3. Sounding meteo: 
 
 - `meteo_sounding` -----------------------------------
 
-Those functions have similar arguments allowing us to choose additional selections:
+Those functions have similar arguments allowing to choose:
 
-- `rank` argument of type the stations `"synop"`, `"climate"`, `"precip"` (**only meteo functions**)
-
-- `year` vector of years (e.g., `1966:2000`)
-
-- `status` logical argument TRUE or FALSE; if TRUE status of measurements will be erased (**only meteo functions**)
-
-- `coords` logical argument TRUE or FALSE;  if TRUE coordinates are added to station
-
-- `station` vector of stations can be the ID of stations (numeric) or name of the station (**CAPITAL LETTERS character**)
-
-- `col_names` three types of column names possible: `"short"` - default, values with shorten names, `"full"` - full English description, `"polish"` - original names in the dataset
+- `rank` - type of the stations `"synop"`, `"climate"`, `"precip"` (**only meteo functions**)
+- `year` - vector of selected years (e.g., `1966:2000`)
+- `status` - logical argument TRUE or FALSE; if TRUE the measurement statuses will be erased (**only meteo functions**)
+- `coords` - logical argument TRUE or FALSE; if TRUE the coordinates are added to the stations
+- `station` - selection of the stations; it can be the ID of stations (numeric) or name of the station (**CAPITAL LETTERS** (character))
+- `col_names` - format of the columns names; three types of column names are possible: `"short"` - default, values with shorten names, `"full"` - full English description, `"polish"` - original names in the dataset
 
 ## Database
 
-imgw is also supplied with few databases with can be helpful:
+**imgw** also has a few additional databases:
 
-- `hydro_abberv`/`meteo_abberv` - Dictionary contains all original descriptions of parameters in both languages and the abbreviation
+- `hydro_abberv`/`meteo_abberv` - a dictionary containing all original descriptions of parameters in both languages and the abbreviations
 
 ```{r abberv,echo=FALSE}
-abbev=meteo_abbrev
-abbev[3:8,]
+abbev = meteo_abbrev
+head(abbev)
 ```
 
-- `hydro_stations`/`meteo_stations` - Dataset of almost all meteo / hydro stations contains ID  and latitude and longitude
+- `hydro_stations`/`meteo_stations` - datasets of almost all meteorological/hydrological stations containing their ID, latitude, and longitude
 
 ```{r station,echo=FALSE}
-station=meteo_stations
+station = meteo_stations
 head(station)
 ```
 
 ## Application
 
-We will show how to use our package and make simple preparation for spatial analysis with additional help of ([dyplr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)) and ([tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)) packages. 
-We can see we download 10(**2001-2010**) years of monthly hydrological data without station selection adding the coordinates. 
+We will show how to use our package and prepare the data for spatial analysis with the additional help of the [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) and [tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) packages.
+Firstly, we download ten years (**2001-2010**) of monthly hydrological observations for all stations available and automatically add their spatial coordinates. 
 
 ```{r data }
-h=hydro_monthly(year = 2001:2010,coords = T)
+h = hydro_monthly(year = 2001:2010, coords = TRUE)
 head(h)
 ```
 
-`idex` depending on the value means `1` minimum `2` mean `3` maximum you can find information about this in `hydro_abber` dataset. 
-Hydrologist often use the maximum value so we will filter the data `next` select `id` station, hydrological year(`hyy`), latitude`X` and longitude`Y`, `next` calculate the mean maximum value of flow on the stations in particular year with `dplyr` and then spread data by year using `tidyr` to get the run of annual mean of maximum flow in next columns.
+The `idex` variable represents id of the extremum, where `1` means minimum, `2` mean, and `3` maximum.^[You can find information about this in the `hydro_abbrev` dataset.]
+Hydrologists often use the maximum value so we will filter the data and select only the station `id`, hydrological year (`hyy`), latitude `X` and longitude `Y`.
+Next, we will calculate the mean maximum value of the flow on the stations in each year with **dplyr**'s `summarise()`, and spread data by year using **tidyr**'s `spread()` to get the annual means of maximum flow in the consecutive columns.
 
 ```{r filering}
-h%>%
-  filter(idex==3)%>%
-  select(id,X,Y,hyy,Q,mm)%>%
-  group_by(hyy,id,X,Y)%>%
-  summarise(annual_mean_Q=round(mean(Q,na.rm = T),2))%>%
-  spread(hyy,annual_mean_Q)
+h %>%
+  filter(idex == 3) %>%
+  select(id, X, Y, hyy, Q, mm) %>%
+  group_by(hyy, id, X, Y) %>%
+  summarise(annual_mean_Q = mean(Q, na.rm = TRUE)) %>%
+  spread(hyy, annual_mean_Q)
 ```
 
-That table can be easly exported to any spatial softwere with a changing annual maximum annual average water flow rate over the decade for Poland as a whole.
+<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
+nie rozumiem tego zdania
+<!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
