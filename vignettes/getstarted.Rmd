@@ -19,7 +19,9 @@ library(tidyr)
 library(dplyr)
 options(scipen=999)
 ```
-Data is and will be always an element of the analysis for many people. When we start working with data first thing we do are:
+
+Data is and will be always an element of the analysis for many people. 
+When we start working with data first thing we do are:
 
 -	Knowing the way of stored and accessibility.
 
@@ -27,7 +29,8 @@ Data is and will be always an element of the analysis for many people. When we s
 
 -	Preparing to readable format (if the format is unclear)
 
-The imgw package is a repository giving access to Polish databased of meteorological and hydrological parameters. The Autor’s offer  the tools which are:
+The imgw package is a repository giving access to Polish databased of meteorological and hydrological parameters.
+The Autor’s offer the tools which are:
 
 -	Giving the easier access to public data stored in Institute of Meteorology and Water Management ([IMGW](https://dane.imgw.pl/))
 
@@ -38,6 +41,7 @@ The imgw package is a repository giving access to Polish databased of meteorolog
 -	Description is available in two languages Polish and Engilsh 
 
 ## Functions 
+
 imgw R package it consists of 9 usefull functions 4 to meteorological data 4 to hyrological and one to sounding meteo:
 
 1. Meteorological data:
@@ -68,7 +72,6 @@ Those functions have similar arguments allowing us to choose additional selectio
 
 - `rank` argument of type the stations `"synop"`, `"climate"`, `"precip"` (**only meteo functions**)
 
-
 - `year` vector of years (e.g., `1966:2000`)
 
 - `status` logical argument TRUE or FALSE; if TRUE status of measurements will be erased (**only meteo functions**)
@@ -80,27 +83,35 @@ Those functions have similar arguments allowing us to choose additional selectio
 - `col_names` three types of column names possible: `"short"` - default, values with shorten names, `"full"` - full English description, `"polish"` - original names in the dataset
 
 ## Database
+
 imgw is also supplied with few databases with can be helpful:
 
-- `hydro_abberv`/`meteo_abberv` - Dictionary contains all original descriptions of parameters in both languages and the abbreviation. 
+- `hydro_abberv`/`meteo_abberv` - Dictionary contains all original descriptions of parameters in both languages and the abbreviation
+
 ```{r abberv,echo=FALSE}
 abbev=meteo_abbrev
 abbev[3:8,]
 ```
+
 - `hydro_stations`/`meteo_stations` - Dataset of almost all meteo / hydro stations contains ID  and latitude and longitude
+
 ```{r station,echo=FALSE}
 station=meteo_stations
 head(station)
 ```
 
 ## Application
-We will show how to use our package and make simple preparation for spatial analysis with additional help of ([dyplr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)) and ([tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)) packages. We can see we download 10(**2001-2010**) years of monthly hydrological data without station selection adding the coordinates. 
+
+We will show how to use our package and make simple preparation for spatial analysis with additional help of ([dyplr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)) and ([tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)) packages. 
+We can see we download 10(**2001-2010**) years of monthly hydrological data without station selection adding the coordinates. 
 
 ```{r data }
 h=hydro_monthly(year = 2001:2010,coords = T)
 head(h)
 ```
-`idex` depending on the value means `1` minimum `2` mean `3` maximum you can find information about this in `hydro_abber` dataset. Hydrologist often use the maximum value so we will filter the data `next` select `id` station, hydrological year(`hyy`), latitude`X` and longitude`Y`, `next` calculate the mean maximum value of flow on the stations in particular year with `dplyr` and then spread data by year using `tidyr` to get the run of annual mean of maximum flow in next columns.
+
+`idex` depending on the value means `1` minimum `2` mean `3` maximum you can find information about this in `hydro_abber` dataset. 
+Hydrologist often use the maximum value so we will filter the data `next` select `id` station, hydrological year(`hyy`), latitude`X` and longitude`Y`, `next` calculate the mean maximum value of flow on the stations in particular year with `dplyr` and then spread data by year using `tidyr` to get the run of annual mean of maximum flow in next columns.
 
 ```{r filering}
 h%>%
