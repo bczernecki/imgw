@@ -189,7 +189,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
   }
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- meteo_shortening(all_data, col_names = col_names, ...)
-
+  all_data <- all_datax[order(all_data$station,all_data$yy,all_data$mm,all_data$day),]
   return(all_data)
 
 } # koniec funkcji meteo_daily
