@@ -1,6 +1,6 @@
 ---
 title: "Introduction to imgw"
-author: "Czarnecki B., Głogowski A., Nowosad J."
+author: "Czernecki B., Głogowski A., Nowosad J."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -110,3 +110,4 @@ h %>%
 <!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
 nie rozumiem tego zdania
 <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
+
