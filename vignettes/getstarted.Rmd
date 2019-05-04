@@ -1,5 +1,5 @@
 ---
-title: "Introduction to imgw"
+title: "Introduction to imgw package (EN)"
 author: "Czernecki B., Głogowski A., Nowosad J."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -20,14 +20,8 @@ library(dplyr)
 options(scipen=999)
 ```
 
-Data is central to understand and analyze actual meteorological and hydrological phenomena. 
-When we start working with new data, first thing we do are:
+The main goal of the **imgw** package is to give a convenient and programmable access to the Polish database of meteorological and hydrological (archive)database.
 
-- Understanding where the data is stored and how it can be retrieved
-- Downloading the data
-- Preparing the data to a readable format (if the format is unclear)
-
-The main goal of the **imgw** package is to give access to the Polish database of meteorological and hydrological parameters.
 It consists of tools that are:
 
 - Giving more accessible access to the public data stored in the Institute of Meteorology and Water Management ([IMGW](https://dane.imgw.pl/))
