@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/articles/pl.html">Vignette Title</a>
+      <a href="articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="articles/getstarted.html">Introduction to imgw</a>
+      <a href="articles/getstarted.html">Introduction to imgw package (EN)</a>
     </li>
   </ul>
 </li>
@@ -94,8 +94,8 @@
 <!-- install.packages("imgw") -->
 <!-- ``` -->
 <p>You can install the development version of <strong>imgw</strong> from <a href="https://github.com/bczernecki/imgw">GitHub</a> with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(remotes)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"bczernecki/imgw"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(remotes)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"bczernecki/imgw"</span>)</a></code></pre></div>
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -129,81 +129,88 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(imgw)
-m =<span class="st"> </span><span class="kw"><a href="reference/meteo_monthly.html">meteo_monthly</a></span>(<span class="dt">rank =</span> <span class="st">"synop"</span>, <span class="dt">year =</span> <span class="dv">2000</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(m)
-<span class="co">#&gt;          rank        id        X        Y       station   yy mm tmax_abs</span>
-<span class="co">#&gt; 1 SYNOPTYCZNA 349190600 19.00234 49.80671 BIELSKO-BIAŁA 2000 10     26.4</span>
-<span class="co">#&gt; 2 SYNOPTYCZNA 349190600 19.00234 49.80671 BIELSKO-BIAŁA 2000  1      7.4</span>
-<span class="co">#&gt; 3 SYNOPTYCZNA 349190600 19.00234 49.80671 BIELSKO-BIAŁA 2000  6     32.2</span>
-<span class="co">#&gt; 4 SYNOPTYCZNA 349190600 19.00234 49.80671 BIELSKO-BIAŁA 2000  7     28.0</span>
-<span class="co">#&gt; 5 SYNOPTYCZNA 349190600 19.00234 49.80671 BIELSKO-BIAŁA 2000  8     32.6</span>
-<span class="co">#&gt; 6 SYNOPTYCZNA 349190600 19.00234 49.80671 BIELSKO-BIAŁA 2000  9     25.1</span>
-<span class="co">#&gt;   tmax_mean tmin_abs tmin_mean t2m_mean_mon t5cm_min rr_monthly</span>
-<span class="co">#&gt; 1      17.4      0.6      10.0         13.4     -3.8       39.5</span>
-<span class="co">#&gt; 2       0.7    -19.6      -4.5         -1.6    -21.7       38.9</span>
-<span class="co">#&gt; 3      22.5      6.1      12.1         17.2      2.4       81.1</span>
-<span class="co">#&gt; 4      20.5      6.7      12.0         16.0      5.5      322.5</span>
-<span class="co">#&gt; 5      24.1      7.1      13.4         18.6      3.7       62.8</span>
-<span class="co">#&gt; 6      17.3      2.7       7.9         12.2     -1.2       46.1</span>
-<span class="co">#&gt;   rr_max_daily first_day_max_rr last_day_max_rr insolation_monthly</span>
-<span class="co">#&gt; 1         11.7               17              NA                0.0</span>
-<span class="co">#&gt; 2          9.1               29              NA                0.0</span>
-<span class="co">#&gt; 3         22.1               14              NA              271.8</span>
-<span class="co">#&gt; 4         69.3               28              NA                0.0</span>
-<span class="co">#&gt; 5         33.6                6              NA                0.0</span>
-<span class="co">#&gt; 6         19.0                4              NA                0.0</span>
-<span class="co">#&gt;   snowcover_max snowcover_days rain_days snow_days r_s_days hail_days</span>
-<span class="co">#&gt; 1             0              0        11         0        0         0</span>
-<span class="co">#&gt; 2            30             26         2        16        2         0</span>
-<span class="co">#&gt; 3             0              0        11         0        0         0</span>
-<span class="co">#&gt; 4             0              0        20         0        0         0</span>
-<span class="co">#&gt; 5             0              0        10         0        0         1</span>
-<span class="co">#&gt; 6             0              0         8         0        0         0</span>
-<span class="co">#&gt;   fog_days fogginess_days rime_days glaze_days snowstorm_low_days</span>
-<span class="co">#&gt; 1        8             15         0          0                  0</span>
-<span class="co">#&gt; 2        2             28         0          0                 10</span>
-<span class="co">#&gt; 3        0              7         0          0                  0</span>
-<span class="co">#&gt; 4        1             18         0          0                  0</span>
-<span class="co">#&gt; 5        2             17         0          0                  0</span>
-<span class="co">#&gt; 6        1             20         0          0                  0</span>
-<span class="co">#&gt;   snowstorm_high_days hazyness_days ws_10ms_days ws_15ms_days thunder_days</span>
-<span class="co">#&gt; 1                   0             0           11            2            3</span>
-<span class="co">#&gt; 2                   4             0            7            1            1</span>
-<span class="co">#&gt; 3                   0             0            0            0            4</span>
-<span class="co">#&gt; 4                   0             0            5            0            5</span>
-<span class="co">#&gt; 5                   0             0            2            0            4</span>
-<span class="co">#&gt; 6                   0             0            0            0            0</span>
-<span class="co">#&gt;   dew_days hoarfrost_days cloud_mean_mon ws_mean_mon vapor_press_mean_mon</span>
-<span class="co">#&gt; 1       12              2            4.9         3.9                 11.4</span>
-<span class="co">#&gt; 2        0              0            6.5         4.3                  4.6</span>
-<span class="co">#&gt; 3       21              0            4.0         2.8                 13.1</span>
-<span class="co">#&gt; 4        8              0            5.9         3.3                 13.9</span>
-<span class="co">#&gt; 5       22              0            3.8         2.4                 15.5</span>
-<span class="co">#&gt; 6       22              0            4.6         3.0                 11.2</span>
-<span class="co">#&gt;   rh_mean_mon press_mean_mon slp_mean_mon rr_daytime rr_nightime</span>
-<span class="co">#&gt; 1        74.8          970.3       1017.5       11.8        27.7</span>
-<span class="co">#&gt; 2        82.8          971.8       1021.8       16.6        22.3</span>
-<span class="co">#&gt; 3        67.2          972.3       1019.0       34.4        46.7</span>
-<span class="co">#&gt; 4        77.6          964.4       1010.8      150.9       171.6</span>
-<span class="co">#&gt; 5        73.8          971.4       1017.8        6.5        56.3</span>
-<span class="co">#&gt; 6        79.2          969.7       1017.1       13.0        33.1</span>
-h =<span class="st"> </span><span class="kw"><a href="reference/hydro_annual.html">hydro_annual</a></span>(<span class="dt">year =</span> <span class="dv">2010</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)
-<span class="co">#&gt;          id  station riv_or_lake  hyy idyy Mesu idex   H beyy bemm bedd</span>
-<span class="co">#&gt; 1 149180020 CHAŁUPKI    Odra (1) 2010   13    H    1 135 2009   12   20</span>
-<span class="co">#&gt; 2 149180020 CHAŁUPKI    Odra (1) 2010   13    H    2 188   NA   NA   NA</span>
-<span class="co">#&gt; 3 149180020 CHAŁUPKI    Odra (1) 2010   13    H    3 420 2009   11   12</span>
-<span class="co">#&gt; 4 149180020 CHAŁUPKI    Odra (1) 2010   14    H    1 137 2010    8   26</span>
-<span class="co">#&gt; 5 149180020 CHAŁUPKI    Odra (1) 2010   14    H    2 229   NA   NA   NA</span>
-<span class="co">#&gt; 6 149180020 CHAŁUPKI    Odra (1) 2010   14    H    3 650 2010    5   17</span>
-<span class="co">#&gt;   behm</span>
-<span class="co">#&gt; 1   NA</span>
-<span class="co">#&gt; 2   NA</span>
-<span class="co">#&gt; 3    4</span>
-<span class="co">#&gt; 4   NA</span>
-<span class="co">#&gt; 5   NA</span>
-<span class="co">#&gt; 6   15</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(imgw)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">m =<span class="st"> </span><span class="kw"><a href="reference/meteo_monthly.html">meteo_monthly</a></span>(<span class="dt">rank =</span> <span class="st">"synop"</span>, <span class="dt">year =</span> <span class="dv">2000</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(m)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;            rank        id        X        Y   station   yy mm tmax_abs</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; 575 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  1      5.3</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 577 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  2     10.6</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 578 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  3     14.8</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; 579 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  4     27.8</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 580 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  5     29.3</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 581 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  6     32.6</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;     tmax_mean tmin_abs tmin_mean t2m_mean_mon t5cm_min rr_monthly</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 575       0.4    -16.5      -4.5         -2.1    -23.5       34.2</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 577       4.1    -10.4      -1.4          1.3    -12.9       25.4</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 578       6.2     -6.4      -1.0          2.4     -9.4       45.5</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; 579      17.9     -4.6       4.7         11.5     -8.1       31.6</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; 580      21.3     -4.3       5.7         13.8     -8.3        9.4</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; 581      23.1      1.0       9.6         16.6     -1.8       36.4</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;     rr_max_daily first_day_max_rr last_day_max_rr insolation_monthly</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; 575          7.0               29              NA               25.8</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 577          4.7                4               8               35.6</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 578         12.7                7              NA               91.5</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; 579         26.9                5              NA              244.9</span></a>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; 580          3.3               29              NA              349.1</span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 581          8.3               27              NA              283.8</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt;     snowcover_max snowcover_days rain_days snow_days r_s_days hail_days</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; 575            13             22         3        17        5         0</span></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; 577             3              6         6        15        3         0</span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; 578             4              6         8        11        2         0</span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 579             0              0         6         0        0         1</span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt; 580             0              0         5         0        0         0</span></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; 581             0              0        10         0        0         1</span></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt;     fog_days fogginess_days rime_days glaze_days snowstorm_low_days</span></a>
+<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; 575       11             24         4          1                  2</span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; 577        6             17         1          0                  0</span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; 578        2             14         0          0                  0</span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; 579        4              9         1          0                  0</span></a>
+<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt; 580        0              2         0          0                  0</span></a>
+<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; 581        0              3         0          0                  0</span></a>
+<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt;     snowstorm_high_days hazyness_days ws_10ms_days ws_15ms_days</span></a>
+<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; 575                   1             0            0            0</span></a>
+<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; 577                   0             0            0            0</span></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; 578                   0             0            0            0</span></a>
+<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; 579                   0             0            0            0</span></a>
+<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt; 580                   0             0            0            0</span></a>
+<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; 581                   0             0            0            0</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt;     thunder_days dew_days hoarfrost_days cloud_mean_mon ws_mean_mon</span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; 575            0        0              5            6.6         2.6</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; 577            0        0             10            6.3         2.4</span></a>
+<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; 578            0        0             11            5.8         3.2</span></a>
+<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt; 579            2       12              3            3.5         2.4</span></a>
+<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; 580            3        3              4            2.9         1.9</span></a>
+<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt; 581            4        5              0            4.0         2.1</span></a>
+<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt;     vapor_press_mean_mon rh_mean_mon press_mean_mon slp_mean_mon</span></a>
+<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt; 575                  4.9        89.4          996.6       1015.8</span></a>
+<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; 577                  5.8        84.7          996.1       1015.0</span></a>
+<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; 578                  5.9        79.4          993.8       1012.6</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; 579                  9.4        69.5          993.5       1011.7</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; 580                  9.6        61.8          998.7       1016.8</span></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; 581                 12.1        66.0          998.7       1016.6</span></a>
+<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt;     rr_daytime rr_nightime</span></a>
+<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; 575       17.5        16.7</span></a>
+<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; 577       10.6        14.8</span></a>
+<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; 578       14.4        31.1</span></a>
+<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt; 579        5.9        25.7</span></a>
+<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt; 580        7.8         1.6</span></a>
+<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt; 581       14.5        21.9</span></a>
+<a class="sourceLine" id="cb2-67" data-line-number="67">h =<span class="st"> </span><span class="kw"><a href="reference/hydro_annual.html">hydro_annual</a></span>(<span class="dt">year =</span> <span class="dv">2010</span>)</a>
+<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)</a>
+<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt;             id station riv_or_lake  hyy idyy Mesu idex   H beyy bemm bedd</span></a>
+<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt; 3223 150210180 ANNOPOL   Wisła (2) 2010   13    H    1 227 2009   12   19</span></a>
+<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt; 3224 150210180 ANNOPOL   Wisła (2) 2010   13    H    2 319   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; 3225 150210180 ANNOPOL   Wisła (2) 2010   13    H    3 531 2010    3    3</span></a>
+<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt; 3226 150210180 ANNOPOL   Wisła (2) 2010   14    H    1 271 2010    8   29</span></a>
+<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt; 3227 150210180 ANNOPOL   Wisła (2) 2010   14    H    1 271 2010   10   27</span></a>
+<a class="sourceLine" id="cb2-75" data-line-number="75"><span class="co">#&gt; 3228 150210180 ANNOPOL   Wisła (2) 2010   14    H    2 392   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb2-76" data-line-number="76"><span class="co">#&gt;      behm</span></a>
+<a class="sourceLine" id="cb2-77" data-line-number="77"><span class="co">#&gt; 3223   NA</span></a>
+<a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt; 3224   NA</span></a>
+<a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; 3225   18</span></a>
+<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; 3226   NA</span></a>
+<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; 3227   NA</span></a>
+<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt; 3228   NA</span></a></code></pre></div>
 </div>
 <div id="acknowledgment" class="section level2">
 <h2 class="hasAnchor">
@@ -253,7 +260,7 @@ h =<span class="st"> </span><span class="kw"><a href="reference/hydro_annual.htm
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
 </div>

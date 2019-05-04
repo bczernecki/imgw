@@ -130,6 +130,6 @@ meteo_monthly <- function(rank, year, status = FALSE, coords = FALSE, station = 
     }
     # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
     all_data <- meteo_shortening(all_data, col_names = col_names, ...)
-    all_data <- all_datax[order(all_data$station,all_data$yy,all_data$mm),]
+    all_data <- all_data[order(all_data$station, all_data$yy, all_data$mm), ]
     return(all_data) # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 }

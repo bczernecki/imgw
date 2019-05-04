@@ -1,5 +1,5 @@
 ---
-title: "Introduction to imgw"
+title: "Introduction to imgw package (EN)"
 author: "Czernecki B., Głogowski A., Nowosad J."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -20,14 +20,8 @@ library(dplyr)
 options(scipen=999)
 ```
 
-Data is central to understand and analyze actual meteorological and hydrological phenomena. 
-When we start working with new data, first thing we do are:
+The main goal of the **imgw** package is to give a convenient and programmable access to the Polish database of meteorological and hydrological (archive)database.
 
-- Understanding where the data is stored and how it can be retrieved
-- Downloading the data
-- Preparing the data to a readable format (if the format is unclear)
-
-The main goal of the **imgw** package is to give access to the Polish database of meteorological and hydrological parameters.
 It consists of tools that are:
 
 - Giving more accessible access to the public data stored in the Institute of Meteorology and Water Management ([IMGW](https://dane.imgw.pl/))
@@ -48,16 +42,16 @@ The **imgw** package consists of nine functions - four for meteorological data, 
 
 2. Hydrological data: 
 
+- `hydro()` - downloading hydrological the data with interval the user want to choose
 - `hydro_daily()` - downloading hydrological the data with daily interval
-- `meteo_monthly()` - downloading hyrological the data with monthly interval
-- `meteo_annual()` - downloading hyrological the data with annual interval
-- `meteo()` - downloading hydrological the data with interval the user want to choose
+- `hydro_monthly()` - downloading hyrological the data with monthly interval
+- `hydro_annual()` - downloading hyrological the data with annual interval
 
-3. Sounding meteo: 
+3. Rawinsonde data: 
 
-- `meteo_sounding` -----------------------------------
+- `meteo_sounding()` -- downloading rawinsonde data (+metadata)
 
-Those functions have similar arguments allowing to choose:
+Most of the above mentioned unctions have similar arguments allowing to choose:
 
 - `rank` - type of the stations `"synop"`, `"climate"`, `"precip"` (**only meteo functions**)
 - `year` - vector of selected years (e.g., `1966:2000`)
@@ -89,7 +83,7 @@ head(station)
 We will show how to use our package and prepare the data for spatial analysis with the additional help of the [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) and [tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) packages.
 Firstly, we download ten years (**2001-2010**) of monthly hydrological observations for all stations available and automatically add their spatial coordinates. 
 
-```{r data }
+```{r data, echo = FALSE}
 h = hydro_monthly(year = 2001:2010, coords = TRUE)
 head(h)
 ```

@@ -86,6 +86,6 @@ hydro_annual <-  function(year, coords = FALSE, value = "H", station = NULL, col
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- hydro_shortening(all_data, col_names = col_names, ...)
-  all_data <- all_data[order(all_data$station,all_data$hyy),]
+  all_data <- all_data[order(all_data$station, all_data$hyy), ]
   return(all_data)
 }

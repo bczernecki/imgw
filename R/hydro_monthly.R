@@ -86,7 +86,7 @@ hydro_monthly <- function(year, coords = FALSE, station = NULL, col_names= "shor
 
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- hydro_shortening(all_data, col_names = col_names, ...)
-  all_data <- all_data[order(all_data$station,all_data$hyy,all_data$mm),]
+  all_data <- all_data[order(all_data$station, all_data$hyy, all_data$mm), ]
   return(all_data)
 }
 
