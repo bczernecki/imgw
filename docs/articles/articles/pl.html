@@ -143,33 +143,94 @@
 <li>
 <code>hydro_abberv</code>/<code>meteo_abberv</code> - wykaz parametrów wraz z opisem stosowanym w repozytorium IMGW-PIB oraz zastosowane formy skrótów do wygodnej pracy w środowisku programistycznym lub w arkuszach kalkulacyjnych</li>
 </ul>
-<pre><code>#&gt;                               fullname   abbr_eng
-#&gt; 1 Absolutna temperatura maksymalna [C]   tmax_abs
-#&gt; 2  Absolutna temperatura minimalna [C]   tmin_abs
-#&gt; 3                 Aktynometria [J/cm2]      irrad
-#&gt; 4      Charakterystyka tendencji [kod] press_tend
-#&gt; 5                      Chmury CH [kod] cl_CH_code
-#&gt; 6                    Chmury CH tekstem      cl_CH
-#&gt;                           fullname_eng
-#&gt; 1 Absolute maximum air temperature [C]
-#&gt; 2 Absolute minimum air temperature [C]
-#&gt; 3                   Irradiance [J/cm2]
-#&gt; 4                    Pressure tendency
-#&gt; 5              High cloud cover [code]
-#&gt; 6              High cloud cover [text]</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">abbev =<span class="st"> </span>meteo_abbrev</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(abbev)</a></code></pre></div>
+<table class="table">
+<caption>Parametry meteorologiczne i skróty zastosowane w pakiecie:</caption>
+<thead><tr class="header">
+<th align="left">fullname</th>
+<th align="left">abbr_eng</th>
+<th align="left">fullname_eng</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Absolutna temperatura maksymalna [C]</td>
+<td align="left">tmax_abs</td>
+<td align="left">Absolute maximum air temperature [C]</td>
+</tr>
+<tr class="even">
+<td align="left">Absolutna temperatura minimalna [C]</td>
+<td align="left">tmin_abs</td>
+<td align="left">Absolute minimum air temperature [C]</td>
+</tr>
+<tr class="odd">
+<td align="left">Aktynometria [J/cm2]</td>
+<td align="left">irrad</td>
+<td align="left">Irradiance [J/cm2]</td>
+</tr>
+<tr class="even">
+<td align="left">Charakterystyka tendencji [kod]</td>
+<td align="left">press_tend</td>
+<td align="left">Pressure tendency</td>
+</tr>
+<tr class="odd">
+<td align="left">Chmury CH [kod]</td>
+<td align="left">cl_CH_code</td>
+<td align="left">High cloud cover [code]</td>
+</tr>
+<tr class="even">
+<td align="left">Chmury CH tekstem</td>
+<td align="left">cl_CH</td>
+<td align="left">High cloud cover [text]</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <code>hydro_stations</code>/<code>meteo_stations</code> - zbiór metadanych dla większości stacji meteorologicznych i hydrologicznych wraz z numerem stacji, długością, szerokością gegoraficzną i wysokością stacji</li>
 </ul>
-<pre><code>#&gt; # A tibble: 6 x 3
-#&gt;          id     X     Y
-#&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 249190020  19.6  50.0
-#&gt; 2 249199999  19.3  49.9
-#&gt; 3 249190040  19.4  49.9
-#&gt; 4 249190050  19.8  49.9
-#&gt; 5 249190060  20.0  49.9
-#&gt; 6 249190070  19.2  49.9</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">station =<span class="st"> </span>meteo_stations</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(station)</a></code></pre></div>
+<table class="table">
+<caption>Metadane dla stacji meteorologicznych:</caption>
+<thead><tr class="header">
+<th align="right">id</th>
+<th align="right">X</th>
+<th align="right">Y</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">249190020</td>
+<td align="right">19.64124</td>
+<td align="right">49.96387</td>
+</tr>
+<tr class="even">
+<td align="right">249199999</td>
+<td align="right">19.26644</td>
+<td align="right">49.94970</td>
+</tr>
+<tr class="odd">
+<td align="right">249190040</td>
+<td align="right">19.37912</td>
+<td align="right">49.93805</td>
+</tr>
+<tr class="even">
+<td align="right">249190050</td>
+<td align="right">19.81285</td>
+<td align="right">49.94243</td>
+</tr>
+<tr class="odd">
+<td align="right">249190060</td>
+<td align="right">19.96480</td>
+<td align="right">49.90470</td>
+</tr>
+<tr class="even">
+<td align="right">249190070</td>
+<td align="right">19.22531</td>
+<td align="right">49.87891</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="przykady" class="section level2">
 <h2 class="hasAnchor">

@@ -189,22 +189,20 @@
 <h2 class="hasAnchor">
 <a href="#application" class="anchor"></a>Application</h2>
 <p>We will show how to use our package and prepare the data for spatial analysis with the additional help of the <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr</a> and <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidyr</a> packages. Firstly, we download ten years (<strong>2001-2010</strong>) of monthly hydrological observations for all stations available and automatically add their spatial coordinates.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">h =<span class="st"> </span><span class="kw"><a href="../reference/hydro_monthly.html">hydro_monthly</a></span>(<span class="dt">year =</span> <span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;              id       X        Y station riv_or_lake  hyy idhyy idex   H</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 95164 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    1 227</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 95165 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    2 265</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 95166 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    3 342</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 95087 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    1 245</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 95169 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    2 286</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 95170 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    3 370</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;         Q  T mm</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 95164 205 NA  1</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 95165 333 NA  1</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 95166 692 NA  1</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 95087 257 NA  2</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; 95169 421 NA  2</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 95170 861 NA  2</span></a></code></pre></div>
+<pre><code>#&gt;              id       X        Y station riv_or_lake  hyy idhyy idex   H
+#&gt; 95164 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    1 227
+#&gt; 95165 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    2 265
+#&gt; 95166 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    3 342
+#&gt; 95087 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    1 245
+#&gt; 95169 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    2 286
+#&gt; 95170 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    3 370
+#&gt;         Q  T mm
+#&gt; 95164 205 NA  1
+#&gt; 95165 333 NA  1
+#&gt; 95166 692 NA  1
+#&gt; 95087 257 NA  2
+#&gt; 95169 421 NA  2
+#&gt; 95170 861 NA  2</code></pre>
 <p>The <code>idex</code> variable represents id of the extremum, where <code>1</code> means minimum, <code>2</code> mean, and <code>3</code> maximum.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Hydrologists often use the maximum value so we will filter the data and select only the station <code>id</code>, hydrological year (<code>hyy</code>), latitude <code>X</code> and longitude <code>Y</code>. Next, we will calculate the mean maximum value of the flow on the stations in each year with <strong>dplyr</strong>’s <code>summarise()</code>, and spread data by year using <strong>tidyr</strong>’s <code>spread()</code> to get the annual means of maximum flow in the consecutive columns.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(idex <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span></a>
