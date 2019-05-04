@@ -1,11 +1,120 @@
 ---
 title: "Wstęp do pakietu 'imgw' (PL)"
-author: "Vignette Author"
+author: "Czernecki B., Głogowski A., Nowosad J."
 date: "`r Sys.Date()`"
-output: 
-  github_document:
-    html_preview: true
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(imgw)
+library(tidyr)
+library(dplyr)
+options(scipen=999)
+```
 
+Głównym celem pakietu **imgw** jest dostarczenie wygodnego i programowalnego interfejsu do repozytorium danych meteorologicznych i hydrologicznych IMGW-PIB. Pakiet pozwala także na pobieranie danych radiosondażowych.
+
+Pakiet **imgw** dla języka programowania **R* umożliwia:
+
+- Dostęp i pobieranie archiwalnych danych meteorologicznych i hydrologicznych udostępnionych przez Instytut Meteorologii i Gospodarki Wodnej - Państwowy Instytut badawczy [IMGW](https://dane.imgw.pl/))
+- Uzupełnienie pobieranego zbioru danych o informacje (metadane) przestrzenne w układzie współrzędnych WGS-84 (+ informacja o wysokości punktu pomiarowego n.p.m.)
+- Wybór określonego zestawu danych - łącznie 11 dostępnych formatów w zależności od wybranego interwału czasowego, zbioru danych oraz standardu zapisu 
+- Dostarczenie pełnego opisu parametrów w języku polskim i angielskim oraz w formach skróconych wygodnych do pracy w środowisku programistycznym lub w arkuszu kalkulacyjnym
+<!--co jeszcze>-->
+
+## Funkcje
+
+Pakiet **imgw** zawiera 3 główne grupy funkcji do pobierania danych - cztery do danych meteorologicznych, cztery do danych hydrologicznych oraz jedną do danych radiosondażowych:
+
+1. Dane meteorologiczne:
+
+- `meteo()` - pobieranie danych meteorologicznych - ogólna funkcja (nadrzędna) umożliwiająca wybór m.in. określonego rzędu stacji, interwału czasowego, dodanie metadanych geograficznych do pobieranych danych, ... 
+- `meteo_hourly()` - pobieranie danych meteorologicznych - pomiary terminowe (godzinowe)
+- `meteo_daily()` - pobieranie danych meteorologicznych - serie danych dobowych
+- `meteo_monthly()` - pobieranie danych meteorologicznych - serie danych miesięcznych
+
+2. Dane hydrologiczne: 
+
+- `hydro()` - pobieranie danych hydrologicznych z dowolnie zdefiniowanym interwałem (funkcja nadrzędna/interfejs dla pozostałych niżej wymienionych)
+- `hydro_daily()` - pobieranie danych hydrologicznych - serie dobowe
+- `hydro_monthly()` - pobieranie danych hydrologicznych - serie miesięczne
+- `hydro_annual()` - pobieranie danych hydrologicznych - serie roczne
+
+3. Pomiary radiosondażowe:
+
+- `meteo_sounding()` - pobieranie danych (i metadanych) dla pomiarów aerologicznych udostępnionych przez Uniwersytet Wyoming
+
+
+## Bazy danych
+
+Pakiet **imgw** zawiera dodatkowe bazy danych przydatne do pracy z danymi meteo- i hydrologicznymi:
+
+- `hydro_abberv`/`meteo_abberv` - wykaz parametrów wraz z opisem stosowanym w repozytorium IMGW-PIB oraz zastosowane formy skrótów do wygodnej pracy w środowisku programistycznym lub w arkuszach kalkulacyjnych
+
+```{r abbrevPL, eval=FALSE, include=TRUE}
+abbev = meteo_abbrev
+head(abbev)
+```
+
+```{r abbrevPL2, echo=FALSE}
+library(knitr)
+abbev = meteo_abbrev
+kable(head(abbev), caption = "Parametry meteorologiczne i skróty zastosowane w pakiecie:")
+```
+
+
+- `hydro_stations`/`meteo_stations` - zbiór metadanych  dla większości stacji meteorologicznych i hydrologicznych wraz z numerem stacji, długością, szerokością gegoraficzną i wysokością stacji
+
+```{r stationPL,eval=FALSE, include=TRUE}
+station = meteo_stations
+head(station)
+```
+
+```{r stationPL2,echo=FALSE}
+station = meteo_stations
+kable(head(station), caption = "Metadane dla stacji meteorologicznych:")
+```
+
+
+## Przykłady
+
+Poniżej zamieszczono przykłady zastosowania pakietu `imgw` w połączeniu z pakietami  
+ [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) oraz [tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+
+### Dane hydrologiczne - przykład
+
+1. Pobranie 10-letniej serii miesięcznych danych hydrologicznych dla wszystkich dostępnych stacji w okresie **2001-2010** wraz z automatycznym dodaniem informacji przestrzennych (długość geograficzna, szerokość geograficzna, wysokość).
+
+```{r data }
+h = hydro_monthly(year = 2001:2010, coords = TRUE)
+head(h)
+```
+
+Kolumna `idex` zawiera informację o rodzaju ekstremum, tj. `1` oznacza minimum, `2` średnią,  `3` maximum.^[Szczegółowe informacje zawarto  w  zbiorze `hydro_abbrev].
+
+2. Rozważania hydrologiczne często koncentrują się na analizie jednej grupy zjawisk, np. związanych z przepływami maksymalnymi. W tym celu pozostawimy w naszym zbiorze tylko wartości przepływów maksymalnych oraz kolumny zawierające interesujące nas informacje, tj. 
+identyfikator stacji - `id`, rok hydrologiczny - `hyy`, szerokość geograficzną - `X` oraz długość geograficzną - `Y`.
+
+3. Następnie obliczmy średni przepływ maksymalny na każdej z dostępnych stacji, w każdym z analizowanych lat hydrologicznych. W tym celu wykorzystać można funkcję `summarise()` z pakietu **dplyr**. Zmiana postaci otrzymanej tabeli (z wąskiej do szerokiej) może zostać wykonana za pomocą pakietu **tidyr** i funkcji `spread()`. 
+
+```{r filtering_PL}
+h %>%
+  filter(idex == 3) %>%
+  select(id, X, Y, hyy, Q, mm) %>%
+  group_by(hyy, id, X, Y) %>%
+  summarise(srednie_roczne_Q = mean(Q, na.rm = TRUE)) %>%
+  spread(hyy, srednie_roczne_Q)
+```
+
+<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
+nie rozumiem tego zdania
+<!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
 

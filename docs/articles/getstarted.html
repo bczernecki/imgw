@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to imgw • imgw</title>
+<title>Introduction to imgw package (EN) • imgw</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to imgw">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to imgw package (EN)">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -53,10 +53,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/articles/pl.html">Vignette Title</a>
+      <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../articles/getstarted.html">Introduction to imgw</a>
+      <a href="../articles/getstarted.html">Introduction to imgw package (EN)</a>
     </li>
   </ul>
 </li>
@@ -76,10 +76,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Introduction to imgw</h1>
-                        <h4 class="author">Czarnecki B., Głogowski A., Nowosad J.</h4>
+      <h1>Introduction to imgw package (EN)</h1>
+                        <h4 class="author">Czernecki B., Głogowski A., Nowosad J.</h4>
             
-            <h4 class="date">2019-05-02</h4>
+            <h4 class="date">2019-05-04</h4>
       
       
       <div class="hidden name"><code>getstarted.Rmd</code></div>
@@ -88,76 +88,92 @@
 
     
     
-<p>Data is and will be always an element of the analysis for many people. When we start working with data first thing we do are:</p>
+<p>The main goal of the <strong>imgw</strong> package is to give a convenient and programmable access to the Polish database of meteorological and hydrological (archive)database.</p>
+<p>It consists of tools that are:</p>
 <ul>
-<li><p>Knowing the way of stored and accessibility.</p></li>
-<li><p>Downloading the data,</p></li>
-<li><p>Preparing to readable format (if the format is unclear)</p></li>
-</ul>
-<p>The imgw package is a repository giving access to Polish databased of meteorological and hydrological parameters. The Autor’s offer the tools which are:</p>
-<ul>
-<li><p>Giving the easier access to public data stored in Institute of Meteorology and Water Management (<a href="https://dane.imgw.pl/">IMGW</a>)</p></li>
-<li><p>Downloading the selected data for us</p></li>
-<li><p>The data are converted from among eleven different forms of publicity depending on the interval and type of data</p></li>
-<li><p>Description is available in two languages Polish and Engilsh</p></li>
+<li>Giving more accessible access to the public data stored in the Institute of Meteorology and Water Management (<a href="https://dane.imgw.pl/">IMGW</a>)</li>
+<li>Downloading the selected data from among eleven different forms of data depending on the interval and the data type</li>
+<li>Providing the description of the parameters in two languages: Polish and English, as well as in the abbreviated form <!--co jeszcze>-->
+</li>
 </ul>
 <div id="functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions" class="anchor"></a>Functions</h2>
-<p>imgw R package it consists of 9 usefull functions 4 to meteorological data 4 to hyrological and one to sounding meteo:</p>
+<p>The <strong>imgw</strong> package consists of nine functions - four for meteorological data, four for hydrological data and one for sounding meteo:</p>
 <ol style="list-style-type: decimal">
 <li>Meteorological data:</li>
 </ol>
 <ul>
-<li><p><code><a href="../reference/meteo_hourly.html">meteo_hourly()</a></code> Downloading meteorological the data with hourly interval</p></li>
-<li><p><code><a href="../reference/meteo_daily.html">meteo_daily()</a></code> Downloading meteorological the data with daily interval</p></li>
-<li><p><code><a href="../reference/meteo_monthly.html">meteo_monthly()</a></code> Downloading meteorological the data with monthly interval</p></li>
-<li><p><code><a href="../reference/meteo.html">meteo()</a></code> Downloading meteorological the data with interval the user want to choose</p></li>
+<li>
+<code><a href="../reference/meteo_hourly.html">meteo_hourly()</a></code> - downloading meteorological the data with hourly interval</li>
+<li>
+<code><a href="../reference/meteo_daily.html">meteo_daily()</a></code> - downloading meteorological the data with daily interval</li>
+<li>
+<code><a href="../reference/meteo_monthly.html">meteo_monthly()</a></code> - downloading meteorological the data with monthly interval</li>
+<li>
+<code><a href="../reference/meteo.html">meteo()</a></code> - downloading meteorological the data with interval the user want to choose</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li>Hydrological data:</li>
 </ol>
 <ul>
-<li><p><code><a href="../reference/hydro_daily.html">hydro_daily()</a></code> Downloading hyrological the data with daily interval</p></li>
-<li><p><code><a href="../reference/meteo_monthly.html">meteo_monthly()</a></code> Downloading hyrological the data with monthly interval</p></li>
-<li><p><code>meteo_annual()</code> Downloading hyrological the data with annual interval</p></li>
-<li><p><code><a href="../reference/meteo.html">meteo()</a></code> Downloading hyrological the data with interval the user want to choose</p></li>
+<li>
+<code><a href="../reference/hydro.html">hydro()</a></code> - downloading hydrological the data with interval the user want to choose</li>
+<li>
+<code><a href="../reference/hydro_daily.html">hydro_daily()</a></code> - downloading hydrological the data with daily interval</li>
+<li>
+<code><a href="../reference/hydro_monthly.html">hydro_monthly()</a></code> - downloading hyrological the data with monthly interval</li>
+<li>
+<code><a href="../reference/hydro_annual.html">hydro_annual()</a></code> - downloading hyrological the data with annual interval</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li>Sounding meteo:</li>
+<li>Rawinsonde data:</li>
 </ol>
 <ul>
 <li>
-<code>meteo_sounding</code> ———————————–</li>
+<code><a href="../reference/meteo_sounding.html">meteo_sounding()</a></code> – downloading rawinsonde data (+metadata)</li>
 </ul>
-<p>Those functions have similar arguments allowing us to choose additional selections:</p>
+<p>Most of the above mentioned unctions have similar arguments allowing to choose:</p>
 <ul>
-<li><p><code>rank</code> argument of type the stations <code>"synop"</code>, <code>"climate"</code>, <code>"precip"</code> (<strong>only meteo functions</strong>)</p></li>
-<li><p><code>year</code> vector of years (e.g., <code>1966:2000</code>)</p></li>
-<li><p><code>status</code> logical argument TRUE or FALSE; if TRUE status of measurements will be erased (<strong>only meteo functions</strong>)</p></li>
-<li><p><code>coords</code> logical argument TRUE or FALSE; if TRUE coordinates are added to station</p></li>
-<li><p><code>station</code> vector of stations can be the ID of stations (numeric) or name of the station (<strong>CAPITAL LETTERS character</strong>)</p></li>
-<li><p><code>col_names</code> three types of column names possible: <code>"short"</code> - default, values with shorten names, <code>"full"</code> - full English description, <code>"polish"</code> - original names in the dataset</p></li>
+<li>
+<code>rank</code> - type of the stations <code>"synop"</code>, <code>"climate"</code>, <code>"precip"</code> (<strong>only meteo functions</strong>)</li>
+<li>
+<code>year</code> - vector of selected years (e.g., <code>1966:2000</code>)</li>
+<li>
+<code>status</code> - logical argument TRUE or FALSE; if TRUE the measurement statuses will be erased (<strong>only meteo functions</strong>)</li>
+<li>
+<code>coords</code> - logical argument TRUE or FALSE; if TRUE the coordinates are added to the stations</li>
+<li>
+<code>station</code> - selection of the stations; it can be the ID of stations (numeric) or name of the station (<strong>CAPITAL LETTERS</strong> (character))</li>
+<li>
+<code>col_names</code> - format of the columns names; three types of column names are possible: <code>"short"</code> - default, values with shorten names, <code>"full"</code> - full English description, <code>"polish"</code> - original names in the dataset</li>
 </ul>
 </div>
 <div id="database" class="section level2">
 <h2 class="hasAnchor">
 <a href="#database" class="anchor"></a>Database</h2>
-<p>imgw is also supplied with few databases with can be helpful:</p>
+<p><strong>imgw</strong> also has a few additional databases:</p>
 <ul>
 <li>
-<code>hydro_abberv</code>/<code>meteo_abberv</code> - Dictionary contains all original descriptions of parameters in both languages and the abbreviation.</li>
+<code>hydro_abberv</code>/<code>meteo_abberv</code> - a dictionary containing all original descriptions of parameters in both languages and the abbreviations</li>
 </ul>
-<pre><code>#&gt;                          fullname   abbr_eng              fullname_eng
-#&gt; 3            Aktynometria [J/cm2]      irrad        Irradiance [J/cm2]
-#&gt; 4 Charakterystyka tendencji [kod] press_tend         Pressure tendency
-#&gt; 5                 Chmury CH [kod] cl_CH_code   High cloud cover [code]
-#&gt; 6               Chmury CH tekstem      cl_CH   High cloud cover [text]
-#&gt; 7                 Chmury CL [kod] cl_CL_code Middle cloud cover [code]
-#&gt; 8               Chmury CL tekstem      cl_CH Middle cloud cover [text]</code></pre>
+<pre><code>#&gt;                               fullname   abbr_eng
+#&gt; 1 Absolutna temperatura maksymalna [C]   tmax_abs
+#&gt; 2  Absolutna temperatura minimalna [C]   tmin_abs
+#&gt; 3                 Aktynometria [J/cm2]      irrad
+#&gt; 4      Charakterystyka tendencji [kod] press_tend
+#&gt; 5                      Chmury CH [kod] cl_CH_code
+#&gt; 6                    Chmury CH tekstem      cl_CH
+#&gt;                           fullname_eng
+#&gt; 1 Absolute maximum air temperature [C]
+#&gt; 2 Absolute minimum air temperature [C]
+#&gt; 3                   Irradiance [J/cm2]
+#&gt; 4                    Pressure tendency
+#&gt; 5              High cloud cover [code]
+#&gt; 6              High cloud cover [text]</code></pre>
 <ul>
 <li>
-<code>hydro_stations</code>/<code>meteo_stations</code> - Dataset of almost all meteo / hydro stations contains ID and latitude and longitude</li>
+<code>hydro_stations</code>/<code>meteo_stations</code> - datasets of almost all meteorological/hydrological stations containing their ID, latitude, and longitude</li>
 </ul>
 <pre><code>#&gt; # A tibble: 6 x 3
 #&gt;          id     X     Y
@@ -172,40 +188,54 @@
 <div id="application" class="section level2">
 <h2 class="hasAnchor">
 <a href="#application" class="anchor"></a>Application</h2>
-<p>We will show how to use our package and make simple preparation for spatial analysis with additional help of (<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dyplr</a>) and (<a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidyr</a>) packages. We can see we download 10(<strong>2001-2010</strong>) years of monthly hydrological data without station selection adding the coordinates.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h=<span class="kw"><a href="../reference/hydro_monthly.html">hydro_monthly</a></span>(<span class="dt">year =</span> <span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>,<span class="dt">coords =</span> T)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)
-<span class="co">#&gt;          id  X  Y      station riv_or_lake  hyy idhyy idex   H     Q  T mm</span>
-<span class="co">#&gt; 1 149180010 NA NA KRZYŻANOWICE    Odra (1) 2008    11    2 142  46.4 NA  9</span>
-<span class="co">#&gt; 2 149180010 NA NA KRZYŻANOWICE    Odra (1) 2008     4    1 138  42.3 NA  2</span>
-<span class="co">#&gt; 3 149180010 NA NA KRZYŻANOWICE    Odra (1) 2008     3    3 249 125.0 NA  1</span>
-<span class="co">#&gt; 4 149180010 NA NA KRZYŻANOWICE    Odra (1) 2008     6    3 193  78.4 NA  4</span>
-<span class="co">#&gt; 5 149180010 NA NA KRZYŻANOWICE    Odra (1) 2008     4    2 158  54.8 NA  2</span>
-<span class="co">#&gt; 6 149180010 NA NA KRZYŻANOWICE    Odra (1) 2008    11    3 225 104.0 NA  9</span></code></pre></div>
-<p><code>idex</code> depending on the value means <code>1</code> minimum <code>2</code> mean <code>3</code> maximum you can find information about this in <code>hydro_abber</code> dataset. Hydrologist often use the maximum value so we will filter the data <code>next</code> select <code>id</code> station, hydrological year(<code>hyy</code>), latitude<code>X</code> and longitude<code>Y</code>, <code>next</code> calculate the mean maximum value of flow on the stations in particular year with <code>dplyr</code> and then spread data by year using <code>tidyr</code> to get the run of annual mean of maximum flow in next columns.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(idex<span class="op">==</span><span class="dv">3</span>)<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(id,X,Y,hyy,Q,mm)<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">group_by</span>(hyy,id,X,Y)<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">annual_mean_Q=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q,<span class="dt">na.rm =</span> T),<span class="dv">2</span>))<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">spread</span>(hyy,annual_mean_Q)
-<span class="co">#&gt; # A tibble: 873 x 13</span>
-<span class="co">#&gt; # Groups:   id, X [873]</span>
-<span class="co">#&gt;        id     X     Y `2001` `2002` `2003` `2004` `2005` `2006` `2007`</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 1.49e8  NA    NA   201.   147.    87.9  109.   171.   227.   153.  </span>
-<span class="co">#&gt;  2 1.49e8  18.3  49.9 175.    96.7   57.6   91.8  147.   171.   110.  </span>
-<span class="co">#&gt;  3 1.49e8  18.4  49.9  NA     NA     NA     NA     NA     NA     NA   </span>
-<span class="co">#&gt;  4 1.49e8  18.5  49.9   4.46   2.01   1.7    1.67   2.55   3.27   2.14</span>
-<span class="co">#&gt;  5 1.49e8  NA    NA    13.5    7.9    3.8    5.01  10.4    6.48   5.85</span>
-<span class="co">#&gt;  6 1.49e8  NA    NA    57.2   57.7   29.8   26.8   65.4   60.7   54.6 </span>
-<span class="co">#&gt;  7 1.49e8  18.6  49.7 NaN    NaN    NaN    NaN    NaN    NaN      0.56</span>
-<span class="co">#&gt;  8 1.49e8  18.8  49.8  42.4   50.5   19.5   21.6   33.1   36.0   39.6 </span>
-<span class="co">#&gt;  9 1.49e8  18.8  49.7  16.7   17.8    5.82   6.3   10.2   13.3   18.4 </span>
-<span class="co">#&gt; 10 1.49e8  18.9  49.8  10.6   15.2    5.03   6.08 NaN      9.81  12.2 </span>
-<span class="co">#&gt; # … with 863 more rows, and 3 more variables: `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `2010` &lt;dbl&gt;</span></code></pre></div>
-<p>That table can be easly exported to any spatial softwere with a changing annual maximum annual average water flow rate over the decade for Poland as a whole.</p>
+<p>We will show how to use our package and prepare the data for spatial analysis with the additional help of the <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr</a> and <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidyr</a> packages. Firstly, we download ten years (<strong>2001-2010</strong>) of monthly hydrological observations for all stations available and automatically add their spatial coordinates.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">h =<span class="st"> </span><span class="kw"><a href="../reference/hydro_monthly.html">hydro_monthly</a></span>(<span class="dt">year =</span> <span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;              id       X        Y station riv_or_lake  hyy idhyy idex   H</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 95164 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    1 227</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 95165 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    2 265</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 95166 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    3 342</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 95087 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    1 245</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 95169 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    2 286</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 95170 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    3 370</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;         Q  T mm</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 95164 205 NA  1</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 95165 333 NA  1</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 95166 692 NA  1</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 95087 257 NA  2</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; 95169 421 NA  2</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 95170 861 NA  2</span></a></code></pre></div>
+<p>The <code>idex</code> variable represents id of the extremum, where <code>1</code> means minimum, <code>2</code> mean, and <code>3</code> maximum.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Hydrologists often use the maximum value so we will filter the data and select only the station <code>id</code>, hydrological year (<code>hyy</code>), latitude <code>X</code> and longitude <code>Y</code>. Next, we will calculate the mean maximum value of the flow on the stations in each year with <strong>dplyr</strong>’s <code>summarise()</code>, and spread data by year using <strong>tidyr</strong>’s <code>spread()</code> to get the annual means of maximum flow in the consecutive columns.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(idex <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, X, Y, hyy, Q, mm) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(hyy, id, X, Y) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">annual_mean_Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">spread</span>(hyy, annual_mean_Q)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; # A tibble: 873 x 13</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; # Groups:   id, X [873]</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        id     X     Y `2001` `2002` `2003` `2004` `2005` `2006`  `2007`</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  1 1.49e8  NA    NA   201.   147.    87.9  109.   171.   227.   153.   </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  2 1.49e8  18.3  49.9 175.    96.7   57.6   91.8  147.   171.   110.   </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  3 1.49e8  18.4  49.9  NA     NA     NA     NA     NA     NA     NA    </span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  4 1.49e8  18.5  49.9   4.46   2.01   1.70   1.67   2.55   3.27   2.14 </span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  5 1.49e8  NA    NA    13.5    7.9    3.80   5.01  10.4    6.48   5.85 </span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  6 1.49e8  NA    NA    57.2   57.7   29.8   26.8   65.4   60.7   54.7  </span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  7 1.49e8  18.6  49.7 NaN    NaN    NaN    NaN    NaN    NaN      0.564</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  8 1.49e8  18.8  49.8  42.4   50.5   19.5   21.6   33.1   36.0   39.5  </span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  9 1.49e8  18.8  49.7  16.7   17.8    5.82   6.30  10.2   13.3   18.4  </span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; 10 1.49e8  18.9  49.8  10.6   15.2    5.03   6.08 NaN      9.81  12.2  </span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; # … with 863 more rows, and 3 more variables: `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; #   `2010` &lt;dbl&gt;</span></a></code></pre></div>
+<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
+<p>nie rozumiem tego zdania <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego --></p>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>You can find information about this in the <code>hydro_abbrev</code> dataset.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
   </div>
 
@@ -229,7 +259,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
 </div>
