@@ -104,10 +104,20 @@ h %>%
   select(id, X, Y, hyy, Q, mm) %>%
   group_by(hyy, id, X, Y) %>%
   summarise(annual_mean_Q = mean(Q, na.rm = TRUE)) %>%
-  spread(hyy, annual_mean_Q)
+  spread(hyy, annual_mean_Q)-> result
+head(result)
 ```
 
 <!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
-nie rozumiem tego zdania
-<!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
+The result represent changing  annual maximum average of water flow rate over the decade for all available stations in Poland. 
+We can save it to:
 
+ - `.csv` with: `write.csv(result, file = "result.csv", sep = ";",dec = ".", col.names = T, row.names = F)`. 
+This command save our result to `result.csv` where column's separator is `;`, decimal is `.` we are saving the headers of columns and remove names of rows which are simply numbers of observation.
+
+ - `.xlsx` with: `write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)`
+ This command save our result to result.xlsx with name of the sheet `Poland`. Argument `append=TRUE` add the sheet to already existing `xlsx` file.
+ To save data in `.xlsx` you have first to install package with command: `install.packages("xlsx")`, and add it: `library(xlsx)`.
+ 
+<!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
+<!-- nie umiem zapisać do formatu przestrzennego -->
