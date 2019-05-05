@@ -114,6 +114,30 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "sf",
+      "name": "sf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tmap",
+      "name": "tmap",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tmap"
     }
   ],
   "softwareRequirements": [
@@ -151,7 +175,7 @@
   "codeRepository": "https://github.com/bczernecki/imgw",
   "releaseNotes": "https://github.com/bczernecki/imgw/blob/master/NEWS.md",
   "readme": "https://github.com/bczernecki/imgw/blob/master/README.md",
-  "fileSize": "91.389KB",
+  "fileSize": "93.616KB",
   "contIntegration": "https://travis-ci.org/bczernecki/imgw",
   "citation": [
     {
