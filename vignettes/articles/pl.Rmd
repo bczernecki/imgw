@@ -123,4 +123,18 @@ kable(head(h2), caption = "Przykład wyniku przetwarzania danych hydrologicznych
 <!-- nie rozumiem tego zdania -->
 <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
 
+```{r}
+library(sf)
+library(tmap)
+h3 = h2 %>% 
+  filter(!is.na(X)) %>% 
+  st_as_sf(coords = c("X", "Y"))
+
+tm_shape(h3) + 
+  tm_symbols(size = as.character(c(2001:2010)),
+             title.size = "Średni przepływ maksymalny") +
+  tm_facets(free.scales = FALSE) + 
+  tm_layout(legend.position = c(-1.25, 0.05),
+            outer.margins = c(0, 0.05, 0, -0.25))
+```
 
