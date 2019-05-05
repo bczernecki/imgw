@@ -56,7 +56,7 @@
       <a href="../../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../../articles/getstarted.html">Introduction to imgw package (EN)</a>
+      <a href="../../articles/getstarted.html">Introduction to the imgw package (EN)</a>
     </li>
   </ul>
 </li>
@@ -77,9 +77,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Wstęp do pakietu ‘imgw’ (PL)</h1>
-                        <h4 class="author">Czernecki B., Głogowski A., Nowosad J.</h4>
+                        <h4 class="author">Bartosz Czernecki, Arkadiusz Głogowski, Jakub Nowosad</h4>
             
-            <h4 class="date">2019-05-04</h4>
+            <h4 class="date">2019-05-05</h4>
       
       
       <div class="hidden name"><code>pl.Rmd</code></div>
@@ -92,15 +92,15 @@
 <p>Pakiet <strong>imgw</strong> dla języka programowania **R* umożliwia:</p>
 <ul>
 <li>Dostęp i pobieranie archiwalnych danych meteorologicznych i hydrologicznych udostępnionych przez Instytut Meteorologii i Gospodarki Wodnej - Państwowy Instytut badawczy <a href="https://dane.imgw.pl/">IMGW</a>)</li>
-<li>Uzupełnienie pobieranego zbioru danych o informacje (metadane) przestrzenne w układzie współrzędnych WGS-84 (+ informacja o wysokości punktu pomiarowego n.p.m.)</li>
-<li>Wybór określonego zestawu danych - łącznie 11 dostępnych formatów w zależności od wybranego interwału czasowego, zbioru danych oraz standardu zapisu</li>
+<li>Uzupełnienie pobieranego zbioru danych o informacje (metadane) przestrzenne w układzie współrzędnych WGS 84</li>
+<li>Wybór określonego zestawu danych - łącznie istnieje 11 dostępnych formatów w zależności od wybranego interwału czasowego, zbioru danych oraz standardu zapisu</li>
 <li>Dostarczenie pełnego opisu parametrów w języku polskim i angielskim oraz w formach skróconych wygodnych do pracy w środowisku programistycznym lub w arkuszu kalkulacyjnym <!--co jeszcze>-->
 </li>
 </ul>
 <div id="funkcje" class="section level2">
 <h2 class="hasAnchor">
 <a href="#funkcje" class="anchor"></a>Funkcje</h2>
-<p>Pakiet <strong>imgw</strong> zawiera 3 główne grupy funkcji do pobierania danych - cztery do danych meteorologicznych, cztery do danych hydrologicznych oraz jedną do danych radiosondażowych:</p>
+<p>Pakiet <strong>imgw</strong> zawiera trzy główne grupy funkcji do pobierania danych, na które składają się cztery funkcje do danych meteorologicznych, cztery do danych hydrologicznych oraz jedna do danych radiosondażowych.</p>
 <ol style="list-style-type: decimal">
 <li>Dane meteorologiczne:</li>
 </ol>
@@ -146,7 +146,7 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">abbev =<span class="st"> </span>meteo_abbrev</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(abbev)</a></code></pre></div>
 <table class="table">
-<caption>Parametry meteorologiczne i skróty zastosowane w pakiecie:</caption>
+<caption>Parametry meteorologiczne i skróty zastosowane w pakiecie.</caption>
 <thead><tr class="header">
 <th align="left">fullname</th>
 <th align="left">abbr_eng</th>
@@ -192,7 +192,7 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">station =<span class="st"> </span>meteo_stations</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(station)</a></code></pre></div>
 <table class="table">
-<caption>Metadane dla stacji meteorologicznych:</caption>
+<caption>Metadane dla stacji meteorologicznych.</caption>
 <thead><tr class="header">
 <th align="right">id</th>
 <th align="right">X</th>
@@ -235,64 +235,284 @@
 <div id="przykady" class="section level2">
 <h2 class="hasAnchor">
 <a href="#przykady" class="anchor"></a>Przykłady</h2>
-<p>Poniżej zamieszczono przykłady zastosowania pakietu <code>imgw</code> w połączeniu z pakietami<br><a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr</a> oraz <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidyr</a>.</p>
+<p>Poniżej zamieszczono przykłady zastosowania pakietu <code>imgw</code> w połączeniu z pakietami <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr</a> oraz <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidyr</a>.</p>
 <div id="dane-hydrologiczne---przykad" class="section level3">
 <h3 class="hasAnchor">
 <a href="#dane-hydrologiczne---przykad" class="anchor"></a>Dane hydrologiczne - przykład</h3>
 <ol style="list-style-type: decimal">
-<li>Pobranie 10-letniej serii miesięcznych danych hydrologicznych dla wszystkich dostępnych stacji w okresie <strong>2001-2010</strong> wraz z automatycznym dodaniem informacji przestrzennych (długość geograficzna, szerokość geograficzna, wysokość).</li>
+<li>Pobranie 10-letniej serii miesięcznych danych hydrologicznych dla wszystkich dostępnych stacji w okresie <strong>2001-2010</strong>, wraz z automatycznym dodaniem informacji przestrzennych (długość geograficzna, szerokość geograficzna).</li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">h =<span class="st"> </span><span class="kw"><a href="../../reference/hydro_monthly.html">hydro_monthly</a></span>(<span class="dt">year =</span> <span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;              id       X        Y station riv_or_lake  hyy idhyy idex   H</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 95164 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    1 227</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 95165 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    2 265</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 95166 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     3    3 342</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 95087 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    1 245</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 95169 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    2 286</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 95170 150210180 21.8335 50.88641 ANNOPOL   Wisła (2) 2001     4    3 370</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;         Q  T mm</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 95164 205 NA  1</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 95165 333 NA  1</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 95166 692 NA  1</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 95087 257 NA  2</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; 95169 421 NA  2</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 95170 861 NA  2</span></a></code></pre></div>
-<p>Kolumna <code>idex</code> zawiera informację o rodzaju ekstremum, tj. <code>1</code> oznacza minimum, <code>2</code> średnią, <code>3</code> maximum.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)</a></code></pre></div>
+<table class="table">
+<caption>Pierwsze 6 wierszy pobranych danych:</caption>
+<thead><tr class="header">
+<th></th>
+<th align="right">id</th>
+<th align="right">X</th>
+<th align="right">Y</th>
+<th align="left">station</th>
+<th align="left">riv_or_lake</th>
+<th align="right">hyy</th>
+<th align="right">idhyy</th>
+<th align="right">idex</th>
+<th align="right">H</th>
+<th align="right">Q</th>
+<th align="right">T</th>
+<th align="right">mm</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>95164</td>
+<td align="right">150210180</td>
+<td align="right">21.8335</td>
+<td align="right">50.88641</td>
+<td align="left">ANNOPOL</td>
+<td align="left">Wisła (2)</td>
+<td align="right">2001</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">227</td>
+<td align="right">205</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>95165</td>
+<td align="right">150210180</td>
+<td align="right">21.8335</td>
+<td align="right">50.88641</td>
+<td align="left">ANNOPOL</td>
+<td align="left">Wisła (2)</td>
+<td align="right">2001</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">265</td>
+<td align="right">333</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td>95166</td>
+<td align="right">150210180</td>
+<td align="right">21.8335</td>
+<td align="right">50.88641</td>
+<td align="left">ANNOPOL</td>
+<td align="left">Wisła (2)</td>
+<td align="right">2001</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">342</td>
+<td align="right">692</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>95087</td>
+<td align="right">150210180</td>
+<td align="right">21.8335</td>
+<td align="right">50.88641</td>
+<td align="left">ANNOPOL</td>
+<td align="left">Wisła (2)</td>
+<td align="right">2001</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">245</td>
+<td align="right">257</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td>95169</td>
+<td align="right">150210180</td>
+<td align="right">21.8335</td>
+<td align="right">50.88641</td>
+<td align="left">ANNOPOL</td>
+<td align="left">Wisła (2)</td>
+<td align="right">2001</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">286</td>
+<td align="right">421</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>95170</td>
+<td align="right">150210180</td>
+<td align="right">21.8335</td>
+<td align="right">50.88641</td>
+<td align="left">ANNOPOL</td>
+<td align="left">Wisła (2)</td>
+<td align="right">2001</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">370</td>
+<td align="right">861</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Kolumna <code>idex</code> zawiera informację o rodzaju ekstremum, tj. <code>1</code> - minimum, <code>2</code> - średnia, <code>3</code> - maximum.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Rozważania hydrologiczne często koncentrują się na analizie jednej grupy zjawisk, np. związanych z przepływami maksymalnymi. W tym celu pozostawimy w naszym zbiorze tylko wartości przepływów maksymalnych oraz kolumny zawierające interesujące nas informacje, tj. identyfikator stacji - <code>id</code>, rok hydrologiczny - <code>hyy</code>, szerokość geograficzną - <code>X</code> oraz długość geograficzną - <code>Y</code>.</p></li>
-<li><p>Następnie obliczmy średni przepływ maksymalny na każdej z dostępnych stacji, w każdym z analizowanych lat hydrologicznych. W tym celu wykorzystać można funkcję <code>summarise()</code> z pakietu <strong>dplyr</strong>. Zmiana postaci otrzymanej tabeli (z wąskiej do szerokiej) może zostać wykonana za pomocą pakietu <strong>tidyr</strong> i funkcji <code>spread()</code>.</p></li>
+<li><p>Analizy hydrologiczne często koncentrują się na jednej grupy zjawisk, np. związanych z przepływami maksymalnymi. W tym celu pozostaną w ramce danych tylko wartości przepływów maksymalnych oraz kolumny zawierające interesujące nas informacje, tj. identyfikator stacji - <code>id</code>, rok hydrologiczny - <code>hyy</code>, szerokość geograficzną - <code>X</code> oraz długość geograficzną - <code>Y</code>.</p></li>
+<li><p>Następnie obliczmy średni przepływ maksymalny na każdej z dostępnych stacji, w każdym z analizowanych lat hydrologicznych. W tym celu można wykorzystać funkcję <code><a href="https://www.rdocumentation.org/packages/sf/topics/tidyverse">summarise()</a></code> z pakietu <strong>dplyr</strong>. Zmiana postaci otrzymanej tabeli (z wąskiej do szerokiej) może zostać wykonana za pomocą pakietu <strong>tidyr</strong> i funkcji <code>spread()</code>.</p></li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h <span class="op">%&gt;%</span></a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h2 =<span class="st"> </span>h <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(idex <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, X, Y, hyy, Q, mm) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(hyy, id, X, Y) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, station, X, Y, hyy, Q) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(hyy, id, station, X, Y) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">srednie_roczne_Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">spread</span>(hyy, srednie_roczne_Q)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; # A tibble: 873 x 13</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; # Groups:   id, X [873]</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        id     X     Y `2001` `2002` `2003` `2004` `2005` `2006`  `2007`</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  1 1.49e8  NA    NA   201.   147.    87.9  109.   171.   227.   153.   </span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  2 1.49e8  18.3  49.9 175.    96.7   57.6   91.8  147.   171.   110.   </span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  3 1.49e8  18.4  49.9  NA     NA     NA     NA     NA     NA     NA    </span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  4 1.49e8  18.5  49.9   4.46   2.01   1.70   1.67   2.55   3.27   2.14 </span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  5 1.49e8  NA    NA    13.5    7.9    3.80   5.01  10.4    6.48   5.85 </span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  6 1.49e8  NA    NA    57.2   57.7   29.8   26.8   65.4   60.7   54.7  </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  7 1.49e8  18.6  49.7 NaN    NaN    NaN    NaN    NaN    NaN      0.564</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  8 1.49e8  18.8  49.8  42.4   50.5   19.5   21.6   33.1   36.0   39.5  </span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  9 1.49e8  18.8  49.7  16.7   17.8    5.82   6.30  10.2   13.3   18.4  </span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; 10 1.49e8  18.9  49.8  10.6   15.2    5.03   6.08 NaN      9.81  12.2  </span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; # … with 863 more rows, and 3 more variables: `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; #   `2010` &lt;dbl&gt;</span></a></code></pre></div>
-<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
-<p>nie rozumiem tego zdania <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego --></p>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">spread</span>(hyy, srednie_roczne_Q)</a></code></pre></div>
+<table class="table">
+<caption>Przykład wyniku przetwarzania danych hydrologicznych.</caption>
+<thead><tr class="header">
+<th align="right">id</th>
+<th align="left">station</th>
+<th align="right">X</th>
+<th align="right">Y</th>
+<th align="right">2001</th>
+<th align="right">2002</th>
+<th align="right">2003</th>
+<th align="right">2004</th>
+<th align="right">2005</th>
+<th align="right">2006</th>
+<th align="right">2007</th>
+<th align="right">2008</th>
+<th align="right">2009</th>
+<th align="right">2010</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">149180010</td>
+<td align="left">KRZYŻANOWICE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">200.525000</td>
+<td align="right">147.450000</td>
+<td align="right">87.941667</td>
+<td align="right">109.158333</td>
+<td align="right">170.591667</td>
+<td align="right">226.950000</td>
+<td align="right">152.9500000</td>
+<td align="right">130.9666667</td>
+<td align="right">160.941667</td>
+<td align="right">461.1333333</td>
+</tr>
+<tr class="even">
+<td align="right">149180020</td>
+<td align="left">CHAŁUPKI</td>
+<td align="right">18.32752</td>
+<td align="right">49.92127</td>
+<td align="right">174.675000</td>
+<td align="right">96.675000</td>
+<td align="right">57.633333</td>
+<td align="right">91.766667</td>
+<td align="right">146.941667</td>
+<td align="right">170.641667</td>
+<td align="right">110.2083333</td>
+<td align="right">101.6416667</td>
+<td align="right">124.725000</td>
+<td align="right">314.5916667</td>
+</tr>
+<tr class="odd">
+<td align="right">149180040</td>
+<td align="left">GOŁKOWICE</td>
+<td align="right">18.49640</td>
+<td align="right">49.92579</td>
+<td align="right">4.461667</td>
+<td align="right">2.011667</td>
+<td align="right">1.705000</td>
+<td align="right">1.670000</td>
+<td align="right">2.545833</td>
+<td align="right">3.272500</td>
+<td align="right">2.1425000</td>
+<td align="right">1.6766667</td>
+<td align="right">2.220000</td>
+<td align="right">8.6058333</td>
+</tr>
+<tr class="even">
+<td align="right">149180050</td>
+<td align="left">ZEBRZYDOWICE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">13.460833</td>
+<td align="right">7.900000</td>
+<td align="right">3.798333</td>
+<td align="right">5.010833</td>
+<td align="right">10.413333</td>
+<td align="right">6.478333</td>
+<td align="right">5.8458333</td>
+<td align="right">2.7983333</td>
+<td align="right">4.519167</td>
+<td align="right">23.6416667</td>
+</tr>
+<tr class="odd">
+<td align="right">149180060</td>
+<td align="left">CIESZYN</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">57.171667</td>
+<td align="right">57.710833</td>
+<td align="right">29.774167</td>
+<td align="right">26.787500</td>
+<td align="right">65.415000</td>
+<td align="right">60.727500</td>
+<td align="right">54.6541667</td>
+<td align="right">32.9658333</td>
+<td align="right">34.716667</td>
+<td align="right">134.9916667</td>
+</tr>
+<tr class="even">
+<td align="right">149180070</td>
+<td align="left">CIESZYN</td>
+<td align="right">18.63137</td>
+<td align="right">49.74629</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">0.5641667</td>
+<td align="right">0.5391667</td>
+<td align="right">0.575000</td>
+<td align="right">0.5791667</td>
+</tr>
+</tbody>
+</table>
+<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. --><!-- nie rozumiem tego zdania --><!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego --><!-- We can save it to: --><!-- - `.csv` with: `write.csv(result, file = "result.csv", sep = ";",dec = ".", col.names = T, row.names = F)`.  --><!-- This command saves our result to `result.csv` where the column's separator is `;`, the decimal is `.`, we are keeping the headers of columns and remove names of rows which are simply numbers of observation. --><!-- - `.xlsx` with: `write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)` --><!-- This command saves our result to result.xlsx with the name of the sheet `Poland`. Argument `append=TRUE` add the sheet to already existing `xlsx` file. --><!-- To save data in `.xlsx` you have first to install package with command: `install.packages("writexl")`, and add it: `library(writexl)`. --><ol start="4" style="list-style-type: decimal">
+<li>Uzyskane wyniki mogą zostać następnie zwizualizowane w formie przestrzennej za pomocą np. pakietów GIS: <code>sf</code> i <code>tmap</code>. Poniżej zamieszczono przykładowy kod dla średnich maksymalnych przepływów rocznych:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tmap)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Registered S3 method overwritten by 'R.oo':</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   method        from       </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   throw.default R.methodsS3</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Warning: replacing previous import 'gdalUtils::gdal_rasterize' by</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 'sf::gdal_rasterize' when loading 'mapview'</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">h3 =<span class="st"> </span>h2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(X)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(<span class="dt">coords =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"X"</span>, <span class="st">"Y"</span>))</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_shape">tm_shape</a></span>(h3) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_symbols">tm_symbols</a></span>(<span class="dt">size =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>)),</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">             <span class="dt">title.size =</span> <span class="st">"Średni przepływ maksymalny"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_facets">tm_facets</a></span>(<span class="dt">free.scales =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_layout">tm_layout</a></span>(<span class="dt">legend.position =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">1.25</span>, <span class="fl">0.05</span>),</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">            <span class="dt">outer.margins =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="fl">-0.25</span>))</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; Warning: Currect projection of shape h3 unknown. Long-lat (WGS84) is</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; assumed.</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; Warning: unknown projection</span></a></code></pre></div>
+<p><img src="pl_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 </div>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Szczegółowe informacje zawarto w zbiorze `hydro_abbrev<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Szczegółowe informacje znajdują się w zbiorze <code>hydro_abbrev</code><a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
   </div>

@@ -88,24 +88,35 @@ Poniżej zamieszczono przykłady zastosowania pakietu `imgw` w połączeniu z pa
 
 ### Dane hydrologiczne - przykład
 
-1. Pobranie 10-letniej serii miesięcznych danych hydrologicznych dla wszystkich dostępnych stacji w okresie **2001-2010** wraz z automatycznym dodaniem informacji przestrzennych (długość geograficzna, szerokość geograficzna).
+1. Pobranie 10-letniej serii miesięcznych danych hydrologicznych dla wszystkich dostępnych stacji w okresie **2001-2010**, wraz z automatycznym dodaniem informacji przestrzennych (długość geograficzna, szerokość geograficzna).
 
-```{r data }
+```{r dataPL,eval=FALSE, include=TRUE}
 h = hydro_monthly(year = 2001:2010, coords = TRUE)
 head(h)
 ```
 
-Kolumna `idex` zawiera informację o rodzaju ekstremum, tj. `1` oznacza minimum, `2` średnią,  `3` maximum.^[Szczegółowe informacje na ten temat znajdują się w zbiorze `hydro_abbrev`].
+```{r dataPL2,echo = FALSE}
+h = hydro_monthly(year = 2001:2010, coords = TRUE)
+kable(head(h), caption = "Pierwsze 6 wierszy pobranych danych:")
+```
 
-2. Rozważania hydrologiczne często koncentrują się na analizie jednej grupy zjawisk, np. związanych z przepływami maksymalnymi.
-W tym celu pozostawimy w naszym zbiorze tylko wartości przepływów maksymalnych oraz kolumny zawierające interesujące nas informacje, tj. 
+
+
+
+
+
+
+Kolumna `idex` zawiera informację o rodzaju ekstremum, tj. `1` -  minimum, `2` - średnia,  `3` - maximum.^[Szczegółowe informacje  znajdują się w zbiorze `hydro_abbrev`].
+
+2. Analizy hydrologiczne często koncentrują się na jednej grupy zjawisk, np. związanych z przepływami maksymalnymi.
+W tym celu pozostaną w ramce danych tylko wartości przepływów maksymalnych oraz kolumny zawierające interesujące nas informacje, tj. 
 identyfikator stacji - `id`, rok hydrologiczny - `hyy`, szerokość geograficzną - `X` oraz długość geograficzną - `Y`.
 
 3. Następnie obliczmy średni przepływ maksymalny na każdej z dostępnych stacji, w każdym z analizowanych lat hydrologicznych. 
 W tym celu można wykorzystać funkcję `summarise()` z pakietu **dplyr**. 
 Zmiana postaci otrzymanej tabeli (z wąskiej do szerokiej) może zostać wykonana za pomocą pakietu **tidyr** i funkcji `spread()`. 
 
-```{r filtering_PL}
+```{r filtering_PL, eval=TRUE, include=TRUE}
 h2 = h %>%
   filter(idex == 3) %>%
   select(id, station, X, Y, hyy, Q) %>%
@@ -131,6 +142,8 @@ kable(head(h2), caption = "Przykład wyniku przetwarzania danych hydrologicznych
 <!-- - `.xlsx` with: `write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)` -->
 <!-- This command saves our result to result.xlsx with the name of the sheet `Poland`. Argument `append=TRUE` add the sheet to already existing `xlsx` file. -->
 <!-- To save data in `.xlsx` you have first to install package with command: `install.packages("writexl")`, and add it: `library(writexl)`. -->
+
+4. Uzyskane wyniki mogą zostać następnie zwizualizowane w formie przestrzennej za pomocą np. pakietów GIS: `sf` i `tmap`. Poniżej zamieszczono przykładowy kod dla średnich maksymalnych przepływów rocznych:
 
 ```{r}
 library(sf)

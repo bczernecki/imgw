@@ -92,14 +92,19 @@ The `idex` variable represents id of the extremum, where `1` means minimum, `2` 
 Hydrologists often use the maximum value so we will filter the data and select only the station `id`, hydrological year (`hyy`), latitude `X` and longitude `Y`.
 Next, we will calculate the mean maximum value of the flow on the stations in each year with **dplyr**'s `summarise()`, and spread data by year using **tidyr**'s `spread()` to get the annual means of maximum flow in the consecutive columns.
 
-```{r filering}
-h %>%
+
+```{r filtering, eval=TRUE, include=TRUE}
+h2 = h %>%
   filter(idex == 3) %>%
-  select(id, X, Y, hyy, Q, mm) %>%
-  group_by(hyy, id, X, Y) %>%
-  summarise(annual_mean_Q = mean(Q, na.rm = TRUE)) %>%
-  spread(hyy, annual_mean_Q)-> result
-head(result)
+  select(id, station, X, Y, hyy, Q) %>%
+  group_by(hyy, id, station, X, Y) %>%
+  summarise(srednie_roczne_Q = mean(Q, na.rm = TRUE)) %>%
+  spread(hyy, srednie_roczne_Q)
+```
+
+```{r filtering2, echo=FALSE}
+library(knitr)
+kable(head(h2), caption = "Examplary data frame of hydrological preprocesssing.")
 ```
 
 <!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
@@ -125,7 +130,7 @@ h3 = h2 %>%
 
 tm_shape(h3) + 
   tm_symbols(size = as.character(c(2001:2010)),
-             title.size = "Średni przepływ maksymalny") +
+             title.size = "Mean annual maximum flow") +
   tm_facets(free.scales = FALSE) + 
   tm_layout(legend.position = c(-1.25, 0.05),
             outer.margins = c(0, 0.05, 0, -0.25))

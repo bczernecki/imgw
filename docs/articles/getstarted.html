@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to imgw package (EN) • imgw</title>
+<title>Introduction to the imgw package (EN) • imgw</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to imgw package (EN)">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to the imgw package (EN)">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -56,7 +56,7 @@
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../articles/getstarted.html">Introduction to imgw package (EN)</a>
+      <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
     </li>
   </ul>
 </li>
@@ -76,10 +76,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Introduction to imgw package (EN)</h1>
-                        <h4 class="author">Czernecki B., Głogowski A., Nowosad J.</h4>
+      <h1>Introduction to the imgw package (EN)</h1>
+                        <h4 class="author">Bartosz Czernecki, Arkadiusz Głogowski, Jakub Nowosad</h4>
             
-            <h4 class="date">2019-05-04</h4>
+            <h4 class="date">2019-05-05</h4>
       
       
       <div class="hidden name"><code>getstarted.Rmd</code></div>
@@ -88,7 +88,7 @@
 
     
     
-<p>The main goal of the <strong>imgw</strong> package is to give a convenient and programmable access to the Polish database of meteorological and hydrological (archive)database.</p>
+<p>The main goal of the <strong>imgw</strong> package is to give convenient and programmable access to the Polish database of the archive meteorological and hydrological measurements.</p>
 <p>It consists of tools that are:</p>
 <ul>
 <li>Giving more accessible access to the public data stored in the Institute of Meteorology and Water Management (<a href="https://dane.imgw.pl/">IMGW</a>)</li>
@@ -99,7 +99,7 @@
 <div id="functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions" class="anchor"></a>Functions</h2>
-<p>The <strong>imgw</strong> package consists of nine functions - four for meteorological data, four for hydrological data and one for sounding meteo:</p>
+<p>The <strong>imgw</strong> package consists of nine main functions - four for meteorological data, four for hydrological data and one for sounding meteo:</p>
 <ol style="list-style-type: decimal">
 <li>Meteorological data:</li>
 </ol>
@@ -133,7 +133,7 @@
 <li>
 <code><a href="../reference/meteo_sounding.html">meteo_sounding()</a></code> – downloading rawinsonde data (+metadata)</li>
 </ul>
-<p>Most of the above mentioned unctions have similar arguments allowing to choose:</p>
+<p>Most of the functions mentioned above have similar arguments allowing to choose:</p>
 <ul>
 <li>
 <code>rank</code> - type of the stations <code>"synop"</code>, <code>"climate"</code>, <code>"precip"</code> (<strong>only meteo functions</strong>)</li>
@@ -203,36 +203,162 @@
 #&gt; 95087 257 NA  2
 #&gt; 95169 421 NA  2
 #&gt; 95170 861 NA  2</code></pre>
-<p>The <code>idex</code> variable represents id of the extremum, where <code>1</code> means minimum, <code>2</code> mean, and <code>3</code> maximum.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Hydrologists often use the maximum value so we will filter the data and select only the station <code>id</code>, hydrological year (<code>hyy</code>), latitude <code>X</code> and longitude <code>Y</code>. Next, we will calculate the mean maximum value of the flow on the stations in each year with <strong>dplyr</strong>’s <code>summarise()</code>, and spread data by year using <strong>tidyr</strong>’s <code>spread()</code> to get the annual means of maximum flow in the consecutive columns.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h <span class="op">%&gt;%</span></a>
+<p>The <code>idex</code> variable represents id of the extremum, where <code>1</code> means minimum, <code>2</code> mean, and <code>3</code> maximum.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Hydrologists often use the maximum value so we will filter the data and select only the station <code>id</code>, hydrological year (<code>hyy</code>), latitude <code>X</code> and longitude <code>Y</code>. Next, we will calculate the mean maximum value of the flow on the stations in each year with <strong>dplyr</strong>’s <code><a href="https://www.rdocumentation.org/packages/sf/topics/tidyverse">summarise()</a></code>, and spread data by year using <strong>tidyr</strong>’s <code>spread()</code> to get the annual means of maximum flow in the consecutive columns.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h2 =<span class="st"> </span>h <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(idex <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, X, Y, hyy, Q, mm) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(hyy, id, X, Y) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">annual_mean_Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">spread</span>(hyy, annual_mean_Q)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; # A tibble: 873 x 13</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; # Groups:   id, X [873]</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        id     X     Y `2001` `2002` `2003` `2004` `2005` `2006`  `2007`</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  1 1.49e8  NA    NA   201.   147.    87.9  109.   171.   227.   153.   </span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  2 1.49e8  18.3  49.9 175.    96.7   57.6   91.8  147.   171.   110.   </span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  3 1.49e8  18.4  49.9  NA     NA     NA     NA     NA     NA     NA    </span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  4 1.49e8  18.5  49.9   4.46   2.01   1.70   1.67   2.55   3.27   2.14 </span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  5 1.49e8  NA    NA    13.5    7.9    3.80   5.01  10.4    6.48   5.85 </span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  6 1.49e8  NA    NA    57.2   57.7   29.8   26.8   65.4   60.7   54.7  </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  7 1.49e8  18.6  49.7 NaN    NaN    NaN    NaN    NaN    NaN      0.564</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  8 1.49e8  18.8  49.8  42.4   50.5   19.5   21.6   33.1   36.0   39.5  </span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  9 1.49e8  18.8  49.7  16.7   17.8    5.82   6.30  10.2   13.3   18.4  </span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; 10 1.49e8  18.9  49.8  10.6   15.2    5.03   6.08 NaN      9.81  12.2  </span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; # … with 863 more rows, and 3 more variables: `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; #   `2010` &lt;dbl&gt;</span></a></code></pre></div>
-<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
-<p>nie rozumiem tego zdania <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego --></p>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, station, X, Y, hyy, Q) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(hyy, id, station, X, Y) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">srednie_roczne_Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">spread</span>(hyy, srednie_roczne_Q)</a></code></pre></div>
+<table class="table">
+<caption>Examplary data frame of hydrological preprocesssing.</caption>
+<thead><tr class="header">
+<th align="right">id</th>
+<th align="left">station</th>
+<th align="right">X</th>
+<th align="right">Y</th>
+<th align="right">2001</th>
+<th align="right">2002</th>
+<th align="right">2003</th>
+<th align="right">2004</th>
+<th align="right">2005</th>
+<th align="right">2006</th>
+<th align="right">2007</th>
+<th align="right">2008</th>
+<th align="right">2009</th>
+<th align="right">2010</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">149180010</td>
+<td align="left">KRZYŻANOWICE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">200.525000</td>
+<td align="right">147.450000</td>
+<td align="right">87.941667</td>
+<td align="right">109.158333</td>
+<td align="right">170.591667</td>
+<td align="right">226.950000</td>
+<td align="right">152.9500000</td>
+<td align="right">130.9666667</td>
+<td align="right">160.941667</td>
+<td align="right">461.1333333</td>
+</tr>
+<tr class="even">
+<td align="right">149180020</td>
+<td align="left">CHAŁUPKI</td>
+<td align="right">18.32752</td>
+<td align="right">49.92127</td>
+<td align="right">174.675000</td>
+<td align="right">96.675000</td>
+<td align="right">57.633333</td>
+<td align="right">91.766667</td>
+<td align="right">146.941667</td>
+<td align="right">170.641667</td>
+<td align="right">110.2083333</td>
+<td align="right">101.6416667</td>
+<td align="right">124.725000</td>
+<td align="right">314.5916667</td>
+</tr>
+<tr class="odd">
+<td align="right">149180040</td>
+<td align="left">GOŁKOWICE</td>
+<td align="right">18.49640</td>
+<td align="right">49.92579</td>
+<td align="right">4.461667</td>
+<td align="right">2.011667</td>
+<td align="right">1.705000</td>
+<td align="right">1.670000</td>
+<td align="right">2.545833</td>
+<td align="right">3.272500</td>
+<td align="right">2.1425000</td>
+<td align="right">1.6766667</td>
+<td align="right">2.220000</td>
+<td align="right">8.6058333</td>
+</tr>
+<tr class="even">
+<td align="right">149180050</td>
+<td align="left">ZEBRZYDOWICE</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">13.460833</td>
+<td align="right">7.900000</td>
+<td align="right">3.798333</td>
+<td align="right">5.010833</td>
+<td align="right">10.413333</td>
+<td align="right">6.478333</td>
+<td align="right">5.8458333</td>
+<td align="right">2.7983333</td>
+<td align="right">4.519167</td>
+<td align="right">23.6416667</td>
+</tr>
+<tr class="odd">
+<td align="right">149180060</td>
+<td align="left">CIESZYN</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">57.171667</td>
+<td align="right">57.710833</td>
+<td align="right">29.774167</td>
+<td align="right">26.787500</td>
+<td align="right">65.415000</td>
+<td align="right">60.727500</td>
+<td align="right">54.6541667</td>
+<td align="right">32.9658333</td>
+<td align="right">34.716667</td>
+<td align="right">134.9916667</td>
+</tr>
+<tr class="even">
+<td align="right">149180070</td>
+<td align="left">CIESZYN</td>
+<td align="right">18.63137</td>
+<td align="right">49.74629</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">0.5641667</td>
+<td align="right">0.5391667</td>
+<td align="right">0.575000</td>
+<td align="right">0.5791667</td>
+</tr>
+</tbody>
+</table>
+<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. --><p>The result represent changing annual maximum average of water flow rate over the decade for all available stations in Poland. We can save it to:</p>
+<ul>
+<li><p><code>.csv</code> with: <code><a href="https://www.rdocumentation.org/packages/utils/topics/write.table">write.csv(result, file = "result.csv", sep = ";",dec = ".", col.names = T, row.names = F)</a></code>. This command saves our result to <code>result.csv</code> where the column’s separator is <code>;</code>, the decimal is <code>.</code>, we are keeping the headers of columns and remove names of rows which are simply numbers of observation.</p></li>
+<li><p><code>.xlsx</code> with: <code>write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)</code> This command saves our result to result.xlsx with the name of the sheet <code>Poland</code>. Argument <code>append=TRUE</code> add the sheet to already existing <code>xlsx</code> file. To save data in <code>.xlsx</code> you have first to install package with command: <code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("writexl")</a></code>, and add it: <code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(writexl)</a></code>.</p></li>
+</ul>
+<!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego --><!-- nie umiem zapisać do formatu przestrzennego --><div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tmap)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Registered S3 method overwritten by 'R.oo':</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   method        from       </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   throw.default R.methodsS3</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Warning: replacing previous import 'gdalUtils::gdal_rasterize' by</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 'sf::gdal_rasterize' when loading 'mapview'</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">h3 =<span class="st"> </span>h2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(X)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(<span class="dt">coords =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"X"</span>, <span class="st">"Y"</span>))</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_shape">tm_shape</a></span>(h3) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_symbols">tm_symbols</a></span>(<span class="dt">size =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>)),</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">             <span class="dt">title.size =</span> <span class="st">"Mean annual maximum flow"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_facets">tm_facets</a></span>(<span class="dt">free.scales =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_layout">tm_layout</a></span>(<span class="dt">legend.position =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">1.25</span>, <span class="fl">0.05</span>),</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">            <span class="dt">outer.margins =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="fl">-0.25</span>))</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; Warning: Currect projection of shape h3 unknown. Long-lat (WGS84) is</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; assumed.</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; Warning: unknown projection</span></a></code></pre></div>
+<p><img src="getstarted_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>You can find information about this in the <code>hydro_abbrev</code> dataset.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>You can find more information about this in the <code>hydro_abbrev</code> dataset.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
   </div>
