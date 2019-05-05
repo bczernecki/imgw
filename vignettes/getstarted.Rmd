@@ -1,6 +1,6 @@
 ---
-title: "Introduction to imgw package (EN)"
-author: "Czernecki B., Głogowski A., Nowosad J."
+title: "Introduction to the imgw package (EN)"
+author: "Bartosz Czernecki, Arkadiusz Głogowski, Jakub Nowosad"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -20,7 +20,7 @@ library(dplyr)
 options(scipen=999)
 ```
 
-The main goal of the **imgw** package is to give a convenient and programmable access to the Polish database of meteorological and hydrological (archive)database.
+The main goal of the **imgw** package is to give convenient and programmable access to the Polish database of the archive meteorological and hydrological measurements.
 
 It consists of tools that are:
 
@@ -31,7 +31,7 @@ It consists of tools that are:
 
 ## Functions 
 
-The **imgw** package consists of nine functions - four for meteorological data, four for hydrological data and one for  sounding meteo:
+The **imgw** package consists of nine main functions - four for meteorological data, four for hydrological data and one for sounding meteo:
 
 1. Meteorological data:
 
@@ -51,7 +51,7 @@ The **imgw** package consists of nine functions - four for meteorological data, 
 
 - `meteo_sounding()` -- downloading rawinsonde data (+metadata)
 
-Most of the above mentioned unctions have similar arguments allowing to choose:
+Most of the functions mentioned above have similar arguments allowing to choose:
 
 - `rank` - type of the stations `"synop"`, `"climate"`, `"precip"` (**only meteo functions**)
 - `year` - vector of selected years (e.g., `1966:2000`)
@@ -88,7 +88,7 @@ h = hydro_monthly(year = 2001:2010, coords = TRUE)
 head(h)
 ```
 
-The `idex` variable represents id of the extremum, where `1` means minimum, `2` mean, and `3` maximum.^[You can find information about this in the `hydro_abbrev` dataset.]
+The `idex` variable represents id of the extremum, where `1` means minimum, `2` mean, and `3` maximum.^[You can find more information about this in the `hydro_abbrev` dataset.]
 Hydrologists often use the maximum value so we will filter the data and select only the station `id`, hydrological year (`hyy`), latitude `X` and longitude `Y`.
 Next, we will calculate the mean maximum value of the flow on the stations in each year with **dplyr**'s `summarise()`, and spread data by year using **tidyr**'s `spread()` to get the annual means of maximum flow in the consecutive columns.
 
@@ -103,15 +103,30 @@ head(result)
 ```
 
 <!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
-The result represent changing  annual maximum average of water flow rate over the decade for all available stations in Poland. 
+The result represent changing annual maximum average of water flow rate over the decade for all available stations in Poland. 
 We can save it to:
 
- - `.csv` with: `write.csv(result, file = "result.csv", sep = ";",dec = ".", col.names = T, row.names = F)`. 
-This command save our result to `result.csv` where column's separator is `;`, decimal is `.` we are saving the headers of columns and remove names of rows which are simply numbers of observation.
+- `.csv` with: `write.csv(result, file = "result.csv", sep = ";",dec = ".", col.names = T, row.names = F)`. 
+This command saves our result to `result.csv` where the column's separator is `;`, the decimal is `.`, we are keeping the headers of columns and remove names of rows which are simply numbers of observation.
 
- - `.xlsx` with: `write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)`
- This command save our result to result.xlsx with name of the sheet `Poland`. Argument `append=TRUE` add the sheet to already existing `xlsx` file.
- To save data in `.xlsx` you have first to install package with command: `install.packages("xlsx")`, and add it: `library(xlsx)`.
+- `.xlsx` with: `write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)`
+This command saves our result to result.xlsx with the name of the sheet `Poland`. Argument `append=TRUE` add the sheet to already existing `xlsx` file.
+To save data in `.xlsx` you have first to install package with command: `install.packages("writexl")`, and add it: `library(writexl)`.
  
 <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
 <!-- nie umiem zapisać do formatu przestrzennego -->
+
+```{r}
+library(sf)
+library(tmap)
+h3 = h2 %>% 
+  filter(!is.na(X)) %>% 
+  st_as_sf(coords = c("X", "Y"))
+
+tm_shape(h3) + 
+  tm_symbols(size = as.character(c(2001:2010)),
+             title.size = "Średni przepływ maksymalny") +
+  tm_facets(free.scales = FALSE) + 
+  tm_layout(legend.position = c(-1.25, 0.05),
+            outer.margins = c(0, 0.05, 0, -0.25))
+```
