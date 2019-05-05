@@ -98,7 +98,7 @@ h2 = h %>%
   filter(idex == 3) %>%
   select(id, station, X, Y, hyy, Q) %>%
   group_by(hyy, id, station, X, Y) %>%
-  summarise(srednie_roczne_Q = mean(Q, na.rm = TRUE)) %>%
+  summarise(srednie_roczne_Q = round(mean(Q, na.rm = TRUE),1)) %>% 
   spread(hyy, srednie_roczne_Q)
 ```
 
@@ -121,17 +121,30 @@ To save data in `.xlsx` you have first to install package with command: `install
 <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
 <!-- nie umiem zapisać do formatu przestrzennego -->
 
-```{r}
+```{r, eval=FALSE, include=TRUE}
 library(sf)
 library(tmap)
+# trzeba dodac konturowke chociaz...
+library(rnaturalearth)
+library(rnaturalearthdata)
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+
 h3 = h2 %>% 
   filter(!is.na(X)) %>% 
   st_as_sf(coords = c("X", "Y"))
 
 tm_shape(h3) + 
-  tm_symbols(size = as.character(c(2001:2010)),
-             title.size = "Mean annual maximum flow") +
+  tm_symbols(size = as.character(c(2001:2010)), col = rainbow(10),style = "quantile",
+             title.size = "Max. flow") +
   tm_facets(free.scales = FALSE) + 
+  tm_shape(world) + tm_borders(col = "black", lwd=2) +
   tm_layout(legend.position = c(-1.25, 0.05),
             outer.margins = c(0, 0.05, 0, -0.25))
+  
+
 ```
+
+![Mean maximum annual flow](../../docs/articles/articles/pl_files/figure-html/unnamed-chunk-1-1.png)
+
+

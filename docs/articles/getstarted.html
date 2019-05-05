@@ -208,7 +208,7 @@
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(idex <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, station, X, Y, hyy, Q) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(hyy, id, station, X, Y) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">srednie_roczne_Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">srednie_roczne_Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(Q, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),<span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">spread</span>(hyy, srednie_roczne_Q)</a></code></pre></div>
 <table class="table">
 <caption>Examplary data frame of hydrological preprocesssing.</caption>
@@ -232,82 +232,82 @@
 <tr class="odd">
 <td align="right">149180010</td>
 <td align="left">KRZYŻANOWICE</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">200.525000</td>
-<td align="right">147.450000</td>
-<td align="right">87.941667</td>
-<td align="right">109.158333</td>
-<td align="right">170.591667</td>
-<td align="right">226.950000</td>
-<td align="right">152.9500000</td>
-<td align="right">130.9666667</td>
-<td align="right">160.941667</td>
-<td align="right">461.1333333</td>
+<td align="right">18.28722</td>
+<td align="right">49.99361</td>
+<td align="right">200.5</td>
+<td align="right">147.4</td>
+<td align="right">87.9</td>
+<td align="right">109.2</td>
+<td align="right">170.6</td>
+<td align="right">226.9</td>
+<td align="right">152.9</td>
+<td align="right">131.0</td>
+<td align="right">160.9</td>
+<td align="right">461.1</td>
 </tr>
 <tr class="even">
 <td align="right">149180020</td>
 <td align="left">CHAŁUPKI</td>
 <td align="right">18.32752</td>
 <td align="right">49.92127</td>
-<td align="right">174.675000</td>
-<td align="right">96.675000</td>
-<td align="right">57.633333</td>
-<td align="right">91.766667</td>
-<td align="right">146.941667</td>
-<td align="right">170.641667</td>
-<td align="right">110.2083333</td>
-<td align="right">101.6416667</td>
-<td align="right">124.725000</td>
-<td align="right">314.5916667</td>
+<td align="right">174.7</td>
+<td align="right">96.7</td>
+<td align="right">57.6</td>
+<td align="right">91.8</td>
+<td align="right">146.9</td>
+<td align="right">170.6</td>
+<td align="right">110.2</td>
+<td align="right">101.6</td>
+<td align="right">124.7</td>
+<td align="right">314.6</td>
 </tr>
 <tr class="odd">
 <td align="right">149180040</td>
 <td align="left">GOŁKOWICE</td>
 <td align="right">18.49640</td>
 <td align="right">49.92579</td>
-<td align="right">4.461667</td>
-<td align="right">2.011667</td>
-<td align="right">1.705000</td>
-<td align="right">1.670000</td>
-<td align="right">2.545833</td>
-<td align="right">3.272500</td>
-<td align="right">2.1425000</td>
-<td align="right">1.6766667</td>
-<td align="right">2.220000</td>
-<td align="right">8.6058333</td>
+<td align="right">4.5</td>
+<td align="right">2.0</td>
+<td align="right">1.7</td>
+<td align="right">1.7</td>
+<td align="right">2.5</td>
+<td align="right">3.3</td>
+<td align="right">2.1</td>
+<td align="right">1.7</td>
+<td align="right">2.2</td>
+<td align="right">8.6</td>
 </tr>
 <tr class="even">
 <td align="right">149180050</td>
 <td align="left">ZEBRZYDOWICE</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">13.460833</td>
-<td align="right">7.900000</td>
-<td align="right">3.798333</td>
-<td align="right">5.010833</td>
-<td align="right">10.413333</td>
-<td align="right">6.478333</td>
-<td align="right">5.8458333</td>
-<td align="right">2.7983333</td>
-<td align="right">4.519167</td>
-<td align="right">23.6416667</td>
+<td align="right">13.5</td>
+<td align="right">7.9</td>
+<td align="right">3.8</td>
+<td align="right">5.0</td>
+<td align="right">10.4</td>
+<td align="right">6.5</td>
+<td align="right">5.8</td>
+<td align="right">2.8</td>
+<td align="right">4.5</td>
+<td align="right">23.6</td>
 </tr>
 <tr class="odd">
 <td align="right">149180060</td>
 <td align="left">CIESZYN</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">57.171667</td>
-<td align="right">57.710833</td>
-<td align="right">29.774167</td>
-<td align="right">26.787500</td>
-<td align="right">65.415000</td>
-<td align="right">60.727500</td>
-<td align="right">54.6541667</td>
-<td align="right">32.9658333</td>
-<td align="right">34.716667</td>
-<td align="right">134.9916667</td>
+<td align="right">18.62972</td>
+<td align="right">49.74583</td>
+<td align="right">57.2</td>
+<td align="right">57.7</td>
+<td align="right">29.8</td>
+<td align="right">26.8</td>
+<td align="right">65.4</td>
+<td align="right">60.7</td>
+<td align="right">54.7</td>
+<td align="right">33.0</td>
+<td align="right">34.7</td>
+<td align="right">135.0</td>
 </tr>
 <tr class="even">
 <td align="right">149180070</td>
@@ -320,10 +320,10 @@
 <td align="right">NaN</td>
 <td align="right">NaN</td>
 <td align="right">NaN</td>
-<td align="right">0.5641667</td>
-<td align="right">0.5391667</td>
-<td align="right">0.575000</td>
-<td align="right">0.5791667</td>
+<td align="right">0.6</td>
+<td align="right">0.5</td>
+<td align="right">0.6</td>
+<td align="right">0.6</td>
 </tr>
 </tbody>
 </table>
@@ -333,27 +333,28 @@
 <li><p><code>.xlsx</code> with: <code>write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)</code> This command saves our result to result.xlsx with the name of the sheet <code>Poland</code>. Argument <code>append=TRUE</code> add the sheet to already existing <code>xlsx</code> file. To save data in <code>.xlsx</code> you have first to install package with command: <code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages("writexl")</a></code>, and add it: <code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(writexl)</a></code>.</p></li>
 </ul>
 <!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego --><!-- nie umiem zapisać do formatu przestrzennego --><div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tmap)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Registered S3 method overwritten by 'R.oo':</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   method        from       </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   throw.default R.methodsS3</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Warning: replacing previous import 'gdalUtils::gdal_rasterize' by</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 'sf::gdal_rasterize' when loading 'mapview'</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tmap)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co"># trzeba dodac konturowke chociaz...</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rnaturalearth)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rnaturalearthdata)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">world &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rnaturalearth/topics/ne_countries">ne_countries</a></span>(<span class="dt">scale =</span> <span class="st">"medium"</span>, <span class="dt">returnclass =</span> <span class="st">"sf"</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9">h3 =<span class="st"> </span>h2 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(X)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sf/topics/st_as_sf">st_as_sf</a></span>(<span class="dt">coords =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"X"</span>, <span class="st">"Y"</span>))</a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_shape">tm_shape</a></span>(h3) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_symbols">tm_symbols</a></span>(<span class="dt">size =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>)),</a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">             <span class="dt">title.size =</span> <span class="st">"Mean annual maximum flow"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_symbols">tm_symbols</a></span>(<span class="dt">size =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2001</span><span class="op">:</span><span class="dv">2010</span>)), <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">rainbow</a></span>(<span class="dv">10</span>),<span class="dt">style =</span> <span class="st">"quantile"</span>,</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">             <span class="dt">title.size =</span> <span class="st">"Max. flow"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_facets">tm_facets</a></span>(<span class="dt">free.scales =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_layout">tm_layout</a></span>(<span class="dt">legend.position =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">1.25</span>, <span class="fl">0.05</span>),</a>
-<a class="sourceLine" id="cb5-18" data-line-number="18">            <span class="dt">outer.margins =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="fl">-0.25</span>))</a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; Warning: Currect projection of shape h3 unknown. Long-lat (WGS84) is</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; assumed.</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; Warning: unknown projection</span></a></code></pre></div>
-<p><img src="getstarted_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_shape">tm_shape</a></span>(world) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_polygons">tm_borders</a></span>(<span class="dt">col =</span> <span class="st">"black"</span>, <span class="dt">lwd=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/tmap/topics/tm_layout">tm_layout</a></span>(<span class="dt">legend.position =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">1.25</span>, <span class="fl">0.05</span>),</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">            <span class="dt">outer.margins =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="fl">-0.25</span>))</a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">  </a></code></pre></div>
+<div class="figure">
+<img src="../../docs/articles/articles/pl_files/figure-html/unnamed-chunk-1-1.png" alt="Mean maximum annual flow"><p class="caption">Mean maximum annual flow</p>
+</div>
 </div>
 <div class="footnotes">
 <hr>

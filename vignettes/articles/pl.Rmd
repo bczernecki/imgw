@@ -101,18 +101,26 @@ kable(head(h), caption = "Pierwsze 6 wierszy pobranych danych:")
 ```
 
 
-
-
-
-
-
 Kolumna `idex` zawiera informację o rodzaju ekstremum, tj. `1` -  minimum, `2` - średnia,  `3` - maximum.^[Szczegółowe informacje  znajdują się w zbiorze `hydro_abbrev`].
 
-2. Analizy hydrologiczne często koncentrują się na jednej grupy zjawisk, np. związanych z przepływami maksymalnymi.
+2. Dla osób preferujących pracę w arkuszach kalkulacyjnych możliwe jest zapisanie pobranych danych do formatów `.csv` lub `.xlsx`. W tym  drugim przypadku konieczne będzie aktywowanie (a gdy konieczne także wcześniejsze zainstalowanie) odpowiedniego pakietu:
+
+```{r data_excel_PL1, eval=FALSE, include=TRUE}
+# CSV:
+write.csv(h, file = "result.csv", sep = ";",dec = ".")
+# powyzsza instrukcja zapisze pobrane dane do pliku  `result.csv` z separatoratorem dla kolumn `;` i miejscem dziesietnym `.` 
+
+# XLSX:
+library(writexl)
+# lub jesli biblioteka 'writexl' nie byla instalowana wowczas nalezy wczesniej wywolac komende: install.packages("writexl")
+write_xlsx(result, path =  "result.xlsx")
+```
+
+3. Analizy hydrologiczne często koncentrują się na jednej grupy zjawisk, np. związanych z przepływami maksymalnymi.
 W tym celu pozostaną w ramce danych tylko wartości przepływów maksymalnych oraz kolumny zawierające interesujące nas informacje, tj. 
 identyfikator stacji - `id`, rok hydrologiczny - `hyy`, szerokość geograficzną - `X` oraz długość geograficzną - `Y`.
 
-3. Następnie obliczmy średni przepływ maksymalny na każdej z dostępnych stacji, w każdym z analizowanych lat hydrologicznych. 
+4. Następnie obliczmy średni przepływ maksymalny na każdej z dostępnych stacji, w każdym z analizowanych lat hydrologicznych. 
 W tym celu można wykorzystać funkcję `summarise()` z pakietu **dplyr**. 
 Zmiana postaci otrzymanej tabeli (z wąskiej do szerokiej) może zostać wykonana za pomocą pakietu **tidyr** i funkcji `spread()`. 
 
@@ -121,42 +129,40 @@ h2 = h %>%
   filter(idex == 3) %>%
   select(id, station, X, Y, hyy, Q) %>%
   group_by(hyy, id, station, X, Y) %>%
-  summarise(srednie_roczne_Q = mean(Q, na.rm = TRUE)) %>%
-  spread(hyy, srednie_roczne_Q)
+  summarise(mean_Q = round(mean(Q, na.rm = TRUE),1)) %>%
+  spread(hyy, mean_Q)
 ```
 
 ```{r filtering_PL2, echo=FALSE}
 kable(head(h2), caption = "Przykład wyniku przetwarzania danych hydrologicznych.")
 ```
 
+5. Uzyskane wyniki mogą zostać następnie zwizualizowane w formie przestrzennej za pomocą np. pakietów GIS: `sf` i `tmap`. Poniżej zamieszczono przykładowy kod dla średnich maksymalnych przepływów rocznych:
 
-<!-- The resulting table can be easily exported to any spatial software with a changing annual maximum annual average water flow rate over the decade for Poland as a whole. -->
-<!-- nie rozumiem tego zdania -->
-<!-- dodatkowo można pokazać jak zapisać wynik do formatu teskstowego/excela/przestrzennego -->
-
-<!-- We can save it to: -->
-
-<!-- - `.csv` with: `write.csv(result, file = "result.csv", sep = ";",dec = ".", col.names = T, row.names = F)`.  -->
-<!-- This command saves our result to `result.csv` where the column's separator is `;`, the decimal is `.`, we are keeping the headers of columns and remove names of rows which are simply numbers of observation. -->
-
-<!-- - `.xlsx` with: `write.xlsx(result, file = "result.xlsx", sheetName = "Poland", append = FALSE)` -->
-<!-- This command saves our result to result.xlsx with the name of the sheet `Poland`. Argument `append=TRUE` add the sheet to already existing `xlsx` file. -->
-<!-- To save data in `.xlsx` you have first to install package with command: `install.packages("writexl")`, and add it: `library(writexl)`. -->
-
-4. Uzyskane wyniki mogą zostać następnie zwizualizowane w formie przestrzennej za pomocą np. pakietów GIS: `sf` i `tmap`. Poniżej zamieszczono przykładowy kod dla średnich maksymalnych przepływów rocznych:
-
-```{r}
+```{r, eval=FALSE, include=TRUE}
 library(sf)
 library(tmap)
+# trzeba dodac konturowke chociaz...
+library(rnaturalearth)
+library(rnaturalearthdata)
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+
 h3 = h2 %>% 
   filter(!is.na(X)) %>% 
   st_as_sf(coords = c("X", "Y"))
 
 tm_shape(h3) + 
-  tm_symbols(size = as.character(c(2001:2010)),
+  tm_symbols(size = as.character(c(2001:2010)), col = rainbow(10),style = "quantile",
              title.size = "Średni przepływ maksymalny") +
   tm_facets(free.scales = FALSE) + 
+  tm_shape(world) + tm_borders(col = "black", lwd=2) +
   tm_layout(legend.position = c(-1.25, 0.05),
             outer.margins = c(0, 0.05, 0, -0.25))
+  
+
 ```
+
+![Zmienność wieloletnia średnich maksymalnych przepływów](../../docs/articles/articles/pl_files/figure-html/unnamed-chunk-1-1.png)
+
 
