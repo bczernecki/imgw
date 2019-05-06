@@ -32,7 +32,5 @@ Suggests:
     rmarkdown,
     testthat,
     dplyr,
-    tidyr,
-    sf,
-    tmap
+    tidyr
 VignetteBuilder: knitr
