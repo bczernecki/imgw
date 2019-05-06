@@ -142,25 +142,23 @@ kable(head(h2), caption = "Przykład wyniku przetwarzania danych hydrologicznych
 ```{r, eval=FALSE, include=TRUE}
 library(sf)
 library(tmap)
-# trzeba dodac konturowke chociaz...
 library(rnaturalearth)
 library(rnaturalearthdata)
-world <- ne_countries(scale = "medium", returnclass = "sf")
-
+world = ne_countries(scale = "medium", returnclass = "sf")
 
 h3 = h2 %>% 
   filter(!is.na(X)) %>% 
   st_as_sf(coords = c("X", "Y"))
 
 tm_shape(h3) + 
-  tm_symbols(size = as.character(c(2001:2010)), col = rainbow(10),style = "quantile",
+  tm_symbols(size = as.character(c(2001:2010)),
              title.size = "Średni przepływ maksymalny") +
-  tm_facets(free.scales = FALSE) + 
-  tm_shape(world) + tm_borders(col = "black", lwd=2) +
+  tm_facets(free.scales = FALSE, ncol = 4) + 
+  tm_shape(world) + 
+  tm_borders(col = "black", lwd = 2) +
   tm_layout(legend.position = c(-1.25, 0.05),
-            outer.margins = c(0, 0.05, 0, -0.25))
-  
-
+            outer.margins = c(0, 0.05, 0, -0.25),
+            panel.labels = as.character(c(2001:2010)))
 ```
 
 ![Zmienność wieloletnia średnich maksymalnych przepływów](../../docs/articles/articles/pl_files/figure-html/unnamed-chunk-1-1.png)
