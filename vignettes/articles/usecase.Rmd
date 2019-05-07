@@ -1,0 +1,29 @@
+---
+title: "use_case"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## USE CASE - METEO (1)
+
+1. Pobieranie danych miesiecznych ze stacji meteo (SYNOP)
+1. Zrobienie wykresu dla 1-2 wybranych stacji (np. Poznan i Warszawa - w miare homogeniczne, Wroclaw odpalony za bardzo)
+1. Zrobienie wykresow dla miesiecy i wrzucenie trendu liniowego
+
+
+
+## USE CASE - METEO (2)
+1. Przetworzenie pobranych danych na serie roczne
+1. Zgridowanie do 0.01 poprzez interpolacje? (albo przerobienie na kilometrowke)
+1. Obliczenie trendu dla serii rocznej w punktach gridowych - robisz mape dla wspolczynnika kierunkowego trendu w PL
+
+
+## USE CASE - HYDRO (1)
+Moze byc ten ktory jest w winietce z przeplywami
+
+## USE CASE - SOUNDING
+Wykres termodynamiczny z inwersja
+
