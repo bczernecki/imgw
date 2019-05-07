@@ -9,3 +9,4 @@
 ^\.httr-oauth$
 ^data-raw$
 ^vignettes/articles$
+^vignettes$

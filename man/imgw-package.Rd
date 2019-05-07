@@ -9,6 +9,14 @@
 Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
     This package also allows for adding geographical coordinates for each observation.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://imgw.ml}
+  \item Report bugs at \url{https://github.com/bczernecki/imgw/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Bartosz Czernecki \email{nwp@amu.edu.pl} (0000-0001-6496-1386)
 

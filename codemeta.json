@@ -57,30 +57,6 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "knitr",
-      "name": "knitr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=knitr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "rmarkdown",
-      "name": "rmarkdown",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "provider": {
@@ -90,30 +66,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "dplyr",
-      "name": "dplyr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=dplyr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tidyr",
-      "name": "tidyr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tidyr"
     }
   ],
   "softwareRequirements": [
@@ -148,10 +100,10 @@
       "sameAs": "https://CRAN.R-project.org/package=XML"
     }
   ],
-  "codeRepository": "https://github.com/bczernecki/imgw",
+  "codeRepository": "https://imgw.ml",
   "releaseNotes": "https://github.com/bczernecki/imgw/blob/master/NEWS.md",
   "readme": "https://github.com/bczernecki/imgw/blob/master/README.md",
-  "fileSize": "93.458KB",
+  "fileSize": "85.496KB",
   "contIntegration": "https://travis-ci.org/bczernecki/imgw",
   "citation": [
     {
@@ -178,5 +130,6 @@
       "url": "https://bczernecki.github.io/imgw/",
       "description": "R package version 0.0.1"
     }
-  ]
+  ],
+  "issueTracker": "https://github.com/bczernecki/imgw/issues"
 }
