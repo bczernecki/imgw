@@ -19,11 +19,18 @@ library(ggplot2)
 library(dplyr)
 meteo_poz = meteo("monthly", rank = "synop", year = 1965:2018, station = "POZNAŃ") %>% 
   select(id, station, yy, mm, t2m_mean_mon) %>% 
-  mutate(date = as.Date(paste0(yy, "-", mm, "-", 15)))
+  group_by(yy) %>% summarise(t2 = mean(t2m_mean_mon))
 
-ggplot(meteo_poz, aes(date, t2m_mean_mon)) +
+ggplot(meteo_poz, aes(yy, t2)) +
   geom_line() + 
   geom_smooth(method = "lm")
+
+# or as an alternative:
+plot(meteo_poz$yy, meteo_poz$t2, type = 'l', xlab='year', ylab="temperature [*C]", 
+     main = "Poznań - annual mean air temperature (1965 - 2018)")
+model <- lm(t2~yy, data=meteo_poz)
+abline(model, col='red', lwd=3)
+legend("topleft", legend = paste0("y = ", round(coef(model)[2],3) , "x  " , round(coef(model)[1],1)), bty = "n")
 ```
 
 ## USE CASE - METEO (2)
