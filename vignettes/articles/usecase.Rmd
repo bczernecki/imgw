@@ -81,21 +81,24 @@ tm_shape(europe) +
 meteo_mon_sp = st_transform(meteo_mon_sp, 2180)
 
 library(raster)
-meteo_grid = raster(meteo_mon_sp, ncol = 100, nrow = 100)
+meteo_grid = raster(meteo_mon_sp, ncol = 50, nrow = 50)
 mg = gstat(id = "t2", formula = t2~1, data = meteo_mon_sp,
-           nmax = 7, set = list(idp = .5))
+           nmax = 10, set = list(idp = .5))
 x = meteo_mon_sp %>%
   group_split(yy) %>%
-  purrr::map(~gstat(id = "t2", formula = t2~1, data = ., nmax = 5, set = list(idp = .5))) %>%
+  purrr::map(~gstat(id = "t2", formula = t2~1, data = .,
+                    nmax = 5, set = list(idp = .5))) %>%
   purrr::map(~interpolate(meteo_grid, .)) %>%
   stack()
 years = 1966:2018
 x_slope = calc(x, fun = function(x) {summary(lm(x ~ years))$coefficients[2]})
 
 tm_shape(x_slope) +
-  tm_raster() +
+  tm_raster(style = "cont", title = "") +
   tm_shape(europe) +
-  tm_borders(col = "black", lwd = 2)
+  tm_borders(col = "black", lwd = 2) +
+  tm_layout(legend.outside = TRUE,
+            main.title = "Annual mean air temperature in Poland - annual trend")
 ```
 
 
