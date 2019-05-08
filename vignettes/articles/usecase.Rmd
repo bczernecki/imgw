@@ -79,8 +79,22 @@ tm_shape(europe) +
   tm_symbols(col = "t2", title.col = "") + 
   tm_facets(by = "yy")  + 
   tm_layout(main.title = "Annual mean air temperature in Poland")
-```
 
+library(stars)
+my_grid = st_make_grid(meteo_mon_sp) %>% 
+  st_as_stars()
+  
+v = variogram(exp(t2)~1, meteo_mon_sp)
+m = vgm(45000000, "Sph", 50000, nugget = 1000000)
+plot(v, model = m)
+
+library(purrr)
+r = meteo_mon_sp %>% 
+  group_split(yy) %>% 
+  map(~krige(formula = exp(t2)~1, ., my_grid, model = m, 
+            nmax = 1))
+
+```
 
 
 ## USE CASE - HYDRO (1)
