@@ -81,7 +81,9 @@ tm_shape(europe) +
 meteo_mon_sp = st_transform(meteo_mon_sp, 2180)
 
 library(raster)
-meteo_grid = raster(meteo_mon_sp, ncol = 50, nrow = 50)
+poland = filter(europe, iso_a3 == "POL") %>% 
+  st_transform(2180)
+meteo_grid = raster(poland, ncol = 50, nrow = 50)
 mg = gstat(id = "t2", formula = t2~1, data = meteo_mon_sp,
            nmax = 10, set = list(idp = .5))
 x = meteo_mon_sp %>%
@@ -92,6 +94,7 @@ x = meteo_mon_sp %>%
   stack()
 years = 1966:2018
 x_slope = calc(x, fun = function(x) {summary(lm(x ~ years))$coefficients[2]})
+x_slope = mask(x_slope, poland)
 
 tm_shape(x_slope) +
   tm_raster(style = "cont", title = "") +
