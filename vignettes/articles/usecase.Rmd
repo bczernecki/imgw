@@ -55,22 +55,26 @@ legend("topleft",
 
 ```{r}
 library(imgw)
-library(ggplot2)
 library(dplyr)
 library(sf)
 library(gstat)
+library(tmap)
+library(raster)
+library(rnaturalearth)
+library(rnaturalearthdata)
+
+# downloads monthly data and calculates annual mean air temperature
 meteo_mon = meteo("monthly", rank = "synop", year = 1966:2018, coords = TRUE) %>%
   dplyr::select(id, station, X, Y, yy, mm, t2m_mean_mon) %>%
   group_by(yy, id, station, X, Y) %>%
   summarise(t2 = mean(t2m_mean_mon))
-head(meteo_mon)
-meteo_mon = meteo_mon %>%
-  filter(!is.na(X))
-meteo_mon_sp = st_as_sf(meteo_mon, coords = c("X", "Y"), crs = 4326)
 
-library(tmap)
-library(rnaturalearth)
-library(rnaturalearthdata)
+# creates spatial object
+meteo_mon_sp = meteo_mon %>%
+  filter(!is.na(X)) %>% 
+  st_as_sf(coords = c("X", "Y"), crs = 4326)
+
+# plots spatial data
 europe = ne_countries(scale = "medium", continent = "Europe", returnclass = "sf")
 tm_shape(europe) +
   tm_borders(col = "black", lwd = 2) +
@@ -78,25 +82,30 @@ tm_shape(europe) +
   tm_symbols(col = "t2", title.col = "") +
   tm_facets(by = "yy")  +
   tm_layout(main.title = "Annual mean air temperature in Poland")
-meteo_mon_sp = st_transform(meteo_mon_sp, 2180)
 
-library(raster)
+# prepares spatial data in a projected crs
+meteo_mon_sp = st_transform(meteo_mon_sp, 2180)
 poland = filter(europe, iso_a3 == "POL") %>% 
   st_transform(2180)
+
+# creates an empty grid
 meteo_grid = raster(poland, ncol = 50, nrow = 50)
-mg = gstat(id = "t2", formula = t2~1, data = meteo_mon_sp,
-           nmax = 10, set = list(idp = .5))
-x = meteo_mon_sp %>%
+
+# splits data by year, creates idw models, and make interpolations
+meteo_inter = meteo_mon_sp %>%
   group_split(yy) %>%
-  purrr::map(~gstat(id = "t2", formula = t2~1, data = .,
-                    nmax = 5, set = list(idp = .5))) %>%
+  purrr::map(~gstat(formula = t2~1, data = meteo_mon_sp,
+                  nmax = 10, set = list(idp = .5))) %>%
   purrr::map(~interpolate(meteo_grid, .)) %>%
   stack()
-years = 1966:2018
-x_slope = calc(x, fun = function(x) {summary(lm(x ~ years))$coefficients[2]})
-x_slope = mask(x_slope, poland)
 
-tm_shape(x_slope) +
+# calculates a trend for each pixel
+years = 1966:2018
+meteo_trend = calc(x, fun = function(x) {summary(lm(x ~ years))$coefficients[2]}) %>% 
+  mask(poland)
+
+# plots a trend map
+tm_shape(meteo_trend) +
   tm_raster(style = "cont", title = "") +
   tm_shape(europe) +
   tm_borders(col = "black", lwd = 2) +
