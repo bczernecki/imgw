@@ -35,8 +35,8 @@ ggplot(meteo_poz, aes(yy, t2)) +
 plot(
   meteo_poz$yy,
   meteo_poz$t2,
-  type = 'l',
-  xlab = 'Year',
+  type = "l",
+  xlab = "Year",
   ylab = "Temperature [*C]",
   main = "Poznań - annual mean air temperature (1966 - 2018)"
   )
@@ -106,7 +106,7 @@ meteo_trend = calc(x, fun = function(x) {summary(lm(x ~ years))$coefficients[2]}
 
 # plots a trend map
 tm_shape(meteo_trend) +
-  tm_raster(style = "cont", title = "") +
+  tm_raster(style = "cont", title = "", breaks = seq(0, 0.08, 0.01)) +
   tm_shape(europe) +
   tm_borders(col = "black", lwd = 2) +
   tm_layout(legend.outside = TRUE,
