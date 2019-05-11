@@ -61,7 +61,6 @@ library(gstat)
 library(tmap)
 library(raster)
 library(rnaturalearth)
-library(rnaturalearthdata)
 
 # downloads monthly data and calculates annual mean air temperature
 meteo_mon = meteo("monthly", rank = "synop", year = 1966:2018, coords = TRUE) %>%
@@ -94,19 +93,19 @@ meteo_grid = raster(poland, ncol = 50, nrow = 50)
 # splits data by year, creates idw models, and make interpolations
 meteo_inter = meteo_mon_sp %>%
   group_split(yy) %>%
-  purrr::map(~gstat(formula = t2~1, data = meteo_mon_sp,
-                  nmax = 10, set = list(idp = .5))) %>%
+  purrr::map(~gstat(formula = t2~1, data = ., #idw
+                  nmax = 10, set = list(idp = 0.1))) %>% 
   purrr::map(~interpolate(meteo_grid, .)) %>%
   stack()
 
 # calculates a trend for each pixel
 years = 1966:2018
-meteo_trend = calc(x, fun = function(x) {summary(lm(x ~ years))$coefficients[2]}) %>% 
+meteo_trend = calc(meteo_inter, fun = function(x) {summary(lm(x ~ years))$coefficients[2]}) %>% 
   mask(poland)
 
 # plots a trend map
 tm_shape(meteo_trend) +
-  tm_raster(style = "cont", title = "", breaks = seq(0, 0.08, 0.01)) +
+  tm_raster(style = "cont", title = "", breaks = seq(0, 0.04, 0.01)) +
   tm_shape(europe) +
   tm_borders(col = "black", lwd = 2) +
   tm_layout(legend.outside = TRUE,
