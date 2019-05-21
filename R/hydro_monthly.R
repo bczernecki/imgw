@@ -84,9 +84,10 @@ hydro_monthly <- function(year, coords = FALSE, station = NULL, col_names= "shor
     }
   }
 
+  all_data <- all_data[order(all_data$`Nazwa stacji`, all_data$`Rok hydrologiczny`, all_data$`Wskaznik miesiaca w roku hydrologicznym`), ]
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- hydro_shortening(all_data, col_names = col_names, ...)
-  all_data <- all_data[order(all_data$station, all_data$hyy, all_data$mm), ]
+
   return(all_data)
 }
 
