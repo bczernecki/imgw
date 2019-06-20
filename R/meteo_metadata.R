@@ -8,7 +8,7 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   meta <- meteo_metadata(interval = "hourly", rank = "synop")
 #'   meta <- meteo_metadata(interval = "daily", rank = "synop")
 #'   meta <- meteo_metadata(interval = "monthly", rank = "precip")

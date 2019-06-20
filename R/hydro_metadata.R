@@ -8,7 +8,7 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   meta <- hydro_metadata(interval = "daily")
 #'   meta <- hydro_metadata(interval = "monthly")
 #'   meta <- hydro_metadata(interval = "semiannual_and_annual")

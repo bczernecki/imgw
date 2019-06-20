@@ -27,7 +27,7 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 Downloading hourly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
-\dontrun{
+\donttest{
   hourly <- meteo_hourly(rank = "climate", year = 1984)
   head(hourly)
 }

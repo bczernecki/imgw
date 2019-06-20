@@ -17,7 +17,7 @@ hydro_shortening(data, col_names = "short", remove_duplicates = TRUE)
 Shortening column names of hydrological parameters to improve the readability of downloaded dataset and removing duplicated column names
 }
 \examples{
-\dontrun{
+\donttest{
   monthly <- hydro_monthly(year = 1969)
   colnames(monthly)
   abbr <- hydro_shortening(data = monthly, col_names = "polish", remove_duplicates = TRUE)

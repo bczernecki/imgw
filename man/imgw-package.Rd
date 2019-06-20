@@ -6,7 +6,7 @@
 \alias{imgw-package}
 \title{imgw: Polish Meteorological and Hydrological Data}
 \description{
-Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).
+Download Polish meteorological and hydrological data from the Institute of Meteorology and Water Management - National Research Institute (<https://dane.imgw.pl/>).
     This package also allows for adding geographical coordinates for each observation.
 }
 \seealso{

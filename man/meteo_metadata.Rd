@@ -16,7 +16,7 @@ Downloading the description (metadata) to the meteorological data available in t
 By default, the function returns a list or data frame for a selected subset
 }
 \examples{
-\dontrun{
+\donttest{
   meta <- meteo_metadata(interval = "hourly", rank = "synop")
   meta <- meteo_metadata(interval = "daily", rank = "synop")
   meta <- meteo_metadata(interval = "monthly", rank = "precip")

@@ -17,7 +17,7 @@ meteo_shortening(data, col_names = "short", remove_duplicates = TRUE)
 Shortening column names of meteorological parameters to improve the readability of downloaded dataset and removing duplicated column names
 }
 \examples{
-\dontrun{
+\donttest{
   monthly <- meteo_monthly(rank = "climate", year = 1969)
   colnames(monthly)
   abbr <- meteo_shortening(data = monthly, col_names = "short", remove_duplicates = TRUE)

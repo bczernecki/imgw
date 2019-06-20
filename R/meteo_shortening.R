@@ -7,7 +7,7 @@
 #' @param remove_duplicates whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   monthly <- meteo_monthly(rank = "climate", year = 1969)
 #'   colnames(monthly)
 #'   abbr <- meteo_shortening(data = monthly, col_names = "short", remove_duplicates = TRUE)

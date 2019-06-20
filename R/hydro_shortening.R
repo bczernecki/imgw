@@ -7,7 +7,7 @@
 #' @param remove_duplicates whether to remove duplicated column names (default TRUE - i.e., columns with duplicated names are deleted)
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   monthly <- hydro_monthly(year = 1969)
 #'   colnames(monthly)
 #'   abbr <- hydro_shortening(data = monthly, col_names = "polish", remove_duplicates = TRUE)

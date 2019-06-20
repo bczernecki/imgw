@@ -15,7 +15,7 @@
 #' @importFrom utils download.file unzip read.csv
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   monthly <- meteo_monthly(rank = "climate", year = 1969)
 #'   head(monthly)
 #'

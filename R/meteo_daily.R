@@ -15,7 +15,7 @@
 #' @importFrom utils download.file unzip read.csv
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   daily <- meteo_daily(rank = "climate", year = 2000)
 #'   head(daily)
 #' }

@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   yearly <- hydro_annual(year = 2000, value = "H", station = "ANNOPOL")
 #'   head(yearly)
 #' }

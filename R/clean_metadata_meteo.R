@@ -9,7 +9,7 @@
 #' @importFrom stats na.omit
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   my_add = paste0("https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/",
 #'                   "dane_meteorologiczne/dobowe/synop/s_d_format.txt")
 #'   clean_metadata_meteo(address = my_add, rank = "synop", interval = "hourly")

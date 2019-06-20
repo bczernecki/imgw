@@ -14,7 +14,7 @@ Downloading the description (metadata) to hydrological data available in the dan
 By default, the function returns a list or data frame for a selected subset
 }
 \examples{
-\dontrun{
+\donttest{
   meta <- hydro_metadata(interval = "daily")
   meta <- hydro_metadata(interval = "monthly")
   meta <- hydro_metadata(interval = "semiannual_and_annual")

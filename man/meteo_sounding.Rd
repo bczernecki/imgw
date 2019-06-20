@@ -41,7 +41,7 @@ The second list contains metadata and calculated thermodynamic / atmospheric ins
 Downloading the mea (i.e., measurements of the vertical profile of atmosphere) sounding data
 }
 \examples{
-\dontrun{
+\donttest{
   sounding <- meteo_sounding(wmo_id = 12120, yy = 2019, mm = 4, dd = 4, hh = 0)
   head(sounding)
   plot(sounding[[1]]$HGHT, sounding[[1]]$PRES, type = 'l')

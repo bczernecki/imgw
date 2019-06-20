@@ -13,7 +13,7 @@
 #' @export
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   x <- hydro("monthly", year = 1999)
 #'   head(x)
 #' }

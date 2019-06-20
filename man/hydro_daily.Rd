@@ -23,7 +23,7 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 Downloading daily hydrological data from the danepubliczne.imgw.pl collection
 }
 \examples{
-\dontrun{
+\donttest{
   daily <- hydro_daily(year = 2000)
   head(daily)
 }

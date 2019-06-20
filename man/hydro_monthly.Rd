@@ -23,7 +23,7 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 Downloading monthly hydrological data from the danepubliczne.imgw.pl collection
 }
 \examples{
-\dontrun{
+\donttest{
   monthly <- hydro_monthly(year = 2000)
   head(monthly)
 }

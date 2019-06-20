@@ -27,7 +27,7 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
 Downloading monthly (meteorological) data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 }
 \examples{
-\dontrun{
+\donttest{
   monthly <- meteo_monthly(rank = "climate", year = 1969)
   head(monthly)
 

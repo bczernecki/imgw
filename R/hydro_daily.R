@@ -13,7 +13,7 @@
 #' @importFrom utils download.file unzip read.csv
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   daily <- hydro_daily(year = 2000)
 #'   head(daily)
 #' }

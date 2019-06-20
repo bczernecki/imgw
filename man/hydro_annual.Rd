@@ -26,7 +26,7 @@ Downloading hydrological data for the semi-annual and annual period
 available in the danepubliczne.imgw.pl collection
 }
 \examples{
-\dontrun{
+\donttest{
   yearly <- hydro_annual(year = 2000, value = "H", station = "ANNOPOL")
   head(yearly)
 }
