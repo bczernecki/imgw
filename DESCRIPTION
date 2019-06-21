@@ -1,6 +1,6 @@
 Package: imgw
 Title: Polish Meteorological and Hydrological Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person(given = "Bartosz",
            family = "Czernecki",
            role = c("aut", "cre"),

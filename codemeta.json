@@ -5,10 +5,10 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "imgw",
-  "description": "Download Polish meteorological and hydrological data from the IMGW-PIB (<https://dane.imgw.pl/>).\n    This package also allows for adding geographical coordinates for each observation.",
+  "description": "Download Polish meteorological and hydrological data from the Institute of Meteorology and Water Management - National Research Institute (<https://dane.imgw.pl/>).\n    This package also allows for adding geographical coordinates for each observation.",
   "name": "imgw: Polish Meteorological and Hydrological Data",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -27,7 +27,9 @@
     {
       "@type": "Person",
       "givenName": "Arkadiusz",
-      "familyName": "Głogowski"
+      "familyName": "Głogowski",
+      "email": "arkadiusz.glogowski@upwr.edu.com",
+      "@id": "https://orcid.org/0000-0002-7587-8892"
     },
     {
       "@type": "Person",
@@ -103,7 +105,7 @@
   "codeRepository": "https://imgw.ml",
   "releaseNotes": "https://github.com/bczernecki/imgw/blob/master/NEWS.md",
   "readme": "https://github.com/bczernecki/imgw/blob/master/README.md",
-  "fileSize": "85.496KB",
+  "fileSize": "124.526KB",
   "contIntegration": "https://travis-ci.org/bczernecki/imgw",
   "citation": [
     {
@@ -128,8 +130,15 @@
       ],
       "name": "imgw: Polish Meteorological and Hydrological Data",
       "url": "https://bczernecki.github.io/imgw/",
-      "description": "R package version 0.0.1"
+      "description": "R package version 0.1.0"
     }
   ],
-  "issueTracker": "https://github.com/bczernecki/imgw/issues"
+  "issueTracker": "https://github.com/bczernecki/imgw/issues",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "relatedLink": "https://CRAN.R-project.org/package=imgw"
 }
