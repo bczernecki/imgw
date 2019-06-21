@@ -41,7 +41,7 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
   all_data <- vector("list", length = length(catalogs))
   for (i in seq_along(catalogs)){
     catalog <- catalogs[i]
-    #print(i)
+    # print(i)
 
     iterator <- c("01", "02", "03", "04", "05", "06",
                 "07", "08", "09", "10", "11", "12")
