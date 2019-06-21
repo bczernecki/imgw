@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # imgw
 
 [![Build Status](https://travis-ci.org/bczernecki/imgw.png?branch=master)](https://travis-ci.org/bczernecki/imgw)
+[![CRAN status](https://www.r-pkg.org/badges/version/imgw)](https://cran.r-project.org/package=imgw)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/imgw)](https://cran.r-project.org/package=imgw)
 
 The goal of **imgw** is to automatize downloading Polish meteorological and hydrological data from the [IMGW-PIB](https://dane.imgw.pl/).
 
