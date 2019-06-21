@@ -30,6 +30,11 @@ Imports:
     RCurl,
     XML
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown,
+    dplyr,
+    tidyr
 URL: https://imgw.ml
 BugReports: https://github.com/bczernecki/imgw/issues
+VignetteBuilder: knitr
