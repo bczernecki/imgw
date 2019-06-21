@@ -20,7 +20,6 @@
 #'
 
 hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short", ...){
-
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/"
@@ -42,10 +41,11 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
   all_data <- vector("list", length = length(catalogs))
   for (i in seq_along(catalogs)){
     catalog <- catalogs[i]
-    # print(i)
+    #print(i)
 
     iterator <- c("01", "02", "03", "04", "05", "06",
                 "07", "08", "09", "10", "11", "12")
+    data=NULL
     for (j in seq_along(iterator)) {
       address <- paste0(base_url, interval_pl, "/", catalog, "/codz_", catalog,"_", iterator[j], ".zip")
       temp <- tempfile()
@@ -55,6 +55,7 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
       file1 <- paste(temp2, dir(temp2), sep = "/")[1]
       data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
       colnames(data1) <- meta[[1]][,1]
+      data=rbind(data,data1)
     }
     address <- paste0(base_url, interval_pl, "/", catalog, "/zjaw_", catalog, ".zip")
 
@@ -66,7 +67,7 @@ hydro_daily <- function(year, coords = FALSE, station = NULL, col_names= "short"
     data2 <- read.csv(file2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
     colnames(data2) <- meta[[2]][, 1]
 
-    all_data[[i]] <- merge(data1, data2,
+    all_data[[i]] <- merge(data, data2,
                          by = c("Kod stacji", "Nazwa stacji",
                                "Rok hydrologiczny", "Nazwa rzeki/jeziora",
                                "Wskaznik miesiaca w roku hydrologicznym", "Dzien"),
