@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">imgw</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -87,6 +87,12 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase.html">use_case</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase2.html">use_case2</a>
     </li>
     <li>
       <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
@@ -172,11 +178,111 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>sounding</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_sounding</span>(<span class='kw'>wmo_id</span> <span class='kw'>=</span> <span class='fl'>12120</span>, <span class='kw'>yy</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>dd</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>hh</span> <span class='kw'>=</span> <span class='fl'>0</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>sounding</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>sounding</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>HGHT</span>, <span class='no'>sounding</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>PRES</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>'l'</span>)
-<span class='co'># }</span><div class='input'>
+    <pre class="examples"><div class='input'>  <span class='no'>sounding</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_sounding</span>(<span class='kw'>wmo_id</span> <span class='kw'>=</span> <span class='fl'>12120</span>, <span class='kw'>yy</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>dd</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>hh</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>sounding</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;      PRES  HGHT  TEMP  DWPT RELH MIXR DRCT SKNT  THTA  THTE  THTV
+#&gt; 1  1008.0     6   9.4  -5.6   34 2.51  130   16 281.9 289.2 282.3
+#&gt; 2  1000.0    68   9.4  -6.6   32 2.34  140   19 282.6 289.4 282.9
+#&gt; 3   977.0   260   8.4  -7.6   31 2.22  153   30 283.4 290.0 283.8
+#&gt; 4   960.0   405   8.8  -7.2   32 2.33  163   39 285.3 292.2 285.7
+#&gt; 5   956.0   440   9.6  -6.1   32 2.54  165   41 286.4 294.0 286.9
+#&gt; 6   946.0   527  11.6  -3.4   35 3.16  173   38 289.3 298.7 289.9
+#&gt; 7   937.0   607  11.8  -2.4   37 3.44  180   35 290.3 300.5 290.9
+#&gt; 8   925.0   715  12.0  -1.0   41 3.86  180   27 291.6 303.1 292.2
+#&gt; 9   924.0   724  12.2  -0.8   41 3.92  180   27 291.9 303.6 292.6
+#&gt; 10  889.0  1044   9.4  -1.3   47 3.94  170   17 292.2 304.0 292.9
+#&gt; 11  850.0  1416   6.2  -1.8   57 3.96  160   17 292.6 304.4 293.3
+#&gt; 12  832.0  1590   4.7  -3.0   57 3.71  160   16 292.9 304.0 293.5
+#&gt; 13  793.0  1980   1.4  -5.6   60 3.19  160   17 293.4 303.0 293.9
+#&gt; 14  756.0  2359  -2.1  -6.0   75 3.24  160   19 293.6 303.4 294.1
+#&gt; 15  713.0  2824  -6.5  -6.5  100 3.31  143   21 293.7 303.7 294.3
+#&gt; 16  708.0  2879  -7.1  -7.2   99 3.16  141   21 293.6 303.2 294.2
+#&gt; 17  705.0  2912  -6.9  -8.4   89 2.90  140   21 294.2 303.1 294.8
+#&gt; 18  700.0  2968  -6.5 -10.3   74 2.51  140   21 295.3 303.0 295.7
+#&gt; 19  668.0  3332  -8.9 -15.9   57 1.67  147   21 296.5 301.8 296.8
+#&gt; 20  647.0  3578 -10.9 -18.9   52 1.34  151   21 297.0 301.3 297.2
+#&gt; 21  617.0  3942 -11.7 -28.7   23 0.58  158   20 300.1 302.1 300.2
+#&gt; 22  569.0  4554 -16.9 -34.7   20 0.36  170   19 301.1 302.3 301.1
+#&gt; 23  560.0  4675 -17.9 -35.9   19 0.32  163   18 301.2 302.4 301.3
+#&gt; 24  556.0  4728 -18.3 -35.8   20 0.32  160   17 301.3 302.5 301.4
+#&gt; 25  521.0  5209 -22.3 -35.3   30 0.37  171   17 302.2 303.5 302.3
+#&gt; 26  508.0  5394 -23.7 -30.7   53 0.59  175   17 302.7 304.7 302.8
+#&gt; 27  500.0  5510 -24.5 -32.5   47 0.50  170   19 303.1 304.9 303.2
+#&gt; 28  492.0  5628 -25.3 -38.3   29 0.29  168   20 303.5 304.6 303.6
+#&gt; 29  474.0  5898 -27.1 -32.1   62 0.55  165   22 304.6 306.5 304.6
+#&gt; 30  462.0  6082 -28.3 -39.3   34 0.28  162   23 305.3 306.3 305.3
+#&gt; 31  453.0  6222 -29.5 -39.0   39 0.29  160   23 305.5 306.6 305.6
+#&gt; 32  417.0  6809 -34.4 -37.6   73 0.36  185   16 306.5 307.8 306.6
+#&gt; 33  415.0  6843 -34.7 -37.5   76 0.37  183   15 306.6 307.9 306.6
+#&gt; 34  406.0  6996 -35.6 -41.0   58 0.26  175   14 307.3 308.2 307.3
+#&gt; 35  400.0  7100 -36.3 -43.3   48 0.21  180   12 307.7 308.5 307.8
+#&gt; 36  360.0  7820 -43.1 -46.5   69 0.16  184   13 308.0 308.6 308.1
+#&gt; 37  355.0  7912 -43.9 -47.6   66 0.15  185   14 308.2 308.8 308.3
+#&gt; 38  345.0  8102 -45.4 -49.8   61 0.12  175   14 308.7 309.1 308.7
+#&gt; 39  333.0  8337 -47.3 -52.5   55 0.09  195   14 309.2 309.6 309.2
+#&gt; 40  321.0  8581 -49.3 -55.3   49 0.07  190   15 309.7 310.0 309.7
+#&gt; 41  301.0  8999 -53.1 -55.2   78 0.07  180   17 310.1 310.4 310.1
+#&gt; 42  300.0  9020 -53.3 -55.6   76 0.07  180   17 310.1 310.4 310.1
+#&gt; 43  278.0  9502 -56.5 -59.9   65 0.04  165   17 312.3 312.5 312.3
+#&gt; 44  260.0  9926 -59.3 -63.7   56 0.03  178   19 314.2 314.4 314.2
+#&gt; 45  250.0 10170 -61.3 -64.8   63 0.03  185   19 314.8 314.9 314.8
+#&gt; 46  249.0 10195 -61.5 -65.0   63 0.02  187   19 314.9 315.0 314.9
+#&gt; 47  247.0 10245 -61.7 -65.4   61 0.02  190   19 315.3 315.4 315.3
+#&gt; 48  232.0 10630 -63.5 -68.5   51 0.02  180   17 318.3 318.3 318.3
+#&gt; 49  230.0 10684 -63.1 -69.4   42 0.01  180   19 319.6 319.7 319.6
+#&gt; 50  223.0 10874 -61.7 -72.7   22 0.01  191   20 324.6 324.7 324.6
+#&gt; 51  214.0 11130 -61.0 -73.9   17 0.01  205   21 329.6 329.6 329.6
+#&gt; 52  205.0 11397 -60.3 -75.2   13 0.01  205   21 334.7 334.8 334.7
+#&gt; 53  200.0 11550 -59.9 -75.9   11 0.01  170   14 337.8 337.8 337.8
+#&gt; 54  199.0 11582 -59.8 -76.0   10 0.01  165   14 338.4 338.4 338.4
+#&gt; 55  194.0 11742 -59.4 -76.8    9 0.01  170   17 341.6 341.6 341.6
+#&gt; 56  187.0 11973 -58.7 -78.0    7 0.00  210   19 346.3 346.3 346.3
+#&gt; 57  172.0 12499 -57.2 -80.5    4 0.00  230   17 357.1 357.1 357.1
+#&gt; 58  152.0 13277 -54.9 -84.3    1 0.00  235   19 373.8 373.8 373.8
+#&gt; 59  150.0 13360 -54.7 -84.7    1 0.00  230   19 375.6 375.6 375.6
+#&gt; 60  149.0 13403 -54.3 -84.3    1 0.00  227   20 377.0 377.1 377.0
+#&gt; 61  147.0 13489 -54.4 -84.3    1 0.00  220   21 378.3 378.4 378.3
+#&gt; 62  139.0 13845 -54.8 -84.6    1 0.00  245   21 383.8 383.8 383.8
+#&gt; 63  134.0 14078 -55.0 -84.7    1 0.00  225   21 387.4 387.4 387.4
+#&gt; 64  127.0 14419 -55.3 -84.9    1 0.00  240   25 392.8 392.8 392.8
+#&gt; 65  117.0 14941 -55.9 -85.3    1 0.00  225   31 401.1 401.1 401.1
+#&gt; 66  104.0 15690 -56.6 -85.7    1 0.00  240   27 413.4 413.4 413.4
+#&gt; 67  100.0 15940 -56.9 -85.9    1 0.00  225   25 417.5 417.5 417.5
+#&gt; 68   70.0 18190 -57.7 -86.7    1 0.00  250   37 460.6 460.6 460.6
+#&gt; 69   50.0 20300 -58.3 -87.3    1 0.00  265   41 505.7 505.7 505.7
+#&gt; 70   30.0 23490 -59.7 -88.7    1 0.01  255   52 581.3 581.4 581.3
+#&gt; 71   24.1 24840 -61.1 -89.6    1 0.01  270   62 614.8 614.8 614.8
+#&gt; 72   20.0 25990 -62.3 -90.3    1 0.01  270   45 644.8 644.8 644.8
+#&gt; 73   10.0 30310 -57.5 -87.5    1 0.02  280   45 803.9 804.1 803.9
+#&gt; 74    5.3    NA    NA    NA   NA   NA  275   60    NA    NA    NA
+#&gt; 
+#&gt; [[2]]
+#&gt;                                      parameter       value
+#&gt; 1                             Observation time 190404/0000
+#&gt; 2                             Station latitude       54.75
+#&gt; 3                            Station longitude       17.53
+#&gt; 4                            Station elevation         6.0
+#&gt; 5                              Showalter index        1.45
+#&gt; 6                                 Lifted index       10.95
+#&gt; 7      LIFT computed using virtual temperature       10.98
+#&gt; 8                                  SWEAT index      142.39
+#&gt; 9                                      K index       25.10
+#&gt; 10                          Cross totals index       22.70
+#&gt; 11                       Vertical totals index       30.70
+#&gt; 12                         Totals totals index       53.40
+#&gt; 13       Convective Available Potential Energy        0.00
+#&gt; 14              CAPE using virtual temperature        0.00
+#&gt; 15                       Convective Inhibition        0.00
+#&gt; 16              CINS using virtual temperature        0.00
+#&gt; 17                      Bulk Richardson Number        0.00
+#&gt; 18           Bulk Richardson Number using CAPV        0.00
+#&gt; 19   Temp [K] of the Lifted Condensation Level      263.23
+#&gt; 20 Pres [hPa] of the Lifted Condensation Level      766.45
+#&gt; 21      Mean mixed layer potential temperature      284.04
+#&gt; 22               Mean mixed layer mixing ratio        2.37
+#&gt; 23               1000 hPa to 500 hPa thickness     5442.00
+#&gt; 24 Precipitable water [mm] for entire sounding       12.73
+#&gt; </div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>sounding</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>HGHT</span>, <span class='no'>sounding</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>PRES</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>'l'</span>)</div><div class='img'><img src='meteo_sounding-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

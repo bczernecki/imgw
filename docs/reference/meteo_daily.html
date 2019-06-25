@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">imgw</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -87,6 +87,12 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase.html">use_case</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase2.html">use_case2</a>
     </li>
     <li>
       <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
@@ -162,10 +168,7 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)</p><
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>daily</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_daily</span>(<span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"climate"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2000</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>daily</span>)
-<span class='co'># }</span><div class='input'>
+    <pre class="examples"><div class='input'>  <span class='no'>daily</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_daily</span>(<span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"climate"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt; <span class='error'>Error in order(all_data$`Nazwa stacji`, all_data$Rok, all_data$Miesiac,     all_data$Dzien): argument 1 is not a vector</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>daily</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(daily): object 'daily' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
