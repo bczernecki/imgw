@@ -1,4 +1,12 @@
-# imgw 0.0.1
+# imgw 0.2.0
+
+* New functions
+* New datasets
+* Improvements
+* Bug fixes
+    * Fixes a bug in the `hydro_daily()` function #41
+
+# imgw 0.1.0
 
 * New functions
     * New function `meteo()` for downloading monthly, daily, and hourly meteorological data

@@ -22,7 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Arkadiusz Głogowski
+  \item Arkadiusz Głogowski \email{arkadiusz.glogowski@upwr.edu.pl} (0000-0002-7587-8892)
   \item Jakub Nowosad \email{nowosad.jakub@gmail.com} (0000-0002-1057-3721)
 }
 

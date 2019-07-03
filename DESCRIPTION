@@ -1,6 +1,6 @@
 Package: imgw
 Title: Polish Meteorological and Hydrological Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person(given = "Bartosz",
            family = "Czernecki",
            role = c("aut", "cre"),
@@ -9,7 +9,7 @@ Authors@R: c(person(given = "Bartosz",
            person(given = "Arkadiusz", 
            family = "Głogowski", 
            role = "aut", 
-           email = "arkadiusz.glogowski@upwr.edu.com", 
+           email = "arkadiusz.glogowski@upwr.edu.pl", 
            comment = c(ORCID = "0000-0002-7587-8892")),
            person(given = "Jakub", 
            family = "Nowosad", 
@@ -30,6 +30,11 @@ Imports:
     RCurl,
     XML
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown,
+    dplyr,
+    tidyr
 URL: https://imgw.ml
 BugReports: https://github.com/bczernecki/imgw/issues
+VignetteBuilder: knitr

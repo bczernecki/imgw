@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">imgw</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -87,6 +87,12 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase.html">use_case</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase2.html">use_case2</a>
     </li>
     <li>
       <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
@@ -162,14 +168,177 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)</p><
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>monthly</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_monthly</span>(<span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"climate"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>1969</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>monthly</span>)
-
+    <pre class="examples"><div class='input'>  <span class='no'>monthly</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_monthly</span>(<span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"climate"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>1969</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>monthly</span>)</div><div class='output co'>#&gt;             rank        id         station   yy mm tmax_abs tmax_mean tmin_abs
+#&gt; 1716 KLIMATYCZNA 249220170 BALIGRÓD-MCHAWA 1969  1      9.0      -0.3    -24.2
+#&gt; 1720 KLIMATYCZNA 249220170 BALIGRÓD-MCHAWA 1969  2      9.0       1.6    -26.1
+#&gt; 1721 KLIMATYCZNA 249220170 BALIGRÓD-MCHAWA 1969  3     10.0       2.2    -17.0
+#&gt; 1722 KLIMATYCZNA 249220170 BALIGRÓD-MCHAWA 1969  4     24.5      10.9     -7.4
+#&gt; 1723 KLIMATYCZNA 249220170 BALIGRÓD-MCHAWA 1969  5     27.7      20.0     -1.0
+#&gt; 1724 KLIMATYCZNA 249220170 BALIGRÓD-MCHAWA 1969  6     25.5      18.8      3.8
+#&gt;      tmin_mean t2m_mean_mon t5cm_min rr_monthly rr_max_daily first_day_max_rr
+#&gt; 1716     -10.9         -5.5        0       10.8          6.8               24
+#&gt; 1720      -5.7         -2.3        0       25.9          6.9                3
+#&gt; 1721      -5.6         -1.6        0       25.2          9.2               27
+#&gt; 1722      -0.2          5.6        0       56.6         13.0               14
+#&gt; 1723       7.1         14.3        0       76.0         36.6               29
+#&gt; 1724       9.5         14.4        0      137.6         39.9                8
+#&gt;      last_day_max_rr snowcover_max snowcover_days rain_days snow_days
+#&gt; 1716              NA            17             24         1         5
+#&gt; 1720              NA            13             20         4         5
+#&gt; 1721              NA            11             17         2        12
+#&gt; 1722              NA            11              9         5         5
+#&gt; 1723              NA             0              0        11         0
+#&gt; 1724              NA             0              0        19         0
+#&gt;      rh_mean_mon ws_mean_mon cloud_mean_mon
+#&gt; 1716           0         1.5            4.2
+#&gt; 1720           0         1.0            5.6
+#&gt; 1721           0         1.1            5.4
+#&gt; 1722           0         1.1            3.6
+#&gt; 1723           0         1.3            3.6
+#&gt; 1724           0         1.2            5.7</div><div class='input'>
   <span class='co'># a descriptive (long) column names:</span>
   <span class='no'>monthly2</span> <span class='kw'>&lt;-</span> <span class='fu'>meteo_monthly</span>(<span class='kw'>rank</span> <span class='kw'>=</span> <span class='st'>"synop"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2018</span>, <span class='kw'>col_names</span> <span class='kw'>=</span> <span class='st'>"full"</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>monthly2</span>)
-<span class='co'># }</span><div class='input'>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>monthly2</span>)</div><div class='output co'>#&gt;     Station rank code        ID   Station Year Month
+#&gt; 556       SYNOPTYCZNA 353230295 BIAŁYSTOK 2018     1
+#&gt; 560       SYNOPTYCZNA 353230295 BIAŁYSTOK 2018     2
+#&gt; 561       SYNOPTYCZNA 353230295 BIAŁYSTOK 2018     3
+#&gt; 562       SYNOPTYCZNA 353230295 BIAŁYSTOK 2018     4
+#&gt; 563       SYNOPTYCZNA 353230295 BIAŁYSTOK 2018     5
+#&gt; 564       SYNOPTYCZNA 353230295 BIAŁYSTOK 2018     6
+#&gt;     Absolute maximum air temperature [C]
+#&gt; 556                                  7.0
+#&gt; 560                                  3.2
+#&gt; 561                                 12.8
+#&gt; 562                                 27.6
+#&gt; 563                                 29.6
+#&gt; 564                                 30.3
+#&gt;     Monthly mean maximum air temperature [C]
+#&gt; 556                                      0.8
+#&gt; 560                                     -1.8
+#&gt; 561                                      3.3
+#&gt; 562                                     18.5
+#&gt; 563                                     23.2
+#&gt; 564                                     24.8
+#&gt;     Absolute minimum air temperature [C]
+#&gt; 556                                -11.5
+#&gt; 560                                -18.3
+#&gt; 561                                -20.2
+#&gt; 562                                 -4.3
+#&gt; 563                                  4.1
+#&gt; 564                                  2.3
+#&gt;     Monthly mean minimum air temperature [C] Monthly mean air temperature [C]
+#&gt; 556                                     -3.6                             -1.4
+#&gt; 560                                     -7.0                             -4.5
+#&gt; 561                                     -5.4                             -1.2
+#&gt; 562                                      5.4                             11.7
+#&gt; 563                                      9.5                             16.7
+#&gt; 564                                     11.3                             18.0
+#&gt;     Minimum daily near surface air temperature [C]
+#&gt; 556                                          -13.3
+#&gt; 560                                          -18.6
+#&gt; 561                                          -21.8
+#&gt; 562                                           -6.7
+#&gt; 563                                            0.5
+#&gt; 564                                           -0.6
+#&gt;     Total monthly precipitation [mm] Maximum daily preciptation [mm]
+#&gt; 556                             27.4                             7.1
+#&gt; 560                             14.9                            10.2
+#&gt; 561                             22.9                            10.8
+#&gt; 562                             41.0                            31.8
+#&gt; 563                             31.2                            14.6
+#&gt; 564                             22.4                            10.6
+#&gt;     First day with maximum precipitation Last day with maximum precipitation
+#&gt; 556                                   29                                  NA
+#&gt; 560                                    1                                  NA
+#&gt; 561                                   31                                  NA
+#&gt; 562                                    1                                  NA
+#&gt; 563                                   22                                  NA
+#&gt; 564                                   23                                  NA
+#&gt;     Total monthly insolation [hours] Maximum daily snow cover [cm]
+#&gt; 556                             16.8                            18
+#&gt; 560                             47.3                             3
+#&gt; 561                            143.9                             4
+#&gt; 562                            248.6                             4
+#&gt; 563                            363.2                             0
+#&gt; 564                              0.0                             0
+#&gt;     Days with snow cover Days with rain Days with snow Days with sleet
+#&gt; 556                   13              5              9               2
+#&gt; 560                   18              0             10               4
+#&gt; 561                    7              5              7               5
+#&gt; 562                    2              5              2               1
+#&gt; 563                    0              7              0               0
+#&gt; 564                    0              7              0               0
+#&gt;     Days with hail Days with fog Days with fogginess Days with rime
+#&gt; 556              0             7                  25              4
+#&gt; 560              0             4                  25              1
+#&gt; 561              0             7                  27              0
+#&gt; 562              0             1                  16              0
+#&gt; 563              0             0                   6              0
+#&gt; 564              0             0                   4              0
+#&gt;     Days with glaze Days with low snowstorm Days with high snowstorm
+#&gt; 556               3                       2                        1
+#&gt; 560               1                       1                        0
+#&gt; 561               0                       0                        0
+#&gt; 562               0                       0                        0
+#&gt; 563               0                       0                        0
+#&gt; 564               0                       0                        0
+#&gt;     Days with hazyness Days with wind speed above 10 ms
+#&gt; 556                  0                                0
+#&gt; 560                  0                                0
+#&gt; 561                  2                                0
+#&gt; 562                  0                                0
+#&gt; 563                  0                                0
+#&gt; 564                  0                                0
+#&gt;     Days with wind speed above 15 ms Days with thunderstorm Days with dew
+#&gt; 556                                0                      0             1
+#&gt; 560                                0                      0             0
+#&gt; 561                                0                      0             0
+#&gt; 562                                0                      3            14
+#&gt; 563                                0                      6            22
+#&gt; 564                                0                      1            16
+#&gt;     Days with hoarfrost Monthly mean total cloudiness [hPa]
+#&gt; 556                  10                                 6.9
+#&gt; 560                   5                                 6.4
+#&gt; 561                  13                                 5.1
+#&gt; 562                   1                                 3.9
+#&gt; 563                   0                                 2.8
+#&gt; 564                   0                                 4.1
+#&gt;     Monthly mean wind speed [m/s] Monthly mean vapour pressure [hPa]
+#&gt; 556                           2.8                                5.1
+#&gt; 560                           2.1                                3.8
+#&gt; 561                           2.3                                4.4
+#&gt; 562                           2.6                                9.2
+#&gt; 563                           2.2                               11.5
+#&gt; 564                           2.0                               12.3
+#&gt;     Monthly mean relative humidity [%]
+#&gt; 556                               87.1
+#&gt; 560                               81.5
+#&gt; 561                               72.7
+#&gt; 562                               68.0
+#&gt; 563                               63.7
+#&gt; 564                               62.2
+#&gt;     Monthly mean pressure at station level [hPa]
+#&gt; 556                                        997.7
+#&gt; 560                                       1001.2
+#&gt; 561                                        991.2
+#&gt; 562                                        996.2
+#&gt; 563                                       1000.6
+#&gt; 564                                        996.5
+#&gt;     Monthly mean sea level pressure [hPa] Total precipitation during day [mm]
+#&gt; 556                                1017.0                                12.6
+#&gt; 560                                1020.8                                 4.0
+#&gt; 561                                1010.3                                10.5
+#&gt; 562                                1014.5                                21.9
+#&gt; 563                                1018.7                                13.9
+#&gt; 564                                1014.4                                16.2
+#&gt;     Total precipitation during night [mm]
+#&gt; 556                                  14.8
+#&gt; 560                                  10.9
+#&gt; 561                                  12.4
+#&gt; 562                                  19.1
+#&gt; 563                                  17.3
+#&gt; 564                                   6.2</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

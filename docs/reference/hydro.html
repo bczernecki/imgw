@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">imgw</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -87,6 +87,12 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase.html">use_case</a>
+    </li>
+    <li>
+      <a href="../articles/articles/usecase2.html">use_case2</a>
     </li>
     <li>
       <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
@@ -162,10 +168,14 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)</p><
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro</span>(<span class='st'>"monthly"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>1999</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>x</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'>  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro</span>(<span class='st'>"monthly"</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>1999</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;              id station riv_or_lake  hyy idhyy idex   H   Q  T mm
+#&gt; 11665 150210180 ANNOPOL   Wisła (2) 1999     1    1 249 250 NA 11
+#&gt; 11666 150210180 ANNOPOL   Wisła (2) 1999     1    2 291 413 NA 11
+#&gt; 11667 150210180 ANNOPOL   Wisła (2) 1999     1    3 325 572 NA 11
+#&gt; 11668 150210180 ANNOPOL   Wisła (2) 1999     2    1 232 191 NA 12
+#&gt; 11669 150210180 ANNOPOL   Wisła (2) 1999     2    2 271 341 NA 12
+#&gt; 11670 150210180 ANNOPOL   Wisła (2) 1999     2    3 384 904 NA 12</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
