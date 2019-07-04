@@ -33,9 +33,9 @@ ogimet_hours <- function(date=c("2018-05-01","2018-07-01"),  coords = FALSE, sta
       ndays=day
       linkpl2=paste("https://www.ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=",ndays,"&ano=",year,"&mes=",month,"&day=",day,"&hora=23",sep="")
       if(month==1) linkpl2=paste("http://ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=31&ano=",year,"&mes=02&day=1&hora=00",sep="")
-
       a = getURL(linkpl2)
       a = readHTMLTable(a, stringsAsFactors=FALSE)
+
       b = a[[length(a)]]
       colnames(b)=as.character(lapply(b[1,], as.character), stringsAsFactors=FALSE)
 
@@ -46,6 +46,13 @@ ogimet_hours <- function(date=c("2018-05-01","2018-07-01"),  coords = FALSE, sta
       if(is.null(data_station))  data_station = dd
 
       cat(paste(year,month,"\n"))
+      # coords można lepiej na samym koncu dodać kolumne
+      # wtedy jak zmienia się lokalizacja na dacie to tutaj tez
+      if (coords){
+        coord=a[[1]][2,1]
+        data_station["Lon"] = get_coord_from_string(coord)
+        data_station["Lat"] = get_coord_from_string(coord,"Latitude")
+      }
     } # koniec petli daty
 
     data_station = data_station[!duplicated(data_station), ]
@@ -53,10 +60,7 @@ ogimet_hours <- function(date=c("2018-05-01","2018-07-01"),  coords = FALSE, sta
 
   }# koniec petli stacje
 
-  # coords
-  #if (coords){
-  #  all_data <- merge(imgw::hydro_stations, all_data, by.x = "id", by.y = "Kod stacji", all.y = TRUE)
-  #}
+
   #data <- meteo_shortening(data_station, col_names = col_names, ...)
   data_station$Date = as.Date(data_station$Date, "%m/%d/%Y")
   # nie wiem jaki jest maksymalny rozmiar zmiennych  dlatego nie wiem ile kolumn należy zamienić z char na numeric
