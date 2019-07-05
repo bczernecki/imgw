@@ -188,7 +188,9 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
     }
   }
 
-  all_data <- all_data[order(all_data$`Nazwa stacji`, all_data$`Rok`, all_data$`Miesiac`, all_data$`Dzien`), ]
+  # all_data <- all_data[order(all_data$`Nazwa stacji`, all_data$`Rok`, all_data$`Miesiac`, all_data$`Dzien`), ]
+  # powyzsza linia wykrzacza pobieranie
+                
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- meteo_shortening(all_data, col_names = col_names, ...)
   return(all_data)
