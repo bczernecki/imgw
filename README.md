@@ -12,7 +12,7 @@ downloads](http://cranlogs.r-pkg.org/badges/imgw)](https://cran.r-project.org/pa
 
 The goal of **imgw** is to automatize downloading Polish meteorological
 and hydrological data from the
-[IMGW-PIB](https://dane.imgw.pl/) and University of Wyoming sounding webpage (http://weather.uwyo.edu/upperair/).
+[IMGW-PIB](https://dane.imgw.pl/), SYNOP (meteorological) data from [ogimet.com](http://ogimet.com/index.phtml.en) and rawinsoden data from University of Wyoming webpage (http://weather.uwyo.edu/upperair/).
 
 ## Installation
 
@@ -38,6 +38,10 @@ install_github("bczernecki/imgw")
     data from the SYNOP/CLIMATE/PRECIP stations available in the
     danepubliczne.imgw.pl collection. It is a wrapper for
     `meteo_monthly()`, `meteo_daily()`, and `meteo_hourly()`.
+    
+    -**ogimet_hourly()** - Downloading hourly meteorological
+    data from the SYNOP stations available in the
+    ogimet collection. Basically any Synop station working under WMO framework after year 2000 should be available
 
   - **meteo\_sounding()** - Downloading the mea (i.e., measurements of
     the vertical profile of atmosphere) sounding data
