@@ -12,17 +12,15 @@ downloads](http://cranlogs.r-pkg.org/badges/imgw)](https://cran.r-project.org/pa
 
 The goal of **imgw** is to automatize downloading Polish meteorological
 and hydrological data from the
-[IMGW-PIB](https://dane.imgw.pl/).
+[IMGW-PIB](https://dane.imgw.pl/) and University of Wyoming sounding webpage (http://weather.uwyo.edu/upperair/).
 
 ## Installation
 
-<!-- You can install the released version of imgw from [CRAN](https://CRAN.R-project.org) with: -->
+You can install the released version of imgw from [CRAN](https://CRAN.R-project.org) with:
 
-<!-- ``` r -->
-
-<!-- install.packages("imgw") -->
-
-<!-- ``` -->
+``` r
+install.packages("imgw")
+```
 
 You can install the development version of **imgw** from
 [GitHub](https://github.com/bczernecki/imgw) with:
@@ -41,22 +39,6 @@ install_github("bczernecki/imgw")
     danepubliczne.imgw.pl collection. It is a wrapper for
     `meteo_monthly()`, `meteo_daily()`, and `meteo_hourly()`.
 
-  - **meteo\_monthly()** - Downloading monthly meteorological data from
-    SYNOP/CLIMATE/PRECIP stations made available in the
-    danepubliczne.imgw.pl database
-
-  - **meteo\_daily()** - Downloading daily meteorological data from
-    SYNOP/CLIMATE/PRECIP stations made available in the
-    danepubliczne.imgw.pl database
-
-  - **meteo\_hourly()** - Downloading hourly meteorological data from
-    SYNOP/CLIMATE/PRECIP stations made available in the
-    danepubliczne.imgw.pl database
-
-  - **meteo\_metadata()** - Downloading the description (metadata) of
-    the meteorological data provided in the danepubliczne.imgw.pl
-    database
-
   - **meteo\_sounding()** - Downloading the mea (i.e., measurements of
     the vertical profile of atmosphere) sounding data
 
@@ -70,18 +52,6 @@ install_github("bczernecki/imgw")
     data from the SYNOP / CLIMATE / PRECIP stations available in the
     danepubliczne.imgw.pl collection. It is a wrapper for
     `hydro_annual()`, `hydro_monthly()`, and `hydro_daily()`.
-
-  - **hydro\_annual()** - Downloading semiannual and annual hydrological
-    data from the danepubliczne.imgw.pl database
-
-  - **hydro\_monthly()** - Downloading monthly hydrological data from
-    the danepubliczne.imgw.pl database
-
-  - **hydro\_daily()** - Downloading daily hydrological data from the
-    danepubliczne.imgw.pl database
-
-  - **hydro\_metadata()** - Downloading the description (metadata) of
-    the hydrological data provided in the danepubliczne.imgw.pl database
 
   - **hydro\_shortening()** - Shortening column names of hydrological
     parameters to improve the readability of downloaded dataset and

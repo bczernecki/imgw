@@ -178,7 +178,7 @@
       ],
       "name": "imgw: Polish Meteorological and Hydrological Data",
       "url": "https://bczernecki.github.io/imgw/",
-      "description": "R package version 0.1.0"
+      "description": "R package version 0.1.1"
     }
   ],
   "issueTracker": "https://github.com/bczernecki/imgw/issues",
