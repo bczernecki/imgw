@@ -10,19 +10,22 @@ status](https://www.r-pkg.org/badges/version/imgw)](https://cran.r-project.org/p
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/imgw)](https://cran.r-project.org/package=imgw)
 
-The goal of **imgw** is to automatize downloading Polish meteorological
-and hydrological data from the
-[IMGW-PIB](https://dane.imgw.pl/), SYNOP (meteorological) data from [ogimet.com](http://ogimet.com/index.phtml.en) and rawinsoden data from University of Wyoming webpage (http://weather.uwyo.edu/upperair/).
+The goal of the  **imgw** R package is to automatize downloading of meteorological
+and hydrological data from the publicly available repositories:
+
+- Polish Institute of Meterology and Water Management - National Research Institute [(IMGW-PIB)](https://dane.imgw.pl/)
+- OGIMET [(ogimet.com)](http://ogimet.com/index.phtml.en) 
+- University of Wyoming webpage - atmospheric vertical profiling data (http://weather.uwyo.edu/upperair/).
 
 ## Installation
 
-You can install the released version of imgw from [CRAN](https://CRAN.R-project.org) with:
+The stable release of imgw package from the [CRAN](https://CRAN.R-project.org) reposity can be installed with:
 
 ``` r
 install.packages("imgw")
 ```
 
-You can install the development version of **imgw** from
+It is highly recommended to install the most up-to-date development version of **imgw** from
 [GitHub](https://github.com/bczernecki/imgw) with:
 
 ``` r
@@ -41,10 +44,11 @@ install_github("bczernecki/imgw")
     
   - **ogimet_hourly()** - Downloading hourly meteorological
     data from the SYNOP stations available in the
-    ogimet collection. Basically any Synop station working under WMO framework after year 2000 should be available
+    ogimet.com collection. Basically any meteorological (aka Synop) station working under the WMO framework 
+    after year 2000 should be accessible
 
-  - **meteo\_sounding()** - Downloading the mea (i.e., measurements of
-    the vertical profile of atmosphere) sounding data
+  - **meteo\_sounding()** - Downloading measurements of
+    the vertical profile of atmosphere (aka rawinsonde data)
 
   - **meteo\_shortening()** - Shortening column names of meteorological
     parameters to improve the readability of downloaded dataset and
