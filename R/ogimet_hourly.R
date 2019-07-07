@@ -1,71 +1,108 @@
-#' Hourly meteorological data form ogimet
+#' Scrapping of hourly meteorological (Synop) data from the Ogimet webpage
 #'
-#' Downloading houly (meteorological) data from the stations available in the https://www.ogimet.com/ collection
+#' Downloading hourly (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository
 #'
 #' @param date start and finish of date (e.g., date=c("2018-05-01","2018-07-01") )
-#' @param coords add coordinates of the station (logical value TRUE or FALSE)
-#' @param station ID of meteorological station(s).
-#' It accepts stations' IDs (numeric)
-#' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
-#' @param ... other parameters that may be passed to the 'shortening' function that shortens column names
+#' @param coords add geographical coordinates of the station (logical value TRUE or FALSE)
+#' @param station WMO ID of meteorological station(s). Character or numeric vector
+#' @param ... other parameters that may be passed to other function within the package
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @export
 #'
 #' @examples \donttest{
-#'   daily_ogi <- ogimet_hours()
-#'   head(daily_ogi)
+#'   # downloading data for Poznan-Lawica
+#'   poznan <- ogimet_hourly( station = 12330, coords = TRUE)
+#'   head(poznan)
 #' }
 #'
 
-ogimet_hours <- function(date=c("2018-05-01","2018-07-01"),  coords = FALSE, station = c(12326,12195), col_names = "short", ...){
+ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, station = c(12326,12330),  ...){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 
-  dates = seq.Date(as.Date(date[1]), as.Date(date[2]), by="1 month") - 1
-  data_station=NULL
+  dates <-  seq.Date(min(as.Date(date)), max(as.Date(date)), by="1 month") - 1
+  dates <-  unique(c(dates, as.Date(max(date))))
+
+  # initalizing empty data frame for storing results:
+  data_station <- data.frame("Date" = character(), "hour" = character(), "TC" = character(),  "TdC" = character(), "TmaxC" = character(),
+                             "TminC" = character(), "ddd" = character(), "ffkmh" = character(),
+                               "Gustkmh" = character(), "P0hPa" = character(), "PseahPa" = character(), "PTnd" = character(),
+                             "Precmm" = character(), "Nt" = character(), "Nh" = character(),
+                               "HKm" = character(), "InsoD1" = character(), "Viskm" = character(), "Snowcm" =character(),
+                             "WW" = character(), "W1" = character(), "W2" = character(),  stringsAsFactors = F)
+
+
   for (station_nr in station){
     print(station_nr)
     for (i in length(dates):1) {
-      year=as.integer(substr(dates[i], 1, 4))
-      month=as.integer(substr(dates[i], 6, 7))
-      day=as.integer(substr(dates[i], 9, 10))
-      ndays=day
-      linkpl2=paste("https://www.ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=",ndays,"&ano=",year,"&mes=",month,"&day=",day,"&hora=23",sep="")
-      if(month==1) linkpl2=paste("http://ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=31&ano=",year,"&mes=02&day=1&hora=00",sep="")
-      a = getURL(linkpl2)
-      a = readHTMLTable(a, stringsAsFactors=FALSE)
+      year <- format(dates[i], "%Y")
+      month <- format(dates[i], "%m")
+      day <- format(dates[i], "%d")
+      ndays <- day
+      linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=",ndays,"&ano=",year,"&mes=",month,"&day=",day,"&hora=23",sep="")
+      if(month==1) linkpl2 <- paste("http://ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=31&ano=",year,"&mes=02&day=1&hora=00",sep="")
+      a <-  getURL(linkpl2)
+      a <- readHTMLTable(a, stringsAsFactors=FALSE)
 
-      b = a[[length(a)]]
-      colnames(b)=as.character(lapply(b[1,], as.character), stringsAsFactors=FALSE)
+      b <-  a[[length(a)]]
+      colnames(b) <- gsub("[^A-Za-z0-9]", "", as.character(lapply(b[1,], as.character), stringsAsFactors=FALSE))
+      colnames(b) <- c("Date", "hour", colnames(b)[2:(ncol(b)-1)]) # workaround for adding hour which is wrongly recognized
+      b <- b[-1,]
 
-      dd=b[-1,]
-      colnames(dd) = c(colnames(dd)[1], "hour", colnames(dd)[2:(length(dd)-1)])
+      # to avoid gtools::smartbind function or similar from another package..
+      b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
 
-      if(length(data_station)>0)    data_station = smartbind(data_station,dd, fill=NA)
-      if(is.null(data_station))  data_station = dd
+      # joining data
+      data_station <- rbind(data_station, b)
 
       cat(paste(year,month,"\n"))
       # coords można lepiej na samym koncu dodać kolumne
       # wtedy jak zmienia się lokalizacja na dacie to tutaj tez
       if (coords){
-        coord=a[[1]][2,1]
-        data_station["Lon"] = get_coord_from_string(coord)
-        data_station["Lat"] = get_coord_from_string(coord,"Latitude")
+        coord <- a[[1]][2,1]
+        data_station["Lon"] <-  get_coord_from_string(coord, "Longitude")
+        data_station["Lat"] <-  get_coord_from_string(coord, "Latitude")
       }
     } # koniec petli daty
 
-    data_station = data_station[!duplicated(data_station), ]
-    data_station["station_ID"] = station_nr
+    data_station <-  data_station[!duplicated(data_station), ]
+    data_station["station_ID"] <-  station_nr
 
   }# koniec petli stacje
 
+  # converting character to proper field representation:
 
-  #data <- meteo_shortening(data_station, col_names = col_names, ...)
-  data_station$Date = as.Date(data_station$Date, "%m/%d/%Y")
-  # nie wiem jaki jest maksymalny rozmiar zmiennych  dlatego nie wiem ile kolumn należy zamienić z char na numeric
-  #data_station[,c(3,4,6,8,9,10,13)] <- lapply(data_station[,c(3,4,6,8,9,10,13)], as.numeric)
+  # get rid off "---" standing for missing/blank fields:
+  data_station[which(data_station == "--" | data_station == "---" | data_station == "----" | data_station == "-----", arr.ind = TRUE)] <- NA
+
+  # changing time..
+  data_station$Date <-strptime(paste(data_station$Date, data_station$hour), "%m/%d/%Y %H:%M", tz = 'UTC')
+  data_station$hour <- NULL
+
+  # other columns to numeric:
+  data_station[,c("TC", "TdC", "ffkmh",  "Gustkmh", "P0hPa", "PseahPa", "PTnd", "Nt","Nh",
+                  "HKm", "InsoD1", "Viskm", "Snowcm","station_ID")] <-
+    as.data.frame(sapply(data_station[,c("TC", "TdC", "ffkmh", "Gustkmh", "P0hPa", "PseahPa", "PTnd", "Nt","Nh",
+                                         "HKm", "InsoD1", "Viskm", "Snowcm","station_ID")], as.numeric)) #<- sapply is here
+
+  #  TODO:
+  # changing order of columns and removing blank records:
+  if(coords){
+    ord1 <- c("station_ID", "Lon", "Lat", "Date", "TC")
+    ord1 <- c(ord1, setdiff(names(df), c("station_ID", "Lon", "Lat", "Date", "TC")))
+    ord1 <- ord1[!(ord1 %in% c("WW", "W1","W2","W3"))]
+    data_station <- data_station[, ord1]
+  } else {
+    ord1 <- c("station_ID", "Date", "TC")
+    ord1 <- c(ord1, setdiff(names(df), c("station_ID", "Date", "TC")))
+    ord1 <- ord1[!(ord1 %in% c("WW", "W1","W2","W3"))]
+    data_station <- data_station[, ord1]
+  }
+  # setdiff(names(df), c("station_ID", "Date", "TC"))
+
+
   return(data_station)
 
-} # koniec funkcji ogimet_hours
+}
 

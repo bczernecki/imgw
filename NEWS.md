@@ -1,13 +1,17 @@
-# imgw 0.2.0
+# imgw 0.1.1
 
-* New functions
 * New datasets
+    * Synop data from ogimet (http://ogimet.com/index.phtml.en)
+* New functions
+    * `ogimet_hourly()` - downloading Synop data from the "Ogimet" webportal 
+    * adding function for reading station's coordinates from "Ogimet" webportal
 * Improvements
 * Bug fixes
-    * Fixes a bug in the `hydro_daily()` function #41
+    * Fixes a bug in the `hydro_daily()` that prevented from merging more than 1 dataset
 
 # imgw 0.1.0
 
+* Deploying the package on CRAN!
 * New functions
     * New function `meteo()` for downloading monthly, daily, and hourly meteorological data
     * New function `meteo_monthly()` for downloading monthly meteorological data
