@@ -39,7 +39,7 @@ install_github("bczernecki/imgw")
     danepubliczne.imgw.pl collection. It is a wrapper for
     `meteo_monthly()`, `meteo_daily()`, and `meteo_hourly()`.
     
-    -**ogimet_hourly()** - Downloading hourly meteorological
+  - **ogimet_hourly()** - Downloading hourly meteorological
     data from the SYNOP stations available in the
     ogimet collection. Basically any Synop station working under WMO framework after year 2000 should be available
 
@@ -151,4 +151,4 @@ head(h)
 ## Acknowledgment
 
 Institute of Meteorology and Water Management - National Research
-Institute is the source of the data.
+Institute, Ogimet.com and University of Wyoming are the sources of the data.
