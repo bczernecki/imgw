@@ -5,7 +5,7 @@
 \title{Scrapping of hourly meteorological (Synop) data from the Ogimet webpage}
 \usage{
 ogimet_hourly(date = c("2019-06-01", "2019-07-31"), coords = FALSE,
-  station = c(12326, 12330), ...)
+  station = c(12326, 12330), precip_split = TRUE)
 }
 \arguments{
 \item{date}{start and finish of date (e.g., date=c("2018-05-01","2018-07-01") )}
@@ -14,7 +14,7 @@ ogimet_hourly(date = c("2019-06-01", "2019-07-31"), coords = FALSE,
 
 \item{station}{WMO ID of meteorological station(s). Character or numeric vector}
 
-\item{...}{other parameters that may be passed to other function within the package}
+\item{precip_split}{whether to split precipitation fields into 6/12/24h numeric fields (logical value TRUE (default) or FALSE)}
 }
 \description{
 Downloading hourly (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository
@@ -22,7 +22,7 @@ Downloading hourly (meteorological) data from the Synop stations available in th
 \examples{
 \donttest{
   # downloading data for Poznan-Lawica
-  poznan <- ogimet_hourly( station = 12330, coords = TRUE)
+  poznan <- ogimet_hourly( station = 12330, coords = TRUE, precip_split = TRUE)
   head(poznan)
 }
 

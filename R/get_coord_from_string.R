@@ -10,7 +10,7 @@
 #' @examples
 #' \donttest{
 #'  txt <- "12120:   Leba (Poland)\nLatitude: 54-45N    Longitude: 017-32E    Altitude: 2 m."
-#'   get_coord_from_string(txt, pattern = "Latitude")
+#'  get_coord_from_string(txt, pattern = "Latitude")
 #' }
 #'
 
@@ -24,14 +24,13 @@ get_coord_from_string <- function(txt , pattern = "Longitude") {
   hemisphere <- gsub("[0-9]", "", strsplit(tmp, "-")[2])
   hemisphere <- gsub(".*?(\\b[A-Za-z0-9 ]+\\b).*","\\1", hemisphere)
 
-  tmp <- as.numeric(gsub("([0-9]+).*$", "\\1", strsplit(tmp, "-")))
+  tmp <- suppressWarnings(as.numeric(gsub("([0-9]+).*$", "\\1", strsplit(tmp, "-"))))
 
-  wsp <- as.numeric(tmp)[1]+(as.numeric(tmp)[2]*5/3)/100
+  wsp <- suppressWarnings(as.numeric(tmp)[1]+(as.numeric(tmp)[2]*5/3)/100)
 
   if( hemisphere %in% c("W","S") ) {
     wsp <- wsp*-1
   }
 return(wsp)
 }
-
 
