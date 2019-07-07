@@ -90,12 +90,12 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
   # changing order of columns and removing blank records:
   if(coords){
     ord1 <- c("station_ID", "Lon", "Lat", "Date", "TC")
-    ord1 <- c(ord1, setdiff(names(df), c("station_ID", "Lon", "Lat", "Date", "TC")))
+    ord1 <- c(ord1, setdiff(names(data_station), c("station_ID", "Lon", "Lat", "Date", "TC")))
     ord1 <- ord1[!(ord1 %in% c("WW", "W1","W2","W3"))]
     data_station <- data_station[, ord1]
   } else {
     ord1 <- c("station_ID", "Date", "TC")
-    ord1 <- c(ord1, setdiff(names(df), c("station_ID", "Date", "TC")))
+    ord1 <- c(ord1, setdiff(names(data_station), c("station_ID", "Date", "TC")))
     ord1 <- ord1[!(ord1 %in% c("WW", "W1","W2","W3"))]
     data_station <- data_station[, ord1]
   }
