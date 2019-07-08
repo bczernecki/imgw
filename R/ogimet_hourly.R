@@ -51,10 +51,19 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
       b <- b[-1,]
       b["station_ID"] <-  station_nr
       # to avoid gtools::smartbind function or similar from another package..
-      b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
+      if (ncol(data_station)>=ncol(b)) {
+        b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
+        data_station <- rbind(data_station, b)  # joining data
 
-      # joining data
-      data_station <- rbind(data_station, b)
+      } else { # when b have more columns then data_station
+        if(nrow(data_station)==0){
+          data_station=b
+        } else {
+          # adding missing columns
+          data_station <- merge(b,data_station,all = T )# joining data
+        }
+
+      }
 
       cat(paste(year,month,"\n"))
       # coords można lepiej na samym koncu dodać kolumne
