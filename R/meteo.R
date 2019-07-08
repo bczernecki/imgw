@@ -28,7 +28,7 @@ meteo <- function(interval, rank, year, status = FALSE, coords = FALSE, station 
     #hourly
     calosc <- meteo_hourly(rank = rank, year = year, status = status, coords = coords, station = station, col_names = col_names, ...)
   } else{
-    stop("Wrong `interval` value. It should be either 'hourly', daily', or 'monthly'.")
+    stop("Wrong `interval` value. It should be either 'hourly', 'daily', or 'monthly'.")
   }
 
   return(calosc)
