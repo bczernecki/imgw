@@ -28,8 +28,8 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
 
   data_station <- data.frame("Date" = character(),"TemperatureCMax" = character(),"TemperatureCMin" = character(),"TemperatureCAvg" = character(), "TdAvgC" = character(),
                                   "HrAvg" = character(), "WindkmhDir" = character(), "WindkmhInt" = character(),"WindkmhGust" = character(),
-                            "PresslevHp" = character(),"Precmm" = character(),
-                            "TotClOct" = character(), "lowClOct" = character(),
+                            "PresslevHp" = character(),"Precmm" = character(),"SunD1h"= character(),"SnowDepcm"= character(),
+                            "TotClOct" = character(), "lowClOct" = character(),"station_ID"= character(),
                             "VisKm" = character(),stringsAsFactors = F)
 
 
@@ -53,20 +53,20 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
       b <- b[-c(1:2),]
 
       # to avoid gtools::smartbind function or similar from another package..
-      if (ncol(data_station)>=ncol(b)) {
+      #if (ncol(data_station)>=ncol(b)) {
         b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
-
-        # joining data
         data_station <- rbind(data_station, b)
-      } else { # when b have more columns then data_station
-        if(nrow(data_station)==0){
-          data_station=b
-        } else {
+        # joining data
+      #  data_station <- rbind(data_station, b)
+      #} else { # when b have more columns then data_station
+       # if(nrow(data_station)==0){
+        #  data_station=b
+        #} else {
           # adding missing columns
-          data_station <- merge(b,data_station,all = T )# joining data
-        }
+         # data_station <- merge(b,data_station,all = T )# joining data
+        #}
 
-        }
+       # }
 
       cat(paste(year,month,"\n"))
       # coords można lepiej na samym koncu dodać kolumne
@@ -103,11 +103,11 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
   #  TODO:
   # changing order of columns and removing blank records:
   if(coords){
-    ord1 <- c("station_ID", "Lon", "Lat", "Date", "TC")
+    ord1 <- c("station_ID", "Lon", "Lat", "Date", "TemperatureCAvg")
     ord1 <- c(ord1, setdiff(names(data_station), c("station_ID", "Lon", "Lat", "Date", "TemperatureCAvg")))
     data_station <- data_station[, ord1]
   } else {
-    ord1 <- c("station_ID", "Date", "TC")
+    ord1 <- c("station_ID", "Date", "TemperatureCAvg")
     ord1 <- c(ord1, setdiff(names(data_station), c("station_ID", "Date", "TemperatureCAvg")))
     data_station <- data_station[, ord1]
   }
