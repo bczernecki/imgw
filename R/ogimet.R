@@ -6,14 +6,16 @@
 #' @param date start and finish of date (e.g., date=c("2018-05-01","2018-07-01") ) - character or Date class object
 #' @param coords add geographical coordinates of the station (logical value TRUE or FALSE)
 #' @param station WMO ID of meteorological station(s). Character or numeric vector
-#' @param precip_split whether to split precipitation fields into 6/12/24h numeric fields (logical value TRUE (default) or FALSE); valid only to hourly time step
+#' @param precip_split whether to split precipitation fields into 6/12/24h
+#' numeric fields (logical value TRUE (default) or FALSE); valid only to hourly time step
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @export
 #'
 #' @examples \donttest{
 #'   # downloading data for Poznan-Lawica
-#'   poznan <- ogimet(interval = "daily", date=c("2019-06-01","2019-07-08"), station = 12330, coords = TRUE, precip_split = TRUE )
+#'   poznan <- ogimet(interval = "daily", date=c("2019-06-01","2019-07-08"),
+#'                    station = 12330, coords = TRUE, precip_split = TRUE )
 #'   head(poznan)
 #' }
 #'
