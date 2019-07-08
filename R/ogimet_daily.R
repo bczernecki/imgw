@@ -16,7 +16,7 @@
 #' }
 #'
 
-ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, station = c(12326,12330),  precip_split = TRUE){
+ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, station = c(12326,12330)){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 

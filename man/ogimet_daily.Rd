@@ -5,7 +5,7 @@
 \title{Scrapping of daily meteorological (Synop) data from the Ogimet webpage}
 \usage{
 ogimet_daily(date = c("2019-06-01", "2019-07-31"), coords = FALSE,
-  station = c(12326, 12330), precip_split = TRUE)
+  station = c(12326, 12330))
 }
 \arguments{
 \item{date}{start and finish of date (e.g., date=c("2018-05-01","2018-07-01") )}

@@ -17,13 +17,13 @@
 #'   head(poznan)
 #' }
 #'
-ogimet <- function(interval, date,  coords = FALSE, station ,  precip_split = TRUE, ...){
+ogimet <- function(interval, date,  coords = FALSE, station ,  precip_split = TRUE){
   if (interval == "daily"){
     # daily
-    all_data <- ogimet_daily(date = date,  coords = coords, station = station, ...)
+    all_data <- ogimet_daily(date = date,  coords = coords, station = station)
   } else if (interval == "hourly"){
     #hourly
-    all_data <- ogimet_hourly(date = date,  coords = coords, station = station,  precip_split = precip_split, ...)
+    all_data <- ogimet_hourly(date = date,  coords = coords, station = station,  precip_split = precip_split)
   } else{
     stop("Wrong `interval` value. It should be either 'hourly' or 'daily'")
   }

@@ -4,8 +4,7 @@
 \alias{ogimet}
 \title{Scrapping meteorological (Synop) data from the Ogimet webpage}
 \usage{
-ogimet(interval, date, coords = FALSE, station, precip_split = TRUE,
-  ...)
+ogimet(interval, date, coords = FALSE, station, precip_split = TRUE)
 }
 \arguments{
 \item{interval}{'daily' or 'hourly' dataset to retrieve - given as character}
