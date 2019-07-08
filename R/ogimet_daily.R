@@ -29,7 +29,7 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
   data_station <- data.frame("Date" = character(),"TemperatureCMax" = character(),"TemperatureCMin" = character(),"TemperatureCAvg" = character(), "TdAvgC" = character(),
                                   "HrAvg" = character(), "WindkmhDir" = character(), "WindkmhInt" = character(),"WindkmhGust" = character(),
                             "PresslevHp" = character(),"Precmm" = character(),"SunD1h"= character(),"SnowDepcm"= character(),
-                            "TotClOct" = character(), "lowClOct" = character(),"station_ID"= character(),
+                            "TotClOct" = character(), "lowClOct" = character(),#"station_ID"= character(),
                             "VisKm" = character(),stringsAsFactors = F)
 
 
@@ -51,22 +51,21 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
       nazwy_col <- gsub("[^A-Za-z0-9]", "", as.character(lapply(nazwy_col, as.character), stringsAsFactors=FALSE))
       colnames(b) <-nazwy_col
       b <- b[-c(1:2),]
-
+      b["station_ID"] <-  station_nr
       # to avoid gtools::smartbind function or similar from another package..
-      #if (ncol(data_station)>=ncol(b)) {
+      if (ncol(data_station)>=ncol(b)) {
         b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
-        data_station <- rbind(data_station, b)
-        # joining data
-      #  data_station <- rbind(data_station, b)
-      #} else { # when b have more columns then data_station
-       # if(nrow(data_station)==0){
-        #  data_station=b
-        #} else {
-          # adding missing columns
-         # data_station <- merge(b,data_station,all = T )# joining data
-        #}
+        data_station <- rbind(data_station, b)  # joining data
 
-       # }
+      } else { # when b have more columns then data_station
+       if(nrow(data_station)==0){
+         data_station=b
+        } else {
+          # adding missing columns
+          data_station <- merge(b,data_station,all = T )# joining data
+        }
+
+        }
 
       cat(paste(year,month,"\n"))
       # coords można lepiej na samym koncu dodać kolumne
@@ -76,10 +75,11 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
         data_station["Lon"] <-  get_coord_from_string(coord, "Longitude")
         data_station["Lat"] <-  get_coord_from_string(coord, "Latitude")
       }
+
     } # koniec petli daty
 
     data_station <-  data_station[!duplicated(data_station), ]
-    data_station["station_ID"] <-  station_nr
+
 
   }# koniec petli stacje
 
@@ -121,5 +121,3 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
   return(data_station)
 
 }
-
-
