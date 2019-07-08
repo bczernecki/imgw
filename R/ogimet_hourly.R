@@ -118,5 +118,5 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
   return(data_station)
 
 }
-test2=ogimet_hourly()
+
 
