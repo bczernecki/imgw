@@ -49,7 +49,7 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
       colnames(b) <- gsub("[^A-Za-z0-9]", "", as.character(lapply(b[1,], as.character), stringsAsFactors=FALSE))
       colnames(b) <- c("Date", "hour", colnames(b)[2:(ncol(b)-1)]) # workaround for adding hour which is wrongly recognized
       b <- b[-1,]
-
+      b["station_ID"] <-  station_nr
       # to avoid gtools::smartbind function or similar from another package..
       b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
 
@@ -64,10 +64,11 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
         data_station["Lon"] <-  get_coord_from_string(coord, "Longitude")
         data_station["Lat"] <-  get_coord_from_string(coord, "Latitude")
       }
+
     } # koniec petli daty
 
     data_station <-  data_station[!duplicated(data_station), ]
-    data_station["station_ID"] <-  station_nr
+
 
   }# koniec petli stacje
 
@@ -117,5 +118,5 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
   return(data_station)
 
 }
-
+test2=ogimet_hourly()
 
