@@ -3,7 +3,8 @@
 * New datasets
     * Synop data from ogimet (http://ogimet.com/index.phtml.en)
 * New functions
-    * `ogimet_hourly()` - downloading Synop data from the "Ogimet" webportal 
+    * `ogimet_hourly()` - downloading Synop hourly data from the "Ogimet" webportal
+    * `ogimet_daily()` - downloading Synop daily aggregates from the "Ogimet" webportal 
     * adding function for reading station's coordinates from "Ogimet" webportal
 * Improvements
 * Bug fixes
