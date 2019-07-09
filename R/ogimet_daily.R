@@ -29,7 +29,7 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
   data_station <- data.frame("Date" = character(),"TemperatureCMax" = character(),"TemperatureCMin" = character(),"TemperatureCAvg" = character(), "TdAvgC" = character(),
                                   "HrAvg" = character(), "WindkmhDir" = character(), "WindkmhInt" = character(),"WindkmhGust" = character(),
                             "PresslevHp" = character(),"Precmm" = character(),"SunD1h"= character(),"SnowDepcm"= character(),
-                            "TotClOct" = character(), "lowClOct" = character(),#"station_ID"= character(),
+                            "TotClOct" = character(), "lowClOct" = character(),"station_ID"= character(),
                             "VisKm" = character(),stringsAsFactors = F)
 
 
