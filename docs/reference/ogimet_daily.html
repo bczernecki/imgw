@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Scrapping of hourly meteorological (Synop) data from the Ogimet webpage — ogimet_hourly • imgw</title>
+<title>Scrapping of daily meteorological (Synop) data from the Ogimet webpage — ogimet_daily • imgw</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Scrapping of hourly meteorological (Synop) data from the Ogimet webpage — ogimet_hourly" />
+<meta property="og:title" content="Scrapping of daily meteorological (Synop) data from the Ogimet webpage — ogimet_daily" />
 
-<meta property="og:description" content="Downloading hourly (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository" />
+<meta property="og:description" content="Downloading daily (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,19 +118,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Scrapping of hourly meteorological (Synop) data from the Ogimet webpage</h1>
+    <h1>Scrapping of daily meteorological (Synop) data from the Ogimet webpage</h1>
     
-    <div class="hidden name"><code>ogimet_hourly.Rd</code></div>
+    <div class="hidden name"><code>ogimet_daily.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Downloading hourly (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository</p>
+    <p>Downloading daily (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ogimet_hourly</span>(<span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"2019-06-01"</span>, <span class='st'>"2019-07-31"</span>), <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>station</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>12326</span>, <span class='fl'>12330</span>), <span class='kw'>precip_split</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>ogimet_daily</span>(<span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"2019-06-01"</span>, <span class='st'>"2019-07-31"</span>), <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>station</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>12326</span>, <span class='fl'>12330</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,16 +147,12 @@
       <th>station</th>
       <td><p>WMO ID of meteorological station(s). Character or numeric vector</p></td>
     </tr>
-    <tr>
-      <th>precip_split</th>
-      <td><p>whether to split precipitation fields into 6/12/24h numeric fields (logical value TRUE (default) or FALSE)</p></td>
-    </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='co'># downloading data for Poznan-Lawica</span>
-  <span class='no'>poznan</span> <span class='kw'>&lt;-</span> <span class='fu'>ogimet_hourly</span>( <span class='kw'>station</span> <span class='kw'>=</span> <span class='fl'>12330</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>precip_split</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 12330
+  <span class='no'>poznan</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ogimet_hourly.html'>ogimet_hourly</a></span>( <span class='kw'>station</span> <span class='kw'>=</span> <span class='fl'>12330</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 12330
 #&gt; 2019 07 
 #&gt; 2019 06 
 #&gt; 2019 05 </div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>poznan</span>)</div><div class='output co'>#&gt;   station_ID      Lon      Lat                Date   TC TdC TmaxC TminC ddd
