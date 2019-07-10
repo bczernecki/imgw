@@ -42,7 +42,7 @@ ogimet_hourly <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, st
       day <- format(dates[i], "%d")
       ndays <- day
       linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=",ndays,"&ano=",year,"&mes=",month,"&day=",day,"&hora=23",sep="")
-      if(month==1) linkpl2 <- paste("http://ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=31&ano=",year,"&mes=02&day=1&hora=00",sep="")
+      if(month=="01") linkpl2 <- paste("http://ogimet.com/cgi-bin/gsynres?ind=",station_nr,"&lang=en&decoded=yes&ndays=31&ano=",year,"&mes=02&day=1&hora=00",sep="")
       a <-  getURL(linkpl2)
       a <- readHTMLTable(a, stringsAsFactors=FALSE)
 

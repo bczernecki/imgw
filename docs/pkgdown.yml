@@ -5,6 +5,6 @@ articles:
   pl: articles/pl.html
   usecase: articles/usecase.html
   usecase2: articles/usecase2.html
+  usecase_ogimet: articles/usecase_ogimet.html
   getstarted: getstarted.html
-  use_case_ogimet: use_case_ogimet.html
 

@@ -1,5 +1,5 @@
 ---
-title: "use_case"
+title: "Use Case - IMGW database [PL}"
 output: html_document
 ---
 
@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## USE CASE - METEO (1)
+## IMGW-PIB database (example no. 1)
 
 1. Pobieranie danych miesiecznych ze stacji meteo (SYNOP)
 1. Zrobienie wykresu dla 1-2 wybranych stacji (np. Poznan i Warszawa - w miare homogeniczne, Wroclaw odpalony za bardzo)
@@ -47,7 +47,7 @@ legend("topleft",
                        round(coef(model)[1], 1)), bty = "n")
 ```
 
-## USE CASE - METEO (2)
+## IMGW-PIB database (example no. 2)
 
 1. Przetworzenie pobranych danych na serie roczne
 1. Zgridowanie do 0.01 poprzez interpolacje? (albo przerobienie na kilometrowke)
@@ -116,6 +116,19 @@ tm_shape(meteo_trend) +
 ## USE CASE - HYDRO (1)
 Moze byc ten ktory jest w winietce z przeplywami
 
-## USE CASE - SOUNDING
-Wykres termodynamiczny z inwersja
 
+## Studium przypadku - meteo_sounding() - Dane radiosondażowe
+
+Pobieranie danych i wykres roboczy dla inwersji w Legionowie z 16/02/2019:
+
+```{r}
+  sounding <- meteo_sounding(wmo_id = 12374, yy = 2019, mm = 2, dd = 16, hh = 0)
+  head(sounding)
+  plot(sounding[[1]]$HGHT, sounding[[1]]$PRES, type = 'l')
+  
+  # lub cos bardziej uzytecznego:
+  plot(sounding[[1]]$TEMP, sounding[[1]]$HGHT, col = 'blue', type = 'l', lwd=2 , xlab = 'Temperatura', ylab = 'm (n.p.m.)',
+       ylim=c(0,4000),  xlim=c(-16, 6), main = "Inwersja w Legionowie")
+  lines(sounding[[1]]$DWPT, sounding[[1]]$HGHT, col = 'red')
+  grid()
+```

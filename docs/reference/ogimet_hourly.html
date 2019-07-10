@@ -89,16 +89,16 @@
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../articles/articles/usecase.html">use_case</a>
+      <a href="../articles/articles/usecase.html">Use Case - IMGW database [PL}</a>
     </li>
     <li>
       <a href="../articles/articles/usecase2.html">use_case2</a>
     </li>
     <li>
-      <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
+      <a href="../articles/articles/usecase_ogimet.html">Use Case - Ogimet database [EN]</a>
     </li>
     <li>
-      <a href="../articles/use_case_ogimet.html">usecase_ogimet</a>
+      <a href="../articles/getstarted.html">Introduction to the imgw package (EN)</a>
     </li>
   </ul>
 </li>
@@ -152,7 +152,8 @@
     </tr>
     <tr>
       <th>precip_split</th>
-      <td><p>whether to split precipitation fields into 6/12/24h numeric fields (logical value TRUE (default) or FALSE)</p></td>
+      <td><p>whether to split precipitation fields into 6/12/24h
+numeric fields (logical value TRUE (default) or FALSE)</p></td>
     </tr>
     </table>
     
@@ -163,26 +164,26 @@
 #&gt; 2019 07 
 #&gt; 2019 06 
 #&gt; 2019 05 </div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>poznan</span>)</div><div class='output co'>#&gt;   station_ID      Lon      Lat                Date   TC TdC TmaxC TminC ddd
-#&gt; 2      12330 16.83333 52.41667 2019-07-09 22:00:00 14.7 8.0  &lt;NA&gt;  &lt;NA&gt; WNW
-#&gt; 3      12330 16.83333 52.41667 2019-07-09 21:00:00 16.5 7.9  &lt;NA&gt;  &lt;NA&gt; WNW
-#&gt; 4      12330 16.83333 52.41667 2019-07-09 20:00:00 17.8 7.5  &lt;NA&gt;  &lt;NA&gt; WNW
-#&gt; 5      12330 16.83333 52.41667 2019-07-09 19:00:00 18.3 7.1  &lt;NA&gt;  &lt;NA&gt;  NW
-#&gt; 6      12330 16.83333 52.41667 2019-07-09 18:00:00 18.8 6.6  21.3  13.8 WNW
-#&gt; 7      12330 16.83333 52.41667 2019-07-09 17:00:00 19.3 5.7  &lt;NA&gt;  &lt;NA&gt;  NW
+#&gt; 2      12330 16.83333 52.41667 2019-07-09 23:00:00 14.0 8.2  &lt;NA&gt;  &lt;NA&gt; WNW
+#&gt; 3      12330 16.83333 52.41667 2019-07-09 22:00:00 14.7 8.0  &lt;NA&gt;  &lt;NA&gt; WNW
+#&gt; 4      12330 16.83333 52.41667 2019-07-09 21:00:00 16.5 7.9  &lt;NA&gt;  &lt;NA&gt; WNW
+#&gt; 5      12330 16.83333 52.41667 2019-07-09 20:00:00 17.8 7.5  &lt;NA&gt;  &lt;NA&gt; WNW
+#&gt; 6      12330 16.83333 52.41667 2019-07-09 19:00:00 18.3 7.1  &lt;NA&gt;  &lt;NA&gt;  NW
+#&gt; 7      12330 16.83333 52.41667 2019-07-09 18:00:00 18.8 6.6  21.3  13.8 WNW
 #&gt;   ffkmh Gustkmh  P0hPa PseahPa PTnd  Precmm Nt Nh HKm InsoD1 Viskm Snowcm pr6
-#&gt; 2  14.4      NA 1004.2  1014.8  0.7    &lt;NA&gt;  2  0 2.5     NA    60     NA  NA
-#&gt; 3  18.0      NA 1004.2  1014.7  0.9    &lt;NA&gt;  4  2 1.5     NA    60     NA  NA
-#&gt; 4  21.6      NA 1004.0  1014.5  0.9    &lt;NA&gt;  7  3 1.5     NA    60     NA  NA
-#&gt; 5  21.6      NA 1003.5  1014.0  0.3    &lt;NA&gt;  7  3 1.5     NA    60     NA  NA
-#&gt; 6  25.2    46.8 1003.3  1013.7  0.2 0.0/12h  7  7 1.5     NA    60     NA  NA
-#&gt; 7  21.6      NA 1003.1  1013.5  0.0    &lt;NA&gt;  7  7 1.5     NA    50     NA  NA
+#&gt; 2  18.0      NA 1004.3  1014.9  0.3    &lt;NA&gt;  1  0 2.5     NA    60     NA  NA
+#&gt; 3  14.4      NA 1004.2  1014.8  0.7    &lt;NA&gt;  2  0 2.5     NA    60     NA  NA
+#&gt; 4  18.0      NA 1004.2  1014.7  0.9    &lt;NA&gt;  4  2 1.5     NA    60     NA  NA
+#&gt; 5  21.6      NA 1004.0  1014.5  0.9    &lt;NA&gt;  7  3 1.5     NA    60     NA  NA
+#&gt; 6  21.6      NA 1003.5  1014.0  0.3    &lt;NA&gt;  7  3 1.5     NA    60     NA  NA
+#&gt; 7  25.2    46.8 1003.3  1013.7  0.2 0.0/12h  7  7 1.5     NA    60     NA  NA
 #&gt;   pr12 pr24
 #&gt; 2   NA   NA
 #&gt; 3   NA   NA
 #&gt; 4   NA   NA
 #&gt; 5   NA   NA
-#&gt; 6    0   NA
-#&gt; 7   NA   NA</div><div class='input'>
+#&gt; 6   NA   NA
+#&gt; 7    0   NA</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

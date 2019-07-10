@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>use_case • imgw</title>
+<title>Use Case - IMGW database [PL} • imgw</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="use_case">
+<script src="../../pkgdown.js"></script><meta property="og:title" content="Use Case - IMGW database [PL}">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -56,16 +56,16 @@
       <a href="../../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../../articles/articles/usecase.html">use_case</a>
+      <a href="../../articles/articles/usecase.html">Use Case - IMGW database [PL}</a>
     </li>
     <li>
       <a href="../../articles/articles/usecase2.html">use_case2</a>
     </li>
     <li>
-      <a href="../../articles/getstarted.html">Introduction to the imgw package (EN)</a>
+      <a href="../../articles/articles/usecase_ogimet.html">Use Case - Ogimet database [EN]</a>
     </li>
     <li>
-      <a href="../../articles/use_case_ogimet.html">usecase_ogimet</a>
+      <a href="../../articles/getstarted.html">Introduction to the imgw package (EN)</a>
     </li>
   </ul>
 </li>
@@ -85,7 +85,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>use_case</h1>
+      <h1>Use Case - IMGW database [PL}</h1>
             
       
       
@@ -95,9 +95,9 @@
 
     
     
-<div id="use-case---meteo-1" class="section level2">
+<div id="imgw-pib-database-example-no--1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#use-case---meteo-1" class="anchor"></a>USE CASE - METEO (1)</h2>
+<a href="#imgw-pib-database-example-no--1" class="anchor"></a>IMGW-PIB database (example no. 1)</h2>
 <ol style="list-style-type: decimal">
 <li>Pobieranie danych miesiecznych ze stacji meteo (SYNOP)</li>
 <li>Zrobienie wykresu dla 1-2 wybranych stacji (np. Poznan i Warszawa - w miare homogeniczne, Wroclaw odpalony za bardzo)</li>
@@ -144,9 +144,9 @@
 <a class="sourceLine" id="cb6-14" data-line-number="14">                       <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/coef">coef</a></span>(model)[<span class="dv">1</span>], <span class="dv">1</span>)), <span class="dt">bty =</span> <span class="st">"n"</span>)</a></code></pre></div>
 <p><img src="usecase_files/figure-html/unnamed-chunk-1-2.png" width="700"></p>
 </div>
-<div id="use-case---meteo-2" class="section level2">
+<div id="imgw-pib-database-example-no--2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#use-case---meteo-2" class="anchor"></a>USE CASE - METEO (2)</h2>
+<a href="#imgw-pib-database-example-no--2" class="anchor"></a>IMGW-PIB database (example no. 2)</h2>
 <ol style="list-style-type: decimal">
 <li>Przetworzenie pobranych danych na serie roczne</li>
 <li>Zgridowanie do 0.01 poprzez interpolacje? (albo przerobienie na kilometrowke)</li>
@@ -278,10 +278,121 @@
 <a href="#use-case---hydro-1" class="anchor"></a>USE CASE - HYDRO (1)</h2>
 <p>Moze byc ten ktory jest w winietce z przeplywami</p>
 </div>
-<div id="use-case---sounding" class="section level2">
+<div id="studium-przypadku---meteo_sounding---dane-radiosondazowe" class="section level2">
 <h2 class="hasAnchor">
-<a href="#use-case---sounding" class="anchor"></a>USE CASE - SOUNDING</h2>
-<p>Wykres termodynamiczny z inwersja</p>
+<a href="#studium-przypadku---meteo_sounding---dane-radiosondazowe" class="anchor"></a>Studium przypadku - meteo_sounding() - Dane radiosondażowe</h2>
+<p>Pobieranie danych i wykres roboczy dla inwersji w Legionowie z 16/02/2019:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">  sounding &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/meteo_sounding.html">meteo_sounding</a></span>(<span class="dt">wmo_id =</span> <span class="dv">12374</span>, <span class="dt">yy =</span> <span class="dv">2019</span>, <span class="dt">mm =</span> <span class="dv">2</span>, <span class="dt">dd =</span> <span class="dv">16</span>, <span class="dt">hh =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/headtail">head</a></span>(sounding)</a></code></pre></div>
+<pre><code>## [[1]]
+##      PRES  HGHT  TEMP  DWPT RELH MIXR DRCT SKNT  THTA  THTE  THTV
+## 1  1019.0    96   3.0   2.4   96 4.48  270    4 274.7 286.9 275.4
+## 2  1000.0   245   2.0   2.0  100 4.44  255    6 275.1 287.3 275.9
+## 3   954.0   624  -0.5  -0.5  100 3.88  324    6 276.3 287.1 277.0
+## 4   953.0   632   0.2   0.2  100 4.09  326    6 277.1 288.5 277.8
+## 5   951.0   649   4.4   3.9   97 5.35  329    6 281.6 296.5 282.5
+## 6   925.0   876   6.0   4.6   91 5.78   10    6 285.4 301.8 286.4
+## 7   893.0  1164   5.8   1.6   74 4.83  307   10 288.1 302.1 289.0
+## 8   892.0  1173   5.8   1.5   74 4.82  305   10 288.2 302.1 289.0
+## 9   874.0  1340   5.2   0.4   71 4.52  295   14 289.3 302.5 290.1
+## 10  868.0  1396   5.0   0.0   70 4.43  305   13 289.6 302.6 290.4
+## 11  850.0  1567   5.0  -9.0   36 2.29  335   12 291.4 298.4 291.8
+## 12  834.0  1722   5.4 -16.6   19 1.26    2   13 293.4 297.4 293.6
+## 13  829.0  1771   5.2 -15.8   20 1.35   10   14 293.7 298.0 293.9
+## 14  794.0  2122   4.0 -10.0   35 2.26   23   13 296.0 303.1 296.4
+## 15  728.0  2819  -0.3 -13.7   36 1.84   50   12 298.7 304.6 299.1
+## 16  700.0  3134  -2.3 -15.3   36 1.67   30   14 299.9 305.3 300.2
+## 17  693.0  3212  -2.9 -15.5   37 1.66   25   14 300.1 305.5 300.4
+## 18  671.0  3464  -4.8 -16.1   41 1.63   35   12 300.8 306.1 301.1
+## 19  658.0  3617  -5.9 -16.4   43 1.62   15   12 301.2 306.4 301.5
+## 20  634.0  3907  -8.1 -17.1   48 1.58    0   14 301.9 307.1 302.2
+## 21  608.0  4233 -10.5 -17.9   55 1.54   15   14 302.8 307.8 303.0
+## 22  602.0  4311 -11.1 -18.1   56 1.54    9   14 302.9 308.0 303.2
+## 23  593.0  4424 -11.8 -19.0   55 1.45    0   14 303.4 308.2 303.7
+## 24  572.0  4696 -13.6 -21.1   53 1.25   10   17 304.5 308.6 304.7
+## 25  500.0  5710 -20.1 -29.1   45 0.69    0   17 308.5 310.9 308.6
+## 26  480.0  6012 -22.1 -31.1   44 0.60  345   21 309.7 311.8 309.8
+## 27  466.0  6230 -23.5 -32.5   43 0.54  356   17 310.5 312.4 310.6
+## 28  454.0  6418 -25.1 -33.6   45 0.50    5   14 310.9 312.7 311.0
+## 29  414.0  7082 -30.6 -37.3   52 0.38  350   16 312.0 313.4 312.1
+## 30  400.0  7330 -32.7 -38.7   55 0.34    5   17 312.4 313.7 312.5
+## 31  382.0  7651 -35.5 -41.5   54 0.26   11   17 312.9 313.9 312.9
+## 32  379.0  7706 -35.9 -39.3   71 0.34   12   17 313.0 314.3 313.1
+## 33  342.0  8404 -41.4 -48.6   45 0.14   25   16 314.9 315.5 315.0
+## 34  326.0  8730 -43.9 -52.9   36 0.09   23   17 315.8 316.1 315.8
+## 35  300.0  9280 -48.7 -56.7   39 0.06   20   19 316.6 316.9 316.6
+## 36  295.0  9391 -49.7 -56.7   44 0.06   18   19 316.7 317.0 316.7
+## 37  284.0  9638 -51.5 -59.7   37 0.04   15   19 317.6 317.7 317.6
+## 38  268.0 10016 -54.3 -64.3   28 0.03   20   21 318.8 318.9 318.8
+## 39  250.0 10460 -58.1 -66.1   35 0.02   25   23 319.6 319.7 319.6
+## 40  248.0 10510 -58.5 -66.4   36 0.02   30   23 319.6 319.7 319.6
+## 41  228.0 11030 -63.1 -69.1   44 0.02   36   30 320.5 320.5 320.5
+## 42  219.0 11275 -65.1 -67.9   68 0.02   38   33 321.1 321.2 321.1
+## 43  217.0 11331 -65.3 -68.2   67 0.02   39   34 321.6 321.7 321.6
+## 44  214.0 11414 -66.0 -69.1   65 0.02   40   35 321.9 322.0 321.9
+## 45  200.0 11820 -69.1 -73.4   54 0.01   35   37 323.2 323.2 323.2
+## 46  177.0 12544 -73.3 -77.9   50 0.01   35   37 327.8 327.8 327.8
+## 47  171.0 12746 -73.1 -78.2   46 0.01   35   43 331.4 331.4 331.4
+## 48  160.0 13137 -72.7 -78.7   40 0.01   31   41 338.4 338.4 338.4
+## 49  156.0 13286 -71.7 -79.7   29 0.00   30   41 342.5 342.6 342.5
+## 50  152.0 13441 -68.9 -84.2    9 0.00   30   29 349.9 349.9 349.9
+## 51  150.0 13520 -67.5 -86.5    5 0.00   15   21 353.6 353.6 353.6
+## 52  149.0 13560 -67.0 -89.0    3 0.00   10   21 355.2 355.2 355.2
+## 53  147.0 13642 -65.9 -93.9    1 0.00    2   23 358.4 358.4 358.4
+## 54  144.0 13767 -66.4 -92.3    2 0.00  350   25 359.7 359.7 359.7
+## 55  136.0 14112 -67.7 -87.7    4 0.00  358   30 363.3 363.3 363.3
+## 56  125.0 14621 -66.8 -87.4    4 0.00   10   37 373.9 373.9 373.9
+## 57  120.0 14868 -66.3 -87.3    4 0.00   17   31 379.1 379.1 379.1
+## 58  118.0 14970 -63.7 -86.7    3 0.00   20   29 385.7 385.7 385.7
+## 59  107.0 15567 -65.0 -87.4    3 0.00   10   17 394.2 394.2 394.2
+## 60  100.0 15980 -65.9 -87.9    3 0.00  355   31 400.1 400.1 400.1
+## 61   70.0 18160 -62.7 -89.7    2 0.00   10   29 449.9 449.9 449.9
+## 62   50.0 20220 -65.5 -91.5    2 0.00  330   12 488.7 488.7 488.7
+## 63   42.0 21269 -69.3 -92.3    2 0.00  340   25 504.3 504.3 504.3
+## 64   30.0 23290 -66.3 -92.3    2 0.00  335   27 563.3 563.4 563.3
+## 65   20.0 25740 -68.7 -92.7    2 0.00  325   29 625.2 625.2 625.2
+## 66   17.7 26464 -71.5 -94.5    2 0.00  335   29 638.5 638.5 638.5
+## 67   10.0 29910 -61.1 -91.1    1 0.01  280   51 790.4 790.6 790.4
+## 68    7.7    NA    NA    NA   NA   NA  285   70    NA    NA    NA
+## 
+## [[2]]
+##                                      parameter       value
+## 1                             Observation time 190216/0000
+## 2                             Station latitude       52.40
+## 3                            Station longitude       20.96
+## 4                            Station elevation        96.0
+## 5                              Showalter index       10.02
+## 6                                 Lifted index       18.24
+## 7      LIFT computed using virtual temperature       18.31
+## 8                                  SWEAT index       40.79
+## 9                                      K index        3.10
+## 10                          Cross totals index       11.10
+## 11                       Vertical totals index       25.10
+## 12                         Totals totals index       36.20
+## 13       Convective Available Potential Energy        0.00
+## 14              CAPE using virtual temperature        0.00
+## 15                       Convective Inhibition        0.00
+## 16              CINS using virtual temperature        0.00
+## 17                            Equilibrum Level      953.97
+## 18  Equilibrum Level using virtual temperature      954.04
+## 19                    Level of Free Convection      965.18
+## 20              LFCT using virtual temperature      964.52
+## 21                      Bulk Richardson Number        0.00
+## 22           Bulk Richardson Number using CAPV        0.00
+## 23   Temp [K] of the Lifted Condensation Level      274.39
+## 24 Pres [hPa] of the Lifted Condensation Level      986.73
+## 25      Mean mixed layer potential temperature      275.46
+## 26               Mean mixed layer mixing ratio        4.27
+## 27               1000 hPa to 500 hPa thickness     5465.00
+## 28 Precipitable water [mm] for entire sounding       14.31</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">  <span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(sounding[[<span class="dv">1</span>]]<span class="op">$</span>HGHT, sounding[[<span class="dv">1</span>]]<span class="op">$</span>PRES, <span class="dt">type =</span> <span class="st">'l'</span>)</a></code></pre></div>
+<p><img src="usecase_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">  <span class="co"># lub cos bardziej uzytecznego:</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(sounding[[<span class="dv">1</span>]]<span class="op">$</span>TEMP, sounding[[<span class="dv">1</span>]]<span class="op">$</span>HGHT, <span class="dt">col =</span> <span class="st">'blue'</span>, <span class="dt">type =</span> <span class="st">'l'</span>, <span class="dt">lwd=</span><span class="dv">2</span> , <span class="dt">xlab =</span> <span class="st">'Temperatura'</span>, <span class="dt">ylab =</span> <span class="st">'m (n.p.m.)'</span>,</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">       <span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">4000</span>),  <span class="dt">xlim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">16</span>, <span class="dv">6</span>), <span class="dt">main =</span> <span class="st">"Inwersja w Legionowie"</span>)</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/lines">lines</a></span>(sounding[[<span class="dv">1</span>]]<span class="op">$</span>DWPT, sounding[[<span class="dv">1</span>]]<span class="op">$</span>HGHT, <span class="dt">col =</span> <span class="st">'red'</span>)</a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">  <span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/grid">grid</a></span>()</a></code></pre></div>
+<p><img src="usecase_files/figure-html/unnamed-chunk-3-2.png" width="700"></p>
 </div>
   </div>
 
@@ -290,10 +401,10 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#use-case---meteo-1">USE CASE - METEO (1)</a></li>
-      <li><a href="#use-case---meteo-2">USE CASE - METEO (2)</a></li>
+<li><a href="#imgw-pib-database-example-no--1">IMGW-PIB database (example no. 1)</a></li>
+      <li><a href="#imgw-pib-database-example-no--2">IMGW-PIB database (example no. 2)</a></li>
       <li><a href="#use-case---hydro-1">USE CASE - HYDRO (1)</a></li>
-      <li><a href="#use-case---sounding">USE CASE - SOUNDING</a></li>
+      <li><a href="#studium-przypadku---meteo_sounding---dane-radiosondazowe">Studium przypadku - meteo_sounding() - Dane radiosondażowe</a></li>
       </ul>
 </div>
       </div>

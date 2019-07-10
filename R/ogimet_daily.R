@@ -40,7 +40,7 @@ ogimet_daily <- function(date=c("2019-06-01","2019-07-31"),  coords = FALSE, sta
       day <- format(dates[i], "%d")
       ndays <- day
       linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=23&ord=REV&Send=Send",sep="")
-      if(month==1) linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=23&ord=REV&Send=Send",sep="")
+      if(month=="01") linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=23&ord=REV&Send=Send",sep="")
       a <-  getURL(linkpl2)
       a <- readHTMLTable(a, stringsAsFactors=FALSE)
       b <-  a[[length(a)]]

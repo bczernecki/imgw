@@ -14,7 +14,8 @@ ogimet_hourly(date = c("2019-06-01", "2019-07-31"), coords = FALSE,
 
 \item{station}{WMO ID of meteorological station(s). Character or numeric vector}
 
-\item{precip_split}{whether to split precipitation fields into 6/12/24h numeric fields (logical value TRUE (default) or FALSE)}
+\item{precip_split}{whether to split precipitation fields into 6/12/24h
+numeric fields (logical value TRUE (default) or FALSE)}
 }
 \description{
 Downloading hourly (meteorological) data from the Synop stations available in the https://www.ogimet.com/ repository
