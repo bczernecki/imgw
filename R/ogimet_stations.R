@@ -84,7 +84,7 @@ ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map
       if(add_map == TRUE){
       plot(res$lon, res$lat, col='red', pch=19)
       text(res$lon, res$lat, labels = res$station_names, col='grey', cex=0.5)
-      map('world',add=T)
+      maps::map(add = TRUE)
       }
 
 
