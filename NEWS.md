@@ -3,10 +3,11 @@
 * New datasets
     * Synop data from ogimet (http://ogimet.com/index.phtml.en)
 * New functions
+* adding function for reading station's coordinates from "Ogimet" webportal
     * `ogimet()` - downloading Synop hourly or monthly data from the "Ogimet" webportal
         * `ogimet_hourly()` - downloading Synop hourly data from the "Ogimet" webportal
         * `ogimet_daily()` - downloading Synop daily aggregates from the "Ogimet" webportal 
-    * adding function for reading station's coordinates from "Ogimet" webportal
+    * `ogimet_stations()` - retrieving geographical coordinates, altitude, WMO IDs and station names for the user-specified country nam; optionally plot results on a map
 * Improvements
 * Bug fixes
     * Fixes a bug in the `hydro_daily()` that prevented from merging more than 1 dataset
