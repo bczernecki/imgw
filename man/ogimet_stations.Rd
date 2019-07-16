@@ -24,6 +24,4 @@ Returns list of meteorological stations with its coordinates from the ogimet web
 }
 
 
-
-
 }

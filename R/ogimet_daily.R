@@ -16,7 +16,7 @@
 #' }
 #'
 
-ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, station = c(12326,12330)){
+ogimet_daily <- function(date=c(Sys.Date()-30, Sys.Date()),  coords = FALSE, station = c(12326,12330)){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 
@@ -127,7 +127,7 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
   # setdiff(names(df), c("station_ID", "Date", "TC"))
 
 
-  # clipping to interesting period as we're downloading slightly more than ne2eded:
+  # clipping to interesting period as we're downloading slightly more than needed:
    data_station <- data_station[which(data_station$Date >= as.Date(min(date)) & as.Date(data_station$Date) <= as.Date(max(date))),]
 
 

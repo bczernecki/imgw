@@ -4,7 +4,7 @@
 \alias{ogimet_daily}
 \title{Scrapping of daily meteorological (Synop) data from the Ogimet webpage}
 \usage{
-ogimet_daily(date = c("2015-01-01", "2016-03-31"), coords = FALSE,
+ogimet_daily(date = c(Sys.Date() - 30, Sys.Date()), coords = FALSE,
   station = c(12326, 12330))
 }
 \arguments{

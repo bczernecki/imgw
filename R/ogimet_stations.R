@@ -15,10 +15,8 @@
 #'   ogimet_stations(country = "Australia", add_map = T)
 #' }
 #'
+#'
 
-#'
-#'
-#'
 
 ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map = FALSE){
 
@@ -81,17 +79,21 @@ ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map
 
       res <- data.frame(wmo_id = res1[,4], station_names = station_names, lon = lon, lat = lat, alt = as.numeric(res1[,3]))
 
-      if(add_map == TRUE){
-      plot(res$lon, res$lat, col='red', pch=19)
-      text(res$lon, res$lat, labels = res$station_names, col='grey', cex=0.5)
-      maps::map(add = TRUE)
-      }
 
+      if(add_map == TRUE){
+      # plot labels a little bit higher...
+      addfactor <- as.numeric(diff(quantile(res$lat, na.rm=TRUE, c(0.48, 0.51))))
+      addfactor <- ifelse(addfactor>0.2, 0.2, addfactor)
+      addfactor <- ifelse(addfactor<0.05, 0.05, addfactor)
+
+      plot(res$lon, res$lat, col='red', pch=19, xlab = 'longitude', ylab = 'latitude')
+      text(res$lon, res$lat + addfactor, labels = res$station_names, col='grey70', cex=0.6)
+      maps::map(add = TRUE)
+
+      }
 
 
   return(res)
 
 }
-
-
 
