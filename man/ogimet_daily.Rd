@@ -4,7 +4,7 @@
 \alias{ogimet_daily}
 \title{Scrapping of daily meteorological (Synop) data from the Ogimet webpage}
 \usage{
-ogimet_daily(date = c("2019-06-01", "2019-07-31"), coords = FALSE,
+ogimet_daily(date = c("2015-01-01", "2016-03-31"), coords = FALSE,
   station = c(12326, 12330))
 }
 \arguments{
@@ -20,7 +20,7 @@ Downloading daily (meteorological) data from the Synop stations available in the
 \examples{
 \donttest{
   # downloading data for Poznan-Lawica
-  poznan <- ogimet_hourly( station = 12330, coords = TRUE)
+  poznan <- ogimet_daily(station = 12330, date = c("2019-01-01","2019-03-31"), coords = TRUE)
   head(poznan)
 }
 

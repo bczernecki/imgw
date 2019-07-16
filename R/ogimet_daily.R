@@ -11,7 +11,7 @@
 #'
 #' @examples \donttest{
 #'   # downloading data for Poznan-Lawica
-#'   poznan <- ogimet_hourly( station = 12330, coords = TRUE)
+#'   poznan <- ogimet_daily(station = 12330, date = c("2019-01-01","2019-03-31"), coords = TRUE)
 #'   head(poznan)
 #' }
 #'
@@ -39,8 +39,8 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
       month <- format(dates[i], "%m")
       day <- format(dates[i], "%d")
       ndays <- day
-      linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=23&ord=REV&Send=Send",sep="")
-      if(month==1) linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=23&ord=REV&Send=Send",sep="")
+      linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=06&ord=REV&Send=Send",sep="")
+      if(month==1) linkpl2 <- paste("https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=",station_nr,"&ndays=30&ano=",year,"&mes=",month,"&day=",day,"&hora=06&ord=REV&Send=Send",sep="")
       a <-  getURL(linkpl2)
       a <- readHTMLTable(a, stringsAsFactors=FALSE)
       b <-  a[[length(a)]]
@@ -70,6 +70,10 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
       colnames(b) <-nazwy_col
       b <- b[-c(1:2),]
       b["station_ID"] <-  station_nr
+
+      # adding year to date
+      b$Date <-paste0(b$Date,"/",year)
+
       # to avoid gtools::smartbind function or similar from another package..
       if (ncol(data_station)>=ncol(b)) {
         b[setdiff(names(data_station), names(b))] <- NA # adding missing columns
@@ -94,6 +98,7 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
         data_station["Lat"] <-  get_coord_from_string(coord, "Latitude")
       }
 
+
     } # koniec petli daty
 
     data_station <-  data_station[!duplicated(data_station), ]
@@ -106,8 +111,7 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
   # get rid off "---" standing for missing/blank fields:
   data_station[which(data_station == "--" | data_station == "---" | data_station == "----" | data_station == "-----", arr.ind = TRUE)] <- NA
 
-  # changing date
-  data_station$Date <-strptime(paste0(data_station$Date,"/",year), "%m/%d/%Y", tz = 'UTC')
+
 
 
   # other columns to numeric:
@@ -117,6 +121,8 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
                      as.data.frame(sapply(data_station[,c("TemperatureCMax", "TemperatureCMin", "TemperatureCAvg","TdAvgC" ,"HrAvg",
                                                           "WindkmhInt","WindkmhGust" ,"PresslevHp", "Precmm" ,
                                                           "TotClOct", "lowClOct" ,"VisKm","station_ID")], as.numeric)))
+  # date to as.Date()
+  data_station$Date <- as.Date(data_station$Date, format="%m/%d/%Y")
 
   #  TODO:
   # changing order of columns and removing blank records:
@@ -132,8 +138,8 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
   # setdiff(names(df), c("station_ID", "Date", "TC"))
 
 
-  # clipping to interesting period as we're downloading slightly more than needed:
-  data_station <- data_station[which(as.Date(data_station$Date) >= as.Date(min(date)) & as.Date(data_station$Date) <= as.Date(max(date))),]
+  # clipping to interesting period as we're downloading slightly more than ne2eded:
+   data_station <- data_station[which(data_station$Date >= as.Date(min(date)) & as.Date(data_station$Date) <= as.Date(max(date))),]
 
 
   return(data_station)
