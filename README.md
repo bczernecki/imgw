@@ -47,6 +47,10 @@ install_github("bczernecki/imgw")
     ogimet.com collection. Basically any meteorological (aka Synop) station working under 
     the World Meteorological Organizaton framework 
     after year 2000 should be accessible
+    
+    - **ogimet_stations()** - retrieving geographical coordinates, altitude, WMO ID 
+    and station names for the user-specified country nam; 
+    optionally plot results on a map
 
   - **meteo\_sounding()** - Downloading measurements of
     the vertical profile of atmosphere (aka rawinsonde data)
