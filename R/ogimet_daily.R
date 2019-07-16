@@ -46,28 +46,17 @@ ogimet_daily <- function(date=c("2015-01-01","2016-03-31"),  coords = FALSE, sta
       b <-  a[[length(a)]]
       b=b[,1:(length(b)-8)]
       test=b[1:2,]
+      #exeptions diferent names_col
       if ((length(test[2,!is.na(test[2,])])==6 & test[2,5]=="Int.")) {
-        nazwy_col=unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:6],sep = "_"),test[1,c(6:(length(test)-4))]))
+        names_col=unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:6],sep = "_"),test[1,c(6:(length(test)-4))]))
       }else if ((length(test[2,!is.na(test[2,])])==2 & test[2,2]=="Int.")) {
-        nazwy_col=unlist(c(test[1,1:2],paste(test[1,3],test[2,1:2],sep = "_"),test[1,c(4:(length(test)-1))]))
+        names_col=unlist(c(test[1,1:2],paste(test[1,3],test[2,1:2],sep = "_"),test[1,c(4:(length(test)-1))]))
       }else if ((length(test[2,!is.na(test[2,])])==5 & test[2,5]=="Int.")) {
-        nazwy_col=unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:5],sep = "_"),test[1,c(6:(length(test)-3))]))
-      }else { nazwy_col="2Error_column"}
+        names_col=unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:5],sep = "_"),test[1,c(6:(length(test)-3))]))
+      }else { names_col="Error_column"}
 
-      #namsem albo grepem jest total cloue cover
-      #nazwy_col=ifelse((length(test[2,!is.na(test[2,])])==5 | test[2,5]=="Int."),
-       #     unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:5],sep = "_"),test[1,c(6:(length(test)-3))])),
-        #   unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:6],sep = "_"),test[1,c(6:(length(test)-4))])))
-
-      #if (length(test[2,!is.na(test[2,])])==5 & test[2,5]=="Int.") { # no 3 columns in wind characteristic
-      #  nazwy_col=unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:5],sep = "_"),test[1,c(6:(length(test)-3))]))
-      #} ife (length(test[2,!is.na(test[2,])])==2 & test[2,2]=="Int.") { # no 3 columns in wind characteristic
-      #  nazwy_col=unlist(c(test[1,1:2],paste(test[1,3],test[2,1:2],sep = "_"),test[1,c(4:(length(test)-1))]))
-      #} else { # pasting colnames form 2 rows in raw data
-      #  nazwy_col=unlist(c(test[1,1],paste(test[1,2],test[2,1:3],sep = "_"),test[1,3:4],paste(test[1,5],test[2,4:6],sep = "_"),test[1,c(6:(length(test)-4))]))
-      #}
-      nazwy_col <- gsub("[^A-Za-z0-9]", "", as.character(lapply(nazwy_col, as.character), stringsAsFactors=FALSE))
-      colnames(b) <-nazwy_col
+      names_col <- gsub("[^A-Za-z0-9]", "", as.character(lapply(names_col, as.character), stringsAsFactors=FALSE))
+      colnames(b) <-names_col
       b <- b[-c(1:2),]
       b["station_ID"] <-  station_nr
       # to avoid gtools::smartbind function or similar from another package..
