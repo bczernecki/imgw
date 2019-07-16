@@ -90,7 +90,7 @@ available in the danepubliczne.imgw.pl collection" />
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../articles/articles/usecase.html">Use Case - IMGW database [PL}</a>
+      <a href="../articles/articles/usecase.html">Use Case - IMGW database + Rawinsonde data [PL]</a>
     </li>
     <li>
       <a href="../articles/articles/usecase2.html">use_case2</a>
@@ -169,14 +169,7 @@ It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)</p><
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>yearly</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_annual</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"H"</span>, <span class='kw'>station</span> <span class='kw'>=</span> <span class='st'>"ANNOPOL"</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yearly</span>)</div><div class='output co'>#&gt;             id station riv_or_lake  hyy idyy Mesu idex   H beyy bemm bedd behm
-#&gt; 2588 150210180 ANNOPOL   Wisła (2) 2000   13    H    1 225 1999   11   24   NA
-#&gt; 2589 150210180 ANNOPOL   Wisła (2) 2000   13    H    2 337   NA   NA   NA   NA
-#&gt; 2590 150210180 ANNOPOL   Wisła (2) 2000   13    H    3 682 2000    4    9    2
-#&gt; 2591 150210180 ANNOPOL   Wisła (2) 2000   14    H    1 215 2000   10   21   NA
-#&gt; 2592 150210180 ANNOPOL   Wisła (2) 2000   14    H    1 215 2000   10   26   NA
-#&gt; 2593 150210180 ANNOPOL   Wisła (2) 2000   14    H    2 273   NA   NA   NA   NA</div></pre>
+    <pre class="examples"><div class='input'>  <span class='no'>yearly</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_annual</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"H"</span>, <span class='kw'>station</span> <span class='kw'>=</span> <span class='st'>"ANNOPOL"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: URL 'https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/2000/polr_H_2000.zip': status was 'SSL connect error'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(address, temp): cannot open URL 'https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_hydrologiczne/polroczne_i_roczne/2000/polr_H_2000.zip'</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yearly</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(yearly): object 'yearly' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -1,5 +1,5 @@
 ---
-title: "Use Case - IMGW database [PL}"
+title: "Use Case - IMGW database + Rawinsonde data [PL]"
 output: html_document
 ---
 
@@ -7,11 +7,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## IMGW-PIB database (example no. 1)
+## IMGW-PIB - dane meteo (example no. 1)
 
-1. Pobieranie danych miesiecznych ze stacji meteo (SYNOP)
-1. Zrobienie wykresu dla 1-2 wybranych stacji (np. Poznan i Warszawa - w miare homogeniczne, Wroclaw odpalony za bardzo)
-1. Zrobienie wykresow dla miesiecy i wrzucenie trendu liniowego
+1. Pobieranie danych miesięcznych ze stacji meteo (SYNOP) dla Poznania w latach 1966-2018.
+2. Przeliczenie wartości miesięcznych na wartości roczne
+3. Wykonanie wykresu zmienności średniej rocznej temperatury oraz obliczenie trendu zmian za pomocą modelu regresji liniowej
 
 ```{r}
 library(imgw)
@@ -47,11 +47,13 @@ legend("topleft",
                        round(coef(model)[1], 1)), bty = "n")
 ```
 
-## IMGW-PIB database (example no. 2)
+## IMGW-PIB - dane meteo (example no. 2)
 
-1. Przetworzenie pobranych danych na serie roczne
-1. Zgridowanie do 0.01 poprzez interpolacje? (albo przerobienie na kilometrowke)
-1. Obliczenie trendu dla serii rocznej w punktach gridowych - robisz mape dla wspolczynnika kierunkowego trendu w PL
+1. Pobranie danych meteorologicznych dla wszystkich stacji synoptycznych za okres 1966-2017.
+2. Przetworzenie pobranych danych na serie roczne
+3. Przekształcenie współrzędnych geograficznych (EPSG 4326) na siatkę PUWG-1992 (EPSG 2180); Rozmiar zdefiniowanej domeny obliczeniowej 50 x 50 punktów 
+4. Transformacja wartości punktowych na rozkład przestrzenny za pomocą interpolacji IDW
+5. Obliczenie trendu dla serii rocznej w punktach gridowych - mapa współczynnika kierunkowego trendu w Polsce w latach 1966-2017
 
 ```{r}
 library(imgw)
@@ -63,8 +65,9 @@ library(raster)
 library(rnaturalearth)
 
 # downloads monthly data and calculates annual mean air temperature
-meteo_mon = meteo("monthly", rank = "synop", year = 1966:2018, coords = TRUE) %>%
+meteo_mon = meteo("monthly", rank = "synop", year = 1966:2017, coords = TRUE) %>%
   dplyr::select(id, station, X, Y, yy, mm, t2m_mean_mon) %>%
+  dplyr::filter(id != 352180345) %>% # stacja w Kole ma kilka zer zamiast NA
   group_by(yy, id, station, X, Y) %>%
   summarise(t2 = mean(t2m_mean_mon))
 
@@ -99,7 +102,7 @@ meteo_inter = meteo_mon_sp %>%
   stack()
 
 # calculates a trend for each pixel
-years = 1966:2018
+years = 1966:2017
 meteo_trend = calc(meteo_inter, fun = function(x) {summary(lm(x ~ years))$coefficients[2]}) %>% 
   mask(poland)
 
@@ -113,13 +116,15 @@ tm_shape(meteo_trend) +
 ```
 
 
-## USE CASE - HYDRO (1)
+## IMGW-PIB - dane hydrologicze (example no. 2)
 Moze byc ten ktory jest w winietce z przeplywami
 
 
-## Studium przypadku - meteo_sounding() - Dane radiosondażowe
+## DANE RADIOSONDAŻOWE - meteo_sounding() - 
 
-Pobieranie danych i wykres roboczy dla inwersji w Legionowie z 16/02/2019:
+### Pobieranie danych i wykres roboczy dla inwersji
+
+ Pobieranie danych dla stacji radiosondażowej w Legionowie z dn. 16/02/2019:
 
 ```{r}
   sounding <- meteo_sounding(wmo_id = 12374, yy = 2019, mm = 2, dd = 16, hh = 0)
@@ -131,4 +136,16 @@ Pobieranie danych i wykres roboczy dla inwersji w Legionowie z 16/02/2019:
        ylim=c(0,4000),  xlim=c(-16, 6), main = "Inwersja w Legionowie")
   lines(sounding[[1]]$DWPT, sounding[[1]]$HGHT, col = 'red')
   grid()
+```
+
+
+### Pobieranie danych dla dłuższego przedziału czasu
+
+ Pobieranie danych dla stacji w Łebie dla zdefiniowanego przedziału czas. 
+ W poniższym przykładzie pobierane są tylko dane radiosondażowe z godz. 00 UTC:
+
+```{r}
+  daty <- seq.Date(as.Date("2015-02-27"), as.Date("2015-03-02"), by="day")
+  daty <- strsplit(as.character(daty), "-")
+  sounding <- lapply(daty, function(x) meteo_sounding(wmo_id = 12120, yy = x[1], mm = x[2], dd =  x[3], hh =  "00"))
 ```

@@ -89,7 +89,7 @@
       <a href="../articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="../articles/articles/usecase.html">Use Case - IMGW database [PL}</a>
+      <a href="../articles/articles/usecase.html">Use Case - IMGW database + Rawinsonde data [PL]</a>
     </li>
     <li>
       <a href="../articles/articles/usecase2.html">use_case2</a>
@@ -132,7 +132,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ogimet_daily</span>(<span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"2019-06-01"</span>, <span class='st'>"2019-07-31"</span>), <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <pre class="usage"><span class='fu'>ogimet_daily</span>(<span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>() - <span class='fl'>30</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>()), <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>station</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>12326</span>, <span class='fl'>12330</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -155,30 +155,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='co'># downloading data for Poznan-Lawica</span>
-  <span class='no'>poznan</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ogimet_hourly.html'>ogimet_hourly</a></span>( <span class='kw'>station</span> <span class='kw'>=</span> <span class='fl'>12330</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 12330
-#&gt; 2019 07 
-#&gt; 2019 06 
-#&gt; 2019 05 </div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>poznan</span>)</div><div class='output co'>#&gt;   station_ID      Lon      Lat                Date   TC  TdC TmaxC TminC ddd
-#&gt; 2      12330 16.83333 52.41667 2019-07-10 13:00:00 17.5 11.5  &lt;NA&gt;  &lt;NA&gt; NNE
-#&gt; 3      12330 16.83333 52.41667 2019-07-10 12:00:00 19.9 12.4  &lt;NA&gt;  &lt;NA&gt; WNW
-#&gt; 4      12330 16.83333 52.41667 2019-07-10 11:00:00 18.5 13.4  &lt;NA&gt;  &lt;NA&gt;  NW
-#&gt; 5      12330 16.83333 52.41667 2019-07-10 10:00:00 15.1 12.8  &lt;NA&gt;  &lt;NA&gt; WNW
-#&gt; 6      12330 16.83333 52.41667 2019-07-10 09:00:00 15.9 13.0  &lt;NA&gt;  &lt;NA&gt;   W
-#&gt; 7      12330 16.83333 52.41667 2019-07-10 08:00:00 15.4 12.7  &lt;NA&gt;  &lt;NA&gt;  NW
-#&gt;   ffkmh Gustkmh  P0hPa PseahPa PTnd Precmm Nt Nh HKm InsoD1 Viskm Snowcm pr6
-#&gt; 2  14.4    39.6 1003.3  1013.8 -0.5   &lt;NA&gt;  6  5 1.0     NA    40     NA  NA
-#&gt; 3  25.2    57.6 1003.2  1013.6 -0.6 2.0/6h  7  6 0.6     NA    60     NA   2
-#&gt; 4  21.6      NA 1003.5  1013.9 -0.3   &lt;NA&gt;  6  6 0.6     NA    50     NA  NA
-#&gt; 5  32.4    57.6 1003.8  1014.4  0.0   &lt;NA&gt;  7  7 0.3     NA     7     NA  NA
-#&gt; 6  21.6      NA 1003.8  1014.3  0.1   &lt;NA&gt;  7  7 0.3     NA    40     NA  NA
-#&gt; 7  21.6      NA 1003.8  1014.4  0.3   &lt;NA&gt;  7  7 0.3     NA    35     NA  NA
-#&gt;   pr12 pr24
-#&gt; 2   NA   NA
-#&gt; 3   NA   NA
-#&gt; 4   NA   NA
-#&gt; 5   NA   NA
-#&gt; 6   NA   NA
-#&gt; 7   NA   NA</div><div class='input'>
+  <span class='no'>poznan</span> <span class='kw'>&lt;-</span> <span class='fu'>ogimet_daily</span>(<span class='kw'>station</span> <span class='kw'>=</span> <span class='fl'>12330</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"2019-01-01"</span>,<span class='st'>"2019-03-31"</span>), <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 12330
+#&gt; 2019 03 
+#&gt; 2019 02 
+#&gt; 2019 01 </div><div class='output co'>#&gt; <span class='error'>Error in function (type, msg, asError = TRUE) {    if (!is.character(type)) {        i = match(type, CURLcodeValues)        typeName = if (is.na(i))             character()        else names(CURLcodeValues)[i]    }    typeName = gsub("^CURLE_", "", typeName)    fun = (if (asError)         stop    else warning)    fun(structure(list(message = msg, call = sys.call()), class = c(typeName,         "GenericCurlError", "error", "condition")))}(18L, "transfer closed with outstanding read data remaining",     TRUE): transfer closed with outstanding read data remaining</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>poznan</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(poznan): object 'poznan' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

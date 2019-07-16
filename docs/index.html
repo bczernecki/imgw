@@ -57,7 +57,7 @@
       <a href="articles/articles/pl.html">Wstęp do pakietu 'imgw' (PL)</a>
     </li>
     <li>
-      <a href="articles/articles/usecase.html">Use Case - IMGW database [PL}</a>
+      <a href="articles/articles/usecase.html">Use Case - IMGW database + Rawinsonde data [PL]</a>
     </li>
     <li>
       <a href="articles/articles/usecase2.html">use_case2</a>
@@ -101,10 +101,10 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>The stable release of imgw package from the <a href="https://CRAN.R-project.org">CRAN</a> reposity can be installed with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"imgw"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"imgw"</span>)</code></pre></div>
 <p>It is highly recommended to install the most up-to-date development version of <strong>imgw</strong> from <a href="https://github.com/bczernecki/imgw">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(remotes)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"bczernecki/imgw"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(remotes)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"bczernecki/imgw"</span>)</code></pre></div>
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -137,33 +137,33 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(imgw)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">m =<span class="st"> </span><span class="kw"><a href="reference/meteo_monthly.html">meteo_monthly</a></span>(<span class="dt">rank =</span> <span class="st">"synop"</span>, <span class="dt">year =</span> <span class="dv">2000</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(m)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;            rank        id        X        Y   station   yy mm tmax_abs</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 575 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  1      5.3</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 577 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  2     10.6</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 578 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  3     14.8</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 579 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  4     27.8</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 580 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  5     29.3</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 581 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  6     32.6</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;     tmax_mean tmin_abs tmin_mean t2m_mean_mon t5cm_min rr_monthly</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 575       0.4    -16.5      -4.5         -2.1    -23.5       34.2</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 577       4.1    -10.4      -1.4          1.3    -12.9       25.4</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 578       6.2     -6.4      -1.0          2.4     -9.4       45.5</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; 579      17.9     -4.6       4.7         11.5     -8.1       31.6</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 580      21.3     -4.3       5.7         13.8     -8.3        9.4</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; 581      23.1      1.0       9.6         16.6     -1.8       36.4</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">h =<span class="st"> </span><span class="kw"><a href="reference/hydro_annual.html">hydro_annual</a></span>(<span class="dt">year =</span> <span class="dv">2010</span>)</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)</a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;             id station riv_or_lake  hyy idyy Mesu idex   H beyy bemm bedd</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; 3223 150210180 ANNOPOL   Wisła (2) 2010   13    H    1 227 2009   12   19</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; 3224 150210180 ANNOPOL   Wisła (2) 2010   13    H    2 319   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; 3225 150210180 ANNOPOL   Wisła (2) 2010   13    H    3 531 2010    3    3</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; 3226 150210180 ANNOPOL   Wisła (2) 2010   14    H    1 271 2010    8   29</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; 3227 150210180 ANNOPOL   Wisła (2) 2010   14    H    1 271 2010   10   27</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; 3228 150210180 ANNOPOL   Wisła (2) 2010   14    H    2 392   NA   NA   NA</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(imgw)
+m =<span class="st"> </span><span class="kw"><a href="reference/meteo_monthly.html">meteo_monthly</a></span>(<span class="dt">rank =</span> <span class="st">"synop"</span>, <span class="dt">year =</span> <span class="dv">2000</span>, <span class="dt">coords =</span> <span class="ot">TRUE</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(m)
+<span class="co">#&gt;            rank        id        X        Y   station   yy mm tmax_abs</span>
+<span class="co">#&gt; 575 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  1      5.3</span>
+<span class="co">#&gt; 577 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  2     10.6</span>
+<span class="co">#&gt; 578 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  3     14.8</span>
+<span class="co">#&gt; 579 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  4     27.8</span>
+<span class="co">#&gt; 580 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  5     29.3</span>
+<span class="co">#&gt; 581 SYNOPTYCZNA 353230295 23.16228 53.10726 BIAŁYSTOK 2000  6     32.6</span>
+<span class="co">#&gt;     tmax_mean tmin_abs tmin_mean t2m_mean_mon t5cm_min rr_monthly</span>
+<span class="co">#&gt; 575       0.4    -16.5      -4.5         -2.1    -23.5       34.2</span>
+<span class="co">#&gt; 577       4.1    -10.4      -1.4          1.3    -12.9       25.4</span>
+<span class="co">#&gt; 578       6.2     -6.4      -1.0          2.4     -9.4       45.5</span>
+<span class="co">#&gt; 579      17.9     -4.6       4.7         11.5     -8.1       31.6</span>
+<span class="co">#&gt; 580      21.3     -4.3       5.7         13.8     -8.3        9.4</span>
+<span class="co">#&gt; 581      23.1      1.0       9.6         16.6     -1.8       36.4</span>
+
+h =<span class="st"> </span><span class="kw"><a href="reference/hydro_annual.html">hydro_annual</a></span>(<span class="dt">year =</span> <span class="dv">2010</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(h)
+<span class="co">#&gt;             id station riv_or_lake  hyy idyy Mesu idex   H beyy bemm bedd</span>
+<span class="co">#&gt; 3223 150210180 ANNOPOL   Wisła (2) 2010   13    H    1 227 2009   12   19</span>
+<span class="co">#&gt; 3224 150210180 ANNOPOL   Wisła (2) 2010   13    H    2 319   NA   NA   NA</span>
+<span class="co">#&gt; 3225 150210180 ANNOPOL   Wisła (2) 2010   13    H    3 531 2010    3    3</span>
+<span class="co">#&gt; 3226 150210180 ANNOPOL   Wisła (2) 2010   14    H    1 271 2010    8   29</span>
+<span class="co">#&gt; 3227 150210180 ANNOPOL   Wisła (2) 2010   14    H    1 271 2010   10   27</span>
+<span class="co">#&gt; 3228 150210180 ANNOPOL   Wisła (2) 2010   14    H    2 392   NA   NA   NA</span></code></pre></div>
 </div>
 <div id="acknowledgment" class="section level2">
 <h2 class="hasAnchor">
