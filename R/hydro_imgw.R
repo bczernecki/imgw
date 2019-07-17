@@ -1,4 +1,4 @@
-#' Hydrological data
+#' Hydrological data from IMGW
 #'
 #' Downloading hourly, daily, and monthly hydrological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
@@ -14,10 +14,10 @@
 #' @export
 #'
 #' @examples \donttest{
-#'   x <- hydro("monthly", year = 1999)
+#'   x <- hydro_imgw("monthly", year = 1999)
 #'   head(x)
 #' }
-hydro <- function(interval, year, coords = FALSE, value = "H", station = NULL, col_names = "short", ...){
+hydro_imgw <- function(interval, year, coords = FALSE, value = "H", station = NULL, col_names = "short", ...){
 
   if (interval == "daily"){
     # dobowe

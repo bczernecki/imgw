@@ -14,12 +14,12 @@
 #'
 #' @examples \donttest{
 #'   # downloading data for Poznan-Lawica
-#'   poznan <- ogimet(interval = "daily", date=c("2019-06-01","2019-07-08"),
+#'   poznan <- meteo_ogimet(interval = "daily", date=c("2019-06-01","2019-07-08"),
 #'                    station = 12330, coords = TRUE, precip_split = TRUE )
 #'   head(poznan)
 #' }
 #'
-ogimet <- function(interval, date,  coords = FALSE, station ,  precip_split = TRUE){
+meteo_ogimet <- function(interval, date,  coords = FALSE, station ,  precip_split = TRUE){
   if (interval == "daily"){
     # daily
     all_data <- ogimet_daily(date = date,  coords = coords, station = station)

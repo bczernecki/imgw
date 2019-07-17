@@ -1,4 +1,4 @@
-#' Meteorological data
+#' Meteorological data from IMGW
 #'
 #' Downloading hourly, daily, and monthly meteorological data from the SYNOP / CLIMATE / PRECIP stations available in the danepubliczne.imgw.pl collection
 #'
@@ -14,10 +14,10 @@
 #' @export
 #'
 #' @examples \donttest{
-#'   x <- meteo("monthly", rank = "synop", year = 2018, coords = TRUE)
+#'   x <- meteo_imgw("monthly", rank = "synop", year = 2018, coords = TRUE)
 #'   head(x)
 #' }
-meteo <- function(interval, rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", ...){
+meteo_imgw <- function(interval, rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", ...){
   if (interval == "daily"){
     # daily
     calosc <- meteo_daily(rank = rank, year = year, status = status, coords = coords, station = station, col_names = col_names, ...)
