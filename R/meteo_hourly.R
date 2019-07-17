@@ -13,6 +13,7 @@
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
+#' @export
 #'
 #' @examples \donttest{
 #'   hourly <- meteo_hourly(rank = "climate", year = 1984)

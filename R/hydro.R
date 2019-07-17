@@ -14,10 +14,10 @@
 #' @export
 #'
 #' @examples \donttest{
-#'   x <- hydro_imgw("monthly", year = 1999)
+#'   x <- hydro("monthly", year = 1999)
 #'   head(x)
 #' }
-hydro_imgw <- function(interval, year, coords = FALSE, value = "H", station = NULL, col_names = "short", ...){
+hydro <- function(interval, year, coords = FALSE, value = "H", station = NULL, col_names = "short", ...){
 
   if (interval == "daily"){
     # dobowe

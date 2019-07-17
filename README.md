@@ -11,11 +11,7 @@ status](https://www.r-pkg.org/badges/version/imgw)](https://cran.r-project.org/p
 downloads](http://cranlogs.r-pkg.org/badges/imgw)](https://cran.r-project.org/package=imgw)
 
 The goal of the  **imgw** R package is to automatize downloading of meteorological
-and hydrological data from the publicly available repositories:
-
-- Polish Institute of Meterology and Water Management - National Research Institute [(IMGW-PIB)](https://dane.imgw.pl/)
-- OGIMET [(ogimet.com)](http://ogimet.com/index.phtml.en) 
-- University of Wyoming webpage - atmospheric vertical profiling data (http://weather.uwyo.edu/upperair/).
+and hydrological data from the publicly available repository of Polish Institute of Meterology and Water Management - National Research Institute [(IMGW-PIB)](https://dane.imgw.pl/)
 
 ## Installation
 
@@ -42,16 +38,6 @@ install_github("bczernecki/imgw")
     danepubliczne.imgw.pl collection. It is a wrapper for
     `meteo_monthly()`, `meteo_daily()`, and `meteo_hourly()`.
     
-  - **ogimet()** - Downloading hourly and daily meteorological
-    data from the SYNOP stations available in the
-    ogimet.com collection. Basically any meteorological (aka Synop) station working under 
-    the World Meteorological Organizaton framework 
-    after year 2000 should be accessible
-    
-    - **ogimet_stations()** - retrieving geographical coordinates, altitude, WMO ID 
-    and station names for the user-specified country nam; 
-    optionally plot results on a map
-
   - **meteo\_sounding()** - Downloading measurements of
     the vertical profile of atmosphere (aka rawinsonde data)
 

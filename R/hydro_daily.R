@@ -11,6 +11,7 @@
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
+#' @export
 #'
 #' @examples \donttest{
 #'   daily <- hydro_daily(year = 2000)

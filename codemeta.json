@@ -8,14 +8,14 @@
   "description": "Download Polish meteorological and hydrological data from the Institute of Meteorology and Water Management - National Research Institute (<https://dane.imgw.pl/>).\n    This package also allows for adding geographical coordinates for each observation.",
   "name": "imgw: Polish Meteorological and Hydrological Data",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.3",
+    "version": "3.6.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.3 (2019-03-11)",
+  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
   "author": [
     {
       "@type": "Person",
@@ -28,7 +28,7 @@
       "@type": "Person",
       "givenName": "Arkadiusz",
       "familyName": "Głogowski",
-      "email": "arkadiusz.glogowski@upwr.edu.com",
+      "email": "arkadiusz.glogowski@upwr.edu.pl",
       "@id": "https://orcid.org/0000-0002-7587-8892"
     },
     {
@@ -153,7 +153,7 @@
   "codeRepository": "https://imgw.ml",
   "releaseNotes": "https://github.com/bczernecki/imgw/blob/master/NEWS.md",
   "readme": "https://github.com/bczernecki/imgw/blob/master/README.md",
-  "fileSize": "133.315KB",
+  "fileSize": "132.62KB",
   "contIntegration": "https://travis-ci.org/bczernecki/imgw",
   "citation": [
     {
@@ -178,7 +178,7 @@
       ],
       "name": "imgw: Polish Meteorological and Hydrological Data",
       "url": "https://bczernecki.github.io/imgw/",
-      "description": "R package version 0.1.1"
+      "description": "R package version 0.1.0"
     }
   ],
   "issueTracker": "https://github.com/bczernecki/imgw/issues",

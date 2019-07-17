@@ -1,3 +1,7 @@
+# imgw 0.2
+
+* Moves non-IMGW data to the climate package
+
 # imgw 0.1.1
 
 * New datasets
