@@ -8,7 +8,6 @@
 #' @param add_map logical - whether to draw a map with downloaded metadata (requires maps/mapdata packages)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
-#' @importFrom maps map
 #' @export
 #'
 #' @examples \donttest{

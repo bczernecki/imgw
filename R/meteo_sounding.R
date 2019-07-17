@@ -63,23 +63,3 @@ meteo_sounding <- function(wmo_id, yy, mm, dd, hh){
   return(df)
 }
 
-# ONLY FOR TESTING PURPOSES:
-# a <- meteo_sounding(wmo_id = 12374, yy = 2018, mm = 8, dd = 24, hh = 12)
-# plot(y=a$HGHT, a$TEMP, type='l', xlim=c(-60,15))
-# library(sounding)
-# data("holdxy")
-# data("holdxx")
-# data("pp")
-#
-# a <- na.omit(a)
-# x <- data.frame(lev=a$PRES,
-#                 HGT=a$HGHT,
-#                 TMP=a$TEMP,
-#                 DPT = a$DWPT,
-#                 WD = a$DRCT,
-#                 WS = a$SKNT,
-#                 lon=52,
-#                 lat=19,
-#                 date2=Sys.time())
-# plotuj(x, wczytane_holdxy=FALSE, zaznacz_cape = T)
-# sounding(pressure = a$PRES, altitude = a$HGHT, temp = a$TEMP, dpt = a$DWPT, wd = a$DRCT, ws = a$SKNT*2)
