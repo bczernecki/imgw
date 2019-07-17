@@ -90,5 +90,4 @@ head(h)
 
 ## Acknowledgment
 
-Institute of Meteorology and Water Management - National Research
-Institute, Ogimet.com and University of Wyoming are the sources of the data.
+Institute of Meteorology and Water Management - National Research Institute are the sources of the data.
