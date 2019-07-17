@@ -81,12 +81,12 @@ ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map
 
       if(add_map == TRUE){
       # plot labels a little bit higher...
-      addfactor <- as.numeric(diff(quantile(res$lat, na.rm=TRUE, c(0.48, 0.51))))
+      addfactor <- as.numeric(diff(stats::quantile(res$lat, na.rm=TRUE, c(0.48, 0.51))))
       addfactor <- ifelse(addfactor>0.2, 0.2, addfactor)
       addfactor <- ifelse(addfactor<0.05, 0.05, addfactor)
 
-      plot(res$lon, res$lat, col='red', pch=19, xlab = 'longitude', ylab = 'latitude')
-      text(res$lon, res$lat + addfactor, labels = res$station_names, col='grey70', cex=0.6)
+      graphics::plot(res$lon, res$lat, col='red', pch=19, xlab = 'longitude', ylab = 'latitude')
+      graphics::text(res$lon, res$lat + addfactor, labels = res$station_names, col='grey70', cex=0.6)
       maps::map(add = TRUE)
 
       }
