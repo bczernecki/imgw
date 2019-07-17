@@ -9,7 +9,6 @@
 #'  numeric fields (logical value TRUE (default) or FALSE)
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
-#' @export
 #'
 #' @examples \donttest{
 #'   # downloading data for Poznan-Lawica

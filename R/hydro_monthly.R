@@ -11,7 +11,6 @@
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
-#' @export
 #'
 #' @examples \donttest{
 #'   monthly <- hydro_monthly(year = 2000)

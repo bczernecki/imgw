@@ -13,7 +13,6 @@
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
 #' @importFrom utils download.file unzip read.csv
-#' @export
 #'
 #' @examples \donttest{
 #'   monthly <- meteo_monthly(rank = "climate", year = 1969)
