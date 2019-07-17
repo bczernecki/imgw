@@ -1,8 +1,8 @@
-#' Getting coordinates from a string provided by Ogimet web portal
+#' Getting coordinates from a string provided by the Ogimet web portal
 #'
 #' Internal function for cleaning coordinates' metadata provided by Ogimet
-#' @param txt string element with coordinates from Ogimet
-#' @param pattern which element (longitude or latitude) to extract
+#' @param txt string with coordinates from Ogimet
+#' @param pattern which element (Longitude or Latitude) to extract
 #'
 #' @format The returned object is the geographic coordinates using WGS84 (EPSG:4326) in decimal format.
 #' Negative values mean western or southern Hemisphere
@@ -13,9 +13,6 @@
 #'  get_coord_from_string(txt, pattern = "Latitude")
 #' }
 #'
-
-
-
 get_coord_from_string <- function(txt , pattern = "Longitude") {
   tt <- gregexpr(pattern, txt)
   start <- tt[[1]][1] + attributes(tt[[1]])$match.length + 1

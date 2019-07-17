@@ -14,9 +14,6 @@
 #'   ogimet_stations(country = "Australia", add_map = T)
 #' }
 #'
-#'
-
-
 ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map = FALSE){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
@@ -31,8 +28,6 @@ ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map
       a <-  getURL(linkpl2)
 
       b <- strsplit(a, "Decoded synops since")
-
-
 
       b1 <- lapply(b, function(x) substr(x, 1, 400))
       b1[[1]] <- b1[[1]][-1] # header
@@ -49,44 +44,46 @@ ogimet_stations <- function(country = "United+Kingdom", date=Sys.Date(), add_map
       station_names <- unlist(lapply(strsplit(res, " - "), function(x) x[length(x)]))
 
 
-      res <- gsub(x = res, pattern = ", CAPTION, '", replacement = '',fixed = T)
-      res <- gsub(x = res, pattern = " m'", replacement = ' ',fixed = T)
-      res <- gsub(x = res, pattern = " - ", replacement = ' ',fixed = T)
-      res <- gsub(x = res, pattern = "Lat=", replacement = '',fixed = T)
-      res <- gsub(x = res, pattern = "Lon=", replacement = ' ',fixed = T)
-      res <- gsub(x = res, pattern = "Alt=", replacement = ' ',fixed = T)
+      res <- gsub(x = res, pattern = ", CAPTION, '", replacement = '', fixed = TRUE)
+      res <- gsub(x = res, pattern = " m'", replacement = ' ', fixed = TRUE)
+      res <- gsub(x = res, pattern = " - ", replacement = ' ', fixed = TRUE)
+      res <- gsub(x = res, pattern = "Lat=", replacement = '', fixed = TRUE)
+      res <- gsub(x = res, pattern = "Lon=", replacement = ' ', fixed = TRUE)
+      res <- gsub(x = res, pattern = "Alt=", replacement = ' ', fixed = TRUE)
 
       res <- suppressWarnings(do.call("rbind", strsplit(res, " ")))
 
       res1 <- res[,c(1,3,5:7)]
 
-      lat <- as.numeric(substr(res1[,1], 1, 2)) + (as.numeric(substr(res1[,1], 4, 5))/100)*1.6667
+      lat <- as.numeric(substr(res1[, 1], 1, 2)) +
+        (as.numeric(substr(res1[,1], 4, 5))/100) * 1.6667
 
-      lon_hemisphere <-  gsub("[0-9]","\\1", res1[,2])
-      lon_hemisphere <-  gsub("-","", lon_hemisphere)
-      lon_hemisphere <- ifelse(lon_hemisphere=="W", -1, 1)
+      lon_hemisphere <-  gsub("[0-9]", "\\1", res1[, 2])
+      lon_hemisphere <-  gsub("-", "", lon_hemisphere)
+      lon_hemisphere <- ifelse(lon_hemisphere == "W", -1, 1)
 
-      lat_hemisphere <-  gsub("[0-9]","\\1", res1[,1])
-      lat_hemisphere <-  gsub("-","", lat_hemisphere)
-      lat_hemisphere <- ifelse(lat_hemisphere=="S", -1, 1)
+      lat_hemisphere <-  gsub("[0-9]", "\\1", res1[, 1])
+      lat_hemisphere <-  gsub("-", "", lat_hemisphere)
+      lat_hemisphere <- ifelse(lat_hemisphere == "S", -1, 1)
 
       lon <- as.numeric(substr(res1[,2], 1, 3)) + (as.numeric(substr(res1[,2], 5, 6))/100)*1.6667
       lon <- lon*lon_hemisphere
 
       lat <- as.numeric(substr(res1[,1], 1, 2)) + (as.numeric(substr(res1[,1], 4, 5))/100)*1.6667
-      lat <- lat*lat_hemisphere
+      lat <- lat * lat_hemisphere
 
-      res <- data.frame(wmo_id = res1[,4], station_names = station_names, lon = lon, lat = lat, alt = as.numeric(res1[,3]))
-
+      res <- data.frame(wmo_id = res1[, 4], station_names = station_names,
+                        lon = lon, lat = lat, alt = as.numeric(res1[, 3]))
 
       if(add_map == TRUE){
       # plot labels a little bit higher...
-      addfactor <- as.numeric(diff(stats::quantile(res$lat, na.rm=TRUE, c(0.48, 0.51))))
-      addfactor <- ifelse(addfactor>0.2, 0.2, addfactor)
-      addfactor <- ifelse(addfactor<0.05, 0.05, addfactor)
+      addfactor <- as.numeric(diff(stats::quantile(res$lat, na.rm = TRUE, c(0.48, 0.51))))
+      addfactor <- ifelse(addfactor > 0.2, 0.2, addfactor)
+      addfactor <- ifelse(addfactor < 0.05, 0.05, addfactor)
 
       graphics::plot(res$lon, res$lat, col='red', pch=19, xlab = 'longitude', ylab = 'latitude')
-      graphics::text(res$lon, res$lat + addfactor, labels = res$station_names, col='grey70', cex=0.6)
+      graphics::text(res$lon, res$lat + addfactor, labels = res$station_names,
+                     col = 'grey70', cex = 0.6)
       maps::map(add = TRUE)
 
       }

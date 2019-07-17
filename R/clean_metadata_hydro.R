@@ -40,9 +40,9 @@ clean_metadata_hydro <- function(address, interval){
       tmp <- c(a[3:9], SPT[i], data_od, data_do)
       b <- cbind(b, tmp)
     }
-    b <- list("H" = data.frame(parameters = b[,1]),
-              "Q" = data.frame(parameters = b[,2]),
-              "T" = data.frame(parameters = b[,3]))
+    b <- list("H" = data.frame(parameters = b[, 1]),
+              "Q" = data.frame(parameters = b[, 2]),
+              "T" = data.frame(parameters = b[, 3]))
   }
   b
 }
