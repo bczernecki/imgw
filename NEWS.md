@@ -1,3 +1,7 @@
+# imgw 0.2.1
+
+* Bug fixes for MacOS
+
 # imgw 0.2
 
 * Moves non-IMGW data to the climate package
