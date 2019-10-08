@@ -18,6 +18,7 @@ clean_metadata_hydro <- function(address, interval){
   a <- readLines(address, warn = FALSE)
   a <- iconv(a, from = "cp1250", to = "ASCII//TRANSLIT") # usuwamy polskie znaki, bo to robi spore "kuku"
   a <- gsub(a, pattern = "\\?", replacement = "") # usuwamy znaki zapytania powstale po konwersji
+  a <- gsub(a, pattern = "\\'", replacement = "") # usuwamy znaki apostrofu (tylko dla Mac OS)
 
   if (interval == "monthly") {
     b <- list(data.frame(parameters = a[3:12])) # skład danych jeszcze nie wiem jak ominąć problem kontroli
