@@ -85,10 +85,15 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         # moja proba z obejsciem
         ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
         ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
-        all_data[[length(all_data) + 1]] = ttt[ttt$`Nazwa stacji.x` %in% station,]
+
+        if (!is.null(station)) {
+         all_data[[length(all_data) + 1]] = ttt[ttt$`Nazwa stacji.x` %in% station,]
+        } else {
+         all_data[[length(all_data) + 1]] <- ttt
+        }
+        # koniec proby z obejsciem
 
 
-        #all_data[[length(all_data) + 1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
 
 
 
