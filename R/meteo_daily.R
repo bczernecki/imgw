@@ -5,11 +5,10 @@
 #' @param rank rank of the stations ("synop", "climate", or "precip")
 #' @param year vector of years (e.g., 1966:2000)
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
-#' @param coords add coordinates of the station (logical value TRUE or FALSE (default))
+#' @param coords add coordinates of the station (logical value TRUE or FALSE)
 #' @param station name of meteorological station(s).
 #' It accepts names (characters in CAPITAL LETTERS); stations' IDs (numeric) are no longer valid
 #' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
-#' @param verbose whether to show progress for downloading files (logical, FALSE by default)
 #' @param ... other parameters that may be passed to the 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
 #' @importFrom XML readHTMLTable
@@ -22,7 +21,7 @@
 #' }
 #'
 
-meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", verbose = TRUE, ...){
+meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", ...){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
 
@@ -31,7 +30,6 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
   interval <- "daily" # to mozemy ustawic na sztywno
   interval_pl <- "dobowe"
   meta <- meteo_metadata(interval = "daily", rank = rank)
-  verbose = !verbose
 
   rank_pl <- switch(rank, synop = "synop", climate = "klimat", precip = "opad")
 
@@ -66,56 +64,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
       for(j in seq_along(addresses_to_download)){
         temp <- tempfile()
         temp2 <- tempfile()
-        download.file(addresses_to_download[j], temp, quiet = verbose)
-        unzip(zipfile = temp, exdir = temp2)
-        file1 <- paste(temp2, dir(temp2), sep = "/")[1]
-        data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-        colnames(data1) <- meta[[1]]$parameters
-
-        file2 <- paste(temp2, dir(temp2), sep = "/")[2]
-        data2 <- read.csv(file2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
-        colnames(data2) <- meta[[2]]$parameters
-
-        # usuwa statusy
-        if(status == FALSE){
-          data1[grep("^Status", colnames(data1))] <- NULL
-          data2[grep("^Status", colnames(data2))] <- NULL
-        }
-
-        unlink(c(temp, temp2))
-
-        # moja proba z obejsciem dla wyboru kodu
-        ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
-        ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
-
-        if (!is.null(station)) {
-         all_data[[length(all_data) + 1]] = ttt[ttt$`Nazwa stacji.x` %in% station,]
-        } else {
-         all_data[[length(all_data) + 1]] <- ttt
-        }
-        # koniec proby z obejsciem
-
-      } # koniec petli po zipach do pobrania
-
-    } # koniec if'a dla synopa
-
-######################
-###### KLIMAT: #######
-    if(rank == "climate") {
-      address <- paste0(base_url, "dane_meteorologiczne/dobowe/klimat",
-                        "/", catalog, "/")
-      folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego yearu
-
-      ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
-      files <- as.character(readHTMLTable(folder_contents)[[1]]$Name[ind])
-      addresses_to_download <- paste0(address, files)
-      # w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:
-      # na podstawie zawartosci obiektu files
-
-      for(j in seq_along(addresses_to_download)){
-        temp <- tempfile()
-        temp2 <- tempfile()
-        download.file(addresses_to_download[j], temp, quiet = verbose)
+        download.file(addresses_to_download[j], temp)
         unzip(zipfile = temp, exdir = temp2)
         file1 <- paste(temp2, dir(temp2), sep = "/")[1]
         data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
@@ -145,6 +94,46 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         # koniec proby z obejsciem
 
       } # koniec petli po zipach do pobrania
+
+    } # koniec if'a dla synopa
+
+    ######################
+    ###### KLIMAT: #######
+    if(rank == "climate") {
+      address <- paste0(base_url, "dane_meteorologiczne/dobowe/klimat",
+                        "/", catalog, "/")
+      folder_contents <- getURL(address, ftp.use.epsv = FALSE, dirlistonly = FALSE) # zawartosc folderu dla wybranego yearu
+
+      ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
+      files <- as.character(readHTMLTable(folder_contents)[[1]]$Name[ind])
+      addresses_to_download <- paste0(address, files)
+      # w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:
+      # na podstawie zawartosci obiektu files
+
+      for(j in seq_along(addresses_to_download)){
+        temp <- tempfile()
+        temp2 <- tempfile()
+        download.file(addresses_to_download[j], temp)
+        unzip(zipfile = temp, exdir = temp2)
+        file1 <- paste(temp2, dir(temp2), sep = "/")[1]
+        data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
+        colnames(data1) <- meta[[1]]$parameters
+
+        file2 <- paste(temp2, dir(temp2), sep = "/")[2]
+        data2 <- read.csv(file2, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
+        colnames(data2) <- meta[[2]]$parameters
+
+        # usuwa statusy
+        if(status == FALSE){
+          data1[grep("^Status", colnames(data1))] <- NULL
+          data2[grep("^Status", colnames(data2))] <- NULL
+        }
+
+        unlink(c(temp, temp2))
+        all_data[[length(all_data)+1]] <- merge(data1, data2,
+                                                by = c("Kod stacji", "Rok", "Miesiac", "Dzien"),
+                                                all.x = TRUE)
+      } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
 
 
@@ -163,7 +152,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
       for(j in seq_along(addresses_to_download)){
         temp <- tempfile()
         temp2 <- tempfile()
-        download.file(addresses_to_download[j], temp, quiet = verbose)
+        download.file(addresses_to_download[j], temp)
         unzip(zipfile = temp, exdir = temp2)
         file1 <- paste(temp2, dir(temp2), sep = "/")[1]
         data1 <- read.csv(file1, header = FALSE, stringsAsFactors = FALSE, fileEncoding = "CP1250")
@@ -175,12 +164,11 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
 
         unlink(c(temp, temp2))
         all_data[[length(all_data)+1]] <- data1
-
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
 
 
-    } # koniec petli po glownych catalogach danych dobowych
+  } # koniec petli po glownych catalogach danych dobowych
 
   all_data <- do.call(rbind, all_data)
 
@@ -212,8 +200,8 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
   }
 
 
- all_data <- all_data[order(all_data$`Nazwa stacji.x`, all_data$Rok, all_data$Miesiac, all_data$Dzien),]
-   #powyzsza linia wykrzacza pobieranie
+  all_data <- all_data[order(all_data$`Nazwa stacji.x`, all_data$Rok, all_data$Miesiac, all_data$Dzien),]
+  #powyzsza linia wykrzacza pobieranie
 
 
   # # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
