@@ -13,20 +13,21 @@ downloads](http://cranlogs.r-pkg.org/badges/imgw)](https://cran.r-project.org/pa
 The goal of the  **imgw** R package is to automatize downloading of meteorological
 and hydrological data from the publicly available repository of Polish Institute of Meterology and Water Management - National Research Institute [(IMGW-PIB)](https://dane.imgw.pl/)
 
-### Hint:
+## WARNING:
 
-In a short-term perspective all functions available in the imgw package will be migrated into the  [climate package](https://github.com/bczernecki/climate/). The webpage imgw.ml will not be updated anymore.
+All functions in the `imgw` are migrated now into the  [climate package](https://github.com/bczernecki/climate/). 
+The imgw package and the associated webpage (imgw.ml) will not be updated anymore.
 
 ## Installation
 
-The stable release of imgw package from the [CRAN](https://CRAN.R-project.org) reposity can be installed with:
+It is highly recommended to install the most up-to-date development version of **climate** instead of the **imgw** package. 
+However, the stable release of imgw package is still available on the [CRAN](https://CRAN.R-project.org) repository and can be installed with:
 
 ``` r
 install.packages("imgw")
 ```
 
-It is highly recommended to install the most up-to-date development version of **imgw** from
-[GitHub](https://github.com/bczernecki/imgw) with:
+To install the most up-to-date development version of imgw from [GitHub](https://github.com/bczernecki/imgw) use:
 
 ``` r
 library(remotes)
