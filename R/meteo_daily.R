@@ -6,8 +6,8 @@
 #' @param year vector of years (e.g., 1966:2000)
 #' @param status leave the columns with measurement and observation statuses (default status = FALSE - i.e. the status columns are deleted)
 #' @param coords add coordinates of the station (logical value TRUE or FALSE)
-#' @param station name or ID of meteorological station(s).
-#' It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)
+#' @param station name of meteorological station(s).
+#' It accepts names (characters in CAPITAL LETTERS); stations' IDs (numeric) are no longer valid
 #' @param col_names three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset
 #' @param ... other parameters that may be passed to the 'shortening' function that shortens column names
 #' @importFrom RCurl getURL
@@ -82,7 +82,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
 
         unlink(c(temp, temp2))
 
-        # moja proba z obejsciem
+        # moja proba z obejsciem dla wyboru kodu
         ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
         ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
 
@@ -92,10 +92,6 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
          all_data[[length(all_data) + 1]] <- ttt
         }
         # koniec proby z obejsciem
-
-
-
-
 
       } # koniec petli po zipach do pobrania
 
@@ -204,13 +200,8 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
   }
 
 
-  # all_data <- all_data[order(all_data$`Nazwa stacji.x`, all_data$`Rok`, all_data$`Miesiac`, all_data$`Dzien`), ]
-  # powyzsza linia wykrzacza pobieranie
-
-  # dodanie sortowania
-  # if(col_names == "polish"){
-  #   all_data <- all_data[order(all_data$id, all_data$Rok, all_data$Miesiac, all_data$Dzien),]
-  # }
+ all_data <- all_data[order(all_data$`Nazwa stacji.x`, all_data$Rok, all_data$Miesiac, all_data$Dzien),]
+   #powyzsza linia wykrzacza pobieranie
 
 
   # # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
