@@ -81,7 +81,17 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data) + 1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
+
+        # moja proba z obejsciem
+        ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
+        ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
+        all_data[[length(all_data) + 1]] = ttt[ttt$`Nazwa stacji.x` %in% station,]
+
+
+        #all_data[[length(all_data) + 1]] <- merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
+
+
+
       } # koniec petli po zipach do pobrania
 
     } # koniec if'a dla synopa
@@ -174,7 +184,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
   #station selection
   if (!is.null(station)) {
     if (is.character(station)) {
-      all_data <- all_data[all_data$id %in% station, ]
+      all_data <- all_data[all_data$`Nazwa stacji.x` %in% station, ]
       if (nrow(all_data) == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
@@ -188,11 +198,20 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
     }
   }
 
-  # all_data <- all_data[order(all_data$`Nazwa stacji`, all_data$`Rok`, all_data$`Miesiac`, all_data$`Dzien`), ]
+
+  # all_data <- all_data[order(all_data$`Nazwa stacji.x`, all_data$`Rok`, all_data$`Miesiac`, all_data$`Dzien`), ]
   # powyzsza linia wykrzacza pobieranie
 
-  # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
+  # dodanie sortowania
+  # if(col_names == "polish"){
+  #   all_data <- all_data[order(all_data$id, all_data$Rok, all_data$Miesiac, all_data$Dzien),]
+  # }
+
+
+  # # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
   all_data <- meteo_shortening(all_data, col_names = col_names, ...)
+
   return(all_data)
+
 
 } # koniec funkcji meteo_daily
