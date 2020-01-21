@@ -190,7 +190,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
     } else if (is.numeric(station)){
-      all_data <- all_data[all_data$id %in% station, ]
+      all_data <- all_data[all_data$`Kod stacji` %in% station, ]
       if (nrow(all_data) == 0){
         stop("Selected station(s) is not available in the database.", call. = FALSE)
       }
