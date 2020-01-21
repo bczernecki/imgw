@@ -62,7 +62,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
       if (!is.null(station)) {
         if (is.character(station)) {
           if (dim(synop_stations[synop_stations$station == station, ])[1] == 0) {
-            stop("Selected station(s) is not available in the database.",
+            stop("Selected station(s) is not available in the database 1.",
                  call. = FALSE)
           }
           cut_stations = synop_stations[synop_stations$station == station, ]
@@ -70,20 +70,20 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
           addresses_to_download = addresses_to_download[index_add]
         } else if (is.numeric(station)) {
           if (dim(synop_stations[synop_stations$id == station, ])[1] == 0) {
-            stop("Selected station(s) is not available in the database.",
+            stop("Selected station(s) is not available in the database 2.",
                  call. = FALSE)
           }
           cut_stations = synop_stations[synop_stations$station == station, ]
           index_add = substr(addresses_to_download, 102, 104) %in% substr(cut_stations[, 1], 7, 9)
           addresses_to_download = addresses_to_download[index_add]
         } else {
-          stop("Selected station(s) is not available is in wrong format",
+          stop("Selected station(s) is not available or is in wrong format (err. 3)",
                call. = FALSE)
         }
-        if (length(addresses_to_download) == 0) {
-          stop("Selected station(s) is not available in this years",
-               call. = FALSE)
-        }
+        # if (length(addresses_to_download) == 0) {
+        #   stop("Selected station(s) is not available in this years (err. 4)",
+        #        call. = FALSE)
+        # }
       }
 
       for(j in seq_along(addresses_to_download)){

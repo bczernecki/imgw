@@ -83,10 +83,10 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = N
           stop("Selected station(s) is not available is in wrong format",
                call. = FALSE)
         }
-        if (length(addresses_to_download) == 0) {
-          stop("Selected station(s) is not available in this years",
-               call. = FALSE)
-        }
+        # if (length(addresses_to_download) == 0) {
+        #   stop("Selected station(s) is not available in this years",
+        #        call. = FALSE)
+        # }
       }
       for(j in seq_along(addresses_to_download)){
         temp <- tempfile()
