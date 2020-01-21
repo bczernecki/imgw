@@ -24,7 +24,7 @@
 meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", ...){
 
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
-
+  synop_stations <- imwg::synop_stations # uleprzenie wyboru stacji
   base_url <- "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/"
 
   interval <- "daily" # to mozemy ustawic na sztywno
@@ -58,8 +58,33 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
       files <- as.character(readHTMLTable(folder_contents)[[1]]$Name[ind])
       addresses_to_download <- paste0(address, files)
-      # w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:
-      # na podstawie zawartosci obiektu files
+      #### w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:####
+      if (!is.null(station)) {
+        if (is.character(station)) {
+          if (dim(synop_stations[synop_stations$station == station, ])[1] == 0) {
+            stop("Selected station(s) is not available in the database.",
+                 call. = FALSE)
+          }
+          cut_stations = synop_stations[synop_stations$station == station, ]
+          index_add = substr(addresses_to_download, 100, 102) %in% substr(cut_stations[, 1], 7, 9)
+          addresses_to_download = addresses_to_download[index_add]
+        } else if (is.numeric(station)) {
+          if (dim(synop_stations[synop_stations$id == station, ])[1] == 0) {
+            stop("Selected station(s) is not available in the database.",
+                 call. = FALSE)
+          }
+          cut_stations = synop_stations[synop_stations$station == station, ]
+          index_add = substr(addresses_to_download, 102, 104) %in% substr(cut_stations[, 1], 7, 9)
+          addresses_to_download = addresses_to_download[index_add]
+        } else {
+          stop("Selected station(s) is not available is in wrong format",
+               call. = FALSE)
+        }
+        if (length(addresses_to_download) == 0) {
+          stop("Selected station(s) is not available in this years",
+               call. = FALSE)
+        }
+      }
 
       for(j in seq_along(addresses_to_download)){
         temp <- tempfile()
@@ -85,12 +110,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         # moja proba z obejsciem dla wyboru kodu
         ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
         ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
-
-        if (!is.null(station)) {
-          all_data[[length(all_data) + 1]] = ttt[ttt$`Nazwa stacji.x` %in% station,]
-        } else {
-          all_data[[length(all_data) + 1]] <- ttt
-        }
+        all_data[[length(all_data) + 1]] <- ttt
         # koniec proby z obejsciem
 
       } # koniec petli po zipach do pobrania
@@ -130,9 +150,30 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data)+1]] <- merge(data1, data2,
-                                                by = c("Kod stacji", "Rok", "Miesiac", "Dzien"),
-                                                all.x = TRUE)
+        # moja proba z obejsciem dla wyboru kodu
+        ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
+        ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
+
+        # moja proba z obejsciem dla wyboru kodu
+        if (!is.null(station)) {
+          if (is.character(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Nazwa stacji.x` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          } else if (is.numeric(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Kod stacji` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          }
+        } else {
+          all_data[[length(all_data) + 1]] <- ttt
+        } #koniec obejscia
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
 
@@ -163,7 +204,30 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data)+1]] <- data1
+        # moja proba z obejsciem dla wyboru kodu
+        ttt = merge(data1, data2, by = c("Kod stacji",  "Rok", "Miesiac", "Dzien"), all.x = TRUE)
+        ttt = ttt[order(ttt$`Nazwa stacji.x`, ttt$Rok, ttt$Miesiac, ttt$Dzien),]
+
+
+        if (!is.null(station)) {
+          if (is.character(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Nazwa stacji.x` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          } else if (is.numeric(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Kod stacji` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          }
+        } else {
+          all_data[[length(all_data) + 1]] <- ttt
+        } #koniec obejscia
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
 
@@ -182,22 +246,7 @@ meteo_daily <- function(rank, year, status = FALSE, coords = FALSE, station = NU
 
   all_data <- all_data[all_data$Rok %in% year, ] # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 
-  #station selection
-  if (!is.null(station)) {
-    if (is.character(station)) {
-      all_data <- all_data[all_data$`Nazwa stacji.x` %in% station, ]
-      if (nrow(all_data) == 0){
-        stop("Selected station(s) is not available in the database.", call. = FALSE)
-      }
-    } else if (is.numeric(station)){
-      all_data <- all_data[all_data$`Kod stacji` %in% station, ]
-      if (nrow(all_data) == 0){
-        stop("Selected station(s) is not available in the database.", call. = FALSE)
-      }
-    } else {
-      stop("Selected station(s) are not in the proper format.", call. = FALSE)
-    }
-  }
+
 
 
   all_data <- all_data[order(all_data$`Nazwa stacji.x`, all_data$Rok, all_data$Miesiac, all_data$Dzien),]
