@@ -24,7 +24,7 @@
 meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = NULL, col_names = "short", ...){
 
   stopifnot(rank == "synop" | rank == "climate") # dla terminowek tylko synopy i klimaty maja dane
-  synop_stations <- imwg::synop_stations
+  synop_stations <- imwg::synop_stations # uleprzenie wyboru stacji
   options(RCurlOptions = list(ssl.verifypeer = FALSE)) # required on windows for RCurl
    <- imgw::hydro_abbrev
 
