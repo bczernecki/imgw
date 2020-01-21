@@ -61,9 +61,33 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = N
       ind <- grep(readHTMLTable(folder_contents)[[1]]$Name, pattern = "zip")
       files <- as.character(readHTMLTable(folder_contents)[[1]]$Name[ind])
       addresses_to_download <- paste0(address, files)
-      # w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:
-      # na podstawie zawartosci obiektu files
-
+      #### w tym miejscu trzeba przemyslec fragment kodu do dodania dla pojedynczej stacji jesli tak sobie zazyczy uzytkownik:####
+      if (!is.null(station)) {
+        if (is.character(station)) {
+          if (dim(synop_stations[synop_stations$station == station, ])[1] == 0) {
+            stop("Selected station(s) is not available in the database.",
+                 call. = FALSE)
+          }
+          cut_stations = synop_stations[synop_stations$station == station, ]
+          index_add = substr(addresses_to_download, 102, 104) %in% substr(cut_stations[, 1], 7, 9)
+          addresses_to_download = addresses_to_download[index_add]
+        } else if (is.numeric(station)) {
+          if (dim(synop_stations[synop_stations$id == station, ])[1] == 0) {
+            stop("Selected station(s) is not available in the database.",
+                 call. = FALSE)
+          }
+          cut_stations = synop_stations[synop_stations$station == station, ]
+          index_add = substr(addresses_to_download, 102, 104) %in% substr(cut_stations[, 1], 7, 9)
+          addresses_to_download = addresses_to_download[index_add]
+        } else {
+          stop("Selected station(s) is not available is in wrong format",
+               call. = FALSE)
+        }
+        if (length(addresses_to_download) == 0) {
+          stop("Selected station(s) is not available in this years",
+               call. = FALSE)
+        }
+      }
       for(j in seq_along(addresses_to_download)){
         temp <- tempfile()
         temp2 <- tempfile()
@@ -79,7 +103,29 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = N
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data) + 1]] <- data1
+        #proba obejscia
+        ttt = data1[order(data1$`Nazwa stacji`, data1$Rok, data1$Miesiac, data1$Dzien),]
+
+
+        if (!is.null(station)) {
+          if (is.character(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Nazwa stacji` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          } else if (is.numeric(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Kod stacji` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          }
+        } else {
+          all_data[[length(all_data) + 1]] <- ttt
+        } #koniec obejscia
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla synopa
 
@@ -111,7 +157,29 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = N
         }
 
         unlink(c(temp, temp2))
-        all_data[[length(all_data) + 1]] <- data1
+        #proba obejscia
+        ttt = data1[order(data1$`Nazwa stacji`, data1$Rok, data1$Miesiac, data1$Dzien),]
+
+
+        if (!is.null(station)) {
+          if (is.character(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Nazwa stacji` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          } else if (is.numeric(station)) {
+            all_data[[length(all_data) + 1]] <-
+              ttt[ttt$`Kod stacji` %in% station,]
+            if (nrow(all_data[[length(all_data)]]) == 0) {
+              stop("Selected station(s) is not available in the database.",
+                   call. = FALSE)
+            }
+          }
+        } else {
+          all_data[[length(all_data) + 1]] <- ttt
+        } #koniec obejscia
       } # koniec petli po zipach do pobrania
     } # koniec if'a dla klimatu
   } # koniec petli po glownych catalogach danych dobowych
@@ -128,22 +196,7 @@ meteo_hourly <- function(rank, year, status = FALSE, coords = FALSE, station = N
 
   all_data <- all_data[all_data$Rok %in% year, ] # przyciecie tylko do wybranych lat gdyby sie pobralo za duzo
 
-  #station selection
-  if (!is.null(station)) {
-    if (is.character(station)) {
-      all_data <- all_data[all_data$`Nazwa stacji` %in% station, ]
-      if (nrow(all_data) == 0){
-        stop("Selected station(s) is not available in the database.", call. = FALSE)
-      }
-    } else if (is.numeric(station)){
-      all_data <- all_data[all_data$`Kod stacji`%in% station, ]
-      if (nrow(all_data) == 0){
-        stop("Selected station(s) is not available in the database.", call. = FALSE)
-      }
-    } else {
-      stop("Selected station(s) are not in the proper format.", call. = FALSE)
-    }
-  }
+
 
   all_data <- all_data[order(all_data$`Nazwa stacji`, all_data$`Rok`, all_data$`Miesiac`, all_data$`Dzien`, all_data$`Godzina`), ]
   # dodanie opcji  dla skracania kolumn i usuwania duplikatow:
