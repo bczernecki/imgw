@@ -4,8 +4,16 @@
 \alias{meteo}
 \title{Meteorological data from IMGW}
 \usage{
-meteo(interval, rank, year, status = FALSE, coords = FALSE,
-  station = NULL, col_names = "short", ...)
+meteo(
+  interval,
+  rank,
+  year,
+  status = FALSE,
+  coords = FALSE,
+  station = NULL,
+  col_names = "short",
+  ...
+)
 }
 \arguments{
 \item{interval}{temporal resolution of the data ("hourly", "daily", "monthly")}

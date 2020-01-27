@@ -4,8 +4,7 @@
 \alias{hydro_daily}
 \title{Daily hydrological data}
 \usage{
-hydro_daily(year, coords = FALSE, station = NULL,
-  col_names = "short", ...)
+hydro_daily(year, coords = FALSE, station = NULL, col_names = "short", ...)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}

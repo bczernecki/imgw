@@ -4,8 +4,15 @@
 \alias{meteo_daily}
 \title{Daily meteorological data}
 \usage{
-meteo_daily(rank, year, status = FALSE, coords = FALSE,
-  station = NULL, col_names = "short", ...)
+meteo_daily(
+  rank,
+  year,
+  status = FALSE,
+  coords = FALSE,
+  station = NULL,
+  col_names = "short",
+  ...
+)
 }
 \arguments{
 \item{rank}{rank of the stations ("synop", "climate", or "precip")}
@@ -16,8 +23,8 @@ meteo_daily(rank, year, status = FALSE, coords = FALSE,
 
 \item{coords}{add coordinates of the station (logical value TRUE or FALSE)}
 
-\item{station}{name or ID of meteorological station(s).
-It accepts names (characters in CAPITAL LETTERS) or stations' IDs (numeric)}
+\item{station}{name of meteorological station(s).
+It accepts names (characters in CAPITAL LETTERS); stations' IDs (numeric) are no longer valid}
 
 \item{col_names}{three types of column names possible: "short" - default, values with shorten names, "full" - full English description, "polish" - original names in the dataset}
 

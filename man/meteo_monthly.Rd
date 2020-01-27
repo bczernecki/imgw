@@ -4,8 +4,15 @@
 \alias{meteo_monthly}
 \title{Monthly meteorological data}
 \usage{
-meteo_monthly(rank, year, status = FALSE, coords = FALSE,
-  station = NULL, col_names = "short", ...)
+meteo_monthly(
+  rank,
+  year,
+  status = FALSE,
+  coords = FALSE,
+  station = NULL,
+  col_names = "short",
+  ...
+)
 }
 \arguments{
 \item{rank}{rank of the stations ("synop", "climate", or "precip")}

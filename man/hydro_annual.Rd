@@ -4,8 +4,14 @@
 \alias{hydro_annual}
 \title{Semi-annual and annual hydrological data}
 \usage{
-hydro_annual(year, coords = FALSE, value = "H", station = NULL,
-  col_names = "short", ...)
+hydro_annual(
+  year,
+  coords = FALSE,
+  value = "H",
+  station = NULL,
+  col_names = "short",
+  ...
+)
 }
 \arguments{
 \item{year}{vector of years (e.g., 1966:2000)}
