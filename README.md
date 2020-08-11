@@ -16,7 +16,7 @@ and hydrological data from the publicly available repository of Polish Institute
 ## WARNING:
 
 All functions in the `imgw` are migrated now into the  [climate package](https://github.com/bczernecki/climate/). 
-The imgw package and the associated webpage (imgw.ml) will not be updated anymore.
+The imgw package and the associated webpage will not be updated anymore.
 
 ## Installation
 
